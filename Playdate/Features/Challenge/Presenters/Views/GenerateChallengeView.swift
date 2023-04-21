@@ -30,7 +30,7 @@ struct GenerateChallengeView: View {
                     .fontWeight(.medium)
                     .foregroundColor(.black)
             }
-            .padding(.bottom, 25)
+            .padding(.vertical, 25)
             .frame(maxWidth: 342)
             
             //Category Capsule

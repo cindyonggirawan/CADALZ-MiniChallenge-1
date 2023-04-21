@@ -28,6 +28,7 @@
 		A5AE7D8129F1889100BD5CAE /* ChallengeFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE7D8029F1889100BD5CAE /* ChallengeFirebase.swift */; };
 		A5AE7D8329F1895A00BD5CAE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE7D8229F1895A00BD5CAE /* DataManager.swift */; };
 		A5AE7D8529F18C1300BD5CAE /* challengeFirebaseExperiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE7D8429F18C1300BD5CAE /* challengeFirebaseExperiment.swift */; };
+		A9090C0A29F2C5A500BD171B /* OngoingChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9090C0929F2C5A500BD171B /* OngoingChallengeView.swift */; };
 		A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8C29F255330058F9FA /* CoreDataModel.xcdatamodeld */; };
 		A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */; };
 		A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA9129F267670058F9FA /* ChallengeCardView.swift */; };
@@ -55,6 +56,7 @@
 		A5AE7D8029F1889100BD5CAE /* ChallengeFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFirebase.swift; sourceTree = "<group>"; };
 		A5AE7D8229F1895A00BD5CAE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A5AE7D8429F18C1300BD5CAE /* challengeFirebaseExperiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = challengeFirebaseExperiment.swift; sourceTree = "<group>"; };
+		A9090C0929F2C5A500BD171B /* OngoingChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingChallengeView.swift; sourceTree = "<group>"; };
 		A97CEA8D29F255330058F9FA /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateChallengeView.swift; sourceTree = "<group>"; };
 		A97CEA9129F267670058F9FA /* ChallengeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardView.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardView.swift; sourceTree = SOURCE_ROOT; };
@@ -349,6 +351,7 @@
 			children = (
 				A5AE7D8429F18C1300BD5CAE /* challengeFirebaseExperiment.swift */,
 				A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */,
+				A9090C0929F2C5A500BD171B /* OngoingChallengeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */,
 				3798631D29EFE0B5002EC23B /* NetworkManager.swift in Sources */,
 				3763418E29F2221000F37080 /* FixedSizeRoundedButtonStyle.swift in Sources */,
+				A9090C0A29F2C5A500BD171B /* OngoingChallengeView.swift in Sources */,
 				A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */,
 				3798631629EFE01B002EC23B /* Prompt.swift in Sources */,
 				A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */,
