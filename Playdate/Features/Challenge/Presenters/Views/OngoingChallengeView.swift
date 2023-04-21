@@ -15,18 +15,14 @@ struct OngoingChallengeView: View {
                     //TODO: Nama user ambil dari coredata
                     HStack{
                         Text("Hi Alfine,")
-                            //TODO: Font Family Poppins
-                            .font(.system(size: 16))
-                            .fontWeight(.regular)
+                            .font(.custom("Poppins-Regular", size: 16))
                             .foregroundColor(.primaryWhite.opacity(0.7))
-                            .padding(.bottom, -1)
+                            .padding(.bottom, -8)
                         Spacer()
                     }
                     
                     Text("Let’s do the challenge!")
-                        //TODO: Font Family Poppins
-                        .font(.system(size: 22))
-                        .fontWeight(.medium)
+                        .font(.custom("Poppins-Medium", size: 22))
                         .foregroundColor(.primaryWhite)
                 }
                 .frame(maxWidth: 342)
@@ -36,9 +32,7 @@ struct OngoingChallengeView: View {
                 //Challenge text
                 HStack {
                     Text("Watch a horror film released before the year 2000 with your partner")
-                    //TODO: Font Family Poppins
-                        .font(.system(size: 28))
-                        .fontWeight(.semibold)
+                        .font(.custom("Poppins-SemiBold", size: 28))
                         .lineSpacing(4)
                         .foregroundColor(.primaryWhite)
                     Spacer()
@@ -55,9 +49,7 @@ struct OngoingChallengeView: View {
                         .fontWeight(.semibold)
                         .foregroundColor(.primaryWhite)
                     Text("Time left to do the challenge")
-                    //TODO: Font Family Poppins
-                        .font(.system(size: 14))
-                        .fontWeight(.medium)
+                        .font(.custom("Poppins-Medium", size: 14))
                         .foregroundColor(.primaryWhite.opacity(0.5))
                 }
                 .padding(.vertical, 5)
@@ -76,9 +68,7 @@ struct OngoingChallengeView: View {
                     
                 }, label: {
                     Text("Finish Challenge")
-                        //TODO: Set Font Family "Poppins"
-                        .font(.system(size: 14))
-                        .fontWeight(.bold)
+                        .font(.custom("Poppins-Bold", size: 14))
                 })
                 .buttonStyle(FixedSizeRoundedButtonStyle())
                 .padding(.top, 20)
@@ -89,9 +79,7 @@ struct OngoingChallengeView: View {
                         
                     }, label: {
                         Text("Give Up")
-                            //TODO: Set Font Family "Poppins"
-                            .font(.system(size: 14))
-                            .fontWeight(.semibold)
+                            .font(.custom("Poppins-SemiBold", size: 14))
                     })
                     .buttonStyle(.plain)
                     .padding(.top, 20)

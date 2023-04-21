@@ -28,6 +28,11 @@
 		A5AE7D8129F1889100BD5CAE /* ChallengeFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE7D8029F1889100BD5CAE /* ChallengeFirebase.swift */; };
 		A5AE7D8329F1895A00BD5CAE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE7D8229F1895A00BD5CAE /* DataManager.swift */; };
 		A5AE7D8529F18C1300BD5CAE /* challengeFirebaseExperiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE7D8429F18C1300BD5CAE /* challengeFirebaseExperiment.swift */; };
+		A907AC1329F2D9B3008FC81B /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A907AC0E29F2D9B3008FC81B /* Poppins-Regular.ttf */; };
+		A907AC1429F2D9B3008FC81B /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A907AC0F29F2D9B3008FC81B /* Poppins-Medium.ttf */; };
+		A907AC1529F2D9B3008FC81B /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A907AC1029F2D9B3008FC81B /* Poppins-SemiBold.ttf */; };
+		A907AC1629F2D9B3008FC81B /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A907AC1129F2D9B3008FC81B /* Poppins-Light.ttf */; };
+		A907AC1729F2D9B3008FC81B /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A907AC1229F2D9B3008FC81B /* Poppins-Bold.ttf */; };
 		A9090C0A29F2C5A500BD171B /* OngoingChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9090C0929F2C5A500BD171B /* OngoingChallengeView.swift */; };
 		A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8C29F255330058F9FA /* CoreDataModel.xcdatamodeld */; };
 		A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */; };
@@ -56,6 +61,12 @@
 		A5AE7D8029F1889100BD5CAE /* ChallengeFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFirebase.swift; sourceTree = "<group>"; };
 		A5AE7D8229F1895A00BD5CAE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A5AE7D8429F18C1300BD5CAE /* challengeFirebaseExperiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = challengeFirebaseExperiment.swift; sourceTree = "<group>"; };
+		A907AC0E29F2D9B3008FC81B /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		A907AC0F29F2D9B3008FC81B /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		A907AC1029F2D9B3008FC81B /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		A907AC1129F2D9B3008FC81B /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		A907AC1229F2D9B3008FC81B /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		A907AC1829F2D9C3008FC81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A9090C0929F2C5A500BD171B /* OngoingChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingChallengeView.swift; sourceTree = "<group>"; };
 		A97CEA8D29F255330058F9FA /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateChallengeView.swift; sourceTree = "<group>"; };
@@ -150,6 +161,7 @@
 		3798630329EFDD70002EC23B /* Playdate */ = {
 			isa = PBXGroup;
 			children = (
+				A907AC1829F2D9C3008FC81B /* Info.plist */,
 				A5AE7D7E29F186E400BD5CAE /* GoogleService-Info.plist */,
 				3798632E29EFE208002EC23B /* Features */,
 				3798631329EFDF85002EC23B /* Core */,
@@ -200,6 +212,7 @@
 		3798631929EFE047002EC23B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A907AC0D29F2D99D008FC81B /* Fonts */,
 				3798630829EFDD71002EC23B /* Assets.xcassets */,
 			);
 			name = Resources;
@@ -379,6 +392,18 @@
 			path = Memory;
 			sourceTree = "<group>";
 		};
+		A907AC0D29F2D99D008FC81B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A907AC1229F2D9B3008FC81B /* Poppins-Bold.ttf */,
+				A907AC1129F2D9B3008FC81B /* Poppins-Light.ttf */,
+				A907AC0F29F2D9B3008FC81B /* Poppins-Medium.ttf */,
+				A907AC0E29F2D9B3008FC81B /* Poppins-Regular.ttf */,
+				A907AC1029F2D9B3008FC81B /* Poppins-SemiBold.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -444,9 +469,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A907AC1629F2D9B3008FC81B /* Poppins-Light.ttf in Resources */,
 				3798630C29EFDD71002EC23B /* Preview Assets.xcassets in Resources */,
 				A5AE7D7F29F186E400BD5CAE /* GoogleService-Info.plist in Resources */,
+				A907AC1729F2D9B3008FC81B /* Poppins-Bold.ttf in Resources */,
 				3798630929EFDD71002EC23B /* Assets.xcassets in Resources */,
+				A907AC1529F2D9B3008FC81B /* Poppins-SemiBold.ttf in Resources */,
+				A907AC1329F2D9B3008FC81B /* Poppins-Regular.ttf in Resources */,
+				A907AC1429F2D9B3008FC81B /* Poppins-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +640,7 @@
 				DEVELOPMENT_TEAM = Q7JL2KYFKQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Playdate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -641,6 +672,7 @@
 				DEVELOPMENT_TEAM = Q7JL2KYFKQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Playdate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

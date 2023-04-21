@@ -16,18 +16,14 @@ struct GenerateChallengeView: View {
                 //TODO: Nama user ambil dari coredata
                 HStack{
                     Text("Hi Alfine,")
-                        //TODO: Font Family Poppins
-                        .font(.system(size: 16))
-                        .fontWeight(.regular)
+                        .font(.custom("Poppins-Regular", size: 16))
                         .foregroundColor(.primaryDarkGray)
-                        .padding(.bottom, -1)
+                        .padding(.bottom, -8)
                     Spacer()
                 }
                 
                 Text("What challenge do you want for your next date?")
-                    //TODO: Font Family Poppins
-                    .font(.system(size: 22))
-                    .fontWeight(.medium)
+                    .font(.custom("Poppins-Medium", size: 22))
                     .foregroundColor(.black)
             }
             .padding(.vertical, 25)
@@ -57,9 +53,7 @@ struct GenerateChallengeView: View {
                 
             }, label: {
                 Text("Accept Challenge!")
-                    //TODO: Set Font Family "Poppins"
-                    .font(.system(size: 14))
-                    .fontWeight(.bold)
+                    .font(.custom("Poppins-Bold", size: 14))
             })
             .buttonStyle(FixedSizeRoundedButtonStyle())
             .padding(.top, 20)
