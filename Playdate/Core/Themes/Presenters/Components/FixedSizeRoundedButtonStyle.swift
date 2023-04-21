@@ -11,7 +11,7 @@ struct FixedSizeRoundedButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         ZStack {
             Color.primaryDarkBlue
-                .frame(width: 330, height: 50)
+                .frame(width: 342, height: 50)
                 .cornerRadius(10)
             configuration.label
                 .foregroundColor(Color.primaryWhite)

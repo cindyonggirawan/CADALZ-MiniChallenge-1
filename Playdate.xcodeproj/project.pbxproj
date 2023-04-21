@@ -28,6 +28,10 @@
 		A5AE7D8129F1889100BD5CAE /* ChallengeFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE7D8029F1889100BD5CAE /* ChallengeFirebase.swift */; };
 		A5AE7D8329F1895A00BD5CAE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE7D8229F1895A00BD5CAE /* DataManager.swift */; };
 		A5AE7D8529F18C1300BD5CAE /* challengeFirebaseExperiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE7D8429F18C1300BD5CAE /* challengeFirebaseExperiment.swift */; };
+		A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8C29F255330058F9FA /* CoreDataModel.xcdatamodeld */; };
+		A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */; };
+		A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA9129F267670058F9FA /* ChallengeCardView.swift */; };
+		A97CEA9429F26E6F0058F9FA /* CategoryCapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA9329F26E6F0058F9FA /* CategoryCapsuleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +55,10 @@
 		A5AE7D8029F1889100BD5CAE /* ChallengeFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFirebase.swift; sourceTree = "<group>"; };
 		A5AE7D8229F1895A00BD5CAE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A5AE7D8429F18C1300BD5CAE /* challengeFirebaseExperiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = challengeFirebaseExperiment.swift; sourceTree = "<group>"; };
+		A97CEA8D29F255330058F9FA /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateChallengeView.swift; sourceTree = "<group>"; };
+		A97CEA9129F267670058F9FA /* ChallengeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardView.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardView.swift; sourceTree = SOURCE_ROOT; };
+		A97CEA9329F26E6F0058F9FA /* CategoryCapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryCapsuleView.swift; path = Playdate/Features/Challenge/Presenters/Views/CategoryCapsuleView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				3798632229EFE11F002EC23B /* CoreDataManager.swift */,
+				A97CEA8C29F255330058F9FA /* CoreDataModel.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -339,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				A5AE7D8429F18C1300BD5CAE /* challengeFirebaseExperiment.swift */,
+				A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +356,8 @@
 		3798633429EFE255002EC23B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A97CEA9129F267670058F9FA /* ChallengeCardView.swift */,
+				A97CEA9329F26E6F0058F9FA /* CategoryCapsuleView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -444,15 +456,19 @@
 			files = (
 				3798632029EFE0ED002EC23B /* Firebase.swift in Sources */,
 				A5AE7D8329F1895A00BD5CAE /* DataManager.swift in Sources */,
+				A97CEA9429F26E6F0058F9FA /* CategoryCapsuleView.swift in Sources */,
 				3763419729F227C800F37080 /* TabBarView.swift in Sources */,
 				3798632C29EFE1D8002EC23B /* AppColor.swift in Sources */,
 				3798631829EFE033002EC23B /* Error.swift in Sources */,
 				3798630729EFDD70002EC23B /* ContentView.swift in Sources */,
 				3763418C29F2207C00F37080 /* RoundedButtonStyle.swift in Sources */,
 				3763418829F2172C00F37080 /* SplashView.swift in Sources */,
+				A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */,
 				3798631D29EFE0B5002EC23B /* NetworkManager.swift in Sources */,
 				3763418E29F2221000F37080 /* FixedSizeRoundedButtonStyle.swift in Sources */,
+				A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */,
 				3798631629EFE01B002EC23B /* Prompt.swift in Sources */,
+				A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */,
 				A5AE7D8129F1889100BD5CAE /* ChallengeFirebase.swift in Sources */,
 				3798632329EFE11F002EC23B /* CoreDataManager.swift in Sources */,
 				3798630529EFDD70002EC23B /* PlaydateApp.swift in Sources */,
@@ -583,10 +599,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Playdate/Preview Content\"";
-				DEVELOPMENT_TEAM = L8NCUCPRPQ;
+				DEVELOPMENT_TEAM = Q7JL2KYFKQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -599,8 +616,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Apple-Developer-Academy.Playdate";
+				PRODUCT_BUNDLE_IDENTIFIER = fincode.playdate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -612,10 +630,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Playdate/Preview Content\"";
-				DEVELOPMENT_TEAM = L8NCUCPRPQ;
+				DEVELOPMENT_TEAM = Q7JL2KYFKQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -628,8 +647,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Apple-Developer-Academy.Playdate";
+				PRODUCT_BUNDLE_IDENTIFIER = fincode.playdate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -682,6 +702,19 @@
 			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		A97CEA8C29F255330058F9FA /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A97CEA8D29F255330058F9FA /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = A97CEA8D29F255330058F9FA /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 379862F929EFDD70002EC23B /* Project object */;
 }
