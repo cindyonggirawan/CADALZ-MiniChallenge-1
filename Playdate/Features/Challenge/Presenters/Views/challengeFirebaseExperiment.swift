@@ -13,9 +13,9 @@ struct challengeFirebaseExperiment: View {
     
     var body: some View {
         NavigationView {
-            List(dataManager.ChallengesFirebase, id: \.id) { challengeFirebase in
+            List(dataManager.Challenges, id: \.id) { challenge in
                 
-                Text("id: \(challengeFirebase.id) like:  \(challengeFirebase.like)")
+                Text("id: \(challenge.id) Name:\(challenge.name) like:  \(challenge.like)")
 //                Text("Hello")
             }
             .navigationTitle("Test Firebase")

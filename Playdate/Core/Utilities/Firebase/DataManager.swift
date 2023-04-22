@@ -9,16 +9,16 @@ import SwiftUI
 import Firebase
 
 class DataManager: ObservableObject {
-    @Published var ChallengesFirebase: [ChallengeFirebase] = []
+    @Published var Challenges: [ChallengeFB] = []
     
     init(){
-        fetchChallengesFirebase()
+        fetchChallenges()
     }
     
-    func fetchChallengesFirebase(){
-        ChallengesFirebase.removeAll()
+    func fetchChallenges(){
+        Challenges.removeAll()
         let db = Firestore.firestore()
-        let ref = db.collection("ChallengeFirebase")
+        let ref = db.collection("Challenges")
         ref.getDocuments { snapshot, error in
             guard error == nil else {
                 print(error!.localizedDescription)
@@ -29,12 +29,22 @@ class DataManager: ObservableObject {
                 for document in snapshot.documents {
                     let data = document.data()
                     
-                    let id = data["id"] as? Int ?? -1
-                    let like = data["like"] as? Int ?? -1
-                    let numberOfUser = data["numberOfUser"] as? Int ?? -1
+                    let id = data["Id"] as? Int ?? -1
+                    let like = data["Like"] as? Int ?? -1
+                    let numberOfUser = data["NumberOfUser"] as? Int ?? -1
+                    let name = data["Name"] as? String ?? ""
+                    let description = data["Description"] as? String ?? ""
+                    let challengeCategoryId = data["ChallengeCategoryId"] as? Int ?? -1
                     
-                    let challengeFirebase = ChallengeFirebase(id: id, like: like, numberOfUser: numberOfUser)
-                    self.ChallengesFirebase.append(challengeFirebase)
+                    let challenge = ChallengeFB(
+                        name: name,
+                        description: description,
+                        challengeCategoryId: challengeCategoryId,
+                        id: id,
+                        like: like,
+                        numberOfUser: numberOfUser)
+                    
+                    self.Challenges.append(challenge)
                 }
             }
         }
