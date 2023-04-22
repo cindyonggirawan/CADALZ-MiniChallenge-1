@@ -22,6 +22,9 @@
 		3798632029EFE0ED002EC23B /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798631F29EFE0ED002EC23B /* Firebase.swift */; };
 		3798632329EFE11F002EC23B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632229EFE11F002EC23B /* CoreDataManager.swift */; };
 		3798632C29EFE1D8002EC23B /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632B29EFE1D8002EC23B /* AppColor.swift */; };
+		A5325A1529F40E8C0073219B /* ChallengeCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */; };
+		A58E5DA229F40070005B2FF8 /* reviewPageExperimental.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E5DA129F40070005B2FF8 /* reviewPageExperimental.swift */; };
+		A58E5DA429F40AEF005B2FF8 /* ChallangeReviewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E5DA329F40AEF005B2FF8 /* ChallangeReviewModal.swift */; };
 		A5AE7D7B29F1864200BD5CAE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A5AE7D7A29F1864200BD5CAE /* FirebaseAuth */; };
 		A5AE7D7D29F1864200BD5CAE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A5AE7D7C29F1864200BD5CAE /* FirebaseFirestore */; };
 		A5AE7D7F29F186E400BD5CAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5AE7D7E29F186E400BD5CAE /* GoogleService-Info.plist */; };
@@ -57,6 +60,9 @@
 		3798631F29EFE0ED002EC23B /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		3798632229EFE11F002EC23B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3798632B29EFE1D8002EC23B /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardSmall.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardSmall.swift; sourceTree = SOURCE_ROOT; };
+		A58E5DA129F40070005B2FF8 /* reviewPageExperimental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reviewPageExperimental.swift; sourceTree = "<group>"; };
+		A58E5DA329F40AEF005B2FF8 /* ChallangeReviewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallangeReviewModal.swift; sourceTree = "<group>"; };
 		A5AE7D7E29F186E400BD5CAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5AE7D8029F1889100BD5CAE /* ChallengeFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFirebase.swift; sourceTree = "<group>"; };
 		A5AE7D8229F1895A00BD5CAE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -365,6 +371,8 @@
 				A5AE7D8429F18C1300BD5CAE /* challengeFirebaseExperiment.swift */,
 				A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */,
 				A9090C0929F2C5A500BD171B /* OngoingChallengeView.swift */,
+				A58E5DA129F40070005B2FF8 /* reviewPageExperimental.swift */,
+				A58E5DA329F40AEF005B2FF8 /* ChallangeReviewModal.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -374,6 +382,7 @@
 			children = (
 				A97CEA9129F267670058F9FA /* ChallengeCardView.swift */,
 				A97CEA9329F26E6F0058F9FA /* CategoryCapsuleView.swift */,
+				A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -498,12 +507,15 @@
 				3763418829F2172C00F37080 /* SplashView.swift in Sources */,
 				A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */,
 				3798631D29EFE0B5002EC23B /* NetworkManager.swift in Sources */,
+				A58E5DA229F40070005B2FF8 /* reviewPageExperimental.swift in Sources */,
 				3763418E29F2221000F37080 /* FixedSizeRoundedButtonStyle.swift in Sources */,
 				A9090C0A29F2C5A500BD171B /* OngoingChallengeView.swift in Sources */,
 				A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */,
 				3798631629EFE01B002EC23B /* Prompt.swift in Sources */,
 				A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */,
+				A5325A1529F40E8C0073219B /* ChallengeCardSmall.swift in Sources */,
 				A5AE7D8129F1889100BD5CAE /* ChallengeFirebase.swift in Sources */,
+				A58E5DA429F40AEF005B2FF8 /* ChallangeReviewModal.swift in Sources */,
 				3798632329EFE11F002EC23B /* CoreDataManager.swift in Sources */,
 				3798630529EFDD70002EC23B /* PlaydateApp.swift in Sources */,
 				3763418A29F21A8800F37080 /* OnboardingView.swift in Sources */,
