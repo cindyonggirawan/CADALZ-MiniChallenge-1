@@ -14,7 +14,7 @@ class CoreDataManager {
     let context: NSManagedObjectContext
     
     init() {
-        container = NSPersistentContainer(name: "")
+        container = NSPersistentContainer(name: "CoreDataModel")
         container.loadPersistentStores { desc, error in
             if let error = error {
                 print("Error loading Core Data. \(error)")

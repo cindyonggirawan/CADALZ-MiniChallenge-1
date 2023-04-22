@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChallengeCardView: View {
+    var challenge: Challenge
     var body: some View {
         //TODO: SET UP view data based on coredata
         VStack(alignment: .center) {
@@ -19,7 +20,7 @@ struct ChallengeCardView: View {
                 .padding(.vertical, 15)
                 .background(Color.primaryWhite.opacity(0.3))
             Spacer()
-            Text("Watch a horror film released before the year 2000 with your partner")
+            Text(challenge.name!)
                 .font(.custom("Poppins-SemiBold", size: 28))
                 .foregroundColor(.primaryWhite)
                 .padding(.horizontal, 20)
@@ -36,9 +37,9 @@ struct ChallengeCardView: View {
         .cornerRadius(16)
     }
 }
-
-struct ChallengeCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChallengeCardView()
-    }
-}
+//
+//struct ChallengeCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChallengeCardView()
+//    }
+//}

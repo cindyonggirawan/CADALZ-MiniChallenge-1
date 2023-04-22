@@ -37,6 +37,8 @@
 		A907AC1629F2D9B3008FC81B /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A907AC1129F2D9B3008FC81B /* Poppins-Light.ttf */; };
 		A907AC1729F2D9B3008FC81B /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A907AC1229F2D9B3008FC81B /* Poppins-Bold.ttf */; };
 		A9090C0A29F2C5A500BD171B /* OngoingChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9090C0929F2C5A500BD171B /* OngoingChallengeView.swift */; };
+		A925E2E529F437DB000F66C9 /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A925E2E429F437DB000F66C9 /* ChallengeViewModel.swift */; };
+		A925E2E729F446EC000F66C9 /* MemoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A925E2E629F446EC000F66C9 /* MemoryViewModel.swift */; };
 		A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8C29F255330058F9FA /* CoreDataModel.xcdatamodeld */; };
 		A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */; };
 		A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA9129F267670058F9FA /* ChallengeCardView.swift */; };
@@ -74,6 +76,8 @@
 		A907AC1229F2D9B3008FC81B /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		A907AC1829F2D9C3008FC81B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A9090C0929F2C5A500BD171B /* OngoingChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingChallengeView.swift; sourceTree = "<group>"; };
+		A925E2E429F437DB000F66C9 /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
+		A925E2E629F446EC000F66C9 /* MemoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewModel.swift; sourceTree = "<group>"; };
 		A97CEA8D29F255330058F9FA /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateChallengeView.swift; sourceTree = "<group>"; };
 		A97CEA9129F267670058F9FA /* ChallengeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardView.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardView.swift; sourceTree = SOURCE_ROOT; };
@@ -351,6 +355,8 @@
 		3798633129EFE225002EC23B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A925E2E429F437DB000F66C9 /* ChallengeViewModel.swift */,
+				A925E2E629F446EC000F66C9 /* MemoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -497,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3798632029EFE0ED002EC23B /* Firebase.swift in Sources */,
+				A925E2E529F437DB000F66C9 /* ChallengeViewModel.swift in Sources */,
 				A5AE7D8329F1895A00BD5CAE /* DataManager.swift in Sources */,
 				A97CEA9429F26E6F0058F9FA /* CategoryCapsuleView.swift in Sources */,
 				3763419729F227C800F37080 /* TabBarView.swift in Sources */,
@@ -508,6 +515,7 @@
 				A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */,
 				3798631D29EFE0B5002EC23B /* NetworkManager.swift in Sources */,
 				A58E5DA229F40070005B2FF8 /* reviewPageExperimental.swift in Sources */,
+				A925E2E729F446EC000F66C9 /* MemoryViewModel.swift in Sources */,
 				3763418E29F2221000F37080 /* FixedSizeRoundedButtonStyle.swift in Sources */,
 				A9090C0A29F2C5A500BD171B /* OngoingChallengeView.swift in Sources */,
 				A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */,

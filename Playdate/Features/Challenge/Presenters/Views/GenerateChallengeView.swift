@@ -10,6 +10,8 @@ import SwiftUI
 struct GenerateChallengeView: View {
     var body: some View {
         //TODO: BELUM RESPONSIVE
+        let challengeViewModel = ChallengeViewModel()
+        
         VStack {
             //Title
             VStack(alignment: .leading) {
@@ -45,7 +47,11 @@ struct GenerateChallengeView: View {
             
             //Challenge Card
             //TODO: Card ZStack View & Logic
-            ChallengeCardView()
+            ZStack {
+                ForEach(challengeViewModel.challenges) { challenge in
+                    ChallengeCardView(challenge: challenge)
+                }
+            }
             
             //Accept Button
             Button(action: {
@@ -57,7 +63,7 @@ struct GenerateChallengeView: View {
             })
             .buttonStyle(FixedSizeRoundedButtonStyle())
             .padding(.top, 20)
-            
+            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)
