@@ -35,7 +35,7 @@ class ChallengeViewModel: ObservableObject {
         newChallenge.desc = desc
         newChallenge.like = 0
         newChallenge.numberOfUser = 0
-        newChallenge.category = category
+//        newChallenge.category = category
         save()
     }
     
