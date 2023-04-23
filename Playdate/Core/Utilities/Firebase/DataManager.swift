@@ -49,4 +49,8 @@ class DataManager: ObservableObject {
             }
         }
     }
+    
+    func addLikeToChallenge(){
+        print("Added Like status to challenge")
+    }
 }

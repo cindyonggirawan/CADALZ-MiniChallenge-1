@@ -19,11 +19,11 @@
 		3798631629EFE01B002EC23B /* Prompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798631529EFE01B002EC23B /* Prompt.swift */; };
 		3798631829EFE033002EC23B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798631729EFE033002EC23B /* Error.swift */; };
 		3798631D29EFE0B5002EC23B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798631C29EFE0B5002EC23B /* NetworkManager.swift */; };
-		3798632029EFE0ED002EC23B /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798631F29EFE0ED002EC23B /* Firebase.swift */; };
 		3798632329EFE11F002EC23B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632229EFE11F002EC23B /* CoreDataManager.swift */; };
 		3798632C29EFE1D8002EC23B /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632B29EFE1D8002EC23B /* AppColor.swift */; };
 		A5325A1529F40E8C0073219B /* ChallengeCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */; };
 		A5325A1729F5102E0073219B /* ChallengeSubmitModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */; };
+		A5325A1929F55CFB0073219B /* FirebaseFunctional.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1829F55CFB0073219B /* FirebaseFunctional.swift */; };
 		A58E5DA229F40070005B2FF8 /* reviewPageExperimental.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E5DA129F40070005B2FF8 /* reviewPageExperimental.swift */; };
 		A58E5DA429F40AEF005B2FF8 /* ChallangeReviewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E5DA329F40AEF005B2FF8 /* ChallangeReviewModal.swift */; };
 		A5AE7D7B29F1864200BD5CAE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A5AE7D7A29F1864200BD5CAE /* FirebaseAuth */; };
@@ -60,11 +60,11 @@
 		3798631529EFE01B002EC23B /* Prompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompt.swift; sourceTree = "<group>"; };
 		3798631729EFE033002EC23B /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		3798631C29EFE0B5002EC23B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		3798631F29EFE0ED002EC23B /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		3798632229EFE11F002EC23B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3798632B29EFE1D8002EC23B /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardSmall.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardSmall.swift; sourceTree = SOURCE_ROOT; };
 		A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeSubmitModal.swift; sourceTree = "<group>"; };
+		A5325A1829F55CFB0073219B /* FirebaseFunctional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctional.swift; sourceTree = "<group>"; };
 		A58E5DA129F40070005B2FF8 /* reviewPageExperimental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reviewPageExperimental.swift; sourceTree = "<group>"; };
 		A58E5DA329F40AEF005B2FF8 /* ChallangeReviewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallangeReviewModal.swift; sourceTree = "<group>"; };
 		A5AE7D7E29F186E400BD5CAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -251,9 +251,9 @@
 		3798631E29EFE0BE002EC23B /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				3798631F29EFE0ED002EC23B /* Firebase.swift */,
 				A5AE7D8029F1889100BD5CAE /* ChallengeFirebase.swift */,
 				A5AE7D8229F1895A00BD5CAE /* DataManager.swift */,
+				A5325A1829F55CFB0073219B /* FirebaseFunctional.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -505,7 +505,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3798632029EFE0ED002EC23B /* Firebase.swift in Sources */,
 				A925E2E529F437DB000F66C9 /* ChallengeViewModel.swift in Sources */,
 				A5AE7D8329F1895A00BD5CAE /* DataManager.swift in Sources */,
 				A97CEA9429F26E6F0058F9FA /* CategoryCapsuleView.swift in Sources */,
@@ -520,6 +519,7 @@
 				3798631D29EFE0B5002EC23B /* NetworkManager.swift in Sources */,
 				A58E5DA229F40070005B2FF8 /* reviewPageExperimental.swift in Sources */,
 				A925E2E729F446EC000F66C9 /* MemoryViewModel.swift in Sources */,
+				A5325A1929F55CFB0073219B /* FirebaseFunctional.swift in Sources */,
 				3763418E29F2221000F37080 /* FixedSizeRoundedButtonStyle.swift in Sources */,
 				A9090C0A29F2C5A500BD171B /* OngoingChallengeView.swift in Sources */,
 				A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */,
