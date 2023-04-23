@@ -21,6 +21,9 @@
 		3798631D29EFE0B5002EC23B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798631C29EFE0B5002EC23B /* NetworkManager.swift */; };
 		3798632329EFE11F002EC23B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632229EFE11F002EC23B /* CoreDataManager.swift */; };
 		3798632C29EFE1D8002EC23B /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632B29EFE1D8002EC23B /* AppColor.swift */; };
+		37E2996929F556CF00D7A150 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2996829F556CF00D7A150 /* RegistrationView.swift */; };
+		37E2996E29F55D9400D7A150 /* BorderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2996D29F55D9400D7A150 /* BorderedTextFieldStyle.swift */; };
+		37E2997629F5602400D7A150 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2997529F5602400D7A150 /* ProfileView.swift */; };
 		A5325A1529F40E8C0073219B /* ChallengeCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */; };
 		A5325A1729F5102E0073219B /* ChallengeSubmitModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */; };
 		A5325A1929F55CFB0073219B /* FirebaseFunctional.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1829F55CFB0073219B /* FirebaseFunctional.swift */; };
@@ -62,6 +65,9 @@
 		3798631C29EFE0B5002EC23B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3798632229EFE11F002EC23B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3798632B29EFE1D8002EC23B /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		37E2996829F556CF00D7A150 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		37E2996D29F55D9400D7A150 /* BorderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextFieldStyle.swift; sourceTree = "<group>"; };
+		37E2997529F5602400D7A150 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardSmall.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardSmall.swift; sourceTree = SOURCE_ROOT; };
 		A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeSubmitModal.swift; sourceTree = "<group>"; };
 		A5325A1829F55CFB0073219B /* FirebaseFunctional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctional.swift; sourceTree = "<group>"; };
@@ -136,6 +142,7 @@
 		3763419329F2256700F37080 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				37E2997529F5602400D7A150 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -289,6 +296,9 @@
 		3798632629EFE18F002EC23B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3763418729F2172C00F37080 /* SplashView.swift */,
+				3763418929F21A8800F37080 /* OnboardingView.swift */,
+				37E2996829F556CF00D7A150 /* RegistrationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -296,10 +306,9 @@
 		3798632729EFE19D002EC23B /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				3763418729F2172C00F37080 /* SplashView.swift */,
-				3763418929F21A8800F37080 /* OnboardingView.swift */,
 				3763418B29F2207C00F37080 /* RoundedButtonStyle.swift */,
 				3763418D29F2221000F37080 /* FixedSizeRoundedButtonStyle.swift */,
+				37E2996D29F55D9400D7A150 /* BorderedTextFieldStyle.swift */,
 				3763419629F227C800F37080 /* TabBarView.swift */,
 			);
 			path = Components;
@@ -406,8 +415,56 @@
 		3798633629EFE26B002EC23B /* Memory */ = {
 			isa = PBXGroup;
 			children = (
+				37E2996F29F55F5D00D7A150 /* Models */,
+				37E2997029F55F6300D7A150 /* View Models */,
+				37E2997129F55F7300D7A150 /* Presenters */,
 			);
 			path = Memory;
+			sourceTree = "<group>";
+		};
+		37E2996F29F55F5D00D7A150 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		37E2997029F55F6300D7A150 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		37E2997129F55F7300D7A150 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				37E2997229F55F8F00D7A150 /* Views */,
+				37E2997329F55F9700D7A150 /* Components */,
+				37E2997429F55F9E00D7A150 /* Extension */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		37E2997229F55F8F00D7A150 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		37E2997329F55F9700D7A150 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		37E2997429F55F9E00D7A150 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		A907AC0D29F2D99D008FC81B /* Fonts */ = {
@@ -507,6 +564,7 @@
 			files = (
 				A925E2E529F437DB000F66C9 /* ChallengeViewModel.swift in Sources */,
 				A5AE7D8329F1895A00BD5CAE /* DataManager.swift in Sources */,
+				37E2996929F556CF00D7A150 /* RegistrationView.swift in Sources */,
 				A97CEA9429F26E6F0058F9FA /* CategoryCapsuleView.swift in Sources */,
 				3763419729F227C800F37080 /* TabBarView.swift in Sources */,
 				A5325A1729F5102E0073219B /* ChallengeSubmitModal.swift in Sources */,
@@ -514,6 +572,7 @@
 				3798631829EFE033002EC23B /* Error.swift in Sources */,
 				3798630729EFDD70002EC23B /* ContentView.swift in Sources */,
 				3763418C29F2207C00F37080 /* RoundedButtonStyle.swift in Sources */,
+				37E2996E29F55D9400D7A150 /* BorderedTextFieldStyle.swift in Sources */,
 				3763418829F2172C00F37080 /* SplashView.swift in Sources */,
 				A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */,
 				3798631D29EFE0B5002EC23B /* NetworkManager.swift in Sources */,
@@ -525,6 +584,7 @@
 				A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */,
 				3798631629EFE01B002EC23B /* Prompt.swift in Sources */,
 				A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */,
+				37E2997629F5602400D7A150 /* ProfileView.swift in Sources */,
 				A5325A1529F40E8C0073219B /* ChallengeCardSmall.swift in Sources */,
 				A5AE7D8129F1889100BD5CAE /* ChallengeFirebase.swift in Sources */,
 				A58E5DA429F40AEF005B2FF8 /* ChallangeReviewModal.swift in Sources */,

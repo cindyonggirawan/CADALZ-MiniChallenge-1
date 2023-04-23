@@ -9,13 +9,13 @@ import SwiftUI
 
 struct TabBarView: View {
     @State private var selectedTab = 0
-    @State private var challengeImageName = "challenge-icon"
+    @State private var challengeImageName = "challenge-icon-selected"
     @State private var memoriesImageName = "memories-icon"
     @State private var profileImageName = "profile-icon"
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            Text("Challenge Tab")
+            GenerateChallengeView()
                 .tabItem {
                     Image(challengeImageName)
                     Text("Challenge")
@@ -29,7 +29,7 @@ struct TabBarView: View {
                 }
                 .tag(1)
             
-            Text("Profile Tab")
+            ProfileView()
                 .tabItem {
                     Image(profileImageName)
                     Text("Profile")

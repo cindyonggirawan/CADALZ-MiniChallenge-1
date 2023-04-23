@@ -21,7 +21,7 @@ struct OnboardingView: View {
             }
             
             Button(action: {
-            
+                RegistrationView()
             }, label: {
                 Text("Next")
             })
