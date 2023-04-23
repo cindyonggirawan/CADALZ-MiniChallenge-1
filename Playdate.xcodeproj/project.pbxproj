@@ -23,6 +23,7 @@
 		3798632329EFE11F002EC23B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632229EFE11F002EC23B /* CoreDataManager.swift */; };
 		3798632C29EFE1D8002EC23B /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632B29EFE1D8002EC23B /* AppColor.swift */; };
 		A5325A1529F40E8C0073219B /* ChallengeCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */; };
+		A5325A1729F5102E0073219B /* ChallengeSubmitModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */; };
 		A58E5DA229F40070005B2FF8 /* reviewPageExperimental.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E5DA129F40070005B2FF8 /* reviewPageExperimental.swift */; };
 		A58E5DA429F40AEF005B2FF8 /* ChallangeReviewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E5DA329F40AEF005B2FF8 /* ChallangeReviewModal.swift */; };
 		A5AE7D7B29F1864200BD5CAE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A5AE7D7A29F1864200BD5CAE /* FirebaseAuth */; };
@@ -63,6 +64,7 @@
 		3798632229EFE11F002EC23B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3798632B29EFE1D8002EC23B /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardSmall.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardSmall.swift; sourceTree = SOURCE_ROOT; };
+		A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeSubmitModal.swift; sourceTree = "<group>"; };
 		A58E5DA129F40070005B2FF8 /* reviewPageExperimental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reviewPageExperimental.swift; sourceTree = "<group>"; };
 		A58E5DA329F40AEF005B2FF8 /* ChallangeReviewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallangeReviewModal.swift; sourceTree = "<group>"; };
 		A5AE7D7E29F186E400BD5CAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				A9090C0929F2C5A500BD171B /* OngoingChallengeView.swift */,
 				A58E5DA129F40070005B2FF8 /* reviewPageExperimental.swift */,
 				A58E5DA329F40AEF005B2FF8 /* ChallangeReviewModal.swift */,
+				A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				A5AE7D8329F1895A00BD5CAE /* DataManager.swift in Sources */,
 				A97CEA9429F26E6F0058F9FA /* CategoryCapsuleView.swift in Sources */,
 				3763419729F227C800F37080 /* TabBarView.swift in Sources */,
+				A5325A1729F5102E0073219B /* ChallengeSubmitModal.swift in Sources */,
 				3798632C29EFE1D8002EC23B /* AppColor.swift in Sources */,
 				3798631829EFE033002EC23B /* Error.swift in Sources */,
 				3798630729EFDD70002EC23B /* ContentView.swift in Sources */,
