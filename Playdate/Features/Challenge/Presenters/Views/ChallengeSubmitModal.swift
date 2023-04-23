@@ -39,7 +39,7 @@ struct ChallengeSubmitModal: View {
             Spacer()
             Button(action: {
                 //TODO: send isLike data to firebase
-                FBaddLikeToChallenge()
+//                FBaddLikeToChallenge()
             }, label: {
                 Text("Submit")
                     .font(.custom("Poppins-Bold", size: 14))
