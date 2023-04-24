@@ -9,22 +9,21 @@ import SwiftUI
 
 struct ChallengeCardSmall: View {
     var body: some View {
-        VStack(alignment: .center) {            Text("Your Challenge")
-                .frame(width: 290, alignment: .leading)
-                .font(.custom("Poppins", size: 12))
-                .foregroundColor(.primaryWhite)
-//            BINGUNG NGATUR INI GIMANA
+        VStack(alignment: .leading) {
+            Text("Your Challenge")
+                .font(.custom("Poppins", size: 16))
+                .foregroundColor(Color.primaryWhite)
                 .opacity(0.5)
-//            Spacer()
+                .padding(.bottom, 4)
+
             Text("Watch a horror film released before the year 2000 with your partner")
-                .font(.custom("Poppins-SemiBold", size: 16))
-                .foregroundColor(.primaryWhite)
-                .padding(.horizontal, 16)
-//            Spacer()
+                .font(.custom("Poppins-SemiBold", size: 22))
+                .foregroundColor(Color.primaryWhite)
         }
-        .frame(width: 342, height: 99)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 20)
         .background(Color.primaryPurple)
-        .cornerRadius(16)
+        .cornerRadius(8)
     }
 }
 

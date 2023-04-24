@@ -24,6 +24,8 @@
 		37E2996929F556CF00D7A150 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2996829F556CF00D7A150 /* RegistrationView.swift */; };
 		37E2996E29F55D9400D7A150 /* BorderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2996D29F55D9400D7A150 /* BorderedTextFieldStyle.swift */; };
 		37E2997629F5602400D7A150 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2997529F5602400D7A150 /* ProfileView.swift */; };
+		37E2999C29F61B1C00D7A150 /* submitPageExperimental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2999B29F61B1C00D7A150 /* submitPageExperimental.swift */; };
+		37E2999E29F6293800D7A150 /* UnborderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2999D29F6293800D7A150 /* UnborderedTextFieldStyle.swift */; };
 		A5325A1529F40E8C0073219B /* ChallengeCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */; };
 		A5325A1729F5102E0073219B /* ChallengeSubmitModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */; };
 		A5325A1929F55CFB0073219B /* FirebaseFunctional.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1829F55CFB0073219B /* FirebaseFunctional.swift */; };
@@ -68,6 +70,8 @@
 		37E2996829F556CF00D7A150 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		37E2996D29F55D9400D7A150 /* BorderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextFieldStyle.swift; sourceTree = "<group>"; };
 		37E2997529F5602400D7A150 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		37E2999B29F61B1C00D7A150 /* submitPageExperimental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = submitPageExperimental.swift; sourceTree = "<group>"; };
+		37E2999D29F6293800D7A150 /* UnborderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnborderedTextFieldStyle.swift; sourceTree = "<group>"; };
 		A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardSmall.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardSmall.swift; sourceTree = SOURCE_ROOT; };
 		A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeSubmitModal.swift; sourceTree = "<group>"; };
 		A5325A1829F55CFB0073219B /* FirebaseFunctional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctional.swift; sourceTree = "<group>"; };
@@ -390,6 +394,7 @@
 				A9090C0929F2C5A500BD171B /* OngoingChallengeView.swift */,
 				A58E5DA129F40070005B2FF8 /* reviewPageExperimental.swift */,
 				A58E5DA329F40AEF005B2FF8 /* ChallangeReviewModal.swift */,
+				37E2999B29F61B1C00D7A150 /* submitPageExperimental.swift */,
 				A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */,
 			);
 			path = Views;
@@ -401,6 +406,7 @@
 				A97CEA9129F267670058F9FA /* ChallengeCardView.swift */,
 				A97CEA9329F26E6F0058F9FA /* CategoryCapsuleView.swift */,
 				A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */,
+				37E2999D29F6293800D7A150 /* UnborderedTextFieldStyle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -574,6 +580,7 @@
 				3763418C29F2207C00F37080 /* RoundedButtonStyle.swift in Sources */,
 				37E2996E29F55D9400D7A150 /* BorderedTextFieldStyle.swift in Sources */,
 				3763418829F2172C00F37080 /* SplashView.swift in Sources */,
+				37E2999C29F61B1C00D7A150 /* submitPageExperimental.swift in Sources */,
 				A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */,
 				3798631D29EFE0B5002EC23B /* NetworkManager.swift in Sources */,
 				A58E5DA229F40070005B2FF8 /* reviewPageExperimental.swift in Sources */,
@@ -590,6 +597,7 @@
 				A58E5DA429F40AEF005B2FF8 /* ChallangeReviewModal.swift in Sources */,
 				3798632329EFE11F002EC23B /* CoreDataManager.swift in Sources */,
 				3798630529EFDD70002EC23B /* PlaydateApp.swift in Sources */,
+				37E2999E29F6293800D7A150 /* UnborderedTextFieldStyle.swift in Sources */,
 				3763418A29F21A8800F37080 /* OnboardingView.swift in Sources */,
 				A5AE7D8529F18C1300BD5CAE /* challengeFirebaseExperiment.swift in Sources */,
 			);

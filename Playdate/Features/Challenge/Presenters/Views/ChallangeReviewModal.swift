@@ -15,14 +15,16 @@ struct ChallangeReviewModal: View {
         NavigationView {
             VStack {
                 ChallengeCardSmall()
-                    .padding(35)
+                    .padding(20)
                 
-                if (navChallengeModal==1){
+                if (navChallengeModal == 1){
                     Text("Do you like the challenge?")
                         .font(.custom("Poppins-semibold", size: 20))
                         .foregroundColor(.black)
                         .padding(.horizontal, 16)
+                    
                     Spacer()
+                    
                     HStack {
                         ZStack {
                             Button(action: {
@@ -39,6 +41,7 @@ struct ChallangeReviewModal: View {
                             .clipShape(Circle())
                         }
                         .padding(20)
+                        
                         ZStack {
                             Button(action: {
                                 navChallengeModal = 2
