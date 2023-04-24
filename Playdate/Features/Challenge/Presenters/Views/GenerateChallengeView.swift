@@ -12,77 +12,72 @@ struct GenerateChallengeView: View {
     
     var body: some View {
         //TODO: BELUM RESPONSIVE
-        
-        VStack {
-            //Title
-            VStack(alignment: .leading) {
-                //TODO: Nama user ambil dari coredata
-                HStack{
-                    Text("Hi Alfine,")
-                        .font(.custom("Poppins-Regular", size: 16))
-                        .foregroundColor(.primaryDarkGray)
-                        .padding(.bottom, -8)
-                    Spacer()
+        ZStack {
+            VStack {
+                //Title
+                VStack(alignment: .leading) {
+                    //TODO: Nama user ambil dari coredata
+                    HStack{
+                        Text("Hi Alfine,")
+                            .font(.custom("Poppins-Regular", size: 16))
+                            .foregroundColor(.primaryDarkGray)
+                            .padding(.bottom, -8)
+                        Spacer()
+                    }
+                    
+                    Text("What challenge do you want for your next date?")
+                        .font(.custom("Poppins-Medium", size: 22))
+                        .foregroundColor(.black)
                 }
+                .padding(.vertical, 25)
+                .frame(maxWidth: 342)
                 
-                Text("What challenge do you want for your next date?")
-                    .font(.custom("Poppins-Medium", size: 22))
-                    .foregroundColor(.black)
-            }
-            .padding(.vertical, 25)
-            .frame(maxWidth: 342)
-            
-            //Category Capsule
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack{
+                //Category Capsule
+                HStack(spacing: 4) {
                     //TODO: Set Category Value
-                    CategoryCapsuleView(category: "Food", challengeViewModel: challengeViewModel)
-                    CategoryCapsuleView(category: "Entertainment", challengeViewModel: challengeViewModel)
-                    CategoryCapsuleView(category: "Travel", challengeViewModel: challengeViewModel)
-                    CategoryCapsuleView(category: "Well-being", challengeViewModel: challengeViewModel)
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Food")
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Entertainment")
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Travel")
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Wellbeing") // belum "Well-being"
                 }
+                .frame(maxWidth: 347)
+                
+                //Accept Button
+                Button(action: {
+                    //TODO: Accept Action
+                    
+                }, label: {
+                    Text("Accept Challenge!")
+                        .font(.custom("Poppins-Bold", size: 14))
+                })
+                .buttonStyle(FixedSizeRoundedButtonStyle())
+                .padding(.top, 436)
+                Spacer()
             }
-            .frame(maxWidth: 342)
-            .padding(.bottom, 20)
-            
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.white)
             
             //Challenge Card
-
             //TODO: Card ZStack View & Logic
             ZStack {
-                ForEach(challengeViewModel.challenges) { challenge in
+                ForEach(challengeViewModel.filteredChallenges) { challenge in
                     ChallengeCardView(challenge: challenge)
                 }
                 
-//                ForEach(challengeViewModel.filteredChallenges) { challenge in
-//                    ChallengeCardView(challenge: challenge)
-//                }
+                //                ForEach(challengeViewModel.filteredChallenges) { challenge in
+                //                    ChallengeCardView(challenge: challenge)
+                //                }
                 
-//                ForEach(challengeViewModel.challenges.indices, id: \.self) { index in
-//                    if index < 1 {
-//                        sendIndexToChallengeCardView(challenge: challengeViewModel.challenges[index], cardOne: index, cardTwo: index + 1, cardThree: index + 2)
-//                         ChallengeCardView(challenge: challengeViewModel.challenges[index], index: index)
-//
-//                    }
-//                }
-                
-                
+                //                ForEach(challengeViewModel.challenges.indices, id: \.self) { index in
+                //                    if index < 1 {
+                //                        sendIndexToChallengeCardView(challenge: challengeViewModel.challenges[index], cardOne: index, cardTwo: index + 1, cardThree: index + 2)
+                //                         ChallengeCardView(challenge: challengeViewModel.challenges[index], index: index)
+                //
+                //                    }
+                //                }
             }
-            
-            //Accept Button
-            Button(action: {
-                //TODO: Accept Action
-                
-            }, label: {
-                Text("Accept Challenge!")
-                    .font(.custom("Poppins-Bold", size: 14))
-            })
-            .buttonStyle(FixedSizeRoundedButtonStyle())
             .padding(.top, 20)
-            Spacer()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.white)
     }
     
 //    func printChallengeCardView(challenge: Challenge, index: Int) -> some View {
