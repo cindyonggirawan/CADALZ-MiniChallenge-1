@@ -47,7 +47,7 @@ struct CardView: View {
                 .foregroundColor(.primaryWhite)
                 .padding(.horizontal, 20)
             Spacer()
-            Text(category)
+            Text(category.uppercased())
                 .font(.system(size: 14))
                 .fontWeight(.medium)
                 .foregroundColor(.primaryWhite)
@@ -73,7 +73,7 @@ struct CardView: View {
                             let newHeight: Double = self.offSet.height + 100*value.translation.height
                             
                             self.offSet = CGSize(width: newWidth, height: newHeight)
-                            print("disini", index)
+//                            print("disini", index)
 //                            self.index -= 1
                         } else {
                             withAnimation(.easeIn(duration: 0.2)) {
@@ -92,7 +92,7 @@ struct CardView: View {
             return Color.primaryGreen
         } else if challengeCategory.lowercased() == "sport" {
             return Color.primaryRed
-        } else if challengeCategory.lowercased() == "wellbeing" {
+        } else if (challengeCategory.lowercased() == "wellbeing" || challengeCategory.lowercased() == "well-being") { // di core data belum "well-being" !
             return Color.primaryOrange
         } else {
             return Color.pink

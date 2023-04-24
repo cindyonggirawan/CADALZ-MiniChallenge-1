@@ -9,20 +9,20 @@ import CoreData
 
 class ChallengeViewModel: ObservableObject {
     let manager = CoreDataManager.instance
-    
-    @Published var challenges: [Challenge] = []
+    var challenges: [Challenge] = []
+    @Published var filteredChallenges: [Challenge] = []
+    @Published var clickedCategories: [String] = []
     
     init() {
         getChallenges()
-        self.challenges = challenges.shuffled()
-//        self.challenges = Array(self.challenges[0..<3])
+        self.filteredChallenges = self.challenges.shuffled()
     }
     
     func getChallenges(){
         let req = NSFetchRequest<Challenge>(entityName: "Challenge")
         
         do {
-            challenges = try manager.context.fetch(req)
+            self.challenges = try manager.context.fetch(req)
         }catch let error {
             print("Error Fetching: \(error.localizedDescription)")
         }
