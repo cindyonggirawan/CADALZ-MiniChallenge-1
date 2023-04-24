@@ -26,6 +26,8 @@
 		37E2997629F5602400D7A150 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2997529F5602400D7A150 /* ProfileView.swift */; };
 		37E2999C29F61B1C00D7A150 /* submitPageExperimental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2999B29F61B1C00D7A150 /* submitPageExperimental.swift */; };
 		37E2999E29F6293800D7A150 /* UnborderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2999D29F6293800D7A150 /* UnborderedTextFieldStyle.swift */; };
+		37E299A029F62EE900D7A150 /* temporaryCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2999F29F62EE900D7A150 /* temporaryCountdownView.swift */; };
+		37E299A629F63E4C00D7A150 /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E299A529F63E4C00D7A150 /* Stopwatch.swift */; };
 		A5325A1529F40E8C0073219B /* ChallengeCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */; };
 		A5325A1729F5102E0073219B /* ChallengeSubmitModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */; };
 		A5325A1929F55CFB0073219B /* FirebaseFunctional.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1829F55CFB0073219B /* FirebaseFunctional.swift */; };
@@ -72,6 +74,8 @@
 		37E2997529F5602400D7A150 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		37E2999B29F61B1C00D7A150 /* submitPageExperimental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = submitPageExperimental.swift; sourceTree = "<group>"; };
 		37E2999D29F6293800D7A150 /* UnborderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnborderedTextFieldStyle.swift; sourceTree = "<group>"; };
+		37E2999F29F62EE900D7A150 /* temporaryCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temporaryCountdownView.swift; sourceTree = "<group>"; };
+		37E299A529F63E4C00D7A150 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardSmall.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardSmall.swift; sourceTree = SOURCE_ROOT; };
 		A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeSubmitModal.swift; sourceTree = "<group>"; };
 		A5325A1829F55CFB0073219B /* FirebaseFunctional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctional.swift; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 		3798633029EFE21E002EC23B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				37E299A529F63E4C00D7A150 /* Stopwatch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				A58E5DA329F40AEF005B2FF8 /* ChallangeReviewModal.swift */,
 				37E2999B29F61B1C00D7A150 /* submitPageExperimental.swift */,
 				A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */,
+				37E2999F29F62EE900D7A150 /* temporaryCountdownView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -568,6 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E299A029F62EE900D7A150 /* temporaryCountdownView.swift in Sources */,
 				A925E2E529F437DB000F66C9 /* ChallengeViewModel.swift in Sources */,
 				A5AE7D8329F1895A00BD5CAE /* DataManager.swift in Sources */,
 				37E2996929F556CF00D7A150 /* RegistrationView.swift in Sources */,
@@ -579,6 +586,7 @@
 				3798630729EFDD70002EC23B /* ContentView.swift in Sources */,
 				3763418C29F2207C00F37080 /* RoundedButtonStyle.swift in Sources */,
 				37E2996E29F55D9400D7A150 /* BorderedTextFieldStyle.swift in Sources */,
+				37E299A629F63E4C00D7A150 /* Stopwatch.swift in Sources */,
 				3763418829F2172C00F37080 /* SplashView.swift in Sources */,
 				37E2999C29F61B1C00D7A150 /* submitPageExperimental.swift in Sources */,
 				A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */,
