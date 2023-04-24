@@ -8,24 +8,33 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @State private var show = false
+    
     var body: some View {
-        VStack {
-            TabView {
-                OnboardingPageView(imageName: "onboarding1", title: "1 Capture fun memories with your partner", subtitle: "1 Take a photo every challenge and save it in memory lane.")
-                OnboardingPageView(imageName: "onboarding2", title: "2 Capture fun memories with your partner", subtitle: "2 Take a photo every challenge and save it in memory lane.")
-                OnboardingPageView(imageName: "onboarding3", title: "3 Capture fun memories with your partner", subtitle: "3 Take a photo every challenge and save it in memory lane.")
+        NavigationView {
+            VStack {
+                TabView {
+                    OnboardingPageView(imageName: "onboarding1", title: "1 Capture fun memories with your partner", subtitle: "1 Take a photo every challenge and save it in memory lane.")
+                    OnboardingPageView(imageName: "onboarding2", title: "2 Capture fun memories with your partner", subtitle: "2 Take a photo every challenge and save it in memory lane.")
+                    OnboardingPageView(imageName: "onboarding3", title: "3 Capture fun memories with your partner", subtitle: "3 Take a photo every challenge and save it in memory lane.")
+                }
+                .tabViewStyle(PageTabViewStyle())
+                .onAppear {
+                    setupAppearance()
+                }
+                
+                Button(action: {
+                    show = true
+                }, label: {
+                    Text("Next")
+                        .font(.custom("Poppins", size: 16))
+                })
+                .buttonStyle(FixedSizeRoundedButtonStyle())
             }
-            .tabViewStyle(PageTabViewStyle())
-            .onAppear {
-                setupAppearance()
-            }
-            
-            Button(action: {
+            .padding(24)
+            .fullScreenCover(isPresented: $show) {
                 RegistrationView()
-            }, label: {
-                Text("Next")
-            })
-            .buttonStyle(FixedSizeRoundedButtonStyle())
+            }
         }
     }
     
@@ -46,19 +55,20 @@ struct OnboardingPageView: View {
                 .resizable()
                 .scaledToFit()
                 .background(Color.primaryLightGray)
+                .padding(.bottom, 32)
             
             Text(title)
-                .font(.title)
+                .font(.custom("Poppins", size: 32))
                 .multilineTextAlignment(.center)
                 .fontWeight(.bold)
-                .padding()
+                .padding(.bottom, 16)
             
             Text(subtitle)
-                .font(.title2)
+                .font(.custom("Poppins", size: 20))
+                .foregroundColor(Color.primaryDarkGray)
                 .multilineTextAlignment(.center)
-                .padding()
+                .padding(.bottom, 70)
         }
-        .ignoresSafeArea(.all)
     }
 }
 

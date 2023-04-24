@@ -11,11 +11,23 @@ struct FixedSizeRoundedButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         ZStack {
             Color.primaryDarkBlue
-                .frame(width: 342, height: 50)
                 .cornerRadius(10)
             configuration.label
                 .foregroundColor(Color.primaryWhite)
         }
+        .frame(maxWidth: .infinity, maxHeight: 50)
+    }
+}
+
+struct FixedSizeRoundedButtonDisabledStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        ZStack {
+            Color.primaryDarkGray
+                .cornerRadius(10)
+            configuration.label
+                .foregroundColor(Color.primaryWhite)
+        }
+        .frame(maxWidth: .infinity, maxHeight: 50)
     }
 }
 

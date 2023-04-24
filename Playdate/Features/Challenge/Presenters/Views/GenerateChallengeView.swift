@@ -48,10 +48,14 @@ struct GenerateChallengeView: View {
                     
                 }, label: {
                     Text("Accept Challenge!")
-                        .font(.custom("Poppins-Bold", size: 14))
+                        .font(.custom("Poppins-Bold", size: 16))
                 })
                 .buttonStyle(FixedSizeRoundedButtonStyle())
-                .padding(.top, 436)
+                .padding(.horizontal, 24)
+                
+                //Atur kembali ya paddingnya, karena ini sengaja diubah buat ga tentuin maxwidthnya, supaya bisa responsif
+                //Sejauh ini yang gue pake itu kiri kanan atas bawah 24, tapi di taruh di container paling luar, dalam struktur file ini itu ZStack
+                
                 Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
