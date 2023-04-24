@@ -19,7 +19,7 @@ struct ChallengeCardView: View {
         //TODO: SET UP view data based on coredata
         
         if let category = challenge.category {
-            CardView(challenge: challenge, category: category, offSet: offSet)
+            CardView(challenge: challenge, offSet: offSet)
         }
         
     }
@@ -27,35 +27,43 @@ struct ChallengeCardView: View {
 
 struct CardView: View {
     let challenge: Challenge
-    let category: String
     @State var offSet: CGSize
 //    @Binding var index: Int
     
     
     var body: some View {
-        VStack(alignment: .center) {
-            Text("90% Couple liked this challenge")
-                .frame(maxWidth: .infinity)
-                .font(.system(size: 14))
-                .fontWeight(.semibold)
-                .foregroundColor(.primaryWhite.opacity(0.7))
-                .padding(.vertical, 15)
-                .background(Color.primaryWhite.opacity(0.3))
+        VStack(alignment: .leading) {
+            HStack{
+                Spacer()
+                Text("90% Couple liked this challenge")
+                    .frame(maxWidth: .infinity)
+                    .font(.system(size: 14))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.primaryWhite.opacity(0.7))
+                Spacer()
+            }
+            .padding(.vertical, 15)
+            .background(Color.primaryWhite.opacity(0.3))
             Spacer()
             Text(challenge.name!)
                 .font(.custom("Poppins-SemiBold", size: 28))
                 .foregroundColor(.primaryWhite)
                 .padding(.horizontal, 20)
             Spacer()
-            Text(category.uppercased())
-                .font(.system(size: 14))
-                .fontWeight(.medium)
-                .foregroundColor(.primaryWhite)
-                .opacity(0.5)
-                .padding(.vertical, 10)
+            
+            HStack{
+                Spacer()
+                Text("PLAYDATE")
+                    .font(.system(size: 14))
+                    .fontWeight(.medium)
+                    .foregroundColor(.primaryWhite)
+                    .opacity(0.5)
+                    .padding(.vertical, 10)
+                Spacer()
+            }
         }
         .frame(width: 342, height: 368)
-        .background(checkChallengeCategoryColor(challengeCategory: category))
+        .background(checkChallengeCategoryColor(challengeCategory: challenge.category!))
         .cornerRadius(16)
         
         .rotationEffect(Angle(degrees: 4.5 * getCardRotation()))

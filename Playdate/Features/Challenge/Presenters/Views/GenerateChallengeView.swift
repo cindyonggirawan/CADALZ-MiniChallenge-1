@@ -9,6 +9,15 @@ import SwiftUI
 
 struct GenerateChallengeView: View {
     @StateObject var challengeViewModel = ChallengeViewModel()
+    var displayedChallenges: [Challenge] = []
+    
+    init(){
+        //TEMP LOGIC
+        for i in 0...6 {
+            displayedChallenges.append(challengeViewModel.challenges[i])
+        }
+        print(displayedChallenges.count)
+    }
     
     var body: some View {
         //TODO: BELUM RESPONSIVE
@@ -42,6 +51,27 @@ struct GenerateChallengeView: View {
                 }
                 .frame(maxWidth: 347)
                 
+                //Challenge Card
+                //TODO: Card ZStack View & Logic
+                ZStack {
+                    ForEach(displayedChallenges) { challenge in
+                        ChallengeCardView(challenge: challenge)
+                    }
+                    
+                    //                ForEach(challengeViewModel.filteredChallenges) { challenge in
+                    //                    ChallengeCardView(challenge: challenge)
+                    //                }
+                    
+                    //                ForEach(challengeViewModel.challenges.indices, id: \.self) { index in
+                    //                    if index < 1 {
+                    //                        sendIndexToChallengeCardView(challenge: challengeViewModel.challenges[index], cardOne: index, cardTwo: index + 1, cardThree: index + 2)
+                    //                         ChallengeCardView(challenge: challengeViewModel.challenges[index], index: index)
+                    //
+                    //                    }
+                    //                }
+                }
+                .padding(.vertical, 20)
+                
                 //Accept Button
                 Button(action: {
                     //TODO: Accept Action
@@ -61,26 +91,7 @@ struct GenerateChallengeView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.white)
             
-            //Challenge Card
-            //TODO: Card ZStack View & Logic
-            ZStack {
-                ForEach(challengeViewModel.filteredChallenges) { challenge in
-                    ChallengeCardView(challenge: challenge)
-                }
-                
-                //                ForEach(challengeViewModel.filteredChallenges) { challenge in
-                //                    ChallengeCardView(challenge: challenge)
-                //                }
-                
-                //                ForEach(challengeViewModel.challenges.indices, id: \.self) { index in
-                //                    if index < 1 {
-                //                        sendIndexToChallengeCardView(challenge: challengeViewModel.challenges[index], cardOne: index, cardTwo: index + 1, cardThree: index + 2)
-                //                         ChallengeCardView(challenge: challengeViewModel.challenges[index], index: index)
-                //
-                //                    }
-                //                }
-            }
-            .padding(.top, 20)
+
         }
     }
     

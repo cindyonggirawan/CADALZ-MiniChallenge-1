@@ -28,21 +28,29 @@ class ChallengeViewModel: ObservableObject {
         }
     }
     
-    func addChallenge(id: String, name: String, desc: String, like: Int, numberOfUser: Int, category: String){
+    func addChallenge(id: Int, name: String, desc: String, like: Int, numberOfUser: Int, category: String){
         
         let newChallenge = Challenge(context: manager.context)
         
-        newChallenge.id = id
+        newChallenge.id = Int64(id)
         newChallenge.name = name
         newChallenge.desc = desc
         newChallenge.like = 0
         newChallenge.numberOfUser = 0
-//        newChallenge.category = category
+        newChallenge.category = category
         save()
     }
     
     func clearChallenges() {
         //TODO: Clear Challenge buat ngesync ulang
+//        if challenges.count != 0 {
+//            for index in 0...challenges.count {
+//                let challenge = challenges[index]
+//                manager.context.delete(challenge)
+//            }
+//            
+//            save()
+//        }
     }
     
     func save(){
