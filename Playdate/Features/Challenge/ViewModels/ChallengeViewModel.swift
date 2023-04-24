@@ -14,6 +14,8 @@ class ChallengeViewModel: ObservableObject {
     
     init() {
         getChallenges()
+        self.challenges = challenges.shuffled()
+//        self.challenges = Array(self.challenges[0..<3])
     }
     
     func getChallenges(){

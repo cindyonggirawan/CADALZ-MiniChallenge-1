@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct GenerateChallengeView: View {
+    @StateObject var challengeViewModel = ChallengeViewModel()
+    
     var body: some View {
         //TODO: BELUM RESPONSIVE
-        let challengeViewModel = ChallengeViewModel()
         
         VStack {
             //Title
@@ -35,10 +36,10 @@ struct GenerateChallengeView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack{
                     //TODO: Set Category Value
-                    CategoryCapsuleView()
-                    CategoryCapsuleView()
-                    CategoryCapsuleView()
-                    CategoryCapsuleView()
+                    CategoryCapsuleView(category: "Food", challengeViewModel: challengeViewModel)
+                    CategoryCapsuleView(category: "Entertainment", challengeViewModel: challengeViewModel)
+                    CategoryCapsuleView(category: "Travel", challengeViewModel: challengeViewModel)
+                    CategoryCapsuleView(category: "Well-being", challengeViewModel: challengeViewModel)
                 }
             }
             .frame(maxWidth: 342)
@@ -46,11 +47,26 @@ struct GenerateChallengeView: View {
             
             
             //Challenge Card
+
             //TODO: Card ZStack View & Logic
             ZStack {
                 ForEach(challengeViewModel.challenges) { challenge in
                     ChallengeCardView(challenge: challenge)
                 }
+                
+//                ForEach(challengeViewModel.filteredChallenges) { challenge in
+//                    ChallengeCardView(challenge: challenge)
+//                }
+                
+//                ForEach(challengeViewModel.challenges.indices, id: \.self) { index in
+//                    if index < 1 {
+//                        sendIndexToChallengeCardView(challenge: challengeViewModel.challenges[index], cardOne: index, cardTwo: index + 1, cardThree: index + 2)
+//                         ChallengeCardView(challenge: challengeViewModel.challenges[index], index: index)
+//
+//                    }
+//                }
+                
+                
             }
             
             //Accept Button
@@ -68,6 +84,17 @@ struct GenerateChallengeView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)
     }
+    
+//    func printChallengeCardView(challenge: Challenge, index: Int) -> some View {
+//        print(challenge.id!)
+//        return ChallengeCardView(challenge: challenge)
+//    }
+    
+//    func sendIndexToChallengeCardView(challenge: Challenge, cardOne: Int, cardTwo: Int, cardThree: Int) -> some View {
+//        print("mantap", index)
+//        return ChallengeCardView(challenge: challenge, cardOne: cardOne, cardTwo: cardTwo, cardThree: cardThree)
+//    }
+    
 }
 
 struct GenerateChallengeView_Previews: PreviewProvider {
