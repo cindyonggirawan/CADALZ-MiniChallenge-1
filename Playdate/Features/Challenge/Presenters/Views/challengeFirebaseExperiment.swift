@@ -21,6 +21,7 @@ struct challengeFirebaseExperiment: View {
             .navigationTitle("Test Firebase")
 //            .navigationBarItems(trailing: Button(action:))
         }
+        
     }
 }
 
