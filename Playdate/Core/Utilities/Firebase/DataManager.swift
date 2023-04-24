@@ -34,12 +34,12 @@ class DataManager: ObservableObject {
                     let numberOfUser = data["NumberOfUser"] as? Int ?? -1
                     let name = data["Name"] as? String ?? ""
                     let description = data["Description"] as? String ?? ""
-                    let challengeCategoryId = data["ChallengeCategoryId"] as? Int ?? -1
+                    let category = data["Category"] as? String ?? ""
                     
                     let challenge = ChallengeFB(
                         name: name,
                         description: description,
-                        challengeCategoryId: challengeCategoryId,
+                        category: category,
                         id: id,
                         like: like,
                         numberOfUser: numberOfUser)

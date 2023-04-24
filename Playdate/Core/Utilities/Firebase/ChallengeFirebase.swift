@@ -10,7 +10,7 @@ import Foundation
 struct ChallengeFB: Identifiable {
     var name: String
     var description: String
-    var challengeCategoryId: Int
+    var category: String
     var id: Int
     var like: Int
     var numberOfUser: Int
