@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChallengeCardView: View {
     var challenge: Challenge
+    @Binding var currentIndex: Int
 //    @State var cardOne: Int
 //    @State var cardTwo: Int
 //    @State var cardThree: Int
@@ -19,7 +20,7 @@ struct ChallengeCardView: View {
         //TODO: SET UP view data based on coredata
         
         if let category = challenge.category {
-            CardView(challenge: challenge, offSet: offSet)
+            CardView(challenge: challenge, offSet: offSet, currentIndex: $currentIndex)
         }
         
     }
@@ -28,6 +29,7 @@ struct ChallengeCardView: View {
 struct CardView: View {
     let challenge: Challenge
     @State var offSet: CGSize
+    @Binding var currentIndex: Int
 //    @Binding var index: Int
     
     
@@ -75,6 +77,11 @@ struct CardView: View {
                     self.offSet = value.translation
                 })
                 .onEnded({ value in
+                    
+                    //TODO: INI BENER GA ?
+                    //Add new cardview in the back
+                    addDisplayChallenge()
+                    
                     withAnimation(.easeOut(duration: 8)) {
                         if self.xOffsetPortion() >= 0.2 || self.yOffsetPortion() >= 0.2 {
                             let newWidth: Double = self.offSet.width + 100*value.translation.width
@@ -83,6 +90,7 @@ struct CardView: View {
                             self.offSet = CGSize(width: newWidth, height: newHeight)
 //                            print("disini", index)
 //                            self.index -= 1
+                            
                         } else {
                             withAnimation(.easeIn(duration: 0.2)) {
                                 self.offSet = .zero
@@ -121,6 +129,11 @@ struct CardView: View {
     func yOffsetPortion() -> Double {
         let screenHeight = UIScreen.main.bounds.height / 2
         return abs(self.offSet.height) / screenHeight
+    }
+    
+    func addDisplayChallenge(){
+        currentIndex += 1
+        print(currentIndex)
     }
 }
 

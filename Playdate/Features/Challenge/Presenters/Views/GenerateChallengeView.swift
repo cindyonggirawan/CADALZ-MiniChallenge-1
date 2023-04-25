@@ -9,10 +9,10 @@ import SwiftUI
 
 struct GenerateChallengeView: View {
     @StateObject var challengeViewModel = ChallengeViewModel()
-    var challenges: [Challenge] = []
+//    var challenges: [Challenge] = []
     var displayedChallenges: [Challenge] = []
     
-    @State var totalNumberOfChallengeloaded = 2
+    @State var totalNumberOfChallengeloaded = 3
     
     init(){
         //TEMP LOGIC
@@ -20,8 +20,7 @@ struct GenerateChallengeView: View {
 //            displayedChallenges.append(challengeViewModel.challenges[i])
 //        }
         //TODO: Batesin challenges yang diambil
-        challenges = challengeViewModel.challenges
-        generateDisplayChallenge(numOfItem: totalNumberOfChallengeloaded)
+        generateDisplayChallenge()
 //        addDisplayChallenge(currentIndex: totalNumberOfChallengeloaded)
         print(displayedChallenges.count)
         
@@ -61,10 +60,21 @@ struct GenerateChallengeView: View {
                 
                 //Challenge Card
                 //TODO: Card ZStack View & Logic
-                ZStack {
-                    ForEach(displayedChallenges) { challenge in
-                        ChallengeCardView(challenge: challenge)
+                ZStack() {
+//                    ForEach(displayedChallenges[(displayedChallenges.count - totalNumberOfChallengeloaded)...displayedChallenges.count - 1]) { challenge in
+//                        ChallengeCardView(challenge: challenge, currentIndex: $totalNumberOfChallengeloaded)
+//                    }
+                    
+                    //BELUM EFEKTIF
+                    if totalNumberOfChallengeloaded == displayedChallenges.count-2{
+                        
+                    }else {
+                        ForEach(displayedChallenges[(displayedChallenges.count - totalNumberOfChallengeloaded)...displayedChallenges.count - 1]) { challenge in
+                            ChallengeCardView(challenge: challenge, currentIndex: $totalNumberOfChallengeloaded)
+                        }
                     }
+                    
+
                     
                     //                ForEach(challengeViewModel.filteredChallenges) { challenge in
                     //                    ChallengeCardView(challenge: challenge)
@@ -113,15 +123,12 @@ struct GenerateChallengeView: View {
 //        return ChallengeCardView(challenge: challenge, cardOne: cardOne, cardTwo: cardTwo, cardThree: cardThree)
 //    }
     
-    mutating func generateDisplayChallenge(numOfItem: Int){
-        displayedChallenges = Array(challenges[0..<numOfItem])
+    mutating func generateDisplayChallenge(){
+        displayedChallenges = challengeViewModel.challenges
+        print(displayedChallenges[(displayedChallenges.count - totalNumberOfChallengeloaded)...displayedChallenges.count - 1])
     }
-    
-    mutating func addDisplayChallenge(currentIndex: Int){
-        displayedChallenges.removeFirst()
-        displayedChallenges.append(challenges[currentIndex])
-        totalNumberOfChallengeloaded += 1
-    }
+
+
     
 }
 
