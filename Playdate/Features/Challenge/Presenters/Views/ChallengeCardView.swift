@@ -122,7 +122,6 @@ struct CardView: View {
         let screenHeight = UIScreen.main.bounds.height / 2
         return abs(self.offSet.height) / screenHeight
     }
-    
 }
 
 //

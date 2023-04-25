@@ -9,16 +9,22 @@ import SwiftUI
 
 struct GenerateChallengeView: View {
     @StateObject var challengeViewModel = ChallengeViewModel()
+    var challenges: [Challenge] = []
     var displayedChallenges: [Challenge] = []
+    
+    @State var totalNumberOfChallengeloaded = 2
     
     init(){
         //TEMP LOGIC
-        for i in 0...6 {
-            displayedChallenges.append(challengeViewModel.challenges[i])
-        }
+//        for i in 0...6 {
+//            displayedChallenges.append(challengeViewModel.challenges[i])
+//        }
+        //TODO: Batesin challenges yang diambil
+        challenges = challengeViewModel.challenges
+        generateDisplayChallenge(numOfItem: totalNumberOfChallengeloaded)
+//        addDisplayChallenge(currentIndex: totalNumberOfChallengeloaded)
         print(displayedChallenges.count)
-        print(displayedChallenges)
-//        print(challengeViewModel.challenges.count)
+        
     }
     
     var body: some View {
@@ -106,6 +112,16 @@ struct GenerateChallengeView: View {
 //        print("mantap", index)
 //        return ChallengeCardView(challenge: challenge, cardOne: cardOne, cardTwo: cardTwo, cardThree: cardThree)
 //    }
+    
+    mutating func generateDisplayChallenge(numOfItem: Int){
+        displayedChallenges = Array(challenges[0..<numOfItem])
+    }
+    
+    mutating func addDisplayChallenge(currentIndex: Int){
+        displayedChallenges.removeFirst()
+        displayedChallenges.append(challenges[currentIndex])
+        totalNumberOfChallengeloaded += 1
+    }
     
 }
 
