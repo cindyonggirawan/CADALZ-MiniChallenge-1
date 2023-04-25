@@ -17,6 +17,8 @@ struct GenerateChallengeView: View {
             displayedChallenges.append(challengeViewModel.challenges[i])
         }
         print(displayedChallenges.count)
+        print(displayedChallenges)
+//        print(challengeViewModel.challenges.count)
     }
     
     var body: some View {

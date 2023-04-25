@@ -15,6 +15,7 @@ class ChallengeViewModel: ObservableObject {
     
     init() {
         getChallenges()
+        print(challenges)
         self.filteredChallenges = self.challenges.shuffled()
     }
     
@@ -28,11 +29,12 @@ class ChallengeViewModel: ObservableObject {
         }
     }
     
-    func addChallenge(id: Int, name: String, desc: String, like: Int, numberOfUser: Int, category: String){
+    func addChallenge(id: String, name: String, desc: String, like: Int, numberOfUser: Int, category: String){
         
         let newChallenge = Challenge(context: manager.context)
         
-        newChallenge.id = Int64(id)
+//        newChallenge.id = Int64(id)
+        newChallenge.id = id
         newChallenge.name = name
         newChallenge.desc = desc
         newChallenge.like = 0

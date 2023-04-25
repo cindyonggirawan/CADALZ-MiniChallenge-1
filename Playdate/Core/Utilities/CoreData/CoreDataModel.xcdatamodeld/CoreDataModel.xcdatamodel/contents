@@ -3,16 +3,11 @@
     <entity name="Challenge" representedClassName="Challenge" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="like" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="numberOfUser" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="memory" toMany="YES" deletionRule="Nullify" destinationEntity="Memory" inverseName="challenge" inverseEntity="Memory"/>
-    </entity>
-    <entity name="ChallengeCategory" representedClassName="ChallengeCategory" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="challenge" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Challenge"/>
     </entity>
     <entity name="Memory" representedClassName="Memory" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
