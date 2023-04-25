@@ -21,7 +21,7 @@ struct challengeFirebaseExperiment: View {
             }
             .navigationTitle("Test Firebase")
             .navigationBarItems(trailing: Button(action: {
-                let challengeId = 1
+                let challengeId = "1"
                 let isLike = true
                 updateChallengeLike(challengeId: challengeId, isLike: isLike)
                 
@@ -33,7 +33,7 @@ struct challengeFirebaseExperiment: View {
     }
     
     
-    func updateChallengeLike(challengeId: Int, isLike: Bool){
+    func updateChallengeLike(challengeId: String, isLike: Bool){
         
         let db = Firestore.firestore()
         
@@ -56,10 +56,11 @@ struct challengeFirebaseExperiment: View {
 //                    Update Data
                     document.reference.setValue(like, forKey: "Like")
                     document.reference.setValue(numberOfUser, forKey: "NumberOfUser")
+                    
+                    print("Updated Like: \(like) NumberOfUser: \(numberOfUser) challenge id: \(challengeId)")
                 }
             }
         }
-        print("Updated Like & NumberOfUser challenge id: \(challengeId)")
     }
 }
 

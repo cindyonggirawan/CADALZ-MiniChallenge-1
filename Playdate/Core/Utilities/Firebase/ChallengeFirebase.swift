@@ -11,7 +11,7 @@ struct ChallengeFB: Identifiable {
     var name: String
     var description: String
     var category: String
-    var id: Int
+    var id: String
     var like: Int
     var numberOfUser: Int
 }
