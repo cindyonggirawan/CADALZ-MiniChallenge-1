@@ -9,6 +9,7 @@ import SwiftUI
 import PhotosUI
 
 struct ChallengeSubmitModal: View {
+    @Binding var isLikeChallenge: Bool
     @State var momentDescription = ""
     @State var navChallengeModal = 1
     @State var selectedItems: [PhotosPickerItem] = []
@@ -17,8 +18,8 @@ struct ChallengeSubmitModal: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                ChallengeCardSmall()
-                    .padding(.bottom, 20)
+//                ChallengeCardSmall()
+//                    .padding(.bottom, 20)
                 
                 VStack(alignment: .leading) {
                     Text("Add photos")
@@ -98,23 +99,23 @@ struct ChallengeSubmitModal: View {
                 .buttonStyle(FixedSizeRoundedButtonStyle())
             }
             .padding(20)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    if ( navChallengeModal == 1 ){
-                        Button("Cancel") {}
-                    } else {
-                        Button("Prev") {
-                            navChallengeModal = 1
-                        }
-                    }
-                }
-            }
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    if ( navChallengeModal == 1 ){
+//                        Button("Cancel") {}
+//                    } else {
+//                        Button("Prev") {
+//                            navChallengeModal = 1
+//                        }
+//                    }
+//                }
+//            }
         }
     }
 }
 
-struct ChallengeSubmitModal_Previews: PreviewProvider {
-    static var previews: some View {
-        ChallengeSubmitModal()
-    }
-}
+//struct ChallengeSubmitModal_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChallengeSubmitModal()
+//    }
+//}

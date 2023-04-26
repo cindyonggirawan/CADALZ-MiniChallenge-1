@@ -60,7 +60,7 @@ struct ChallangeReviewModal: View {
                     }
                     .padding(.bottom, 279)
                 } else {
-                    ChallengeSubmitModal()
+                    ChallengeSubmitModal(isLikeChallenge: $isLikeChallenge)
                 }
             }
                 .toolbar {
