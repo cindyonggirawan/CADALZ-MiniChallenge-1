@@ -25,19 +25,30 @@ struct CategoryCapsuleView: View {
             .onTapGesture {
                 self.isClicked.toggle()
                 
+//                if self.isClicked {
+//                    self.challengeViewModel.capsuleIsClickedOnce = true
+//                }
+                
                 if self.isClicked {
-                    self.challengeViewModel.clickedCategories.append(self.category) // ["well-being", ...]
-//                    self.challengeViewModel.filteredChallenges.removeAll()
+
+                    if !self.challengeViewModel.capsuleIsClickedOnce { self.challengeViewModel.filteredChallenges.removeAll() }
                     
                     for challenge in challengeViewModel.challenges {
                         let challengeCategory: String = challenge.category ?? "No Category Name"
-                        
                         if self.category == challengeCategory {
                             
+                            print(challengeCategory)
                             self.challengeViewModel.filteredChallenges.append(challenge)
                         }
                     }
+                    
+                    self.challengeViewModel.filteredChallenges = self.challengeViewModel.filteredChallenges.shuffled()
+                    self.challengeViewModel.capsuleIsClickedOnce = true
                 } else {
+                    if self.challengeViewModel.filteredChallenges.count == 0 {
+                        print("masuk")
+                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
+                    }
                     for challenge in challengeViewModel.filteredChallenges {
                         let challengeCategory: String = challenge.category ?? "No Category Name"
                         if self.category == challengeCategory {
