@@ -36,8 +36,8 @@ struct challengeFirebaseExperiment: View {
     func updateChallengeLike(challengeId: String, isLike: Bool){
         
         let db = Firestore.firestore()
-        
-        db.collection("Challenges").whereField("Id", isEqualTo: challengeId).getDocuments {
+        let x = db.collection("Challenges").whereField("Id", isEqualTo: challengeId)
+        x.getDocuments {
             (result, error) in
             if error == nil {
                 for document in result!.documents {
@@ -53,11 +53,12 @@ struct challengeFirebaseExperiment: View {
                     }
                     numberOfUser+=1
                     
-//                    Update Data
-                    document.reference.setValue(like, forKey: "Like")
-                    document.reference.setValue(numberOfUser, forKey: "NumberOfUser")
-                    
                     print("Updated Like: \(like) NumberOfUser: \(numberOfUser) challenge id: \(challengeId)")
+                    
+//                    Update Data
+                    document.reference.updateData([
+                        "Like":like,
+                        "NumberOfUser":numberOfUser])
                 }
             }
         }
