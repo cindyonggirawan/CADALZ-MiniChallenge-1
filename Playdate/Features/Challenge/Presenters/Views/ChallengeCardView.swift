@@ -133,7 +133,7 @@ struct CardView: View {
     
     func addDisplayChallenge(){
         currentIndex += 1
-        print(currentIndex)
+//        print(currentIndex)
     }
 }
 

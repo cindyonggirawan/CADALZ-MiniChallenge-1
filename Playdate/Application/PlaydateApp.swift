@@ -26,25 +26,32 @@ struct PlaydateApp: App {
 //            }
 //        }
         
-        
 //        print(challengeViewModel.challenges)
 //        TEMP DATA
-//        challengeViewModel.addChallenge(id: "CL009", name: "Makan soto betawi di pinggir jalan sambil pakai onesie bareng pasanganmu!", desc: "LOREM IPSUM", like: 0, numberOfUser: 0, category: "Food")
-//        challengeViewModel.addChallenge(id: "CL010", name: "Makan Bakso Gepeng di pinggir jalan bareng pasanganmu!", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Food")
-//        challengeViewModel.addChallenge(id: "CL011", name: "Naik kapal bareng pasanganmu sambil nyanyi bareng!", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Entertainment")
-//        challengeViewModel.addChallenge(id: "CL012", name: "Pergi ke landmark kota kamu dan pasanganmu!", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Travel")
-//        challengeViewModel.addChallenge(id: "CL013", name: "Makan sie bareng pasanganmu!", desc: "LOREM IPSUM", like: 0, numberOfUser: 0, category: "Food")
-//        challengeViewModel.addChallenge(id: "CL014", name: "Makan nganmu!", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Food")
-//        challengeViewModel.addChallenge(id: "CL015", name: "sambil nyanyi bareng!", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Travel")
-//        challengeViewModel.addChallenge(id: "CL016", name: "P!", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Travel")
+//        challengeViewModel.addChallenge(id: "CL001", name: "a", desc: "LOREM IPSUM", like: 0, numberOfUser: 0, category: "Food")
+//        challengeViewModel.addChallenge(id: "CL002", name: "b", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Food")
+//        challengeViewModel.addChallenge(id: "CL003", name: "c", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Entertainment")
+//        challengeViewModel.addChallenge(id: "CL004", name: "d", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Travel")
+//        challengeViewModel.addChallenge(id: "CL005", name: "e", desc: "LOREM IPSUM", like: 0, numberOfUser: 0, category: "Food")
+//        challengeViewModel.addChallenge(id: "CL006", name: "f", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Food")
+//        challengeViewModel.addChallenge(id: "CL007", name: "g", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Travel")
+//        challengeViewModel.addChallenge(id: "CL008", name: "h", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Travel")
+//        challengeViewModel.addChallenge(id: "CL009", name: "i", desc: "LOREM IPSUM", like: 0, numberOfUser: 0, category: "Food")
+//        challengeViewModel.addChallenge(id: "CL010", name: "j", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Food")
+//        challengeViewModel.addChallenge(id: "CL011", name: "k", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Entertainment")
+//        challengeViewModel.addChallenge(id: "CL012", name: "l", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Travel")
+//        challengeViewModel.addChallenge(id: "CL013", name: "M", desc: "LOREM IPSUM", like: 0, numberOfUser: 0, category: "Food")
+//        challengeViewModel.addChallenge(id: "CL014", name: "n", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Food")
+//        challengeViewModel.addChallenge(id: "CL015", name: "o", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Travel")
+//        challengeViewModel.addChallenge(id: "CL016", name: "P", desc: "LOREM IPSUM SOMET", like: 0, numberOfUser: 0, category: "Travel")
     }
     
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-//            GenerateChallengeView()
-            challengeFirebaseExperiment()
-                .environmentObject(dataManager)
+            GenerateChallengeView()
+//            challengeFirebaseExperiment()
+//                .environmentObject(dataManager)
 //            temporaryCountdownView()
         }
     }
