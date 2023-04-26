@@ -10,6 +10,7 @@ import CoreData
 class ChallengeViewModel: ObservableObject {
     let manager = CoreDataManager.instance
     var challenges: [Challenge] = []
+    @Published var capsuleIsClickedOnce = false
     @Published var filteredChallenges: [Challenge] = []
     @Published var clickedCategories: [String] = []
     

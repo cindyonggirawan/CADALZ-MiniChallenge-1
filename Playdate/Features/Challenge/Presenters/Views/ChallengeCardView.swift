@@ -19,7 +19,7 @@ struct ChallengeCardView: View {
     var body: some View {
         //TODO: SET UP view data based on coredata
         
-        if let category = challenge.category {
+        if let _ = challenge.category {
             CardView(challenge: challenge, offSet: offSet, currentIndex: $currentIndex)
         }
         
@@ -55,7 +55,8 @@ struct CardView: View {
             
             HStack{
                 Spacer()
-                Text("PLAYDATE")
+//                Text("PLAYDATE")
+                Text(challenge.category ?? "NO CATEGORY")
                     .font(.system(size: 14))
                     .fontWeight(.medium)
                     .foregroundColor(.primaryWhite)
@@ -80,7 +81,6 @@ struct CardView: View {
                     
                     //TODO: INI BENER GA ?
                     //Add new cardview in the back
-                    addDisplayChallenge()
                     
                     withAnimation(.easeOut(duration: 8)) {
                         if self.xOffsetPortion() >= 0.2 || self.yOffsetPortion() >= 0.2 {
@@ -90,7 +90,8 @@ struct CardView: View {
                             self.offSet = CGSize(width: newWidth, height: newHeight)
 //                            print("disini", index)
 //                            self.index -= 1
-                            
+                            addDisplayChallenge()
+
                         } else {
                             withAnimation(.easeIn(duration: 0.2)) {
                                 self.offSet = .zero

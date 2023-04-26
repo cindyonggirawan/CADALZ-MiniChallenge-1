@@ -22,7 +22,7 @@ struct GenerateChallengeView: View {
         //TODO: Batesin challenges yang diambil
 //        generateDisplayChallenge()
 //        addDisplayChallenge(currentIndex: totalNumberOfChallengeloaded)
-        print("total challenge: \(challengeViewModel.challenges.count)")
+//        print("total challenge: \(challengeViewModel.challenges.count)")
     }
     
     var body: some View {
@@ -61,23 +61,11 @@ struct GenerateChallengeView: View {
                 //TODO: Card ZStack View & Logic
                 ZStack() {
                     ForEach(displayedChallenges.reversed(), id: \.self){ i in
-                        ChallengeCardView(challenge: challengeViewModel.challenges[i], currentIndex: $lastDisplayIndex)
+                        ChallengeCardView(challenge: challengeViewModel.filteredChallenges[i], currentIndex: $lastDisplayIndex)
                     }
                     .onChange(of: lastDisplayIndex) { newValue in
                         addNewDisplay()
                     }
-                    
-                    //                ForEach(challengeViewModel.filteredChallenges) { challenge in
-                    //                    ChallengeCardView(challenge: challenge)
-                    //                }
-                    
-                    //                ForEach(challengeViewModel.challenges.indices, id: \.self) { index in
-                    //                    if index < 1 {
-                    //                        sendIndexToChallengeCardView(challenge: challengeViewModel.challenges[index], cardOne: index, cardTwo: index + 1, cardThree: index + 2)
-                    //                         ChallengeCardView(challenge: challengeViewModel.challenges[index], index: index)
-                    //
-                    //                    }
-                    //                }
                 }
                 .padding(.vertical, 20)
                 
@@ -103,16 +91,6 @@ struct GenerateChallengeView: View {
 
         }
     }
-    
-//    func printChallengeCardView(challenge: Challenge, index: Int) -> some View {
-//        print(challenge.id!)
-//        return ChallengeCardView(challenge: challenge)
-//    }
-    
-//    func sendIndexToChallengeCardView(challenge: Challenge, cardOne: Int, cardTwo: Int, cardThree: Int) -> some View {
-//        print("mantap", index)
-//        return ChallengeCardView(challenge: challenge, cardOne: cardOne, cardTwo: cardTwo, cardThree: cardThree)
-//    }
 
     func addNewDisplay(){
         let a = lastDisplayIndex
