@@ -82,6 +82,7 @@ struct GenerateChallengeView: View {
                         .font(.custom("Poppins-Bold", size: 16))
                 })
                 .buttonStyle(FixedSizeRoundedButtonStyle())
+                .zIndex(-99)
                 .padding(.horizontal, 24)
                 
                 //Atur kembali ya paddingnya, karena ini sengaja diubah buat ga tentuin maxwidthnya, supaya bisa responsif
