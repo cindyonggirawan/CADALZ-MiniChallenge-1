@@ -6,18 +6,22 @@
 //
 
 import CoreData
+import SwiftUI
 
 class ChallengeViewModel: ObservableObject {
     let manager = CoreDataManager.instance
     var challenges: [Challenge] = []
     @Published var capsuleIsClickedOnce = false
     @Published var filteredChallenges: [Challenge] = []
-    @Published var clickedCategories: [String] = []
+    
+    
+    @Published var index: Int = 0
+    @State var cardViews: [CardView] = []
     
     init() {
         getChallenges()
-        print(challenges)
         self.filteredChallenges = self.challenges.shuffled()
+//        self.filteredChallenges = Array(self.challenges.shuffled()[0..<5])
     }
     
     func getChallenges(){
@@ -34,7 +38,6 @@ class ChallengeViewModel: ObservableObject {
         
         let newChallenge = Challenge(context: manager.context)
         
-//        newChallenge.id = Int64(id)
         newChallenge.id = id
         newChallenge.name = name
         newChallenge.desc = desc
@@ -59,8 +62,40 @@ class ChallengeViewModel: ObservableObject {
         }
     }
     
-    func save(){
+    func save() {
         manager.save()
+    }
+    
+    func getCards() -> AnyView {
+//        let content = ForEach(self.filteredChallenges.indices, id: \.self) { index in
+//            CardView(challenge: self.filteredChallenges[index], index: index)
+//        }
+        
+//        self.cardViews.append(CardView(challenge: self.filteredChallenges[index], index: index))
+        
+//        index += 1
+//        print(index)
+//        self.cardViews.append(CardView(challenge: self.filteredChallenges[index], index: index))
+//
+//        index += 1
+//        self.cardViews.append(CardView(challenge: self.filteredChallenges[index], index: index))
+//
+//        index += 1
+//        self.cardViews.append(CardView(challenge: self.filteredChallenges[index], index: index))
+//
+//        index += 1
+//        self.cardViews.append(CardView(challenge: self.filteredChallenges[index], index: index))
+        
+//        let content = ForEach(self.filteredChallenges.indices, id: \.self) { i in
+//            CardView(challenge: self.filteredChallenges[i], index: i)
+//        }
+        
+        
+        return AnyView(
+            ZStack {
+                EmptyView()
+            }
+        )
     }
     
 }

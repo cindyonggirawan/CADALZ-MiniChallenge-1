@@ -7,31 +7,32 @@
 
 import SwiftUI
 
-struct ChallengeCardView: View {
-    var challenge: Challenge
-    @Binding var currentIndex: Int
-//    @State var cardOne: Int
-//    @State var cardTwo: Int
-//    @State var cardThree: Int
-    
-    @State var offSet: CGSize = CGSize(width: 0, height: 0) // .zero
-    
-    var body: some View {
-        //TODO: SET UP view data based on coredata
-        
-        if let _ = challenge.category {
-            CardView(challenge: challenge, offSet: offSet, currentIndex: $currentIndex)
-        }
-        
-    }
-}
+//struct ChallengeCardView: View {
+//    var challenge: Challenge
+//    @Binding var currentIndex: Int
+////    @State var cardOne: Int
+////    @State var cardTwo: Int
+////    @State var cardThree: Int
+//
+//    @State var offSet: CGSize = CGSize(width: 0, height: 0) // .zero
+//
+//    var body: some View {
+//        //TODO: SET UP view data based on coredata
+//
+//        if let _ = challenge.category {
+//            CardView(challenge: challenge, offSet: offSet, currentIndex: $currentIndex)
+//        }
+//
+//    }
+//}
 
 struct CardView: View {
     let challenge: Challenge
-    @State var offSet: CGSize
     @Binding var currentIndex: Int
-//    @Binding var index: Int
+    var shiftIndex: Int
     
+    @StateObject var vm = ChallengeViewModel()
+    @State var offSet: CGSize = .zero
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -69,37 +70,73 @@ struct CardView: View {
         .background(checkChallengeCategoryColor(challengeCategory: challenge.category!))
         .cornerRadius(16)
         
-        .rotationEffect(Angle(degrees: 4.5 * getCardRotation()))
-        .offset(self.offSet)
+        .rotationEffect(Angle(degrees: 4.5 * getCardRotation() + (self.shiftIndex < 4 ? Double.random(in: -4...4) : 0.0)))
+        .offset(self.getOffSet(index: shiftIndex))
+        .scaleEffect(getScaleEffect(index: shiftIndex))
         
         .gesture(
             DragGesture()
                 .onChanged({ value in
                     self.offSet = value.translation
+                    
                 })
                 .onEnded({ value in
                     
                     //TODO: INI BENER GA ?
                     //Add new cardview in the back
                     
-                    withAnimation(.easeOut(duration: 8)) {
-                        if self.xOffsetPortion() >= 0.2 || self.yOffsetPortion() >= 0.2 {
-                            let newWidth: Double = self.offSet.width + 100*value.translation.width
-                            let newHeight: Double = self.offSet.height + 100*value.translation.height
+                    if self.xOffsetPortion() >= 0.2 || self.yOffsetPortion() >= 0.2 {
+                        withAnimation(.easeOut(duration: 8)) {
+                            let newWidth: Double = self.offSet.width + 10*value.translation.width
+                            let newHeight: Double = self.offSet.height + 10*value.translation.height
                             
                             self.offSet = CGSize(width: newWidth, height: newHeight)
-//                            print("disini", index)
-//                            self.index -= 1
+                        }
+                        withAnimation(.easeIn(duration: 0.25)) {
                             addDisplayChallenge()
-
-                        } else {
-                            withAnimation(.easeIn(duration: 0.2)) {
-                                self.offSet = .zero
-                            }
+                        }
+                    } else {
+                        withAnimation(.easeIn(duration: 0.2)) {
+                            self.offSet = .zero
                         }
                     }
                 })
         )
+        .zIndex(1)
+    }
+    
+    func getRandomRotation(index: Int) -> Double {
+        if index < 4 {
+            return Double.random(in: -3...3)
+        } else {
+            return 0.0
+        }
+    }
+    
+    func getOffSet(index: Int) -> CGSize {
+        let index = index % self.vm.filteredChallenges.count
+        
+        if (index == 4 || index == 3) {
+            return CGSize(
+                width: self.offSet.width + 0,
+                height: self.offSet.height - (Double(index - 4) * 40.0))
+        } else {
+            return CGSize(
+                width: self.offSet.width + 0,
+                height: self.offSet.height + 2 * 40.0)
+        }
+    }
+    
+    func getScaleEffect(index: Int) -> Double {
+        let index = index % self.vm.filteredChallenges.count
+        
+        if index == 4 {
+            return 1.0
+        } else if index == 3 {
+            return 0.9
+        } else {
+            return 0.8
+        }
     }
     
     func checkChallengeCategoryColor(challengeCategory: String) -> Color {
@@ -136,6 +173,9 @@ struct CardView: View {
         currentIndex += 1
 //        print(currentIndex)
     }
+    
+    
+    
 }
 
 //

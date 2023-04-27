@@ -12,11 +12,11 @@ struct GenerateChallengeView: View {
     
     @StateObject var challengeViewModel = ChallengeViewModel()
 //    var challenges: [Challenge] = []
-    @State var displayedChallenges = [0, 1, 2]
     
-    @State var lastDisplayIndex = 2
+    @State var displayedChallenges = [0, 1, 2, 3, 4]
+    @State var lastDisplayIndex = 4
     
-    init(){
+    init() {
         //TEMP LOGIC
 //        for i in 0...6 {
 //            displayedChallenges.append(challengeViewModel.challenges[i])
@@ -57,18 +57,26 @@ struct GenerateChallengeView: View {
                     CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Food")
                     CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Entertainment")
                     CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Travel")
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Wellbeing") // belum "Well-being"
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Well-being")
                 }
                 .frame(maxWidth: 347)
                 
                 //Challenge Card
                 //TODO: Card ZStack View & Logic
                 ZStack() {
-                    ForEach(displayedChallenges.reversed(), id: \.self){ i in
-                        ChallengeCardView(challenge: challengeViewModel.filteredChallenges[i], currentIndex: $lastDisplayIndex)
+
+                    ForEach(self.displayedChallenges.reversed(), id: \.self) { i in
+                        CardView(challenge: self.challengeViewModel.filteredChallenges[i], currentIndex: $lastDisplayIndex, shiftIndex: lastDisplayIndex - i)
+                            .onAppear {
+                                print("(filtered) shape:", self.challengeViewModel.filteredChallenges.count)
+                                print("(displayed) count:", self.displayedChallenges.count)
+                            }
                     }
-                    .onChange(of: lastDisplayIndex) { newValue in
-                        addNewDisplay()
+                }
+                .onChange(of: lastDisplayIndex) { newValue in
+                    addNewDisplay()
+                    if (self.challengeViewModel.filteredChallenges.count - self.displayedChallenges.max()! == 1) {
+                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
                     }
                 }
                 .padding(.vertical, 20)
@@ -84,6 +92,7 @@ struct GenerateChallengeView: View {
                 .buttonStyle(FixedSizeRoundedButtonStyle())
                 .zIndex(-99)
                 .padding(.horizontal, 24)
+                .padding(.top, 100)
                 
                 //Atur kembali ya paddingnya, karena ini sengaja diubah buat ga tentuin maxwidthnya, supaya bisa responsif
                 //Sejauh ini yang gue pake itu kiri kanan atas bawah 24, tapi di taruh di container paling luar, dalam struktur file ini itu ZStack
@@ -102,9 +111,11 @@ struct GenerateChallengeView: View {
         let b = challengeViewModel.challenges.count
         displayedChallenges.append(a % b)
         if displayedChallenges.count > 5 {
-            displayedChallenges.removeFirst()
+            return withAnimation(.easeOut(duration: 8)) {
+                displayedChallenges.removeFirst()
+                print("displayed challenge: \(displayedChallenges)")
+            }
         }
-        print("displayed challenge: \(displayedChallenges)")
     }
 }
 
