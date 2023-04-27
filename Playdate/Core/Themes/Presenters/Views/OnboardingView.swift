@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @EnvironmentObject var dataManager: DataManager
+
     @State private var show = false
     
     var body: some View {
@@ -25,6 +27,8 @@ struct OnboardingView: View {
                 
                 Button(action: {
                     show = true
+                    // Connect to backend
+                    dataManager.syncWithFirebase()
                 }, label: {
                     Text("Next")
                         .font(.custom("Poppins", size: 16))

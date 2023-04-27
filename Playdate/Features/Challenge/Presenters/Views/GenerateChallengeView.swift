@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GenerateChallengeView: View {
+    @EnvironmentObject var dataManager: DataManager
+    
     @StateObject var challengeViewModel = ChallengeViewModel()
 //    var challenges: [Challenge] = []
     @State var displayedChallenges = [0, 1, 2]
@@ -23,7 +25,9 @@ struct GenerateChallengeView: View {
 //        generateDisplayChallenge()
 //        addDisplayChallenge(currentIndex: totalNumberOfChallengeloaded)
 //        print("total challenge: \(challengeViewModel.challenges.count)")
+//        syncWithFirebase()
     }
+    
     
     var body: some View {
         //TODO: BELUM RESPONSIVE

@@ -10,9 +10,31 @@ import Firebase
 
 class DataManager: ObservableObject {
     @Published var Challenges: [ChallengeFB] = []
+    @StateObject var challengeViewModel = ChallengeViewModel()
     
     init(){
         fetchChallenges()
+//        syncWithFirebase()
+    }
+    
+    func syncWithFirebase(){
+        print(Challenges.count)
+        if( Challenges.count != 0) {
+            // Sync with Firebase
+            for challenge in Challenges {
+                print("id: \(challenge.id) | name: \(challenge.name)")
+                challengeViewModel.addChallenge(
+                    id: challenge.id,
+                    name: challenge.name,
+                    desc: challenge.description,
+                    like: challenge.like,
+                    numberOfUser: challenge.numberOfUser,
+                    category: challenge.category)
+            }
+        } else {
+            // Failed to sync
+            print("Sync Failed")
+        }
     }
     
     func fetchChallenges(){
