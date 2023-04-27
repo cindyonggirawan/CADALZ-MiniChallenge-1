@@ -1,5 +1,5 @@
 //
-//  CountdownView.swift
+//  temporaryCountdownView.swift
 //  Playdate
 //
 //  Created by Cindy Amanda Onggirawan on 24/04/23.
@@ -8,34 +8,6 @@
 import SwiftUI
 
 // MARK: - The timer runs even though the app is minimized, but still if the app is closed, the timer will reset to 1 day
-
-struct TimerView: View {
-    @State var nowDate: Date = Date()
-    
-    let setDate: Date
-    
-    var timer: Timer {
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            self.nowDate = Date()
-        }
-    }
-    
-    var body: some View {
-        Text(TimerFunction(from: setDate))
-            .onAppear(perform: {
-                self.timer
-            })
-    }
-    
-    func TimerFunction(from date: Date) -> String {
-        let calendar = Calendar(identifier: .gregorian)
-        
-        let timeValue = calendar
-            .dateComponents([.day, .hour, .minute, .second], from: nowDate, to: setDate)
-        
-        return String(format: "%02d days left - %02d:%02d:%02d", timeValue.day!,timeValue.hour!, timeValue.minute!, timeValue.second!)
-    }
-}
 
 struct temporaryCountdownView: View {
     var toDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
@@ -52,7 +24,7 @@ struct temporaryCountdownView: View {
     }
 }
 
-struct CountdownView_Previews: PreviewProvider {
+struct temporaryCountdownView_Previews: PreviewProvider {
     static var previews: some View {
         temporaryCountdownView()
     }

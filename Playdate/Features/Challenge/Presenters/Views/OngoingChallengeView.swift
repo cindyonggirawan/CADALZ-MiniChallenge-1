@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OngoingChallengeView: View {
+    var toDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+    
     var body: some View {
         VStack{
             VStack {
@@ -44,7 +46,7 @@ struct OngoingChallengeView: View {
                 
                 //Countdown
                 VStack(spacing: 8) {
-                    Text("12:06:30")
+                    TimerView(setDate: toDate)
                         .font(.system(size: 24))
                         .fontWeight(.semibold)
                         .foregroundColor(.primaryWhite)
@@ -72,17 +74,18 @@ struct OngoingChallengeView: View {
                 })
                 .buttonStyle(FixedSizeRoundedButtonStyle())
                 .padding(.top, 20)
+                .padding(.horizontal, 24)
                 
-                
-                    Button(action: {
-                        //TODO: Accept Action
-                        
-                    }, label: {
-                        Text("Give Up")
-                            .font(.custom("Poppins-SemiBold", size: 14))
-                    })
-                    .buttonStyle(.plain)
-                    .padding(.top, 20)
+                Button(action: {
+                    //TODO: Accept Action
+                    
+                }, label: {
+                    Text("Give Up")
+                        .font(.custom("Poppins-SemiBold", size: 14))
+                })
+                .buttonStyle(.plain)
+                .padding(.top, 20)
+                .padding(.horizontal, 24)
             }
             Spacer()
             

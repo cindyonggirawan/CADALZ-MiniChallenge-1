@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		375656B129FA5C79003D9458 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375656B029FA5C79003D9458 /* TimerView.swift */; };
 		3763418829F2172C00F37080 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3763418729F2172C00F37080 /* SplashView.swift */; };
 		3763418A29F21A8800F37080 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3763418929F21A8800F37080 /* OnboardingView.swift */; };
 		3763418C29F2207C00F37080 /* RoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3763418B29F2207C00F37080 /* RoundedButtonStyle.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		375656B029FA5C79003D9458 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		3763418729F2172C00F37080 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3763418929F21A8800F37080 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		3763418B29F2207C00F37080 /* RoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonStyle.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				A58E5DA329F40AEF005B2FF8 /* ChallangeReviewModal.swift */,
 				37E2999B29F61B1C00D7A150 /* submitPageExperimental.swift */,
 				A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */,
+				375656B029FA5C79003D9458 /* TimerView.swift */,
 				37E2999F29F62EE900D7A150 /* temporaryCountdownView.swift */,
 			);
 			path = Views;
@@ -574,6 +577,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				375656B129FA5C79003D9458 /* TimerView.swift in Sources */,
 				37E299A029F62EE900D7A150 /* temporaryCountdownView.swift in Sources */,
 				A925E2E529F437DB000F66C9 /* ChallengeViewModel.swift in Sources */,
 				A5AE7D8329F1895A00BD5CAE /* DataManager.swift in Sources */,
