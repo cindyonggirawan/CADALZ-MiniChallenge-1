@@ -12,20 +12,11 @@ struct GenerateChallengeView: View {
     
     @StateObject var challengeViewModel = ChallengeViewModel()
 //    var challenges: [Challenge] = []
-    //    @State var displayedChallenges = [0, 1, 2]
-    //    @State var lastDisplayIndex = 2
     
-            @State var displayedChallenges = [0, 1, 2, 3, 4]
-            @State var lastDisplayIndex = 4
-
-//            @State var displayedChallenges = [4, 5, 6, 7, 8]
-//            @State var lastDisplayIndex = 8
+    @State var displayedChallenges = [0, 1, 2, 3, 4]
+    @State var lastDisplayIndex = 4
     
-    
-    @State var decr: Int = -1
-    @State var shiftIdx: Int = 0
-    
-    init(){
+    init() {
         //TEMP LOGIC
 //        for i in 0...6 {
 //            displayedChallenges.append(challengeViewModel.challenges[i])
@@ -41,17 +32,6 @@ struct GenerateChallengeView: View {
     var body: some View {
         //TODO: BELUM RESPONSIVE
         ZStack {
-            Rectangle()
-                .fill(.black)
-                .frame(width: UIScreen.main.bounds.width, height: 1)
-                .zIndex(999)
-            Rectangle()
-                .fill(.black)
-                .frame(width: 1, height: UIScreen.main.bounds.height)
-                .zIndex(999)
-            
-            
-            
             VStack {
                 //Title
                 VStack(alignment: .leading) {
@@ -77,7 +57,7 @@ struct GenerateChallengeView: View {
                     CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Food")
                     CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Entertainment")
                     CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Travel")
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Wellbeing") // belum "Well-being"
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Well-being")
                 }
                 .frame(maxWidth: 347)
                 
@@ -85,43 +65,19 @@ struct GenerateChallengeView: View {
                 //TODO: Card ZStack View & Logic
                 ZStack() {
 
-                    ForEach(self.displayedChallenges.reversed(), id: \.self) { i in // 4 3 2 1 0
+                    ForEach(self.displayedChallenges.reversed(), id: \.self) { i in
                         CardView(challenge: self.challengeViewModel.filteredChallenges[i], currentIndex: $lastDisplayIndex, shiftIndex: lastDisplayIndex - i)
+                            .onAppear {
+                                print("(filtered) shape:", self.challengeViewModel.filteredChallenges.count)
+                                print("(displayed) count:", self.displayedChallenges.count)
+                            }
                     }
-                    
-                    
-                    
-//                    ForEach(self.displayedChallenges, id: \.self) { i in // 4 3 2 1 0
-                    
-//                        CardView(challenge: self.challengeViewModel.filteredChallenges[lastDisplayIndex], currentIndex: $lastDisplayIndex, shiftIndex: lastDisplayIndex)
-//                        CardView(challenge: self.challengeViewModel.filteredChallenges[lastDisplayIndex - 1], currentIndex: $lastDisplayIndex, shiftIndex: lastDisplayIndex - 1)
-//                        CardView(challenge: self.challengeViewModel.filteredChallenges[lastDisplayIndex - 2], currentIndex: $lastDisplayIndex, shiftIndex: lastDisplayIndex - 2)
-//                        CardView(challenge: self.challengeViewModel.filteredChallenges[lastDisplayIndex - 3], currentIndex: $lastDisplayIndex, shiftIndex: lastDisplayIndex - 3)
-//                        CardView(challenge: self.challengeViewModel.filteredChallenges[ lastDisplayIndex - 4], currentIndex: $lastDisplayIndex, shiftIndex: lastDisplayIndex - 4)
-                        
-//                    }
-                    
-//                    if displayedIdx == 3 {
-//                        Group {
-//                            Text("3").zIndex(999)
-//                            CardView(challenge: self.challengeViewModel.filteredChallenges[self.displayedChallenges[displayedIdx]], currentIndex: $lastDisplayIndex, shiftIndex: displayedIdx)
-//                            CardView(challenge: self.challengeViewModel.filteredChallenges[self.displayedChallenges[displayedIdx - 1]], currentIndex: $lastDisplayIndex, shiftIndex: displayedIdx - 1)
-//                            CardView(challenge: self.challengeViewModel.filteredChallenges[self.displayedChallenges[displayedIdx - 2]], currentIndex: $lastDisplayIndex, shiftIndex: displayedIdx - 2)
-//                            CardView(challenge: self.challengeViewModel.filteredChallenges[self.displayedChallenges[displayedIdx - 3]], currentIndex: $lastDisplayIndex, shiftIndex: displayedIdx - 3)
-//                        }
-//                    } else if displayedIdx == 4 {
-//                        Group {
-//                            Text("4").zIndex(999)
-//                            CardView(challenge: self.challengeViewModel.filteredChallenges[self.displayedChallenges[displayedIdx]], currentIndex: $lastDisplayIndex, shiftIndex: displayedIdx)
-//                            CardView(challenge: self.challengeViewModel.filteredChallenges[self.displayedChallenges[displayedIdx - 1]], currentIndex: $lastDisplayIndex, shiftIndex: displayedIdx - 1)
-//                            CardView(challenge: self.challengeViewModel.filteredChallenges[self.displayedChallenges[displayedIdx - 2]], currentIndex: $lastDisplayIndex, shiftIndex: displayedIdx - 2)
-//                            CardView(challenge: self.challengeViewModel.filteredChallenges[self.displayedChallenges[displayedIdx - 3]], currentIndex: $lastDisplayIndex, shiftIndex: displayedIdx - 3)
-//                            CardView(challenge: self.challengeViewModel.filteredChallenges[self.displayedChallenges[displayedIdx - 4]], currentIndex: $lastDisplayIndex, shiftIndex: displayedIdx - 4)
-//                        }
-//                    }
                 }
                 .onChange(of: lastDisplayIndex) { newValue in
                     addNewDisplay()
+                    if (self.challengeViewModel.filteredChallenges.count - self.displayedChallenges.max()! == 1) {
+                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
+                    }
                 }
                 .padding(.vertical, 20)
                 
@@ -155,20 +111,11 @@ struct GenerateChallengeView: View {
         let b = challengeViewModel.challenges.count
         displayedChallenges.append(a % b)
         if displayedChallenges.count > 5 {
-//            return withAnimation(.easeInOut(duration: 1)) {
             return withAnimation(.easeOut(duration: 8)) {
                 displayedChallenges.removeFirst()
                 print("displayed challenge: \(displayedChallenges)")
             }
         }
-    }
-    
-    func getCards() -> AnyView {
-        let content = ForEach(self.displayedChallenges.reversed(), id: \.self) { i in
-//            CardView(challenge: self.challengeViewModel.filteredChallenges[i], currentIndex: $lastDisplayIndex)
-            Text("")
-        }
-        return AnyView(content)
     }
 }
 

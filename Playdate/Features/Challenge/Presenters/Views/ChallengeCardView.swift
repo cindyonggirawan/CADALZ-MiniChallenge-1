@@ -27,20 +27,16 @@ import SwiftUI
 //}
 
 struct CardView: View {
-    @StateObject var vm = ChallengeViewModel()
-    
     let challenge: Challenge
-//    @State var index: Int
     @Binding var currentIndex: Int
     var shiftIndex: Int
-
     
+    @StateObject var vm = ChallengeViewModel()
     @State var offSet: CGSize = .zero
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack{
-                Text(String(shiftIndex))
                 Spacer()
                 Text("90% Couple liked this challenge")
                     .frame(maxWidth: .infinity)
@@ -74,22 +70,21 @@ struct CardView: View {
         .background(checkChallengeCategoryColor(challengeCategory: challenge.category!))
         .cornerRadius(16)
         
-        .rotationEffect(Angle(degrees: 4.5 * getCardRotation()))
-//        .offset(self.offSet)
+        .rotationEffect(Angle(degrees: 4.5 * getCardRotation() + (self.shiftIndex < 4 ? Double.random(in: -4...4) : 0.0)))
         .offset(self.getOffSet(index: shiftIndex))
-//        .offset(CGSize(width: self.offSet.width, height: self.offSet.height + Double(self.shiftIndex) * 35.0))
+        .scaleEffect(getScaleEffect(index: shiftIndex))
         
         .gesture(
             DragGesture()
                 .onChanged({ value in
                     self.offSet = value.translation
+                    
                 })
                 .onEnded({ value in
                     
                     //TODO: INI BENER GA ?
                     //Add new cardview in the back
                     
-//                    withAnimation(.easeOut(duration: 0)) {
                     if self.xOffsetPortion() >= 0.2 || self.yOffsetPortion() >= 0.2 {
                         withAnimation(.easeOut(duration: 8)) {
                             let newWidth: Double = self.offSet.width + 10*value.translation.width
@@ -97,7 +92,7 @@ struct CardView: View {
                             
                             self.offSet = CGSize(width: newWidth, height: newHeight)
                         }
-                        withAnimation(.easeIn(duration: 0.3)) {
+                        withAnimation(.easeIn(duration: 0.25)) {
                             addDisplayChallenge()
                         }
                     } else {
@@ -110,23 +105,37 @@ struct CardView: View {
         .zIndex(1)
     }
     
+    func getRandomRotation(index: Int) -> Double {
+        if index < 4 {
+            return Double.random(in: -3...3)
+        } else {
+            return 0.0
+        }
+    }
+    
     func getOffSet(index: Int) -> CGSize {
-//        print("zzz:", index)
-//        print()
         let index = index % self.vm.filteredChallenges.count
         
         if (index == 4 || index == 3) {
-//            print(">> masuk 0 || 1, index: \(index)")
-//            print()
             return CGSize(
                 width: self.offSet.width + 0,
-                height: self.offSet.height - (Double(index - 4) * 30.0))
+                height: self.offSet.height - (Double(index - 4) * 40.0))
         } else {
-//            print(">> else:", index)
-//            print()
             return CGSize(
                 width: self.offSet.width + 0,
-                height: self.offSet.height + 2 * 30.0)
+                height: self.offSet.height + 2 * 40.0)
+        }
+    }
+    
+    func getScaleEffect(index: Int) -> Double {
+        let index = index % self.vm.filteredChallenges.count
+        
+        if index == 4 {
+            return 1.0
+        } else if index == 3 {
+            return 0.9
+        } else {
+            return 0.8
         }
     }
     

@@ -25,10 +25,6 @@ struct CategoryCapsuleView: View {
             .onTapGesture {
                 self.isClicked.toggle()
                 
-//                if self.isClicked {
-//                    self.challengeViewModel.capsuleIsClickedOnce = true
-//                }
-                
                 if self.isClicked {
 
                     if !self.challengeViewModel.capsuleIsClickedOnce { self.challengeViewModel.filteredChallenges.removeAll() }
@@ -37,7 +33,7 @@ struct CategoryCapsuleView: View {
                         let challengeCategory: String = challenge.category ?? "No Category Name"
                         if self.category == challengeCategory {
                             
-                            print(challengeCategory)
+//                            print(challengeCategory)
                             self.challengeViewModel.filteredChallenges.append(challenge)
                         }
                     }
@@ -73,8 +69,6 @@ struct CategoryCapsuleView: View {
                 return Color(red: 243/255, green: 146/255, blue: 0/255)
             case "well-being":
                 return Color(red: 106/255, green: 184/255, blue: 29/255)
-            case "wellbeing": // nanti ini dihapus aja
-                return Color(red: 106/255, green: 184/255, blue: 29/255)
             default:
                 return Color(red: 151/255, green: 151/255, blue: 151/255)
         }
@@ -91,8 +85,6 @@ struct CategoryCapsuleView: View {
             case "travel":
                 return Color(red: 255/255, green: 243/255, blue: 224/255)
             case "well-being":
-                return Color(red: 241/255, green: 255/255, blue: 226/255)
-            case "wellbeing": // nanti ini dihapus aja
                 return Color(red: 241/255, green: 255/255, blue: 226/255)
             default:
                 return Color(red: 249/255, green: 249/255, blue: 249/255)
