@@ -23,7 +23,7 @@ class DataManager: ObservableObject {
             // Sync with Firebase
             for challenge in Challenges {
                 print("id: \(challenge.id) | name: \(challenge.name)")
-                challengeViewModel.addChallenge(
+                challengeViewModel.updateChallenge(
                     id: challenge.id,
                     name: challenge.name,
                     desc: challenge.description,

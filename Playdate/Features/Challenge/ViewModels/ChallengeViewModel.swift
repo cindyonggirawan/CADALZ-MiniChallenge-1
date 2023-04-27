@@ -44,16 +44,19 @@ class ChallengeViewModel: ObservableObject {
         save()
     }
     
-    func clearChallenges() {
-        //TODO: Clear Challenge buat ngesync ulang
-//        if challenges.count != 0 {
-//            for index in 0...challenges.count {
-//                let challenge = challenges[index]
-//                manager.context.delete(challenge)
-//            }
-//            
-//            save()
-//        }
+    func updateChallenge(id: String, name: String, desc: String, like: Int, numberOfUser: Int, category: String){
+        if let index = challenges.firstIndex(where: { $0.id == id }){
+            let c = challenges[index]
+            c.id = id
+            c.name = name
+            c.desc = desc
+            c.like = 0
+            c.numberOfUser = 0
+            c.category = category
+            print("index: \(index)")
+        }else {
+            addChallenge(id: id, name: name, desc: desc, like: like, numberOfUser: numberOfUser, category: category)
+        }
     }
     
     func save(){

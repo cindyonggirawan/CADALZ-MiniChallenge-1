@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     @EnvironmentObject var dataManager: DataManager
+    @StateObject var challengeViewModel = ChallengeViewModel()
 
     @State private var show = false
     
@@ -28,6 +29,7 @@ struct OnboardingView: View {
                 Button(action: {
                     show = true
                     // Connect to backend
+//                    challengeViewModel.clearChallenges()
                     dataManager.syncWithFirebase()
                 }, label: {
                     Text("Next")
