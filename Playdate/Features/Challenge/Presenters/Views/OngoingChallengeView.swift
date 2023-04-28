@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct OngoingChallengeView: View {
-    var toDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+    @StateObject var memoryViewModel = MemoryViewModel()
+    @State var showSheet = false
+    @State var isGiveUp = false
     
     var body: some View {
         VStack{
@@ -33,7 +35,7 @@ struct OngoingChallengeView: View {
                 
                 //Challenge text
                 HStack {
-                    Text("Watch a horror film released before the year 2000 with your partner")
+                    Text(memoryViewModel.memories[memoryViewModel.memories.count-1].challenge!.name!)
                         .font(.custom("Poppins-SemiBold", size: 28))
                         .lineSpacing(4)
                         .foregroundColor(.primaryWhite)
@@ -46,7 +48,7 @@ struct OngoingChallengeView: View {
                 
                 //Countdown
                 VStack(spacing: 8) {
-                    TimerView(setDate: toDate)
+                    TimerView(setDate: memoryViewModel.memories[memoryViewModel.memories.count-1].date!)
                         .font(.system(size: 24))
                         .fontWeight(.semibold)
                         .foregroundColor(.primaryWhite)
@@ -62,12 +64,11 @@ struct OngoingChallengeView: View {
             }
             .padding(.vertical, 25)
             .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.6)
-            .background(Color.primaryPurple)
+            .background(memoryViewModel.checkChallengeCategoryColor(memory: memoryViewModel.memories[memoryViewModel.memories.count-1]))
             
             VStack {
                 Button(action: {
-                    //TODO: Accept Action
-                    
+                    showSheet = true
                 }, label: {
                     Text("Finish Challenge")
                         .font(.custom("Poppins-Bold", size: 14))
@@ -75,10 +76,13 @@ struct OngoingChallengeView: View {
                 .buttonStyle(FixedSizeRoundedButtonStyle())
                 .padding(.top, 20)
                 .padding(.horizontal, 24)
+                .sheet(isPresented: $showSheet) {
+                    ChallangeReviewModal()
+                }
                 
                 Button(action: {
-                    //TODO: Accept Action
-                    
+                    memoryViewModel.removeMemory()
+                    isGiveUp = true
                 }, label: {
                     Text("Give Up")
                         .font(.custom("Poppins-SemiBold", size: 14))
@@ -90,6 +94,9 @@ struct OngoingChallengeView: View {
             Spacer()
             
         }
+        .fullScreenCover(isPresented: $isGiveUp, content: {
+            GenerateChallengeView()
+        })
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)
     }

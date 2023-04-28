@@ -10,11 +10,18 @@ import SwiftUI
 struct SplashView: View {
     @State private var scale: CGFloat = 1.0
     @State private var isActive = false
+    @StateObject var memoryViewModel = MemoryViewModel()
     
     var body: some View {
         ZStack {
             if self.isActive {
-                OnboardingView()
+                if memoryViewModel.memories.count == 0 {
+                    OnboardingView()
+                }else{
+                    if memoryViewModel.memories[memoryViewModel.memories.count-1].status == "ongoing"{
+                        OngoingChallengeView()
+                    }
+                }
             } else {
                 Color.primaryPurple
                 
@@ -43,7 +50,7 @@ struct SplashView: View {
                     }
             }
         }
-        .ignoresSafeArea(.all)
+        .background(Color.primaryPurple)
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 self.isActive = true

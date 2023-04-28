@@ -11,10 +11,13 @@ struct GenerateChallengeView: View {
     @EnvironmentObject var dataManager: DataManager
     
     @StateObject var challengeViewModel = ChallengeViewModel()
+    @StateObject var memoryViewModel = MemoryViewModel()
 //    var challenges: [Challenge] = []
     
+    @State var currentChallenges: Challenge = Challenge()
     @State var displayedChallenges = [0, 1, 2, 3, 4]
     @State var lastDisplayIndex = 4
+    @State var showOngoingPage = false
     
     init() {
         //TEMP LOGIC
@@ -67,13 +70,19 @@ struct GenerateChallengeView: View {
 
                     ForEach(self.displayedChallenges.reversed(), id: \.self) { i in
                         ChallengeCardView(challenge: self.challengeViewModel.filteredChallenges[i], currentIndex: $lastDisplayIndex, shiftIndex: lastDisplayIndex - i)
-//                            .onAppear {
+                            .onAppear {
+                                if displayedChallenges.count == 5 {
+                                    currentChallenges = challengeViewModel.filteredChallenges[displayedChallenges[0]]
+                                }else {
+                                    currentChallenges = challengeViewModel.filteredChallenges[displayedChallenges[1]]
+                                }
+                                
 //                                print("i:", i)
 //                                print("(filtered) count:", self.challengeViewModel.filteredChallenges.count)
 //                                print("(displayed) count:", self.displayedChallenges.count)
 //                                print("shiftIndex:", lastDisplayIndex - i)
 //                                print("================")
-//                            }
+                            }
                     }
                 }
                 .onChange(of: lastDisplayIndex) { newValue in
@@ -87,7 +96,8 @@ struct GenerateChallengeView: View {
                 //Accept Button
                 Button(action: {
                     //TODO: Accept Action
-                    
+                    memoryViewModel.addMemory(challenge: currentChallenges)
+                    showOngoingPage = true
                 }, label: {
                     Text("Accept Challenge!")
                         .font(.custom("Poppins-Bold", size: 16))
@@ -106,6 +116,9 @@ struct GenerateChallengeView: View {
             .background(.white)
             
 
+        }
+        .fullScreenCover(isPresented: $showOngoingPage) {
+            OngoingChallengeView()
         }
     }
 

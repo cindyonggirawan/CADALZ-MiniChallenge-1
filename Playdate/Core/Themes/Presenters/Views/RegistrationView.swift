@@ -31,6 +31,7 @@ struct RegistrationView: View {
                 TextField("Enter your name", text: $name)
                     .limitInputLength(value: $name, length: 10)
                     .font(.custom("Poppins", size: 16))
+                    .autocorrectionDisabled()
                     .textFieldStyle(UnborderedTextFieldStyle())
                 
                 
