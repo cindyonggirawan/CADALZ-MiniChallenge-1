@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OngoingChallengeView: View {
     @StateObject var memoryViewModel = MemoryViewModel()
+    @StateObject var userViewModel = UserViewModel()
     @State var showSheet = false
     @State var isGiveUp = false
     
@@ -16,9 +17,8 @@ struct OngoingChallengeView: View {
         VStack{
             VStack {
                 VStack(alignment: .leading) {
-                    //TODO: Nama user ambil dari coredata
                     HStack{
-                        Text("Hi Alfine,")
+                        Text("Hi \(userViewModel.user[userViewModel.user.count-1].name!),")
                             .font(.custom("Poppins-Regular", size: 16))
                             .foregroundColor(.primaryWhite.opacity(0.7))
                             .padding(.bottom, -8)

@@ -56,8 +56,8 @@ struct ChallengeCardView: View {
             
             HStack{
                 Spacer()
-//                Text("PLAYDATE")
-                Text(challenge.category ?? "NO CATEGORY")
+                Text("PLAYDATE")
+//                Text(challenge.category ?? "NO CATEGORY")
                     .font(.system(size: 14))
                     .fontWeight(.medium)
                     .foregroundColor(.primaryWhite)
@@ -78,13 +78,8 @@ struct ChallengeCardView: View {
             DragGesture()
                 .onChanged({ value in
                     self.offSet = value.translation
-                    
                 })
                 .onEnded({ value in
-                    
-                    //TODO: INI BENER GA ?
-                    //Add new cardview in the back
-                    
                     if self.xOffsetPortion() >= 0.2 || self.yOffsetPortion() >= 0.2 {
                         withAnimation(.easeOut(duration: 8)) {
                             let newWidth: Double = self.offSet.width + 10*value.translation.width
@@ -117,12 +112,12 @@ struct ChallengeCardView: View {
         let index = index % self.vm.filteredChallenges.count
         
         if (index == 4 || index == 3) {
-            print(">>", index)
+//            print(">>", index)
             return CGSize(
                 width: self.offSet.width + 0,
                 height: self.offSet.height - (Double(index - 4) * 40.0))
         } else {
-            print("^^", index)
+//            print("^^", index)
             return CGSize(
                 width: self.offSet.width + 0,
                 height: self.offSet.height + 2 * 40.0)

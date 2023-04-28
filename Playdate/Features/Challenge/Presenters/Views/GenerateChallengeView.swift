@@ -12,24 +12,13 @@ struct GenerateChallengeView: View {
     
     @StateObject var challengeViewModel = ChallengeViewModel()
     @StateObject var memoryViewModel = MemoryViewModel()
+    @StateObject var userViewModel = UserViewModel()
 //    var challenges: [Challenge] = []
     
     @State var currentChallenges: Challenge = Challenge()
     @State var displayedChallenges = [0, 1, 2, 3, 4]
     @State var lastDisplayIndex = 4
     @State var showOngoingPage = false
-    
-    init() {
-        //TEMP LOGIC
-//        for i in 0...6 {
-//            displayedChallenges.append(challengeViewModel.challenges[i])
-//        }
-        //TODO: Batesin challenges yang diambil
-//        generateDisplayChallenge()
-//        addDisplayChallenge(currentIndex: totalNumberOfChallengeloaded)
-//        print("total challenge: \(challengeViewModel.challenges.count)")
-//        syncWithFirebase()
-    }
     
     
     var body: some View {
@@ -40,7 +29,7 @@ struct GenerateChallengeView: View {
                 VStack(alignment: .leading) {
                     //TODO: Nama user ambil dari coredata
                     HStack{
-                        Text("Hi Alfine,")
+                        Text("Hi \(userViewModel.user[userViewModel.user.count-1].name!),")
                             .font(.custom("Poppins-Regular", size: 16))
                             .foregroundColor(.primaryDarkGray)
                             .padding(.bottom, -8)

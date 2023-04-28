@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    @StateObject var userViewModel = UserViewModel()
     @State private var name: String = ""
     @State private var show = false
     
@@ -39,6 +40,7 @@ struct RegistrationView: View {
                 
                 if !name.isEmpty {
                     Button(action: {
+                        userViewModel.addUser(name: name)
                         show = true
                     }, label: {
                         Text("Submit")

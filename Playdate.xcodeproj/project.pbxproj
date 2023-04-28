@@ -52,6 +52,7 @@
 		A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */; };
 		A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA9129F267670058F9FA /* ChallengeCardView.swift */; };
 		A97CEA9429F26E6F0058F9FA /* CategoryCapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA9329F26E6F0058F9FA /* CategoryCapsuleView.swift */; };
+		A9CA6A9529FC29000053323A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CA6A9429FC29000053323A /* UserViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateChallengeView.swift; sourceTree = "<group>"; };
 		A97CEA9129F267670058F9FA /* ChallengeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardView.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardView.swift; sourceTree = SOURCE_ROOT; };
 		A97CEA9329F26E6F0058F9FA /* CategoryCapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryCapsuleView.swift; path = Playdate/Features/Challenge/Presenters/Views/CategoryCapsuleView.swift; sourceTree = SOURCE_ROOT; };
+		A9CA6A9429FC29000053323A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +381,7 @@
 			children = (
 				A925E2E429F437DB000F66C9 /* ChallengeViewModel.swift */,
 				A925E2E629F446EC000F66C9 /* MemoryViewModel.swift */,
+				A9CA6A9429FC29000053323A /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				A9090C0A29F2C5A500BD171B /* OngoingChallengeView.swift in Sources */,
 				A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */,
 				3798631629EFE01B002EC23B /* Prompt.swift in Sources */,
+				A9CA6A9529FC29000053323A /* UserViewModel.swift in Sources */,
 				A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */,
 				37E2997629F5602400D7A150 /* ProfileView.swift in Sources */,
 				A5325A1529F40E8C0073219B /* ChallengeCardSmall.swift in Sources */,

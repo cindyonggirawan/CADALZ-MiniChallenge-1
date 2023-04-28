@@ -44,8 +44,6 @@ class MemoryViewModel: ObservableObject {
         if memories[memories.count-1].status == "ongoing"{
             manager.context.delete(memories[memories.count-1])
             save()
-            print("inside")
-            print(memories)
         }
     }
     

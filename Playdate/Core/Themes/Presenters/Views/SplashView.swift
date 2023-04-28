@@ -11,12 +11,17 @@ struct SplashView: View {
     @State private var scale: CGFloat = 1.0
     @State private var isActive = false
     @StateObject var memoryViewModel = MemoryViewModel()
+    @StateObject var userViewModel = UserViewModel()
     
     var body: some View {
         ZStack {
             if self.isActive {
                 if memoryViewModel.memories.count == 0 {
-                    OnboardingView()
+                    if userViewModel.user.count == 0 {
+                        OnboardingView()
+                    }else{
+                        GenerateChallengeView()
+                    }
                 }else{
                     if memoryViewModel.memories[memoryViewModel.memories.count-1].status == "ongoing"{
                         OngoingChallengeView()
