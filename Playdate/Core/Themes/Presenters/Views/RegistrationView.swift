@@ -34,6 +34,7 @@ struct RegistrationView: View {
                     .limitInputLength(value: $name, length: 20)
                     .font(.system(size: 14))
                     .autocorrectionDisabled()
+                    .foregroundColor(.primaryDarkGray)
                     .textFieldStyle(UnborderedTextFieldStyle())
                 
                 Spacer()

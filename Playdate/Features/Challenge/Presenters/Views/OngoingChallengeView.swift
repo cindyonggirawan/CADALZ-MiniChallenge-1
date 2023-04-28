@@ -86,6 +86,7 @@ struct OngoingChallengeView: View {
                 }, label: {
                     Text("Give Up")
                         .font(.custom("Poppins-SemiBold", size: 14))
+                        .foregroundColor(.primaryDarkBlue)
                 })
                 .buttonStyle(.plain)
                 .padding(.top, 20)

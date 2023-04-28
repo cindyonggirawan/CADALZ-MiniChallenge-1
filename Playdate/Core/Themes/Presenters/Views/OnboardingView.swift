@@ -67,8 +67,8 @@ struct OnboardingPageView: View {
             
             Text(title)
                 .font(.custom("Poppins-SemiBold", size: 24))
+                .foregroundColor(.primaryDarkBlue)
                 .multilineTextAlignment(.center)
-                .fontWeight(.bold)
                 .padding(.bottom, 16)
             
             Text(subtitle)
