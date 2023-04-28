@@ -89,7 +89,7 @@ struct GenerateChallengeView: View {
                     showOngoingPage = true
                 }, label: {
                     Text("Accept Challenge!")
-                        .font(.custom("Poppins-Bold", size: 16))
+                        .font(.custom("Poppins-Bold", size: 14))
                 })
                 .buttonStyle(FixedSizeRoundedButtonStyle())
                 .zIndex(-99)

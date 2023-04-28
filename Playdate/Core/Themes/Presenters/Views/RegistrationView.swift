@@ -15,26 +15,26 @@ struct RegistrationView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                Text("Welcome Couples")
-                    .font(.custom("Poppins", size: 24))
-                    .fontWeight(.bold)
+                Text("Welcome Couples!")
+                    .font(.custom("Poppins-SemiBold", size: 24))
+                    .foregroundColor(.primaryDarkBlue)
                     .padding(.top, 32)
                     .padding(.bottom, 4)
                 
                 Text("Tell us about you to get to know you better.")
-                    .font(.custom("Poppins", size: 16))
+                    .font(.custom("Poppins-Regular", size: 16))
+                    .foregroundColor(.primaryDarkGray)
                     .padding(.bottom, 32)
                 
                 Text("Your Name")
-                    .font(.custom("Poppins", size: 16))
-                    .fontWeight(.bold)
+                    .font(.custom("Poppins-Medium", size: 16))
+                    .foregroundColor(.primaryDarkBlue)
                 
-                TextField("Enter your name", text: $name)
-                    .limitInputLength(value: $name, length: 10)
-                    .font(.custom("Poppins", size: 16))
+                TextField("What do you like us to call you?", text: $name)
+                    .limitInputLength(value: $name, length: 20)
+                    .font(.system(size: 14))
                     .autocorrectionDisabled()
                     .textFieldStyle(UnborderedTextFieldStyle())
-                
                 
                 Spacer()
                 
@@ -44,7 +44,7 @@ struct RegistrationView: View {
                         show = true
                     }, label: {
                         Text("Submit")
-                            .font(.custom("Poppins", size: 16))
+                            .font(.custom("Poppins-Bold", size: 14))
                     })
                     .buttonStyle(FixedSizeRoundedButtonStyle())
                     .padding(.bottom, 32)
@@ -53,7 +53,7 @@ struct RegistrationView: View {
                         show = false
                     }, label: {
                         Text("Submit")
-                            .font(.custom("Poppins", size: 16))
+                            .font(.custom("Poppins-Bold", size: 14))
                     })
                     .disabled(true)
                     .buttonStyle(FixedSizeRoundedButtonDisabledStyle())
@@ -61,6 +61,7 @@ struct RegistrationView: View {
                 }
             }
             .padding(24)
+            .background(.white)
             .fullScreenCover(isPresented: $show) {
                 TabBarView()
             }

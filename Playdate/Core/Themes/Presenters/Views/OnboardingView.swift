@@ -33,11 +33,12 @@ struct OnboardingView: View {
                     dataManager.syncWithFirebase()
                 }, label: {
                     Text("Next")
-                        .font(.custom("Poppins", size: 16))
+                        .font(.custom("Poppins-Bold", size: 14))
                 })
                 .buttonStyle(FixedSizeRoundedButtonStyle())
             }
             .padding(24)
+            .background(.white)
             .fullScreenCover(isPresented: $show) {
                 RegistrationView()
             }
@@ -59,18 +60,19 @@ struct OnboardingPageView: View {
         VStack {
             Image(imageName)
                 .resizable()
+                .frame(maxWidth: .infinity)
                 .scaledToFit()
                 .background(Color.primaryLightGray)
                 .padding(.bottom, 32)
             
             Text(title)
-                .font(.custom("Poppins", size: 32))
+                .font(.custom("Poppins-SemiBold", size: 24))
                 .multilineTextAlignment(.center)
                 .fontWeight(.bold)
                 .padding(.bottom, 16)
             
             Text(subtitle)
-                .font(.custom("Poppins", size: 20))
+                .font(.custom("Poppins-Regular", size: 16))
                 .foregroundColor(Color.primaryDarkGray)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 70)
