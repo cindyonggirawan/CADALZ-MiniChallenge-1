@@ -71,15 +71,17 @@ struct GenerateChallengeView: View {
                                 print("i:", i)
                                 print("(filtered) count:", self.challengeViewModel.filteredChallenges.count)
                                 print("(displayed) count:", self.displayedChallenges.count)
+                                print("lastDisplayIndex:", lastDisplayIndex)
+                                print("shiftIndex:", lastDisplayIndex - i)
                                 print("================")
                             }
                     }
                 }
                 .onChange(of: lastDisplayIndex) { newValue in
                     addNewDisplay()
-                    if (self.challengeViewModel.filteredChallenges.count - self.displayedChallenges.max()! == 1) {
-                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
-                    }
+//                    if (self.challengeViewModel.filteredChallenges.count - self.displayedChallenges.max()! == 1) {
+//                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
+//                    }
                 }
                 .padding(.vertical, 10)
                 
@@ -113,7 +115,8 @@ struct GenerateChallengeView: View {
         let b = challengeViewModel.challenges.count
         displayedChallenges.append(a % b)
         if displayedChallenges.count > 5 {
-            return withAnimation(.easeOut(duration: 8)) {
+//            return withAnimation(.easeOut(duration: 8)) {
+            return withAnimation(.easeOut(duration: 0)) {
                 displayedChallenges.removeFirst()
 //                print("displayed challenge: \(displayedChallenges)")
             }

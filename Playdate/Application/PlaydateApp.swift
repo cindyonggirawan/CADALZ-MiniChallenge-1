@@ -26,9 +26,9 @@ struct PlaydateApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
+//                .environmentObject(dataManager)
             GenerateChallengeView()
 //            challengeFirebaseExperiment()
-//                .environmentObject(dataManager)
 //            temporaryCountdownView()
         }
     }

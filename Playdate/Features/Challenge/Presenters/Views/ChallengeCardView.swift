@@ -117,10 +117,12 @@ struct CardView: View {
         let index = index % self.vm.filteredChallenges.count
         
         if (index == 4 || index == 3) {
+            print(">>", index)
             return CGSize(
                 width: self.offSet.width + 0,
                 height: self.offSet.height - (Double(index - 4) * 40.0))
         } else {
+            print("^^", index)
             return CGSize(
                 width: self.offSet.width + 0,
                 height: self.offSet.height + 2 * 40.0)
