@@ -67,10 +67,12 @@ struct GenerateChallengeView: View {
 
                     ForEach(self.displayedChallenges.reversed(), id: \.self) { i in
                         CardView(challenge: self.challengeViewModel.filteredChallenges[i], currentIndex: $lastDisplayIndex, shiftIndex: lastDisplayIndex - i)
-//                            .onAppear {
-//                                print("(filtered) shape:", self.challengeViewModel.filteredChallenges.count)
-//                                print("(displayed) count:", self.displayedChallenges.count)
-//                            }
+                            .onAppear {
+                                print("i:", i)
+                                print("(filtered) count:", self.challengeViewModel.filteredChallenges.count)
+                                print("(displayed) count:", self.displayedChallenges.count)
+                                print("================")
+                            }
                     }
                 }
                 .onChange(of: lastDisplayIndex) { newValue in
