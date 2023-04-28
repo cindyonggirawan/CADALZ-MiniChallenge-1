@@ -79,7 +79,7 @@ struct GenerateChallengeView: View {
                         self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
                     }
                 }
-                .padding(.vertical, 20)
+                .padding(.vertical, 10)
                 
                 //Accept Button
                 Button(action: {
@@ -92,7 +92,7 @@ struct GenerateChallengeView: View {
                 .buttonStyle(FixedSizeRoundedButtonStyle())
                 .zIndex(-99)
                 .padding(.horizontal, 24)
-                .padding(.top, 100)
+                .padding(.top, 50)
                 
                 //Atur kembali ya paddingnya, karena ini sengaja diubah buat ga tentuin maxwidthnya, supaya bisa responsif
                 //Sejauh ini yang gue pake itu kiri kanan atas bawah 24, tapi di taruh di container paling luar, dalam struktur file ini itu ZStack
