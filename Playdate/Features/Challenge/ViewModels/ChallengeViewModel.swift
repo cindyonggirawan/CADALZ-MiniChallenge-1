@@ -16,7 +16,7 @@ class ChallengeViewModel: ObservableObject {
     
     
     @Published var index: Int = 0
-    @State var cardViews: [CardView] = []
+    @State var cardViews: [ChallengeCardView] = []
     
     init() {
         getChallenges()

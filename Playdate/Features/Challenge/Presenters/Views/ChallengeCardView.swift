@@ -26,7 +26,7 @@ import SwiftUI
 //    }
 //}
 
-struct CardView: View {
+struct ChallengeCardView: View {
     let challenge: Challenge
     @Binding var currentIndex: Int
     var shiftIndex: Int

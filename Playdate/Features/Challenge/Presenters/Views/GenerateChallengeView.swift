@@ -66,15 +66,14 @@ struct GenerateChallengeView: View {
                 ZStack() {
 
                     ForEach(self.displayedChallenges.reversed(), id: \.self) { i in
-                        CardView(challenge: self.challengeViewModel.filteredChallenges[i], currentIndex: $lastDisplayIndex, shiftIndex: lastDisplayIndex - i)
-                            .onAppear {
-                                print("i:", i)
-                                print("(filtered) count:", self.challengeViewModel.filteredChallenges.count)
-                                print("(displayed) count:", self.displayedChallenges.count)
-                                print("lastDisplayIndex:", lastDisplayIndex)
-                                print("shiftIndex:", lastDisplayIndex - i)
-                                print("================")
-                            }
+                        ChallengeCardView(challenge: self.challengeViewModel.filteredChallenges[i], currentIndex: $lastDisplayIndex, shiftIndex: lastDisplayIndex - i)
+//                            .onAppear {
+//                                print("i:", i)
+//                                print("(filtered) count:", self.challengeViewModel.filteredChallenges.count)
+//                                print("(displayed) count:", self.displayedChallenges.count)
+//                                print("shiftIndex:", lastDisplayIndex - i)
+//                                print("================")
+//                            }
                     }
                 }
                 .onChange(of: lastDisplayIndex) { newValue in
@@ -114,7 +113,7 @@ struct GenerateChallengeView: View {
         let a = lastDisplayIndex
         let b = challengeViewModel.challenges.count
         displayedChallenges.append(a % b)
-        if displayedChallenges.count > 5 {
+        if displayedChallenges.count > 6 {
 //            return withAnimation(.easeOut(duration: 8)) {
             return withAnimation(.easeOut(duration: 0)) {
                 displayedChallenges.removeFirst()
