@@ -70,7 +70,7 @@ struct CardView: View {
         .background(checkChallengeCategoryColor(challengeCategory: challenge.category!))
         .cornerRadius(16)
         
-        .rotationEffect(Angle(degrees: 4.5 * getCardRotation() + (self.shiftIndex < 4 ? Double.random(in: -4...4) : 0.0)))
+        .rotationEffect(Angle(degrees: 4.5 * getCardRotation()))
         .offset(self.getOffSet(index: shiftIndex))
         .scaleEffect(getScaleEffect(index: shiftIndex))
         
