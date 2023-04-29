@@ -10,6 +10,9 @@ import SwiftUI
 struct OnboardingView: View {
     @EnvironmentObject var dataManager: DataManager
     @StateObject var challengeViewModel = ChallengeViewModel()
+    
+    @ObservedObject var memoryViewModel: MemoryViewModel
+    @ObservedObject var userViewModel: UserViewModel
 
     @State private var show = false
     
@@ -40,7 +43,7 @@ struct OnboardingView: View {
             .padding(24)
             .background(.white)
             .fullScreenCover(isPresented: $show) {
-                RegistrationView()
+                RegistrationView(memoryViewModel: memoryViewModel, userViewModel: userViewModel)
             }
         }
     }
@@ -80,8 +83,8 @@ struct OnboardingPageView: View {
     }
 }
 
-struct OnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingView()
-    }
-}
+//struct OnboardingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnboardingView()
+//    }
+//}

@@ -20,6 +20,10 @@ struct GenerateChallengeView: View {
     @State var lastDisplayIndex = 4
     @State var showOngoingPage = false
     
+    @State private var selectedTab = 0
+    @State private var challengeImageName = "challenge-icon-selected"
+    @State private var memoriesImageName = "memories-icon"
+    @State private var profileImageName = "profile-icon"
     
     var body: some View {
         //TODO: BELUM RESPONSIVE
@@ -107,7 +111,52 @@ struct GenerateChallengeView: View {
 
         }
         .fullScreenCover(isPresented: $showOngoingPage) {
-            OngoingChallengeView()
+            TabView(selection: $selectedTab) {
+                OngoingChallengeView()
+                    .tabItem {
+                        Image(challengeImageName)
+                        Text("Challenge")
+                    }
+                    .tag(0)
+               
+               
+                Text("Memories Tab")
+                    .tabItem {
+                        Image(memoriesImageName)
+                        Text("Memories")
+                    }
+                    .tag(1)
+                
+                ProfileView()
+                    .tabItem {
+                        Image(profileImageName)
+                        Text("Profile")
+                    }
+                    .tag(2)
+            }
+            .accentColor(Color.primaryDarkBlue)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .edgesIgnoringSafeArea(.all)
+            .tabViewStyle(DefaultTabViewStyle())
+            .transition(.slide)
+            .onChange(of: selectedTab) { value in
+                switch value {
+                case 0:
+                    challengeImageName = "challenge-icon-selected"
+                    memoriesImageName = "memories-icon"
+                    profileImageName = "profile-icon"
+                case 1:
+                    memoriesImageName = "memories-icon-selected"
+                    challengeImageName = "challenge-icon"
+                    profileImageName = "profile-icon"
+                case 2:
+                    profileImageName = "profile-icon-selected"
+                    challengeImageName = "challenge-icon"
+                    memoriesImageName = "memories-icon"
+                default:
+                    break
+                }
+            }
         }
     }
 

@@ -18,13 +18,13 @@ struct SplashView: View {
             if self.isActive {
                 if memoryViewModel.memories.count == 0 {
                     if userViewModel.user.count == 0 {
-                        OnboardingView()
-                    }else{
-                        GenerateChallengeView()
+                        OnboardingView(memoryViewModel: memoryViewModel, userViewModel: userViewModel)
+                    } else {
+                        TabBarView(memoryViewModel: memoryViewModel, userViewModel: userViewModel)
                     }
-                }else{
+                } else {
                     if memoryViewModel.memories[memoryViewModel.memories.count-1].status == "ongoing"{
-                        OngoingChallengeView()
+                        TabBarView(memoryViewModel: memoryViewModel, userViewModel: userViewModel)
                     }
                 }
             } else {
