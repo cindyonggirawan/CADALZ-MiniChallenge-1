@@ -41,6 +41,7 @@ struct OngoingChallengeView: View {
                 
                 //Challenge text
                 HStack {
+                    // Ini penyebab error karena masih nil
                     Text(memoryViewModel.memories[memoryViewModel.memories.count-1].challenge!.name!)
                         .font(.custom("Poppins-SemiBold", size: 28))
                         .lineSpacing(4)
@@ -118,7 +119,7 @@ struct OngoingChallengeView: View {
                     }
                     .tag(1)
                 
-                ProfileView()
+                ProfileView(userViewModel: userViewModel)
                     .tabItem {
                         Image(profileImageName)
                         Text("Profile")

@@ -127,7 +127,7 @@ struct GenerateChallengeView: View {
                     }
                     .tag(1)
                 
-                ProfileView()
+                ProfileView(userViewModel: userViewModel)
                     .tabItem {
                         Image(profileImageName)
                         Text("Profile")
