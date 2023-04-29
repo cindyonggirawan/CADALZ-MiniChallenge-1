@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct RegistrationView: View {
-//    @StateObject var userViewModel = UserViewModel()
-    
     @State private var name: String = ""
     @State private var show = false
     
-    @ObservedObject var memoryViewModel: MemoryViewModel
-    @ObservedObject var userViewModel: UserViewModel
+    @StateObject var memoryViewModel = MemoryViewModel()
+    @StateObject var userViewModel = UserViewModel()
     
     var body: some View {
         NavigationView {
@@ -68,7 +66,7 @@ struct RegistrationView: View {
             .padding(24)
             .background(.white)
             .fullScreenCover(isPresented: $show) {
-                TabBarView(memoryViewModel: memoryViewModel, userViewModel: userViewModel)
+                TabBarView()
             }
         }
     }

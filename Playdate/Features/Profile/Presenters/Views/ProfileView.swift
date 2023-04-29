@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @ObservedObject var userViewModel: UserViewModel
+    @StateObject var userViewModel = UserViewModel()
     
     var body: some View {
         VStack () {

@@ -13,20 +13,20 @@ struct TabBarView: View {
     @State private var memoriesImageName = "memories-icon"
     @State private var profileImageName = "profile-icon"
     
-    @ObservedObject var memoryViewModel: MemoryViewModel
-    @ObservedObject var userViewModel: UserViewModel
+    @StateObject var memoryViewModel = MemoryViewModel()
+    @StateObject var userViewModel = UserViewModel()
     
     var body: some View {
         TabView(selection: $selectedTab) {
             if memoryViewModel.memories.count == 0 {
-//                if userViewModel.user.count == 0 { countnya 0, padahal sudah registrasi & save, aneh
+                if userViewModel.user.count != 0 {
                     GenerateChallengeView()
                         .tabItem {
                             Image(challengeImageName)
                             Text("Challenge")
                         }
                         .tag(0)
-//                }
+                }
             } else {
                 if memoryViewModel.memories[memoryViewModel.memories.count-1].status == "ongoing" {
                     OngoingChallengeView()
@@ -45,7 +45,7 @@ struct TabBarView: View {
                 }
                 .tag(1)
             
-            ProfileView(userViewModel: userViewModel)
+            ProfileView()
                 .tabItem {
                     Image(profileImageName)
                     Text("Profile")

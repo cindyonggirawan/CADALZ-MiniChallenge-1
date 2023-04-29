@@ -10,6 +10,7 @@ import SwiftUI
 struct SplashView: View {
     @State private var scale: CGFloat = 1.0
     @State private var isActive = false
+    
     @StateObject var memoryViewModel = MemoryViewModel()
     @StateObject var userViewModel = UserViewModel()
     
@@ -18,13 +19,13 @@ struct SplashView: View {
             if self.isActive {
                 if memoryViewModel.memories.count == 0 {
                     if userViewModel.user.count == 0 {
-                        OnboardingView(memoryViewModel: memoryViewModel, userViewModel: userViewModel)
+                        OnboardingView()
                     } else {
-                        TabBarView(memoryViewModel: memoryViewModel, userViewModel: userViewModel)
+                        TabBarView()
                     }
                 } else {
                     if memoryViewModel.memories[memoryViewModel.memories.count-1].status == "ongoing"{
-                        TabBarView(memoryViewModel: memoryViewModel, userViewModel: userViewModel)
+                        TabBarView()
                     }
                 }
             } else {

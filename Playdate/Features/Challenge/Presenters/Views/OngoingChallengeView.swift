@@ -119,7 +119,7 @@ struct OngoingChallengeView: View {
                     }
                     .tag(1)
                 
-                ProfileView(userViewModel: userViewModel)
+                ProfileView()
                     .tabItem {
                         Image(profileImageName)
                         Text("Profile")
