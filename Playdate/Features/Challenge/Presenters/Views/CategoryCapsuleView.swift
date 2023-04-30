@@ -30,23 +30,50 @@ struct CategoryCapsuleView: View {
                 
                 if self.isClicked {
                     
-//                    if !self.challengeViewModel.capsuleIsClickedOnce {
-//                        self.challengeViewModel.filteredChallenges.removeAll()
-//                    }
+                    if !self.challengeViewModel.capsuleIsClickedOnce {
+                        
+                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.filteredChallenges.filter({ chl in
+                            return chl.category! == self.category
+                        })
+                        self.challengeViewModel.capsuleIsClickedOnce = true
+                    } else {
+                        let newFilteredChlgs = self.challengeViewModel.challenges.filter({ chl in
+                            return chl.category! == self.category
+                        })
+                        
+                        self.challengeViewModel.filteredChallenges += newFilteredChlgs
+                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.filteredChallenges.shuffled()
+                    }
                     
-                    self.challengeViewModel.filteredChallenges = self.challengeViewModel.filteredChallenges.filter({ chl in
-                        return chl.category! == self.category
-                    })
+                    self.restartCardIndices()
                     
-
-                    self.challengeViewModel.displayedChallenges =  [1000, 1001, 1002, 1003, 1004]
-                    self.challengeViewModel.lastDisplayIndex = 4
-
-                    self.challengeViewModel.capsuleIsClickedOnce = true
+                    // tell which capsules r clicked
+                    self.challengeViewModel.clickedCapsules.append(self.category)
                 } else {
-                    self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
+                    
+                    if self.challengeViewModel.clickedCapsules.count != 1 {
+                        self.challengeViewModel.filteredChallenges.removeAll { chl in
+                            return chl.category! == self.category
+                        }
+                    } else {
+                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
+                        self.challengeViewModel.capsuleIsClickedOnce = false // return to initial state
+                    }
+                    
+                    self.restartCardIndices()
+
+                    // unclicked capsules
+                    if let index = self.challengeViewModel.clickedCapsules.firstIndex(where: { $0 == self.category }) {
+                        self.challengeViewModel.clickedCapsules.remove(at: index)
+                    }
                 }
             }
+    }
+    
+    func restartCardIndices() -> () {
+        // restart cards' indices
+        self.challengeViewModel.displayedChallenges =  [0, 1, 2, 3, 4]
+        self.challengeViewModel.lastDisplayIndex = 4
     }
     
     func getForegroundColor(_ category: String) -> Color {

@@ -15,6 +15,7 @@ struct ChallengeCardView: View {
     @Binding var displayedChallenges: [Int]
     var shiftIndex: Int
     let printI: Int
+    @State var x: Bool = false
     
 //    @StateObject var vm = ChallengeViewModel()
     @State var offSet: CGSize = .zero
@@ -42,8 +43,8 @@ struct ChallengeCardView: View {
             
             HStack{
                 Spacer()
-                Text("PLAYDATE")
-//                Text(challenge.category ?? "NO CATEGORY")
+//                Text("PLAYDATE")
+                Text(challenge.category ?? "NO CATEGORY")
                     .font(.system(size: 14))
                     .fontWeight(.medium)
                     .foregroundColor(.primaryWhite)
@@ -59,31 +60,38 @@ struct ChallengeCardView: View {
         .rotationEffect(Angle(degrees: 4.5 * getCardRotation()))
         .offset(self.getOffSet(index: shiftIndex))
         .scaleEffect(getScaleEffect(index: shiftIndex))
-        
         .gesture(
             DragGesture()
                 .onChanged({ value in
                     self.offSet = value.translation
+                    self.x = false
                 })
                 .onEnded({ value in
                     if self.xOffsetPortion() >= 0.2 || self.yOffsetPortion() >= 0.2 {
-                        withAnimation(.easeOut(duration: 8)) {
-                            let newWidth: Double = self.offSet.width + 10*value.translation.width
-                            let newHeight: Double = self.offSet.height + 10*value.translation.height
-                            
+                        
+                        withAnimation(.easeOut(duration: 7)) {
+                            let newWidth: Double = self.offSet.width + 60*value.translation.width
+                            let newHeight: Double = self.offSet.height + 60*value.translation.height
+
                             self.offSet = CGSize(width: newWidth, height: newHeight)
                         }
-                        withAnimation(.easeIn(duration: 0.25)) {
-                            addDisplayChallenge()
-                        }
+                        self.x = true
+                        
                     } else {
                         withAnimation(.easeIn(duration: 0.2)) {
                             self.offSet = .zero
                         }
                     }
                 })
+                .onEnded({ _ in
+                    if x {
+                        withAnimation(.easeIn(duration: 0.2).delay(0.17)) {
+                            self.addDisplayChallenge()
+                        }
+                    }
+                })
         )
-        .zIndex(1)
+        .zIndex(7)
     }
     
     func getOffSet(index: Int) -> CGSize {
@@ -113,13 +121,13 @@ struct ChallengeCardView: View {
     
     func checkChallengeCategoryColor(challengeCategory: String) -> Color {
         if challengeCategory.lowercased() == "travel" {
-            return Color.primaryGreen
+            return Color.primaryOrange
         } else if challengeCategory.lowercased() == "entertainment" {
             return Color.primaryPurple
         } else if challengeCategory.lowercased() == "food" {
             return Color.primaryRed
         } else if (challengeCategory.lowercased() == "well-being") {
-            return Color.primaryOrange
+            return Color.primaryGreen
         } else {
             return Color.gray
         }
@@ -144,15 +152,15 @@ struct ChallengeCardView: View {
     func addDisplayChallenge(){
 //        currentIndex += 1
         self.vm.lastDisplayIndex += 1
+        
+        let a = self.vm.lastDisplayIndex
+        let b = vm.filteredChallenges.count
+        
+        self.vm.displayedChallenges.append(a % b)
+        
+        if self.vm.displayedChallenges.count > 5 {
+                self.vm.displayedChallenges.removeFirst()
+        }
     }
     
-    
-    
 }
-
-//
-//struct ChallengeCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChallengeCardView()
-//    }
-//}

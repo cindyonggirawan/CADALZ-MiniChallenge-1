@@ -11,22 +11,12 @@ struct GenerateChallengeView: View {
     @EnvironmentObject var dataManager: DataManager
     
     @StateObject var challengeViewModel = ChallengeViewModel()
-//    @EnvironmentObject var challengeViewModel: ChallengeViewModel
     @StateObject var memoryViewModel = MemoryViewModel()
     @StateObject var userViewModel = UserViewModel()
 //    var challenges: [Challenge] = []
     
     @State var currentChallenges: Challenge = Challenge()
-//    @State var displayedChallenges: [Int] = [0, 1, 2, 3, 4]
-    @State var lastDisplayIndex = 4
-    // ===============================================================
-//    @State var displayedChallenges: [Int] {
-//        Array(self.challengeViewModel.filteredChallenges.indices[0..<5])
-//    }
-//    @State var lastDisplayIndex: Int {
-//        self.displayedChallenges.max()!
-//    }
-    // ===============================================================
+
     @State var showOngoingPage = false
     
     @State private var selectedTab = 0
@@ -59,10 +49,10 @@ struct GenerateChallengeView: View {
                 //Category Capsule
                 HStack(spacing: 4) {
                     //TODO: Set Category Value
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Food", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $lastDisplayIndex)
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Entertainment", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $lastDisplayIndex)
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Travel", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $lastDisplayIndex)
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Well-being", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $lastDisplayIndex)
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Food", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $challengeViewModel.lastDisplayIndex)
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Entertainment", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $challengeViewModel.lastDisplayIndex)
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Travel", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $challengeViewModel.lastDisplayIndex)
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Well-being", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $challengeViewModel.lastDisplayIndex)
                 }
                 .frame(maxWidth: 347)
                 
@@ -71,25 +61,8 @@ struct GenerateChallengeView: View {
                 ZStack() {
 
                     ForEach(self.challengeViewModel.displayedChallenges.reversed(), id: \.self) { i in // i: 4 3 2 1 0
-                        if i >= 1000 {
-                            ChallengeCardView(challenge: self.challengeViewModel.filteredChallenges[i - 1000], vm: self.challengeViewModel, currentIndex: $challengeViewModel.lastDisplayIndex, displayedChallenges: $challengeViewModel.displayedChallenges, shiftIndex: challengeViewModel.lastDisplayIndex - (i - 1000) + 1, printI: i)
-                        } else {
-                            ChallengeCardView(challenge: self.challengeViewModel.filteredChallenges[i], vm: self.challengeViewModel, currentIndex: $challengeViewModel.lastDisplayIndex, displayedChallenges: $challengeViewModel.displayedChallenges, shiftIndex: challengeViewModel.lastDisplayIndex - i, printI: i)
-                                .onAppear {
-                                    if i == 4 {
-                                        self.challengeViewModel.lastDisplayIndex += 1
-                                    }
-                                }
-                        }
+                        ChallengeCardView(challenge: self.challengeViewModel.filteredChallenges[i], vm: self.challengeViewModel, currentIndex: $challengeViewModel.lastDisplayIndex, displayedChallenges: $challengeViewModel.displayedChallenges, shiftIndex: challengeViewModel.lastDisplayIndex - i, printI: i)
                     }
-                }
-//                .onChange(of: lastDisplayIndex) { newValue in
-//                    print("lastDisplayIndex: \(lastDisplayIndex)")
-//                    addNewDisplay()
-//                }
-                .onChange(of: self.challengeViewModel.lastDisplayIndex) { newValue in
-//                    print("lastDisplayIndex: \(lastDisplayIndex)")
-                    addNewDisplay()
                 }
                 .padding(.vertical, 10)
                 
@@ -105,8 +78,7 @@ struct GenerateChallengeView: View {
                 .buttonStyle(FixedSizeRoundedButtonStyle())
                 .zIndex(-99)
                 .padding(.horizontal, 24)
-//                .padding(.top, 50)
-                .padding(.top, 150)
+                .padding(.top, 50)
                 
                 //Atur kembali ya paddingnya, karena ini sengaja diubah buat ga tentuin maxwidthnya, supaya bisa responsif
                 //Sejauh ini yang gue pake itu kiri kanan atas bawah 24, tapi di taruh di container paling luar, dalam struktur file ini itu ZStack
@@ -165,21 +137,7 @@ struct GenerateChallengeView: View {
                     break
                 }
             }
-        }
-    }
-
-    func addNewDisplay(){
-//        let a = self.lastDisplayIndex
-        let a = self.challengeViewModel.lastDisplayIndex
-        let b = challengeViewModel.filteredChallenges.count
-        self.challengeViewModel.displayedChallenges.append(a % b) // 4 % x
-//        print("displayedChallenges: \(displayedChallenges)")
-        if self.challengeViewModel.displayedChallenges.count > 5 {
-//            return withAnimation(.easeOut(duration: 8)) {
-            return withAnimation(.easeOut(duration: 0)) {
-                self.challengeViewModel.displayedChallenges.removeFirst()
-//                print("displayed challenge: \(displayedChallenges)")
-            }
+            
         }
     }
 }
