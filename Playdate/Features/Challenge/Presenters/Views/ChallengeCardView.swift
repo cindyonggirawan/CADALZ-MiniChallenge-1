@@ -7,23 +7,17 @@
 
 import SwiftUI
 
-
 struct ChallengeCardView: View {
     let challenge: Challenge
     @ObservedObject var vm: ChallengeViewModel
-    @Binding var currentIndex: Int
-    @Binding var displayedChallenges: [Int]
     var shiftIndex: Int
-    let printI: Int
     @State var x: Bool = false
     
-//    @StateObject var vm = ChallengeViewModel()
     @State var offSet: CGSize = .zero
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack{
-                Text(String(self.shiftIndex))
                 Spacer()
                 Text("90% Couple liked this challenge")
                     .frame(maxWidth: .infinity)
@@ -43,8 +37,7 @@ struct ChallengeCardView: View {
             
             HStack{
                 Spacer()
-//                Text("PLAYDATE")
-                Text(challenge.category ?? "NO CATEGORY")
+                Text("PLAYDATE")
                     .font(.system(size: 14))
                     .fontWeight(.medium)
                     .foregroundColor(.primaryWhite)
@@ -60,7 +53,7 @@ struct ChallengeCardView: View {
         .rotationEffect(Angle(degrees: 4.5 * getCardRotation()))
         .offset(self.getOffSet(index: shiftIndex))
         .scaleEffect(getScaleEffect(index: shiftIndex))
-        .gesture(
+        .gesture( shiftIndex % self.vm.filteredChallenges.count == 4 ?
             DragGesture()
                 .onChanged({ value in
                     self.offSet = value.translation
@@ -85,13 +78,14 @@ struct ChallengeCardView: View {
                 })
                 .onEnded({ _ in
                     if x {
-                        withAnimation(.easeIn(duration: 0.2).delay(0.17)) {
+                        withAnimation(.easeIn(duration: 0.2).delay(0.1)) {
                             self.addDisplayChallenge()
                         }
                     }
                 })
+                  : nil
         )
-        .zIndex(7)
+        .zIndex(2)
     }
     
     func getOffSet(index: Int) -> CGSize {

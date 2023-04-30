@@ -61,7 +61,7 @@ struct GenerateChallengeView: View {
                 ZStack() {
 
                     ForEach(self.challengeViewModel.displayedChallenges.reversed(), id: \.self) { i in // i: 4 3 2 1 0
-                        ChallengeCardView(challenge: self.challengeViewModel.filteredChallenges[i], vm: self.challengeViewModel, currentIndex: $challengeViewModel.lastDisplayIndex, displayedChallenges: $challengeViewModel.displayedChallenges, shiftIndex: challengeViewModel.lastDisplayIndex - i, printI: i)
+                        ChallengeCardView(challenge: self.challengeViewModel.filteredChallenges[i], vm: self.challengeViewModel, shiftIndex: challengeViewModel.lastDisplayIndex - i)
                     }
                 }
                 .padding(.vertical, 10)
@@ -76,7 +76,7 @@ struct GenerateChallengeView: View {
                         .font(.custom("Poppins-Bold", size: 14))
                 })
                 .buttonStyle(FixedSizeRoundedButtonStyle())
-                .zIndex(-99)
+                .zIndex(-1)
                 .padding(.horizontal, 24)
                 .padding(.top, 50)
                 
