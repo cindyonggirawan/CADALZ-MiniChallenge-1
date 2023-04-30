@@ -10,6 +10,8 @@ import SwiftUI
 struct CategoryCapsuleView: View {
     @ObservedObject var challengeViewModel: ChallengeViewModel
     var category: String
+    @Binding var displayedChallenges: [Int]
+    @Binding var lastDisplayIndex: Int
     
     @State var isClicked: Bool = false
     
@@ -25,34 +27,24 @@ struct CategoryCapsuleView: View {
             .onTapGesture {
                 self.isClicked.toggle()
                 
+                
                 if self.isClicked {
+                    
+//                    if !self.challengeViewModel.capsuleIsClickedOnce {
+//                        self.challengeViewModel.filteredChallenges.removeAll()
+//                    }
+                    
+                    self.challengeViewModel.filteredChallenges = self.challengeViewModel.filteredChallenges.filter({ chl in
+                        return chl.category! == self.category
+                    })
+                    
 
-                    if !self.challengeViewModel.capsuleIsClickedOnce { self.challengeViewModel.filteredChallenges.removeAll() }
-                    
-                    for challenge in challengeViewModel.challenges {
-                        let challengeCategory: String = challenge.category ?? "No Category Name"
-                        if self.category == challengeCategory {
-                            
-//                            print(challengeCategory)
-                            self.challengeViewModel.filteredChallenges.append(challenge)
-                        }
-                    }
-                    
-                    self.challengeViewModel.filteredChallenges = self.challengeViewModel.filteredChallenges.shuffled()
+                    self.challengeViewModel.displayedChallenges =  [1000, 1001, 1002, 1003, 1004]
+                    self.challengeViewModel.lastDisplayIndex = 4
+
                     self.challengeViewModel.capsuleIsClickedOnce = true
                 } else {
-                    if self.challengeViewModel.filteredChallenges.count == 0 {
-                        print("masuk")
-                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
-                    }
-                    for challenge in challengeViewModel.filteredChallenges {
-                        let challengeCategory: String = challenge.category ?? "No Category Name"
-                        if self.category == challengeCategory {
-                            if let index = challengeViewModel.filteredChallenges.firstIndex(of: challenge) {
-                                challengeViewModel.filteredChallenges.remove(at: index)
-                            }
-                        }
-                    }
+                    self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
                 }
             }
     }

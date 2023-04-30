@@ -7,36 +7,22 @@
 
 import SwiftUI
 
-//struct ChallengeCardView: View {
-//    var challenge: Challenge
-//    @Binding var currentIndex: Int
-////    @State var cardOne: Int
-////    @State var cardTwo: Int
-////    @State var cardThree: Int
-//
-//    @State var offSet: CGSize = CGSize(width: 0, height: 0) // .zero
-//
-//    var body: some View {
-//        //TODO: SET UP view data based on coredata
-//
-//        if let _ = challenge.category {
-//            CardView(challenge: challenge, offSet: offSet, currentIndex: $currentIndex)
-//        }
-//
-//    }
-//}
 
 struct ChallengeCardView: View {
     let challenge: Challenge
+    @ObservedObject var vm: ChallengeViewModel
     @Binding var currentIndex: Int
+    @Binding var displayedChallenges: [Int]
     var shiftIndex: Int
+    let printI: Int
     
-    @StateObject var vm = ChallengeViewModel()
+//    @StateObject var vm = ChallengeViewModel()
     @State var offSet: CGSize = .zero
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack{
+                Text(String(self.shiftIndex))
                 Spacer()
                 Text("90% Couple liked this challenge")
                     .frame(maxWidth: .infinity)
@@ -100,24 +86,13 @@ struct ChallengeCardView: View {
         .zIndex(1)
     }
     
-    func getRandomRotation(index: Int) -> Double {
-        if index < 4 {
-            return Double.random(in: -3...3)
-        } else {
-            return 0.0
-        }
-    }
-    
     func getOffSet(index: Int) -> CGSize {
         let index = index % self.vm.filteredChallenges.count
-        
         if (index == 4 || index == 3) {
-//            print(">>", index)
             return CGSize(
                 width: self.offSet.width + 0,
                 height: self.offSet.height - (Double(index - 4) * 40.0))
         } else {
-//            print("^^", index)
             return CGSize(
                 width: self.offSet.width + 0,
                 height: self.offSet.height + 2 * 40.0)
@@ -126,7 +101,7 @@ struct ChallengeCardView: View {
     
     func getScaleEffect(index: Int) -> Double {
         let index = index % self.vm.filteredChallenges.count
-        
+
         if index == 4 {
             return 1.0
         } else if index == 3 {
@@ -138,15 +113,15 @@ struct ChallengeCardView: View {
     
     func checkChallengeCategoryColor(challengeCategory: String) -> Color {
         if challengeCategory.lowercased() == "travel" {
-            return Color.primaryPurple
-        } else if challengeCategory.lowercased() == "entertainment" {
             return Color.primaryGreen
-        } else if challengeCategory.lowercased() == "sport" {
+        } else if challengeCategory.lowercased() == "entertainment" {
+            return Color.primaryPurple
+        } else if challengeCategory.lowercased() == "food" {
             return Color.primaryRed
-        } else if (challengeCategory.lowercased() == "wellbeing" || challengeCategory.lowercased() == "well-being") { // di core data belum "well-being" !
+        } else if (challengeCategory.lowercased() == "well-being") {
             return Color.primaryOrange
         } else {
-            return Color.pink
+            return Color.gray
         }
     }
     
@@ -167,8 +142,8 @@ struct ChallengeCardView: View {
     }
     
     func addDisplayChallenge(){
-        currentIndex += 1
-//        print(currentIndex)
+//        currentIndex += 1
+        self.vm.lastDisplayIndex += 1
     }
     
     

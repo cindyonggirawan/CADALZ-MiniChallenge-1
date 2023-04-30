@@ -13,7 +13,8 @@ class ChallengeViewModel: ObservableObject {
     var challenges: [Challenge] = []
     @Published var capsuleIsClickedOnce = false
     @Published var filteredChallenges: [Challenge] = []
-    
+    @Published var displayedChallenges: [Int] = [0, 1, 2, 3, 4]
+    @Published var lastDisplayIndex: Int = 4
     
     @Published var index: Int = 0
     @State var cardViews: [ChallengeCardView] = []
@@ -21,6 +22,7 @@ class ChallengeViewModel: ObservableObject {
     init() {
         getChallenges()
         self.filteredChallenges = self.challenges.shuffled()
+//        print("Filtered Challenges (count):", filteredChallenges.count)
 //        self.filteredChallenges = Array(self.challenges.shuffled()[0..<5])
     }
     

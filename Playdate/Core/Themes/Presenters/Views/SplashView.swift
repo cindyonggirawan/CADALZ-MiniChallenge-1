@@ -58,7 +58,8 @@ struct SplashView: View {
         }
         .background(Color.primaryPurple)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
                 self.isActive = true
             }
         }
