@@ -10,9 +10,10 @@ import Firebase
 
 class DataManager: ObservableObject {
     @Published var Challenges: [ChallengeFB] = []
-    @StateObject var challengeViewModel = ChallengeViewModel()
+    @ObservedObject var challengeViewModel: ChallengeViewModel
     
     init(){
+        self.challengeViewModel = ChallengeViewModel()
         fetchChallenges()
 //        syncWithFirebase()
     }

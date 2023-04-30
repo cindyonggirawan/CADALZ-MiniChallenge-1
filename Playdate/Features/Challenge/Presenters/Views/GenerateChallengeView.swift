@@ -13,7 +13,6 @@ struct GenerateChallengeView: View {
     @StateObject var challengeViewModel = ChallengeViewModel()
     @StateObject var memoryViewModel = MemoryViewModel()
     @StateObject var userViewModel = UserViewModel()
-//    var challenges: [Challenge] = []
     
     @State var currentChallenges: Challenge = Challenge()
 

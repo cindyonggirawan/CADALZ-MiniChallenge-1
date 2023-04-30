@@ -143,8 +143,7 @@ struct ChallengeCardView: View {
         return abs(self.offSet.height) / screenHeight
     }
     
-    func addDisplayChallenge(){
-//        currentIndex += 1
+    func addDisplayChallenge() {
         self.vm.lastDisplayIndex += 1
         
         let a = self.vm.lastDisplayIndex

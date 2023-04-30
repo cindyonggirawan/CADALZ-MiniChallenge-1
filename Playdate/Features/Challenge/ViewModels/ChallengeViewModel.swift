@@ -18,9 +18,6 @@ class ChallengeViewModel: ObservableObject {
     @Published var lastDisplayIndex: Int = 4
     @Published var clickedCapsules: [String] = []
     
-    @Published var index: Int = 0
-    @State var cardViews: [ChallengeCardView] = []
-    
     init() {
         getChallenges()
         self.filteredChallenges = self.challenges.shuffled()
@@ -67,38 +64,6 @@ class ChallengeViewModel: ObservableObject {
     
     func save() {
         manager.save()
-    }
-    
-    func getCards() -> AnyView {
-//        let content = ForEach(self.filteredChallenges.indices, id: \.self) { index in
-//            CardView(challenge: self.filteredChallenges[index], index: index)
-//        }
-        
-//        self.cardViews.append(CardView(challenge: self.filteredChallenges[index], index: index))
-        
-//        index += 1
-//        print(index)
-//        self.cardViews.append(CardView(challenge: self.filteredChallenges[index], index: index))
-//
-//        index += 1
-//        self.cardViews.append(CardView(challenge: self.filteredChallenges[index], index: index))
-//
-//        index += 1
-//        self.cardViews.append(CardView(challenge: self.filteredChallenges[index], index: index))
-//
-//        index += 1
-//        self.cardViews.append(CardView(challenge: self.filteredChallenges[index], index: index))
-        
-//        let content = ForEach(self.filteredChallenges.indices, id: \.self) { i in
-//            CardView(challenge: self.filteredChallenges[i], index: i)
-//        }
-        
-        
-        return AnyView(
-            ZStack {
-                EmptyView()
-            }
-        )
     }
     
 }
