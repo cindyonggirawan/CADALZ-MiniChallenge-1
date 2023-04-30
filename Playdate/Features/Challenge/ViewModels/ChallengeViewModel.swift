@@ -12,8 +12,11 @@ class ChallengeViewModel: ObservableObject {
     let manager = CoreDataManager.instance
     var challenges: [Challenge] = []
     @Published var capsuleIsClickedOnce = false
-    @Published var filteredChallenges: [Challenge] = []
     
+    @Published var filteredChallenges: [Challenge] = []
+    @Published var displayedChallenges: [Int] = [0, 1, 2, 3, 4]
+    @Published var lastDisplayIndex: Int = 4
+    @Published var clickedCapsules: [String] = []
     
     @Published var index: Int = 0
     @State var cardViews: [ChallengeCardView] = []
@@ -21,7 +24,7 @@ class ChallengeViewModel: ObservableObject {
     init() {
         getChallenges()
         self.filteredChallenges = self.challenges.shuffled()
-//        self.filteredChallenges = Array(self.challenges.shuffled()[0..<5])
+//        print("Filtered Challenges (count):", filteredChallenges.count)
     }
     
     func getChallenges(){

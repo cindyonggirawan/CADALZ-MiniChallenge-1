@@ -10,6 +10,8 @@ import SwiftUI
 struct CategoryCapsuleView: View {
     @ObservedObject var challengeViewModel: ChallengeViewModel
     var category: String
+    @Binding var displayedChallenges: [Int]
+    @Binding var lastDisplayIndex: Int
     
     @State var isClicked: Bool = false
     
@@ -25,36 +27,53 @@ struct CategoryCapsuleView: View {
             .onTapGesture {
                 self.isClicked.toggle()
                 
+                
                 if self.isClicked {
-
-                    if !self.challengeViewModel.capsuleIsClickedOnce { self.challengeViewModel.filteredChallenges.removeAll() }
                     
-                    for challenge in challengeViewModel.challenges {
-                        let challengeCategory: String = challenge.category ?? "No Category Name"
-                        if self.category == challengeCategory {
-                            
-//                            print(challengeCategory)
-                            self.challengeViewModel.filteredChallenges.append(challenge)
-                        }
+                    if !self.challengeViewModel.capsuleIsClickedOnce {
+                        
+                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.filteredChallenges.filter({ chl in
+                            return chl.category! == self.category
+                        })
+                        self.challengeViewModel.capsuleIsClickedOnce = true
+                    } else {
+                        let newFilteredChlgs = self.challengeViewModel.challenges.filter({ chl in
+                            return chl.category! == self.category
+                        })
+                        
+                        self.challengeViewModel.filteredChallenges += newFilteredChlgs
+                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.filteredChallenges.shuffled()
                     }
                     
-                    self.challengeViewModel.filteredChallenges = self.challengeViewModel.filteredChallenges.shuffled()
-                    self.challengeViewModel.capsuleIsClickedOnce = true
+                    self.restartCardIndices()
+                    
+                    // tell which capsules r clicked
+                    self.challengeViewModel.clickedCapsules.append(self.category)
                 } else {
-                    if self.challengeViewModel.filteredChallenges.count == 0 {
-                        print("masuk")
-                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
-                    }
-                    for challenge in challengeViewModel.filteredChallenges {
-                        let challengeCategory: String = challenge.category ?? "No Category Name"
-                        if self.category == challengeCategory {
-                            if let index = challengeViewModel.filteredChallenges.firstIndex(of: challenge) {
-                                challengeViewModel.filteredChallenges.remove(at: index)
-                            }
+                    
+                    if self.challengeViewModel.clickedCapsules.count != 1 {
+                        self.challengeViewModel.filteredChallenges.removeAll { chl in
+                            return chl.category! == self.category
                         }
+                    } else {
+                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
+                        self.challengeViewModel.capsuleIsClickedOnce = false // return to initial state
+                    }
+                    
+                    self.restartCardIndices()
+
+                    // unclicked capsules
+                    if let index = self.challengeViewModel.clickedCapsules.firstIndex(where: { $0 == self.category }) {
+                        self.challengeViewModel.clickedCapsules.remove(at: index)
                     }
                 }
             }
+    }
+    
+    func restartCardIndices() -> () {
+        // restart cards' indices
+        self.challengeViewModel.displayedChallenges =  [0, 1, 2, 3, 4]
+        self.challengeViewModel.lastDisplayIndex = 4
     }
     
     func getForegroundColor(_ category: String) -> Color {

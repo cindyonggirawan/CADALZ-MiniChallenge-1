@@ -7,31 +7,12 @@
 
 import SwiftUI
 
-//struct ChallengeCardView: View {
-//    var challenge: Challenge
-//    @Binding var currentIndex: Int
-////    @State var cardOne: Int
-////    @State var cardTwo: Int
-////    @State var cardThree: Int
-//
-//    @State var offSet: CGSize = CGSize(width: 0, height: 0) // .zero
-//
-//    var body: some View {
-//        //TODO: SET UP view data based on coredata
-//
-//        if let _ = challenge.category {
-//            CardView(challenge: challenge, offSet: offSet, currentIndex: $currentIndex)
-//        }
-//
-//    }
-//}
-
 struct ChallengeCardView: View {
     let challenge: Challenge
-    @Binding var currentIndex: Int
+    @ObservedObject var vm: ChallengeViewModel
     var shiftIndex: Int
+    @State var x: Bool = false
     
-    @StateObject var vm = ChallengeViewModel()
     @State var offSet: CGSize = .zero
     
     var body: some View {
@@ -57,7 +38,6 @@ struct ChallengeCardView: View {
             HStack{
                 Spacer()
                 Text("PLAYDATE")
-//                Text(challenge.category ?? "NO CATEGORY")
                     .font(.system(size: 14))
                     .fontWeight(.medium)
                     .foregroundColor(.primaryWhite)
@@ -73,51 +53,48 @@ struct ChallengeCardView: View {
         .rotationEffect(Angle(degrees: 4.5 * getCardRotation()))
         .offset(self.getOffSet(index: shiftIndex))
         .scaleEffect(getScaleEffect(index: shiftIndex))
-        
-        .gesture(
+        .gesture( shiftIndex % self.vm.filteredChallenges.count == 4 ?
             DragGesture()
                 .onChanged({ value in
                     self.offSet = value.translation
+                    self.x = false
                 })
                 .onEnded({ value in
                     if self.xOffsetPortion() >= 0.2 || self.yOffsetPortion() >= 0.2 {
-                        withAnimation(.easeOut(duration: 8)) {
-                            let newWidth: Double = self.offSet.width + 10*value.translation.width
-                            let newHeight: Double = self.offSet.height + 10*value.translation.height
-                            
+                        
+                        withAnimation(.easeOut(duration: 7)) {
+                            let newWidth: Double = self.offSet.width + 60*value.translation.width
+                            let newHeight: Double = self.offSet.height + 60*value.translation.height
+
                             self.offSet = CGSize(width: newWidth, height: newHeight)
                         }
-                        withAnimation(.easeIn(duration: 0.25)) {
-                            addDisplayChallenge()
-                        }
+                        self.x = true
+                        
                     } else {
                         withAnimation(.easeIn(duration: 0.2)) {
                             self.offSet = .zero
                         }
                     }
                 })
+                .onEnded({ _ in
+                    if x {
+                        withAnimation(.easeIn(duration: 0.2).delay(0.1)) {
+                            self.addDisplayChallenge()
+                        }
+                    }
+                })
+                  : nil
         )
-        .zIndex(1)
-    }
-    
-    func getRandomRotation(index: Int) -> Double {
-        if index < 4 {
-            return Double.random(in: -3...3)
-        } else {
-            return 0.0
-        }
+        .zIndex(2)
     }
     
     func getOffSet(index: Int) -> CGSize {
         let index = index % self.vm.filteredChallenges.count
-        
         if (index == 4 || index == 3) {
-//            print(">>", index)
             return CGSize(
                 width: self.offSet.width + 0,
                 height: self.offSet.height - (Double(index - 4) * 40.0))
         } else {
-//            print("^^", index)
             return CGSize(
                 width: self.offSet.width + 0,
                 height: self.offSet.height + 2 * 40.0)
@@ -126,7 +103,7 @@ struct ChallengeCardView: View {
     
     func getScaleEffect(index: Int) -> Double {
         let index = index % self.vm.filteredChallenges.count
-        
+
         if index == 4 {
             return 1.0
         } else if index == 3 {
@@ -138,15 +115,15 @@ struct ChallengeCardView: View {
     
     func checkChallengeCategoryColor(challengeCategory: String) -> Color {
         if challengeCategory.lowercased() == "travel" {
-            return Color.primaryPurple
-        } else if challengeCategory.lowercased() == "entertainment" {
-            return Color.primaryGreen
-        } else if challengeCategory.lowercased() == "sport" {
-            return Color.primaryRed
-        } else if (challengeCategory.lowercased() == "wellbeing" || challengeCategory.lowercased() == "well-being") { // di core data belum "well-being" !
             return Color.primaryOrange
+        } else if challengeCategory.lowercased() == "entertainment" {
+            return Color.primaryPurple
+        } else if challengeCategory.lowercased() == "food" {
+            return Color.primaryRed
+        } else if (challengeCategory.lowercased() == "well-being") {
+            return Color.primaryGreen
         } else {
-            return Color.pink
+            return Color.gray
         }
     }
     
@@ -167,17 +144,17 @@ struct ChallengeCardView: View {
     }
     
     func addDisplayChallenge(){
-        currentIndex += 1
-//        print(currentIndex)
+//        currentIndex += 1
+        self.vm.lastDisplayIndex += 1
+        
+        let a = self.vm.lastDisplayIndex
+        let b = vm.filteredChallenges.count
+        
+        self.vm.displayedChallenges.append(a % b)
+        
+        if self.vm.displayedChallenges.count > 5 {
+                self.vm.displayedChallenges.removeFirst()
+        }
     }
     
-    
-    
 }
-
-//
-//struct ChallengeCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChallengeCardView()
-//    }
-//}

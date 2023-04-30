@@ -16,8 +16,7 @@ struct GenerateChallengeView: View {
 //    var challenges: [Challenge] = []
     
     @State var currentChallenges: Challenge = Challenge()
-    @State var displayedChallenges = [0, 1, 2, 3, 4]
-    @State var lastDisplayIndex = 4
+
     @State var showOngoingPage = false
     
     @State private var selectedTab = 0
@@ -50,10 +49,10 @@ struct GenerateChallengeView: View {
                 //Category Capsule
                 HStack(spacing: 4) {
                     //TODO: Set Category Value
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Food")
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Entertainment")
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Travel")
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Well-being")
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Food", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $challengeViewModel.lastDisplayIndex)
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Entertainment", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $challengeViewModel.lastDisplayIndex)
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Travel", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $challengeViewModel.lastDisplayIndex)
+                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Well-being", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $challengeViewModel.lastDisplayIndex)
                 }
                 .frame(maxWidth: 347)
                 
@@ -61,28 +60,9 @@ struct GenerateChallengeView: View {
                 //TODO: Card ZStack View & Logic
                 ZStack() {
 
-                    ForEach(self.displayedChallenges.reversed(), id: \.self) { i in
-                        ChallengeCardView(challenge: self.challengeViewModel.filteredChallenges[i], currentIndex: $lastDisplayIndex, shiftIndex: lastDisplayIndex - i)
-                            .onAppear {
-                                if displayedChallenges.count == 5 {
-                                    currentChallenges = challengeViewModel.filteredChallenges[displayedChallenges[0]]
-                                }else {
-                                    currentChallenges = challengeViewModel.filteredChallenges[displayedChallenges[1]]
-                                }
-                                
-//                                print("i:", i)
-//                                print("(filtered) count:", self.challengeViewModel.filteredChallenges.count)
-//                                print("(displayed) count:", self.displayedChallenges.count)
-//                                print("shiftIndex:", lastDisplayIndex - i)
-//                                print("================")
-                            }
+                    ForEach(self.challengeViewModel.displayedChallenges.reversed(), id: \.self) { i in // i: 4 3 2 1 0
+                        ChallengeCardView(challenge: self.challengeViewModel.filteredChallenges[i], vm: self.challengeViewModel, shiftIndex: challengeViewModel.lastDisplayIndex - i)
                     }
-                }
-                .onChange(of: lastDisplayIndex) { newValue in
-                    addNewDisplay()
-//                    if (self.challengeViewModel.filteredChallenges.count - self.displayedChallenges.max()! == 1) {
-//                        self.challengeViewModel.filteredChallenges = self.challengeViewModel.challenges.shuffled()
-//                    }
                 }
                 .padding(.vertical, 10)
                 
@@ -96,7 +76,7 @@ struct GenerateChallengeView: View {
                         .font(.custom("Poppins-Bold", size: 14))
                 })
                 .buttonStyle(FixedSizeRoundedButtonStyle())
-                .zIndex(-99)
+                .zIndex(-1)
                 .padding(.horizontal, 24)
                 .padding(.top, 50)
                 
@@ -157,19 +137,7 @@ struct GenerateChallengeView: View {
                     break
                 }
             }
-        }
-    }
-
-    func addNewDisplay(){
-        let a = lastDisplayIndex
-        let b = challengeViewModel.challenges.count
-        displayedChallenges.append(a % b)
-        if displayedChallenges.count > 6 {
-//            return withAnimation(.easeOut(duration: 8)) {
-            return withAnimation(.easeOut(duration: 0)) {
-                displayedChallenges.removeFirst()
-//                print("displayed challenge: \(displayedChallenges)")
-            }
+            
         }
     }
 }

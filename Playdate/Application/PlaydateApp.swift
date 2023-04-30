@@ -11,7 +11,6 @@ import Firebase
 @main
 struct PlaydateApp: App {
     @StateObject var dataManager =  DataManager()
-    let challengeViewModel = ChallengeViewModel()
     
     // Firebase configure API
     init(){
