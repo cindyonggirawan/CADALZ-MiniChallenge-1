@@ -92,6 +92,7 @@ struct ChallengeSubmitModal: View {
                 Button(action: {
                     //TODO: send isLike data to firebase
 //                    FBaddLikeToChallenge()
+//                    pake function ini buat simpen ke memory -> memoryViewModel.submitMemory(photo: <#T##UIImage#>, description: <#T##String#>) (BELUM DI TESTING SAMA SEKALI)
                 }, label: {
                     Text("Submit")
                         .font(.custom("Poppins-Bold", size: 14))

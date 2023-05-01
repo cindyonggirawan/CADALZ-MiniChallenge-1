@@ -34,6 +34,8 @@ class ChallengeViewModel: ObservableObject {
         }
     }
     
+    
+    
     func addChallenge(id: String, name: String, desc: String, like: Int, numberOfUser: Int, category: String){
         
         let newChallenge = Challenge(context: manager.context)

@@ -9,11 +9,11 @@
         <attribute name="numberOfUser" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="memory" toMany="YES" deletionRule="Nullify" destinationEntity="Memory" inverseName="challenge" inverseEntity="Memory"/>
     </entity>
-    <entity name="Memory" representedClassName="Memory" syncable="YES" codeGenerationType="class">
+    <entity name="Memory" representedClassName="Memory" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="momentDescription" optional="YES" attributeType="String"/>
-        <attribute name="photoURL" optional="YES" attributeType="String"/>
+        <attribute name="photo" optional="YES" attributeType="Transformable" customClassName="UIImage"/>
         <attribute name="status" optional="YES" attributeType="String"/>
         <relationship name="challenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Challenge" inverseName="memory" inverseEntity="Challenge"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="memory" inverseEntity="User"/>

@@ -40,6 +40,16 @@ class MemoryViewModel: ObservableObject {
         save()
     }
     
+    func submitMemory(photo: UIImage, description: String){
+        if memories[memories.count-1].status == "ongoing"{
+            memories[memories.count-1].photo = photo
+            memories[memories.count-1].momentDescription = description
+            save()
+        }else{
+            print("Error submiting memory")
+        }
+    }
+    
     func removeMemory() {
         if memories[memories.count-1].status == "ongoing"{
             manager.context.delete(memories[memories.count-1])
