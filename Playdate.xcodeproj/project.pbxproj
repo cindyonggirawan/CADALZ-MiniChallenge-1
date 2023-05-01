@@ -28,7 +28,6 @@
 		37E2999C29F61B1C00D7A150 /* submitPageExperimental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2999B29F61B1C00D7A150 /* submitPageExperimental.swift */; };
 		37E2999E29F6293800D7A150 /* UnborderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2999D29F6293800D7A150 /* UnborderedTextFieldStyle.swift */; };
 		37E299A029F62EE900D7A150 /* temporaryCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2999F29F62EE900D7A150 /* temporaryCountdownView.swift */; };
-		37E299A629F63E4C00D7A150 /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E299A529F63E4C00D7A150 /* Stopwatch.swift */; };
 		A5325A1529F40E8C0073219B /* ChallengeCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */; };
 		A5325A1729F5102E0073219B /* ChallengeSubmitModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */; };
 		A5325A1929F55CFB0073219B /* FirebaseFunctional.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1829F55CFB0073219B /* FirebaseFunctional.swift */; };
@@ -78,7 +77,6 @@
 		37E2999B29F61B1C00D7A150 /* submitPageExperimental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = submitPageExperimental.swift; sourceTree = "<group>"; };
 		37E2999D29F6293800D7A150 /* UnborderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnborderedTextFieldStyle.swift; sourceTree = "<group>"; };
 		37E2999F29F62EE900D7A150 /* temporaryCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temporaryCountdownView.swift; sourceTree = "<group>"; };
-		37E299A529F63E4C00D7A150 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardSmall.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardSmall.swift; sourceTree = SOURCE_ROOT; };
 		A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeSubmitModal.swift; sourceTree = "<group>"; };
 		A5325A1829F55CFB0073219B /* FirebaseFunctional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctional.swift; sourceTree = "<group>"; };
@@ -162,6 +160,7 @@
 		3763419429F2257900F37080 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				A9CA6A9429FC29000053323A /* UserViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -371,7 +370,6 @@
 		3798633029EFE21E002EC23B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				37E299A529F63E4C00D7A150 /* Stopwatch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -380,8 +378,6 @@
 			isa = PBXGroup;
 			children = (
 				A925E2E429F437DB000F66C9 /* ChallengeViewModel.swift */,
-				A925E2E629F446EC000F66C9 /* MemoryViewModel.swift */,
-				A9CA6A9429FC29000053323A /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -450,6 +446,7 @@
 		37E2997029F55F6300D7A150 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				A925E2E629F446EC000F66C9 /* MemoryViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -593,7 +590,6 @@
 				3798630729EFDD70002EC23B /* ContentView.swift in Sources */,
 				3763418C29F2207C00F37080 /* RoundedButtonStyle.swift in Sources */,
 				37E2996E29F55D9400D7A150 /* BorderedTextFieldStyle.swift in Sources */,
-				37E299A629F63E4C00D7A150 /* Stopwatch.swift in Sources */,
 				3763418829F2172C00F37080 /* SplashView.swift in Sources */,
 				37E2999C29F61B1C00D7A150 /* submitPageExperimental.swift in Sources */,
 				A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */,

@@ -53,6 +53,9 @@ struct TabBarView: View {
                 .tag(2)
         }
         .accentColor(Color.primaryDarkBlue)
+        .onAppear() {
+            UITabBar.appearance().backgroundColor = .white
+        }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .edgesIgnoringSafeArea(.all)
         .tabViewStyle(DefaultTabViewStyle())

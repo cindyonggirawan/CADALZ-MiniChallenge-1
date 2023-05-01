@@ -47,6 +47,13 @@ class MemoryViewModel: ObservableObject {
         }
     }
     
+    func removeAllMemories() {
+        for m in memories {
+            manager.context.delete(m)
+            save()
+        }
+    }
+    
     func checkChallengeCategoryColor(memory: Memory) -> Color {
         if memory.challenge?.category?.lowercased() == "travel" {
             return Color.primaryPurple

@@ -16,7 +16,7 @@ class UserViewModel: ObservableObject {
         getUsers()
     }
     
-    func getUsers(){
+    func getUsers() {
         let req = NSFetchRequest<User>(entityName: "User")
         
         do {
@@ -26,7 +26,7 @@ class UserViewModel: ObservableObject {
         }
     }
     
-    func addUser(name: String){
+    func addUser(name: String) {
         let newUser = User(context: manager.context)
         newUser.id = UUID()
         newUser.name = name
@@ -34,7 +34,16 @@ class UserViewModel: ObservableObject {
         save()
     }
     
-    func save(){
+    func removeUser(name: String) {
+        for u in user {
+            if u.name == name {
+                manager.context.delete(u)
+                save()
+            }
+        }
+    }
+    
+    func save() {
         manager.save()
     }
     
