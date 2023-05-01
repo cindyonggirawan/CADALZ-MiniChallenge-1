@@ -41,8 +41,8 @@ class ChallengeViewModel: ObservableObject {
         newChallenge.id = id
         newChallenge.name = name
         newChallenge.desc = desc
-        newChallenge.like = 0
-        newChallenge.numberOfUser = 0
+        newChallenge.like = Int64(like)
+        newChallenge.numberOfUser = Int64(numberOfUser)
         newChallenge.category = category
         save()
     }
@@ -53,12 +53,12 @@ class ChallengeViewModel: ObservableObject {
             c.id = id
             c.name = name
             c.desc = desc
-            c.like = 0
-            c.numberOfUser = 0
+            c.like = Int64(like)
+            c.numberOfUser = Int64(numberOfUser)
             c.category = category
             print("index: \(index)")
         }else {
-            addChallenge(id: id, name: name, desc: desc, like: like, numberOfUser: numberOfUser, category: category)
+            addChallenge(id: id, name: name, desc: desc, like: Int(like), numberOfUser: Int(numberOfUser), category: category)
         }
     }
     

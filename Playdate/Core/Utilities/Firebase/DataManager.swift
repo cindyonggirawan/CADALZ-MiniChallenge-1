@@ -28,8 +28,8 @@ class DataManager: ObservableObject {
                     id: challenge.id,
                     name: challenge.name,
                     desc: challenge.description,
-                    like: challenge.like,
-                    numberOfUser: challenge.numberOfUser,
+                    like: Int(challenge.like),
+                    numberOfUser: Int(challenge.numberOfUser),
                     category: challenge.category)
             }
         } else {

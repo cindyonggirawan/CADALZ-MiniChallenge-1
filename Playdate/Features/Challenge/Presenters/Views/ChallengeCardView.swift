@@ -15,11 +15,21 @@ struct ChallengeCardView: View {
     
     @State var offSet: CGSize = .zero
     
+    var statusStr: String {
+            return generateStatus(
+                id: challenge.id!,
+                like: challenge.like,
+                user: challenge.numberOfUser
+            )
+    }
+    
     var body: some View {
+        
         VStack(alignment: .leading) {
             HStack{
                 Spacer()
-                Text("90% Couple liked this challenge")
+//                Text("90% Couple liked this challenge")
+                Text(statusStr)
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 14))
                     .fontWeight(.semibold)
@@ -154,6 +164,25 @@ struct ChallengeCardView: View {
         if self.vm.displayedChallenges.count > 5 {
                 self.vm.displayedChallenges.removeFirst()
         }
+    }
+    
+    func generateStatus(id: String, like: Int64, user: Int64) -> String {
+        /* Function to generate tab bar string of message of every card
+         if the numberOfUser are lower than userMinimum, output string of text without calculation
+         */
+        let userMinimum = 3
+        var statusStr = ""
+        
+        if (user < userMinimum){
+            statusStr = "Be the first to play this challenge"
+        } else {
+            var percentage = Float(like)/Float(user)*100
+            statusStr = "\(String(format: "%.0f", percentage))% Couple liked this challenge"
+        }
+        
+        // debugging line
+//        print("id: \(id) | like: \(like) | user: \(user) | percentage: \(String(format: "%.0f", percentage))")
+        return statusStr
     }
     
 }
