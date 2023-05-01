@@ -61,6 +61,9 @@ struct GenerateChallengeView: View {
 
                     ForEach(self.challengeViewModel.displayedChallenges.reversed(), id: \.self) { i in // i: 4 3 2 1 0
                         ChallengeCardView(challenge: self.challengeViewModel.filteredChallenges[i], vm: self.challengeViewModel, shiftIndex: challengeViewModel.lastDisplayIndex - i)
+                            .onAppear {
+                                currentChallenges = challengeViewModel.filteredChallenges[challengeViewModel.displayedChallenges[0]]
+                            }
                     }
                 }
                 .padding(.vertical, 10)
