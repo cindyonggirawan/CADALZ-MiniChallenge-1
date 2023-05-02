@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OngoingChallengeView: View {
     @StateObject var memoryViewModel = MemoryViewModel()
+    @StateObject var challengeViewModel = ChallengeViewModel()
     @StateObject var userViewModel = UserViewModel()
     
     @State var showSheet = false
@@ -71,7 +72,17 @@ struct OngoingChallengeView: View {
             }
             .padding(.vertical, 25)
             .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.6)
-            .background(memoryViewModel.checkChallengeCategoryColor(memory: memoryViewModel.memories[memoryViewModel.memories.count-1]))
+            .background(
+                Image(challengeViewModel.getDoodle(category: (memoryViewModel.memories[memoryViewModel.memories.count-1].challenge?.category)!))
+                    .resizable()
+                    .scaledToFill()
+    //                .frame(width: 500, height: 500)
+                    .opacity(0.12)
+                    .background(memoryViewModel.checkChallengeCategoryColor(memory: memoryViewModel.memories[memoryViewModel.memories.count-1]))
+                    .frame(width: 600, height: UIScreen.main.bounds.height * 0.6)
+                    .ignoresSafeArea(.all)
+            )
+//            .background(memoryViewModel.checkChallengeCategoryColor(memory: memoryViewModel.memories[memoryViewModel.memories.count-1]))
             
             VStack {
                 Button(action: {

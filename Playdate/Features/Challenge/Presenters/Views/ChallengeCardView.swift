@@ -60,6 +60,7 @@ struct ChallengeCardView: View {
         .background(
             Image(vm.getDoodle(category: challenge.category!))
                 .resizable()
+                .scaledToFill()
 //                .frame(width: 500, height: 500)
                 .opacity(0.12)
                 .background(checkChallengeCategoryColor(challengeCategory: challenge.category!))

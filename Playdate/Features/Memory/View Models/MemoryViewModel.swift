@@ -69,7 +69,7 @@ class MemoryViewModel: ObservableObject {
             return Color.primaryPurple
         } else if memory.challenge?.category?.lowercased() == "entertainment" {
             return Color.primaryGreen
-        } else if memory.challenge?.category?.lowercased() == "sport" {
+        } else if memory.challenge?.category?.lowercased() == "food" {
             return Color.primaryRed
         } else if (memory.challenge?.category?.lowercased() == "wellbeing" || memory.challenge?.category?.lowercased() == "well-being") { // di core data belum "well-being" !
             return Color.primaryOrange
