@@ -80,11 +80,10 @@ struct OngoingChallengeView: View {
                     .resizable()
                     .scaledToFill()
                     .opacity(0.12)
-                    .background(memoryViewModel.checkChallengeCategoryColor(memory: currentMemories))
+                    .background(memoryViewModel.checkChallengeCategoryColor(challengeCategory: (currentMemories.challenge?.category)!))
                     .frame(width: 600, height: UIScreen.main.bounds.height * 0.6)
                     .ignoresSafeArea(.all)
             )
-//            .background(memoryViewModel.checkChallengeCategoryColor(memory: memoryViewModel.memories[memoryViewModel.memories.count-1]))
             
             VStack {
                 Button(action: {
