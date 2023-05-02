@@ -57,8 +57,19 @@ struct ChallengeCardView: View {
             }
         }
         .frame(width: 342, height: 368)
-        .background(checkChallengeCategoryColor(challengeCategory: challenge.category!))
+        .background(
+            Image(vm.getDoodle(category: challenge.category!))
+                .resizable()
+//                .frame(width: 500, height: 500)
+                .opacity(0.12)
+                .background(checkChallengeCategoryColor(challengeCategory: challenge.category!))
+                .frame(width: 600, height: 600)
+        )
+        .clipped()
+        .contentShape(Rectangle())
         .cornerRadius(16)
+//        .background(checkChallengeCategoryColor(challengeCategory: challenge.category!))
+//        .background(UIImage(named: vm.getDoodle(category: challenge.category!)))
         
         .rotationEffect(Angle(degrees: 4.5 * getCardRotation()))
         .offset(self.getOffSet(index: shiftIndex))
