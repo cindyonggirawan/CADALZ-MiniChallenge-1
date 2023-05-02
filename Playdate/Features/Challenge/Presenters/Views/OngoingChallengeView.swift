@@ -21,6 +21,9 @@ struct OngoingChallengeView: View {
     @State private var profileImageName = "profile-icon"
     
     var body: some View {
+        
+        let currentMemories = memoryViewModel.memories[memoryViewModel.memories.count-1]
+        
         VStack{
             VStack {
                 VStack(alignment: .leading) {
@@ -43,7 +46,7 @@ struct OngoingChallengeView: View {
                 //Challenge text
                 HStack {
                     // Ini penyebab error karena masih nil
-                    Text(memoryViewModel.memories[memoryViewModel.memories.count-1].challenge!.name!)
+                    Text(currentMemories.challenge!.name!)
                         .font(.custom("Poppins-SemiBold", size: 28))
                         .lineSpacing(4)
                         .foregroundColor(.primaryWhite)
@@ -56,7 +59,7 @@ struct OngoingChallengeView: View {
                 
                 //Countdown
                 VStack(spacing: 8) {
-                    TimerView(setDate: memoryViewModel.memories[memoryViewModel.memories.count-1].date!)
+                    TimerView(setDate: currentMemories.date!)
                         .font(.system(size: 24))
                         .fontWeight(.semibold)
                         .foregroundColor(.primaryWhite)
@@ -73,12 +76,11 @@ struct OngoingChallengeView: View {
             .padding(.vertical, 25)
             .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.6)
             .background(
-                Image(challengeViewModel.getDoodle(category: (memoryViewModel.memories[memoryViewModel.memories.count-1].challenge?.category)!))
+                Image(challengeViewModel.getDoodle(category: (currentMemories.challenge?.category)!))
                     .resizable()
                     .scaledToFill()
-    //                .frame(width: 500, height: 500)
                     .opacity(0.12)
-                    .background(memoryViewModel.checkChallengeCategoryColor(memory: memoryViewModel.memories[memoryViewModel.memories.count-1]))
+                    .background(memoryViewModel.checkChallengeCategoryColor(memory: currentMemories))
                     .frame(width: 600, height: UIScreen.main.bounds.height * 0.6)
                     .ignoresSafeArea(.all)
             )
