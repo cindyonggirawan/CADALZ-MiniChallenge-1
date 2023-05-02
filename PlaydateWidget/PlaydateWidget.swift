@@ -7,44 +7,47 @@
 
 import WidgetKit
 import SwiftUI
-import Intents
+//import Intents
 
-struct Provider: IntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+struct PlaydateTimelineProvider: TimelineProvider {
+    func placeholder(in context: Context) -> PlaydateTimelineEntry {
+        PlaydateTimelineEntry(date: Date(), image: UIImage(named: "dummyPhoto")!)
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
+    func getSnapshot(in context: Context, completion: @escaping (PlaydateTimelineEntry) -> ()) {
+        let entry = PlaydateTimelineEntry(date: Date(), image: UIImage(named: "dummyPhoto")!)
         completion(entry)
     }
 
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
+    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        var entries: [PlaydateTimelineEntry] = []
+        let policy: TimelineReloadPolicy = .atEnd
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
+        let entry = PlaydateTimelineEntry(date: Date(), image: UIImage(named: "dummyPhoto")!)
+        entries.append(entry)
 
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let timeline = Timeline(entries: entries, policy: policy )
         completion(timeline)
     }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct PlaydateTimelineEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationIntent
+    let image: UIImage
 }
 
 struct PlaydateWidgetEntryView : View {
-    var entry: Provider.Entry
+    var entry: PlaydateTimelineProvider.Entry
+    @StateObject var memoryViewModel = MemoryViewModel()
 
     var body: some View {
-        Text(entry.date, style: .time)
+        Image(uiImage: entry.image)
+            .resizable()
+            .scaledToFill()
+//        if let challenge = memoryViewModel.memories[memoryViewModel.memories.count-1].challenge {
+//            Text(challenge.name ?? "no")
+//        }
     }
 }
 
@@ -52,17 +55,17 @@ struct PlaydateWidget: Widget {
     let kind: String = "PlaydateWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        StaticConfiguration(kind: kind, provider: PlaydateTimelineProvider()) { entry in
             PlaydateWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Your Memory")
+        .description("Based on current time")
     }
 }
 
 struct PlaydateWidget_Previews: PreviewProvider {
     static var previews: some View {
-        PlaydateWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+        PlaydateWidgetEntryView(entry: PlaydateTimelineEntry(date: Date(), image: UIImage(named: "dummyPhoto")!))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

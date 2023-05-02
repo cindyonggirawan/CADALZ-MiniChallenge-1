@@ -49,15 +49,22 @@
 		A925E2E729F446EC000F66C9 /* MemoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A925E2E629F446EC000F66C9 /* MemoryViewModel.swift */; };
 		A978DFA92A001950003054C1 /* Memory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFA72A001950003054C1 /* Memory+CoreDataClass.swift */; };
 		A978DFAA2A001950003054C1 /* Memory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFA82A001950003054C1 /* Memory+CoreDataProperties.swift */; };
-		A978DFD22A015B6D003054C1 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A978DFD12A015B6D003054C1 /* WidgetKit.framework */; };
-		A978DFD42A015B6D003054C1 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A978DFD32A015B6D003054C1 /* SwiftUI.framework */; };
 		A978DFD72A015B6D003054C1 /* PlaydateWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFD62A015B6D003054C1 /* PlaydateWidgetBundle.swift */; };
 		A978DFD92A015B6D003054C1 /* PlaydateWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFD82A015B6D003054C1 /* PlaydateWidgetLiveActivity.swift */; };
-		A978DFDB2A015B6D003054C1 /* PlaydateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFDA2A015B6D003054C1 /* PlaydateWidget.swift */; };
 		A978DFDE2A015B6F003054C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A978DFDD2A015B6F003054C1 /* Assets.xcassets */; };
 		A978DFE02A015B6F003054C1 /* PlaydateWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = A978DFDC2A015B6D003054C1 /* PlaydateWidget.intentdefinition */; };
 		A978DFE12A015B6F003054C1 /* PlaydateWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = A978DFDC2A015B6D003054C1 /* PlaydateWidget.intentdefinition */; };
 		A978DFE42A015B6F003054C1 /* PlaydateWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A978DFCF2A015B6D003054C1 /* PlaydateWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A978DFEA2A01640D003054C1 /* PlaydateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFDA2A015B6D003054C1 /* PlaydateWidget.swift */; };
+		A978DFED2A016508003054C1 /* PlaydateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFDA2A015B6D003054C1 /* PlaydateWidget.swift */; };
+		A978DFEE2A016523003054C1 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8C29F255330058F9FA /* CoreDataModel.xcdatamodeld */; };
+		A978DFF32A01660F003054C1 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A978DFD32A015B6D003054C1 /* SwiftUI.framework */; };
+		A978DFF62A016612003054C1 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A978DFD12A015B6D003054C1 /* WidgetKit.framework */; };
+		A978DFF82A0166C4003054C1 /* Memory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFA72A001950003054C1 /* Memory+CoreDataClass.swift */; };
+		A978DFF92A0166C7003054C1 /* Memory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFA82A001950003054C1 /* Memory+CoreDataProperties.swift */; };
+		A978DFFA2A0166DC003054C1 /* MemoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A925E2E629F446EC000F66C9 /* MemoryViewModel.swift */; };
+		A978DFFB2A0166F4003054C1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632229EFE11F002EC23B /* CoreDataManager.swift */; };
+		A978DFFC2A01671C003054C1 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632B29EFE1D8002EC23B /* AppColor.swift */; };
 		A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8C29F255330058F9FA /* CoreDataModel.xcdatamodeld */; };
 		A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */; };
 		A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA9129F267670058F9FA /* ChallengeCardView.swift */; };
@@ -162,8 +169,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A978DFD42A015B6D003054C1 /* SwiftUI.framework in Frameworks */,
-				A978DFD22A015B6D003054C1 /* WidgetKit.framework in Frameworks */,
+				A978DFF32A01660F003054C1 /* SwiftUI.framework in Frameworks */,
+				A978DFF62A016612003054C1 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +734,7 @@
 				3798630529EFDD70002EC23B /* PlaydateApp.swift in Sources */,
 				37E2999E29F6293800D7A150 /* UnborderedTextFieldStyle.swift in Sources */,
 				3763418A29F21A8800F37080 /* OnboardingView.swift in Sources */,
+				A978DFEA2A01640D003054C1 /* PlaydateWidget.swift in Sources */,
 				A5AE7D8529F18C1300BD5CAE /* challengeFirebaseExperiment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -735,10 +743,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A978DFF92A0166C7003054C1 /* Memory+CoreDataProperties.swift in Sources */,
+				A978DFFC2A01671C003054C1 /* AppColor.swift in Sources */,
 				A978DFE02A015B6F003054C1 /* PlaydateWidget.intentdefinition in Sources */,
+				A978DFF82A0166C4003054C1 /* Memory+CoreDataClass.swift in Sources */,
 				A978DFD92A015B6D003054C1 /* PlaydateWidgetLiveActivity.swift in Sources */,
-				A978DFDB2A015B6D003054C1 /* PlaydateWidget.swift in Sources */,
 				A978DFD72A015B6D003054C1 /* PlaydateWidgetBundle.swift in Sources */,
+				A978DFFA2A0166DC003054C1 /* MemoryViewModel.swift in Sources */,
+				A978DFFB2A0166F4003054C1 /* CoreDataManager.swift in Sources */,
+				A978DFED2A016508003054C1 /* PlaydateWidget.swift in Sources */,
+				A978DFEE2A016523003054C1 /* CoreDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,8 +898,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -894,9 +908,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Apple-Developer-Academy.Playdate.unique";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -917,8 +934,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -927,9 +944,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Apple-Developer-Academy.Playdate.unique";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
