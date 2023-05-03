@@ -9,23 +9,67 @@ import SwiftUI
 
 struct ChallengeViewPage1: View {
     // Navigation
-    @State var navChallengeModal = 1
+    @State var navChallengeModal = 1 // ohhh 1: like challenge?, 2: upload photo
     @State var isLikeChallenge = true
+    
     // Challenge Card View
     @StateObject var challengeViewModel = ChallengeViewModel()
     @StateObject var memoryViewModel = MemoryViewModel()
-
     
+    // ANIMASI KARTU YU GI OH
+    @State var challengeCardDegree = 0.0
+    @State var uploadPhotoDegree = -90.0
+    @State var isFlipped = false
+    let durationAndDelay : CGFloat = 0.35
+
+
     var body: some View {
         
         let currentMemories = memoryViewModel.memories[memoryViewModel.memories.count-1]
         
         NavigationView {
             VStack {
-                if (navChallengeModal == 1){
-                    // Diganti jadi Statis
-                    ChallengeCardView(challenge: currentMemories.challenge!, vm: challengeViewModel, shiftIndex: 4)
-                        .padding(.top, 180)
+                if (navChallengeModal == 1) {
+                    // Diganti jadi Statis (OKE)
+                    // dear Louis, mohon maaf ini code masih tidak DRY, nanti tinggal gw refactor2 lagi. skrg for the sake of flipping card 👍
+                    ZStack {
+                        VStack(alignment: .leading) {
+                            Spacer()
+                            
+                            HStack{
+                                Spacer()
+                                Text("PLAYDATE")
+                                    .font(.system(size: 14))
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.primaryWhite)
+                                    .opacity(0.5)
+                                    .padding(.vertical, 10)
+                                Spacer()
+                            }
+                        }
+                        .frame(width: 342, height: 368)
+                        .background(
+                //            Image(vm.getDoodle(category: challenge.category!))
+                            Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bgt
+                                .resizable()
+                                .scaledToFill()
+                //                .frame(width: 500, height: 500)
+                                .opacity(0.12)
+                                .background(checkChallengeCategoryColor(challengeCategory: currentMemories.challenge!.category!))
+                                .frame(width: 600, height: 600)
+                        )
+                        .clipped()
+                        .contentShape(Rectangle())
+                        .cornerRadius(16)
+                        .rotation3DEffect(Angle(degrees: uploadPhotoDegree), axis: (x: 0, y: 1, z: 0), perspective: 0.55)
+                        
+                        ChallengeCardView(challenge: currentMemories.challenge!, vm: challengeViewModel, shiftIndex: 4)
+                            .rotation3DEffect(Angle(degrees: challengeCardDegree), axis: (x: 0, y: 1, z: 0), perspective: 0.55)
+                    }
+                    .padding(.top, 180)
+                    .onTapGesture {
+                        self.flipCard()
+                    }
                     
                     Text("Do you like the challenge?")
                         .font(.custom("Poppins-semibold", size: 20))
@@ -98,6 +142,40 @@ struct ChallengeViewPage1: View {
                 }
         }
     }
+    
+    func flipCard () {
+        isFlipped = !isFlipped
+        if isFlipped {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                challengeCardDegree = 90
+            }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                uploadPhotoDegree = 0
+            }
+        } else {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                uploadPhotoDegree = -90
+            }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                challengeCardDegree = 0
+            }
+        }
+    }
+    
+    func checkChallengeCategoryColor(challengeCategory: String) -> Color {
+        if challengeCategory.lowercased() == "travel" {
+            return Color.primaryOrange
+        } else if challengeCategory.lowercased() == "entertainment" {
+            return Color.primaryPurple
+        } else if challengeCategory.lowercased() == "food" {
+            return Color.primaryRed
+        } else if (challengeCategory.lowercased() == "well-being") {
+            return Color.primaryGreen
+        } else {
+            return Color.gray
+        }
+    }
+    
 }
 
 //struct ChallengeViewPage1_Previews: PreviewProvider {

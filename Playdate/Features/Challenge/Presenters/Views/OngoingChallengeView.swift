@@ -96,7 +96,8 @@ struct OngoingChallengeView: View {
                 .padding(.top, 20)
                 .padding(.horizontal, 24)
                 .sheet(isPresented: $showSheet) {
-                    ChallangeReviewModal()
+//                    ChallangeReviewModal()              // JEJAK -daniel
+                    ChallengeViewPage1()
                 }
                 
                 Button(action: {
