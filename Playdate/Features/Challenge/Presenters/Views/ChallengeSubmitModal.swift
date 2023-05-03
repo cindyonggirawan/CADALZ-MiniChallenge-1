@@ -27,34 +27,35 @@ struct ChallengeSubmitModal: View {
                         .bold()
                         .foregroundColor(Color.black)
                     
-                    if let data = data, let uiimage = UIImage(data: data) {
-                        Image(uiImage: uiimage)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    }
-                    
-                    PhotosPicker(
+                    PhotosPicker (
                         selection: $selectedItems,
                         maxSelectionCount: 1,
                         matching: .images
                     ) {
-                        VStack {
-                            Image("profile-icon")
-                                .resizable()
-                                .frame(width: 32, height: 32)
+                        ZStack {
+                            VStack {
+                                Image("profile-icon")
+                                    .resizable()
+                                    .frame(width: 32, height: 32)
+                                
+                                Text("Upload")
+                                    .font(.custom("Poppins", size: 16))
+                                    .foregroundColor(Color.primaryDarkGray)
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .background(Color.primaryLightGray)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(style: StrokeStyle(lineWidth: 1, dash: [4]))
+                                    .foregroundColor(Color.primaryDarkGray)
+                            )
                             
-                            Text("Upload")
-                                .font(.custom("Poppins", size: 16))
-                                .foregroundColor(Color.primaryDarkGray)
+                            if let data = data, let uiimage = UIImage(data: data) {
+                                Image(uiImage: uiimage)
+                                    .resizable()
+                            }
                         }
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 10)
-                        .background(Color.primaryLightGray)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
-                                .foregroundColor(Color.primaryDarkGray)
-                        )
                     }
                     .onChange(of: selectedItems) { newValue in
                         guard let item = selectedItems.first else {
@@ -85,6 +86,7 @@ struct ChallengeSubmitModal: View {
                     TextField("How do you feel doing this challenge?", text: $momentDescription, axis: .vertical)
                         .textFieldStyle(UnborderedTextFieldStyle())
                         .font(.custom("Poppins", size: 16))
+                        .foregroundColor(Color.primaryDarkGray)
                 }
                 
                 Spacer()
@@ -115,8 +117,9 @@ struct ChallengeSubmitModal: View {
     }
 }
 
-//struct ChallengeSubmitModal_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChallengeSubmitModal()
-//    }
-//}
+struct ChallengeSubmitModal_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        ChallengeSubmitModal(isLikeChallenge: .constant(true))
+    }
+}
