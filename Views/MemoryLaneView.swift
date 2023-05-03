@@ -18,6 +18,12 @@ struct MemoryLaneView: View {
     
     @State var photoIdx: Int = 0
     
+    let columns = [
+        GridItem(.flexible(minimum: 100, maximum: 200)),
+        GridItem(.flexible(minimum: 100, maximum: 200)),
+        GridItem(.flexible(minimum: 100, maximum: 200))
+    ]
+    
     var body: some View {
         /*
         NavigationStack {
@@ -96,39 +102,29 @@ struct MemoryLaneView: View {
             .frame(maxWidth: 347)
             
             ScrollView {
-                Grid {
-                    ForEach(0..<memVm.rows, id: \.self) { _ in
-                        GridRow {
-                            ForEach(0..<3) { _ in
-                                if let photo = self.memVm.memories[self.photoIdx].photo {
-                                    Image(uiImage: photo)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 100)
-                                    self.increaseIndex()
-
-                                }
-//                                self.memVm.renderPhoto()
-                            }
-                        }
-                        
+                LazyVGrid(columns: columns, spacing: 16) {
+                    ForEach(self.memVm.memories, id: \.self) { memory in
+                        Image(uiImage: memory.photo!)
+                            .resizable()
+                            .scaledToFit()
                     }
-                    
                 }
+                .padding(.horizontal, 24)
             }
-            Spacer()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-
+    }
+    
+    func calculateTheIndex(i: Int, j: Int) -> Int {
+        return i + i + i + j
     }
     
     func increaseIndex() -> EmptyView {
         let idx = self.photoIdx
-        if idx < self.memVm.memories.count - 5 {
+        if idx < self.memVm.memories.count {
             self.photoIdx += 1
             print(self.photoIdx)
-//            DispatchQueue.global(qos: .background).async {
-//            }
+            DispatchQueue.global(qos: .background).async {
+            }
         }
         return EmptyView()
     }
