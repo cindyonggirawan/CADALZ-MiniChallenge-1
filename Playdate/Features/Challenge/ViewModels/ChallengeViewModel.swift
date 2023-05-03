@@ -80,4 +80,12 @@ class ChallengeViewModel: ObservableObject {
         manager.save()
     }
     
+    func ngeprint() -> Void {
+        print("CHALLENGES COUNT", self.challenges.count)
+        for ch in self.challenges {
+            print(ch.memory?.count ?? 999)
+            print(ch.category!)
+            print()
+        }
+    }
 }
