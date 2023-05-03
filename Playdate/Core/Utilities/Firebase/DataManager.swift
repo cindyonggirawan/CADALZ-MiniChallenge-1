@@ -72,4 +72,24 @@ class DataManager: ObservableObject {
             }
         }
     }
+    
+    func addUser(id: String, name: String) {
+        let db = Firestore.firestore()
+        let ref = db.collection("Users").document(id)
+        ref.setData(["id": id, "name": name]) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func deleteUser(id: String, name: String) {
+        let db = Firestore.firestore()
+        let ref = db.collection("Users").document(id)
+        ref.delete() { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
