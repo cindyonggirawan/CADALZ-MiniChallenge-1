@@ -33,72 +33,6 @@ class MemoryViewModel: ObservableObject {
         lastCol = self.memories.count % 3
     }
     
-//    func showGallery() -> AnyView {
-//        let content =
-//        Grid {
-//            ForEach(0..<rows, id: \.self) { i_loopIdx in
-//                Text("i: \(i_loopIdx)")
-//                GridRow {
-//                    if i_loopIdx != rows - 1 {
-//                        ForEach(0..<3) { j_loopIdx in
-//                            Text("p: \(i_loopIdx * 3 + j_loopIdx)")
-//                            if let photo = self.memories[i_loopIdx * 3 + j_loopIdx].photo {
-//                                Image(uiImage: photo)
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .frame(width: 100)
-//                            }
-//                        }
-//                    }
-//
-//                    if i_loopIdx == rows - 1 {
-//                        ForEach(0..<lastCol) { j_loopIdx in
-//                            Text("p: \(i_loopIdx * 3 + j_loopIdx)")
-//                            if let photo = self.memories[i_loopIdx * 3 + j_loopIdx].photo {
-//                                Image(uiImage: photo)
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .frame(width: 100)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//        return AnyView (
-//            content
-//        )
-//    }
-    
-//    func renderPhoto() -> AnyView {
-//        if self.photoIdx < self.memories.count - 1 {
-//            self.photoIdx += 1
-//        }
-//        let content = ForEach(0..<20) { i in
-//            Text("\(i)")
-//        }
-        
-        
-//        if let photo = self.memories[self.photoIdx].photo {
-//            return AnyView(
-//                VStack {
-//                    Image(uiImage: photo)
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fill)
-//                        .frame(width: 116, height: 118)
-////                    Text(self.memories[self.photoIdx].challenge?.category! ?? "asdasd")
-//                }
-//            )
-//        }
-        
-//        return AnyView(
-//            VStack {
-//                content
-//            }
-//        )
-//    }
-    
     func getMemories(){
         let req = NSFetchRequest<Memory>(entityName: "Memory")
         
@@ -206,3 +140,75 @@ class MemoryViewModel: ObservableObject {
     }
     
 }
+
+/*
+ 
+ 
+//    func showGallery() -> AnyView {
+//        let content =
+//        Grid {
+//            ForEach(0..<rows, id: \.self) { i_loopIdx in
+//                Text("i: \(i_loopIdx)")
+//                GridRow {
+//                    if i_loopIdx != rows - 1 {
+//                        ForEach(0..<3) { j_loopIdx in
+//                            Text("p: \(i_loopIdx * 3 + j_loopIdx)")
+//                            if let photo = self.memories[i_loopIdx * 3 + j_loopIdx].photo {
+//                                Image(uiImage: photo)
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fit)
+//                                    .frame(width: 100)
+//                            }
+//                        }
+//                    }
+//
+//                    if i_loopIdx == rows - 1 {
+//                        ForEach(0..<lastCol) { j_loopIdx in
+//                            Text("p: \(i_loopIdx * 3 + j_loopIdx)")
+//                            if let photo = self.memories[i_loopIdx * 3 + j_loopIdx].photo {
+//                                Image(uiImage: photo)
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fit)
+//                                    .frame(width: 100)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//        return AnyView (
+//            content
+//        )
+//    }
+ 
+//    func renderPhoto() -> AnyView {
+//        if self.photoIdx < self.memories.count - 1 {
+//            self.photoIdx += 1
+//        }
+//        let content = ForEach(0..<20) { i in
+//            Text("\(i)")
+//        }
+     
+     
+//        if let photo = self.memories[self.photoIdx].photo {
+//            return AnyView(
+//                VStack {
+//                    Image(uiImage: photo)
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fill)
+//                        .frame(width: 116, height: 118)
+////                    Text(self.memories[self.photoIdx].challenge?.category! ?? "asdasd")
+//                }
+//            )
+//        }
+     
+//        return AnyView(
+//            VStack {
+//                content
+//            }
+//        )
+//    }
+ 
+ 
+ */
