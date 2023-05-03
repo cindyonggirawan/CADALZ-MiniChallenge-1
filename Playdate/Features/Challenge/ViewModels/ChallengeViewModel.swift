@@ -21,7 +21,7 @@ class ChallengeViewModel: ObservableObject {
     init() {
         getChallenges()
         self.filteredChallenges = self.challenges.shuffled()
-//        print("Filtered Challenges (count):", filteredChallenges.count)
+        ngeprint()
     }
     
     func getChallenges(){
@@ -78,6 +78,15 @@ class ChallengeViewModel: ObservableObject {
     
     func save() {
         manager.save()
+    }
+    
+    func ngeprint() -> Void {
+        print("CHALLENGES COUNT", self.challenges.count)
+        for ch in self.challenges {
+            print(ch.memory?.count ?? 999)
+            print(ch.category!)
+            print() 
+        }
     }
     
 }
