@@ -9,6 +9,19 @@ import SwiftUI
 import PhotosUI
 import UIKit
 
+//struct MemoryLaneView: View {
+//    var body: some View {
+//        ZStack {
+////            Color.blue // Background color
+//            Image("food")
+//                .resizable()
+//                .scaledToFill()
+//        }
+//        .frame(width: 300, height: 300) // Set the size of the container
+//    }
+//}
+
+
 struct MemoryLaneView: View {
     @StateObject var memVm = MemoryViewModel()
     @StateObject var challengeViewModel = ChallengeViewModel()
@@ -19,9 +32,9 @@ struct MemoryLaneView: View {
     @State var photoIdx: Int = 0
     
     let columns = [
-        GridItem(.flexible(minimum: 100, maximum: 200)),
-        GridItem(.flexible(minimum: 100, maximum: 200)),
-        GridItem(.flexible(minimum: 100, maximum: 200))
+        GridItem(.flexible(minimum: 100, maximum: 108 + 5)),
+        GridItem(.flexible(minimum: 100, maximum: 108 + 5)),
+        GridItem(.flexible(minimum: 100, maximum: 108 + 5))
     ]
     
     var body: some View {
@@ -41,16 +54,21 @@ struct MemoryLaneView: View {
             .frame(maxWidth: 347)
             
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 16) {
+                LazyVGrid(columns: columns, spacing: 5) {
                     ForEach(self.memVm.memories, id: \.self) { memory in
-                        Image(uiImage: memory.photo!)
-                            .resizable()
-                            .scaledToFit()
+                        ZStack {
+                            Image(uiImage: memory.photo!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .clipped()
+                        }
+                        .frame(width: 116, height: 118)
+                        .drawingGroup()
                     }
                 }
-                .padding(.horizontal, 24)
             }
         }
+        .padding(.horizontal, 0)
     }
     
     func calculateTheIndex(i: Int, j: Int) -> Int {
@@ -68,6 +86,7 @@ struct MemoryLaneView: View {
         return EmptyView()
     }
 }
+ 
 
 //struct MemoryLaneView_Previews: PreviewProvider {
 //    static var previews: some View {

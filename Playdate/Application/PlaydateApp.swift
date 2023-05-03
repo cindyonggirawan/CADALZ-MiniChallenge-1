@@ -25,6 +25,7 @@ struct PlaydateApp: App {
 //            GenerateChallengeView()
 //            challengeFirebaseExperiment()
 //            temporaryCountdownView()
+//            MemoryLaneView()
         }
     }
 }

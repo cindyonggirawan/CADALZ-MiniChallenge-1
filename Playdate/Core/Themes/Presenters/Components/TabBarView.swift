@@ -38,7 +38,7 @@ struct TabBarView: View {
                 }
             }
            
-            Text("Memories Tab")
+            MemoryLaneView()
                 .tabItem {
                     Image(memoriesImageName)
                     Text("Memories")
