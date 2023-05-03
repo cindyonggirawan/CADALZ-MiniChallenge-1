@@ -49,12 +49,52 @@
 		A925E2E729F446EC000F66C9 /* MemoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A925E2E629F446EC000F66C9 /* MemoryViewModel.swift */; };
 		A978DFA92A001950003054C1 /* Memory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFA72A001950003054C1 /* Memory+CoreDataClass.swift */; };
 		A978DFAA2A001950003054C1 /* Memory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFA82A001950003054C1 /* Memory+CoreDataProperties.swift */; };
+		A978DFD72A015B6D003054C1 /* PlaydateWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFD62A015B6D003054C1 /* PlaydateWidgetBundle.swift */; };
+		A978DFD92A015B6D003054C1 /* PlaydateWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFD82A015B6D003054C1 /* PlaydateWidgetLiveActivity.swift */; };
+		A978DFDE2A015B6F003054C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A978DFDD2A015B6F003054C1 /* Assets.xcassets */; };
+		A978DFE02A015B6F003054C1 /* PlaydateWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = A978DFDC2A015B6D003054C1 /* PlaydateWidget.intentdefinition */; };
+		A978DFE12A015B6F003054C1 /* PlaydateWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = A978DFDC2A015B6D003054C1 /* PlaydateWidget.intentdefinition */; };
+		A978DFE42A015B6F003054C1 /* PlaydateWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A978DFCF2A015B6D003054C1 /* PlaydateWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A978DFEA2A01640D003054C1 /* PlaydateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFDA2A015B6D003054C1 /* PlaydateWidget.swift */; };
+		A978DFED2A016508003054C1 /* PlaydateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFDA2A015B6D003054C1 /* PlaydateWidget.swift */; };
+		A978DFEE2A016523003054C1 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8C29F255330058F9FA /* CoreDataModel.xcdatamodeld */; };
+		A978DFF32A01660F003054C1 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A978DFD32A015B6D003054C1 /* SwiftUI.framework */; };
+		A978DFF62A016612003054C1 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A978DFD12A015B6D003054C1 /* WidgetKit.framework */; };
+		A978DFF82A0166C4003054C1 /* Memory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFA72A001950003054C1 /* Memory+CoreDataClass.swift */; };
+		A978DFF92A0166C7003054C1 /* Memory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A978DFA82A001950003054C1 /* Memory+CoreDataProperties.swift */; };
+		A978DFFA2A0166DC003054C1 /* MemoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A925E2E629F446EC000F66C9 /* MemoryViewModel.swift */; };
+		A978DFFB2A0166F4003054C1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632229EFE11F002EC23B /* CoreDataManager.swift */; };
+		A978DFFC2A01671C003054C1 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632B29EFE1D8002EC23B /* AppColor.swift */; };
 		A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8C29F255330058F9FA /* CoreDataModel.xcdatamodeld */; };
 		A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */; };
 		A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA9129F267670058F9FA /* ChallengeCardView.swift */; };
 		A97CEA9429F26E6F0058F9FA /* CategoryCapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA9329F26E6F0058F9FA /* CategoryCapsuleView.swift */; };
 		A9CA6A9529FC29000053323A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CA6A9429FC29000053323A /* UserViewModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A978DFE22A015B6F003054C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 379862F929EFDD70002EC23B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A978DFCE2A015B6D003054C1;
+			remoteInfo = PlaydateWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A978DFE52A015B6F003054C1 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A978DFE42A015B6F003054C1 /* PlaydateWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		375656B029FA5C79003D9458 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -99,6 +139,15 @@
 		A925E2E629F446EC000F66C9 /* MemoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewModel.swift; sourceTree = "<group>"; };
 		A978DFA72A001950003054C1 /* Memory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A978DFA82A001950003054C1 /* Memory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A978DFCF2A015B6D003054C1 /* PlaydateWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PlaydateWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A978DFD12A015B6D003054C1 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		A978DFD32A015B6D003054C1 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		A978DFD62A015B6D003054C1 /* PlaydateWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaydateWidgetBundle.swift; sourceTree = "<group>"; };
+		A978DFD82A015B6D003054C1 /* PlaydateWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaydateWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		A978DFDA2A015B6D003054C1 /* PlaydateWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaydateWidget.swift; sourceTree = "<group>"; };
+		A978DFDC2A015B6D003054C1 /* PlaydateWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PlaydateWidget.intentdefinition; sourceTree = "<group>"; };
+		A978DFDD2A015B6F003054C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A978DFDF2A015B6F003054C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A97CEA8D29F255330058F9FA /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateChallengeView.swift; sourceTree = "<group>"; };
 		A97CEA9129F267670058F9FA /* ChallengeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardView.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardView.swift; sourceTree = SOURCE_ROOT; };
@@ -113,6 +162,15 @@
 			files = (
 				A5AE7D7B29F1864200BD5CAE /* FirebaseAuth in Frameworks */,
 				A5AE7D7D29F1864200BD5CAE /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A978DFCC2A015B6D003054C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A978DFF32A01660F003054C1 /* SwiftUI.framework in Frameworks */,
+				A978DFF62A016612003054C1 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +238,8 @@
 			isa = PBXGroup;
 			children = (
 				3798630329EFDD70002EC23B /* Playdate */,
+				A978DFD52A015B6D003054C1 /* PlaydateWidget */,
+				A978DFD02A015B6D003054C1 /* Frameworks */,
 				3798630229EFDD70002EC23B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -188,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				3798630129EFDD70002EC23B /* Playdate.app */,
+				A978DFCF2A015B6D003054C1 /* PlaydateWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -500,6 +561,28 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		A978DFD02A015B6D003054C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A978DFD12A015B6D003054C1 /* WidgetKit.framework */,
+				A978DFD32A015B6D003054C1 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A978DFD52A015B6D003054C1 /* PlaydateWidget */ = {
+			isa = PBXGroup;
+			children = (
+				A978DFD62A015B6D003054C1 /* PlaydateWidgetBundle.swift */,
+				A978DFD82A015B6D003054C1 /* PlaydateWidgetLiveActivity.swift */,
+				A978DFDA2A015B6D003054C1 /* PlaydateWidget.swift */,
+				A978DFDC2A015B6D003054C1 /* PlaydateWidget.intentdefinition */,
+				A978DFDD2A015B6F003054C1 /* Assets.xcassets */,
+				A978DFDF2A015B6F003054C1 /* Info.plist */,
+			);
+			path = PlaydateWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -510,10 +593,12 @@
 				379862FD29EFDD70002EC23B /* Sources */,
 				379862FE29EFDD70002EC23B /* Frameworks */,
 				379862FF29EFDD70002EC23B /* Resources */,
+				A978DFE52A015B6F003054C1 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A978DFE32A015B6F003054C1 /* PBXTargetDependency */,
 			);
 			name = Playdate;
 			packageProductDependencies = (
@@ -524,6 +609,23 @@
 			productReference = 3798630129EFDD70002EC23B /* Playdate.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A978DFCE2A015B6D003054C1 /* PlaydateWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A978DFE82A015B6F003054C1 /* Build configuration list for PBXNativeTarget "PlaydateWidgetExtension" */;
+			buildPhases = (
+				A978DFCB2A015B6D003054C1 /* Sources */,
+				A978DFCC2A015B6D003054C1 /* Frameworks */,
+				A978DFCD2A015B6D003054C1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlaydateWidgetExtension;
+			productName = PlaydateWidgetExtension;
+			productReference = A978DFCF2A015B6D003054C1 /* PlaydateWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -531,11 +633,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					3798630029EFDD70002EC23B = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					A978DFCE2A015B6D003054C1 = {
+						CreatedOnToolsVersion = 14.3;
 					};
 				};
 			};
@@ -556,6 +661,7 @@
 			projectRoot = "";
 			targets = (
 				3798630029EFDD70002EC23B /* Playdate */,
+				A978DFCE2A015B6D003054C1 /* PlaydateWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -576,6 +682,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A978DFCD2A015B6D003054C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A978DFDE2A015B6F003054C1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -583,6 +697,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A978DFE12A015B6F003054C1 /* PlaydateWidget.intentdefinition in Sources */,
 				375656B129FA5C79003D9458 /* TimerView.swift in Sources */,
 				37E299A029F62EE900D7A150 /* temporaryCountdownView.swift in Sources */,
 				A925E2E529F437DB000F66C9 /* ChallengeViewModel.swift in Sources */,
@@ -619,11 +734,37 @@
 				3798630529EFDD70002EC23B /* PlaydateApp.swift in Sources */,
 				37E2999E29F6293800D7A150 /* UnborderedTextFieldStyle.swift in Sources */,
 				3763418A29F21A8800F37080 /* OnboardingView.swift in Sources */,
+				A978DFEA2A01640D003054C1 /* PlaydateWidget.swift in Sources */,
 				A5AE7D8529F18C1300BD5CAE /* challengeFirebaseExperiment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A978DFCB2A015B6D003054C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A978DFF92A0166C7003054C1 /* Memory+CoreDataProperties.swift in Sources */,
+				A978DFFC2A01671C003054C1 /* AppColor.swift in Sources */,
+				A978DFE02A015B6F003054C1 /* PlaydateWidget.intentdefinition in Sources */,
+				A978DFF82A0166C4003054C1 /* Memory+CoreDataClass.swift in Sources */,
+				A978DFD92A015B6D003054C1 /* PlaydateWidgetLiveActivity.swift in Sources */,
+				A978DFD72A015B6D003054C1 /* PlaydateWidgetBundle.swift in Sources */,
+				A978DFFA2A0166DC003054C1 /* MemoryViewModel.swift in Sources */,
+				A978DFFB2A0166F4003054C1 /* CoreDataManager.swift in Sources */,
+				A978DFED2A016508003054C1 /* PlaydateWidget.swift in Sources */,
+				A978DFEE2A016523003054C1 /* CoreDataModel.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A978DFE32A015B6F003054C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A978DFCE2A015B6D003054C1 /* PlaydateWidgetExtension */;
+			targetProxy = A978DFE22A015B6F003054C1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3798630D29EFDD71002EC23B /* Debug */ = {
@@ -743,6 +884,7 @@
 		3798631029EFDD71002EC23B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -756,8 +898,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -766,15 +908,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Apple-Developer-Academy.Playdate.unique";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		3798631129EFDD71002EC23B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -788,8 +934,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -798,6 +944,67 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Apple-Developer-Academy.Playdate.unique";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A978DFE62A015B6F003054C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NQ6K7G8J8Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlaydateWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PlaydateWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Apple-Developer-Academy.Playdate.unique.PlaydateWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A978DFE72A015B6F003054C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NQ6K7G8J8Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlaydateWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PlaydateWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Apple-Developer-Academy.Playdate.unique.PlaydateWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -821,6 +1028,15 @@
 			buildConfigurations = (
 				3798631029EFDD71002EC23B /* Debug */,
 				3798631129EFDD71002EC23B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A978DFE82A015B6F003054C1 /* Build configuration list for PBXNativeTarget "PlaydateWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A978DFE62A015B6F003054C1 /* Debug */,
+				A978DFE72A015B6F003054C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

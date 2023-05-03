@@ -34,7 +34,19 @@ class ChallengeViewModel: ObservableObject {
         }
     }
     
-    
+    func getDoodle(category: String) -> String{
+        if category.lowercased() == "food"{
+            return "doodle-food"
+        } else if category.lowercased() == "travel"{
+            return "doodle-travel"
+        } else if category.lowercased() == "entertainment"{
+            return "doodle-entertainment"
+        } else if category.lowercased() == "well-being" || category.lowercased() == "wellbeing"{
+            return "doodle-wellbeing"
+        } else {
+            return "doodle"
+        }
+    }
     
     func addChallenge(id: String, name: String, desc: String, like: Int, numberOfUser: Int, category: String){
         

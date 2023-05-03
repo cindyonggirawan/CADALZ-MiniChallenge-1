@@ -64,27 +64,19 @@ class MemoryViewModel: ObservableObject {
         }
     }
     
-    func checkChallengeCategoryColor(memory: Memory) -> Color {
-        if memory.challenge?.category?.lowercased() == "travel" {
-            return Color.primaryPurple
-        } else if memory.challenge?.category?.lowercased() == "entertainment" {
-            return Color.primaryGreen
-        } else if memory.challenge?.category?.lowercased() == "sport" {
-            return Color.primaryRed
-        } else if (memory.challenge?.category?.lowercased() == "wellbeing" || memory.challenge?.category?.lowercased() == "well-being") { // di core data belum "well-being" !
+    func checkChallengeCategoryColor(challengeCategory: String) -> Color {
+        if challengeCategory.lowercased() == "travel" {
             return Color.primaryOrange
+        } else if challengeCategory.lowercased() == "entertainment" {
+            return Color.primaryPurple
+        } else if challengeCategory.lowercased() == "food" {
+            return Color.primaryRed
+        } else if (challengeCategory.lowercased() == "well-being") {
+            return Color.primaryGreen
         } else {
-            return Color.pink
+            return Color.gray
         }
     }
-    
-//    func addMemory(momentDescription: String, photoURL: String){
-//
-//        newMemory.momentDescription = momentDescription
-//        newMemory.photoURL = photoURL
-//
-//        save()
-//    }
     
     func save(){
         manager.save()
