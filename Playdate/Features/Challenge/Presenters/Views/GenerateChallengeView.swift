@@ -58,7 +58,6 @@ struct GenerateChallengeView: View {
                 //Challenge Card
                 //TODO: Card ZStack View & Logic
                 ZStack() {
-
                     ForEach(self.challengeViewModel.displayedChallenges.reversed(), id: \.self) { i in // i: 4 3 2 1 0
                         ChallengeCardView(challenge: self.challengeViewModel.filteredChallenges[i], vm: self.challengeViewModel, shiftIndex: challengeViewModel.lastDisplayIndex - i)
                             .onAppear {
