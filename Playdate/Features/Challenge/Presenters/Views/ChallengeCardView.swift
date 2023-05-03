@@ -39,10 +39,12 @@ struct ChallengeCardView: View {
             .padding(.vertical, 15)
             .background(Color.primaryWhite.opacity(0.3))
             Spacer()
-            Text(challenge.name!)
-                .font(.custom("Poppins-SemiBold", size: 28))
-                .foregroundColor(.primaryWhite)
-                .padding(.horizontal, 20)
+            if let name = challenge.name {
+                Text(name)
+                    .font(.custom("Poppins-SemiBold", size: 28))
+                    .foregroundColor(.primaryWhite)
+                    .padding(.horizontal, 20)
+            }
             Spacer()
             
             HStack{
@@ -59,7 +61,7 @@ struct ChallengeCardView: View {
         .frame(width: 342, height: 368)
         .background(
 //            Image(vm.getDoodle(category: challenge.category!))
-            Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bener
+            Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bgt
                 .resizable()
                 .scaledToFill()
 //                .frame(width: 500, height: 500)
