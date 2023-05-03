@@ -38,7 +38,7 @@ struct TabBarView: View {
                 }
             }
            
-            Text("Memories Tab")
+            MemoryLaneView()
                 .tabItem {
                     Image(memoriesImageName)
                     Text("Memories")
@@ -67,13 +67,13 @@ struct TabBarView: View {
                 memoriesImageName = "memories-icon"
                 profileImageName = "profile-icon"
             case 1:
-                memoriesImageName = "memories-icon-selected"
                 challengeImageName = "challenge-icon"
+                memoriesImageName = "memories-icon-selected"
                 profileImageName = "profile-icon"
             case 2:
-                profileImageName = "profile-icon-selected"
                 challengeImageName = "challenge-icon"
                 memoriesImageName = "memories-icon"
+                profileImageName = "profile-icon-selected"
             default:
                 break
             }
