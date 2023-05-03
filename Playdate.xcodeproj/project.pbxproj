@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		371D4B442A02C75900E85E1B /* FixedSizeNoFillRoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D4B432A02C75900E85E1B /* FixedSizeNoFillRoundedButtonStyle.swift */; };
 		375656B129FA5C79003D9458 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375656B029FA5C79003D9458 /* TimerView.swift */; };
 		3763418829F2172C00F37080 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3763418729F2172C00F37080 /* SplashView.swift */; };
 		3763418A29F21A8800F37080 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3763418929F21A8800F37080 /* OnboardingView.swift */; };
@@ -99,6 +100,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		371D4B432A02C75900E85E1B /* FixedSizeNoFillRoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedSizeNoFillRoundedButtonStyle.swift; sourceTree = "<group>"; };
 		375656B029FA5C79003D9458 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		3763418729F2172C00F37080 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3763418929F21A8800F37080 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 			children = (
 				3763418B29F2207C00F37080 /* RoundedButtonStyle.swift */,
 				3763418D29F2221000F37080 /* FixedSizeRoundedButtonStyle.swift */,
+				371D4B432A02C75900E85E1B /* FixedSizeNoFillRoundedButtonStyle.swift */,
 				37E2996D29F55D9400D7A150 /* BorderedTextFieldStyle.swift */,
 				3763419629F227C800F37080 /* TabBarView.swift */,
 			);
@@ -738,6 +741,7 @@
 				3763418E29F2221000F37080 /* FixedSizeRoundedButtonStyle.swift in Sources */,
 				A9090C0A29F2C5A500BD171B /* OngoingChallengeView.swift in Sources */,
 				A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */,
+				371D4B442A02C75900E85E1B /* FixedSizeNoFillRoundedButtonStyle.swift in Sources */,
 				3798631629EFE01B002EC23B /* Prompt.swift in Sources */,
 				A9CA6A9529FC29000053323A /* UserViewModel.swift in Sources */,
 				A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */,

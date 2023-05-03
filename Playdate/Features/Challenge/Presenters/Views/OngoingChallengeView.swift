@@ -107,7 +107,7 @@ struct OngoingChallengeView: View {
                         .font(.custom("Poppins-SemiBold", size: 14))
                         .foregroundColor(.primaryDarkBlue)
                 })
-                .buttonStyle(.plain)
+                .buttonStyle(FixedSizeNoFillRoundedButtonStyle())
                 .padding(.top, 20)
                 .padding(.horizontal, 24)
             }
