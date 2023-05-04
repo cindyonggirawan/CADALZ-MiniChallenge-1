@@ -13,24 +13,18 @@ class MemoryViewModel: ObservableObject {
     let manager = CoreDataManager.instance
     
     @Published var memories: [Memory] = []
-    @Published var rows: Int = 0
-    @Published var lastCol: Int = 0
+    @Published var x: Int = 100
     
-    @Published var photoIdx: Int = 0
+    @Published var memoriesId: [UUID] = []
     
     init() {
         getMemories()
-//        if self.memories.count == 0 {
-//            for chl in getChallenges() {
-//                addMemory2(challenge: chl)
-//            }
-//        }
+        if self.memories.count == 0 {
+            bijibijian()
+        }
         
-//        getMemories()
-        print("\nMemories count \(memories.count)")
-        
-        rows = Int(ceil(Double(self.memories.count) / 3.0))
-        lastCol = self.memories.count % 3
+        getMemories()
+        print("\nMemories count: \(memories.count)")
     }
     
     func getMemories(){
@@ -80,10 +74,11 @@ class MemoryViewModel: ObservableObject {
         if let img = UIImage(named: challenge.category!.lowercased()) {
             newMemory.photo = img
         } else {
-            print("waduhhh UIImage")
+            print("UIImage NIL")
         }
         
         challenge.addToMemory(newMemory)
+    
         
         save()
     }
@@ -133,6 +128,39 @@ class MemoryViewModel: ObservableObject {
         manager.save()
     }
     
+    func appendMemoryUUID(_ id: UUID) -> Void { // BUAT BULK-DELETE PHOTO. LEWAT UUID NYA, HAPUS MEMORIES
+        if let idx = self.memoriesId.firstIndex(of: id) {
+            self.memoriesId.remove(at: idx)
+        } else {
+            self.memoriesId.append(id)
+        }
+    }
+    
+    func deleteMemoryPhotos() -> Void {
+        print("\nAWAL")
+        printMemoriesNyaChallenge()
+        
+        for memoryUuid in memoriesId {
+            for memory in memories { // Memory (CoreData)
+                if let id = memory.id { // unwrapping
+                    if id == memoryUuid { // id => id nya memory CoreData!
+                         // FORCE-UNWRAP KARENA PASTI GAK NULL
+                        manager.context.delete(memory)
+                        break
+                    }
+                }
+            }
+        }
+        
+        save()
+        
+        print("\nAKHIR")
+        printMemoriesNyaChallenge()
+        
+        print("\n")
+    }
+    
+    // ========================= FUNCS FOR DEBUGGING!!!!!!!!
     func ngeprint() -> Void {
         for mem in memories {
             if let photo = mem.photo {
@@ -141,77 +169,62 @@ class MemoryViewModel: ObservableObject {
             }
         }
     }
+    
+    func bijibijian() -> Void {
+        for chl in getChallenges() {
+            if let category = chl.category {
+                if category == "Food" {
+                    for _ in 0..<3 {
+                        addMemory2(challenge: chl)
+                    }
+                    break
+                }
+                
+            }
+        }
+        
+        for chl in getChallenges() {
+            if let category = chl.category {
+                if category == "Travel" {
+                    for _ in 0..<4 {
+                        addMemory2(challenge: chl)
+                    }
+                    break
+                }
+                
+            }
+        }
+        
+        for chl in getChallenges() {
+            if let category = chl.category {
+                if category == "Well-being" {
+                    for _ in 0..<5 {
+                        addMemory2(challenge: chl)
+                    }
+                    break
+                }
+                
+            }
+        }
+    }
 
+    func printMemoriesNyaChallenge() -> Void {
+        let challenges: [Challenge] = self.getChallenges()
+        
+        print("\nPRINTING JUMLAH MEMORY PADA SETIAP CHALLENGE")
+        for chl in challenges {
+            if
+                let category = chl.category,
+                let memory = chl.memory
+            {
+                print("Category: \(category). Memories: \(memory.count)")
+            } else {
+                print("CATEGORY / MEMORY IS NIL")
+            }
+        }
+    }
+    
+    func tambahSatu() -> Void {
+        x += 1
+    }
 }
-
-/*
- 
- 
-//    func showGallery() -> AnyView {
-//        let content =
-//        Grid {
-//            ForEach(0..<rows, id: \.self) { i_loopIdx in
-//                Text("i: \(i_loopIdx)")
-//                GridRow {
-//                    if i_loopIdx != rows - 1 {
-//                        ForEach(0..<3) { j_loopIdx in
-//                            Text("p: \(i_loopIdx * 3 + j_loopIdx)")
-//                            if let photo = self.memories[i_loopIdx * 3 + j_loopIdx].photo {
-//                                Image(uiImage: photo)
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .frame(width: 100)
-//                            }
-//                        }
-//                    }
-//
-//                    if i_loopIdx == rows - 1 {
-//                        ForEach(0..<lastCol) { j_loopIdx in
-//                            Text("p: \(i_loopIdx * 3 + j_loopIdx)")
-//                            if let photo = self.memories[i_loopIdx * 3 + j_loopIdx].photo {
-//                                Image(uiImage: photo)
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .frame(width: 100)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//        return AnyView (
-//            content
-//        )
-//    }
- 
-//    func renderPhoto() -> AnyView {
-//        if self.photoIdx < self.memories.count - 1 {
-//            self.photoIdx += 1
-//        }
-//        let content = ForEach(0..<20) { i in
-//            Text("\(i)")
-//        }
-     
-     
-//        if let photo = self.memories[self.photoIdx].photo {
-//            return AnyView(
-//                VStack {
-//                    Image(uiImage: photo)
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fill)
-//                        .frame(width: 116, height: 118)
-////                    Text(self.memories[self.photoIdx].challenge?.category! ?? "asdasd")
-//                }
-//            )
-//        }
-     
-//        return AnyView(
-//            VStack {
-//                content
-//            }
-//        )
-//    }
- 
- 
- */
