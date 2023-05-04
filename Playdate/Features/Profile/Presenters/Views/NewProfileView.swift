@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct NewProfileView: View {
+    @StateObject var userViewModel = UserViewModel()
+    @StateObject var memoryViewModel = MemoryViewModel()
+    
+    @State private var showSplash = false
+    @State private var showAlert = false
+    @State private var name = ""
+    
     var body: some View {
-        NavigationView {
+        VStack {
+//            Text("Profile")
+//                .font(.custom("Poppins-Bold", size: 18))
+//                .foregroundColor(Color.primaryDarkBlue)
+//                .background(Color.primaryWhite)
+            
             ZStack {
                 Image("profile-frame")
                     .resizable()
@@ -21,7 +33,7 @@ struct NewProfileView: View {
                         .frame(width: 263, height: 264)
                     
                     VStack {
-                        Text("Alfine Wijaya")
+                        Text("\(userViewModel.user[userViewModel.user.count-1].name ?? "")")
                             .font(.custom("Poppins-semibold", size: 24))
                             .foregroundColor(Color.primaryWhite)
                             .padding(.bottom, 2)
@@ -52,14 +64,47 @@ struct NewProfileView: View {
                     .offset(y: -20)
                 }
             }
+            .offset(y: -15)
+            
+            Button(action: {
+                showAlert = true
+            }, label: {
+                Text("Delete my account")
+                    .font(.custom("Poppins-Bold", size: 14))
+            })
+            .buttonStyle(FixedSizeRoundedButtonStyle())
+            .frame(width: 342)
             .offset(y: -30)
-            .navigationBarTitle("Profile", displayMode: .inline)
+            .alert("Are you sure to delete your account?", isPresented: $showAlert) {
+                TextField("Name", text: $name)
+                Button("Delete", action: {
+                    if deleteThisUser() {
+                        userViewModel.removeUser(name: userViewModel.user[userViewModel.user.count-1].name!)
+                        memoryViewModel.removeAllMemories()
+                        showSplash = true
+                    }
+                })
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("Enter your name to delete your account and all your memories.")
+            }
+        }
+        .fullScreenCover(isPresented: $showSplash) {
+            SplashView()
+        }
+    }
+    
+    func deleteThisUser() -> Bool {
+        if name == userViewModel.user[userViewModel.user.count-1].name! {
+            return true
+        } else {
+            return false
         }
     }
 }
 
-struct NewProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewProfileView()
-    }
-}
+//struct NewProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewProfileView()
+//    }
+//}
