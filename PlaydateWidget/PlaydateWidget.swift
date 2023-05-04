@@ -104,9 +104,21 @@ struct PlaydateWidgetEntryView : View {
     @StateObject var memoryViewModel = MemoryViewModel()
 
     var body: some View {
-        Image(uiImage: entry.image)
-            .resizable()
-            .scaledToFill()
+        ZStack(alignment: .bottomLeading){
+            //TODO: TAMPILAN DATE MASIH BEDA DARI FIGMA
+            Image(uiImage: entry.image)
+                .resizable()
+                .scaledToFill()
+            Rectangle()
+                .frame(width: .infinity, height: .infinity)
+                .foregroundColor(.primaryDarkBlue)
+                .opacity(0.25)
+            Text("13 APRIL 2023")
+                .font(.system(size: 16))
+                .foregroundColor(.white)
+                .fontWeight(.semibold)
+                .padding()
+        }
 //        if let challenge = memoryViewModel.memories[memoryViewModel.memories.count-1].challenge {
 //            Text(challenge.name ?? "no")
 //        }
