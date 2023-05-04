@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		371D4B442A02C75900E85E1B /* FixedSizeNoFillRoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D4B432A02C75900E85E1B /* FixedSizeNoFillRoundedButtonStyle.swift */; };
+		371D4B4C2A03944E00E85E1B /* PhotoDetailModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D4B4B2A03944E00E85E1B /* PhotoDetailModal.swift */; };
+		371D4B4E2A03A32A00E85E1B /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 371D4B4D2A03A32A00E85E1B /* Poppins-Italic.ttf */; };
 		375656B129FA5C79003D9458 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375656B029FA5C79003D9458 /* TimerView.swift */; };
 		3763418829F2172C00F37080 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3763418729F2172C00F37080 /* SplashView.swift */; };
 		3763418A29F21A8800F37080 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3763418929F21A8800F37080 /* OnboardingView.swift */; };
@@ -108,6 +110,8 @@
 
 /* Begin PBXFileReference section */
 		371D4B432A02C75900E85E1B /* FixedSizeNoFillRoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedSizeNoFillRoundedButtonStyle.swift; sourceTree = "<group>"; };
+		371D4B4B2A03944E00E85E1B /* PhotoDetailModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailModal.swift; sourceTree = "<group>"; };
+		371D4B4D2A03A32A00E85E1B /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		375656B029FA5C79003D9458 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		3763418729F2172C00F37080 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3763418929F21A8800F37080 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -552,6 +556,7 @@
 			isa = PBXGroup;
 			children = (
 				657F02D42A0317D0005D70DC /* MemoryLaneView.swift */,
+				371D4B4B2A03944E00E85E1B /* PhotoDetailModal.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -582,6 +587,7 @@
 		A907AC0D29F2D99D008FC81B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				371D4B4D2A03A32A00E85E1B /* Poppins-Italic.ttf */,
 				A907AC1229F2D9B3008FC81B /* Poppins-Bold.ttf */,
 				A907AC1129F2D9B3008FC81B /* Poppins-Light.ttf */,
 				A907AC0F29F2D9B3008FC81B /* Poppins-Medium.ttf */,
@@ -704,6 +710,7 @@
 				A907AC1629F2D9B3008FC81B /* Poppins-Light.ttf in Resources */,
 				3798630C29EFDD71002EC23B /* Preview Assets.xcassets in Resources */,
 				A5AE7D7F29F186E400BD5CAE /* GoogleService-Info.plist in Resources */,
+				371D4B4E2A03A32A00E85E1B /* Poppins-Italic.ttf in Resources */,
 				A907AC1729F2D9B3008FC81B /* Poppins-Bold.ttf in Resources */,
 				3798630929EFDD71002EC23B /* Assets.xcassets in Resources */,
 				A907AC1529F2D9B3008FC81B /* Poppins-SemiBold.ttf in Resources */,
@@ -744,6 +751,7 @@
 				3763419729F227C800F37080 /* TabBarView.swift in Sources */,
 				A5325A1729F5102E0073219B /* ChallengeSubmitModal.swift in Sources */,
 				A978DFAA2A001950003054C1 /* Memory+CoreDataProperties.swift in Sources */,
+				371D4B4C2A03944E00E85E1B /* PhotoDetailModal.swift in Sources */,
 				3798632C29EFE1D8002EC23B /* AppColor.swift in Sources */,
 				3798631829EFE033002EC23B /* Error.swift in Sources */,
 				3798630729EFDD70002EC23B /* ContentView.swift in Sources */,
