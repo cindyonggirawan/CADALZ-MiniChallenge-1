@@ -24,9 +24,12 @@ struct SplashView: View {
                         TabBarView()
                     }
                 } else {
-                    if memoryViewModel.memories[memoryViewModel.memories.count-1].status == "ongoing"{
-                        TabBarView()
-                    }
+                    TabBarView()
+//                    if memoryViewModel.memories[memoryViewModel.memories.count-1].status == "ongoing"{
+//                        TabBarView()
+//                    } else {
+//                        TabBarView()
+//                    }
                 }
             } else {
                 Color.primaryPurple

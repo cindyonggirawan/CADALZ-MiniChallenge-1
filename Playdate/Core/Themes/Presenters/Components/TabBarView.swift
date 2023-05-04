@@ -35,8 +35,35 @@ struct TabBarView: View {
                             Text("Challenge")
                         }
                         .tag(0)
+                } else if userViewModel.user.count != 0 {
+                    GenerateChallengeView()
+                        .tabItem {
+                            Image(challengeImageName)
+                            Text("Challenge")
+                        }
+                        .tag(0)
                 }
             }
+            
+//            if memoryViewModel.memories.count == 0 {
+//                if userViewModel.user.count != 0 {
+//                    GenerateChallengeView()
+//                        .tabItem {
+//                            Image(challengeImageName)
+//                            Text("Challenge")
+//                        }
+//                        .tag(0)
+//                }
+//            } else {
+//                if memoryViewModel.memories[memoryViewModel.memories.count-1].status == "ongoing" {
+//                    OngoingChallengeView()
+//                        .tabItem {
+//                            Image(challengeImageName)
+//                            Text("Challenge")
+//                        }
+//                        .tag(0)
+//                }
+//            }
            
             MemoryLaneView()
                 .tabItem {

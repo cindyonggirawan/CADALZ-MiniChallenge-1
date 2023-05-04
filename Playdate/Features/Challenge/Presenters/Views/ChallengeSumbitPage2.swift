@@ -104,6 +104,7 @@ struct ChallengeSumbitPage2: View {
                     //TODO: send isLike data to firebase
                     updateChallengeLike(challengeId: currentMemories.challenge!.id! , isLike: isLikeChallenge)
                     memoryViewModel.submitMemory(photo: selectedUIImage, description: momentDescription)
+                    print(memoryViewModel.memories)
                 }, label: {
                     Text("Submit")
                         .font(.custom("Poppins-Bold", size: 14))
