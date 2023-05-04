@@ -11,7 +11,7 @@ struct SplashView: View {
     @State private var scale: CGFloat = 1.0
     @State private var isActive = false
     
-    @StateObject var memoryViewModel = MemoryViewModel()
+    @EnvironmentObject var memoryViewModel: MemoryViewModel
     @StateObject var userViewModel = UserViewModel()
     
     var body: some View {
@@ -61,7 +61,7 @@ struct SplashView: View {
         }
         .background(Color.primaryPurple)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.isActive = true
             }
         }
