@@ -23,17 +23,16 @@ struct PlaydateTimelineProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [PlaydateTimelineEntry] = []
-        let policy: TimelineReloadPolicy = .atEnd
-
+        var policy: TimelineReloadPolicy = .atEnd
+        
+        var dayMemories: [Memory] = []
+        var nightMemories: [Memory] = []
+        
         do {
-            
             let memories = try getMemoriesData()
             
             print(memories)
             
-            var dayMemories: [Memory] = []
-            var nightMemories: [Memory] = []
-
             for memory in memories {
                 if memory.status != "ongoing"{
                     
@@ -55,29 +54,71 @@ struct PlaydateTimelineProvider: TimelineProvider {
                 }
             }
             
-//            print(dayMemories)
-//            print(nightMemories)
-            
-            //            let dayMemory = dayMemories.randomElement()
-            //            let dayEntry = PlaydateTimelineEntry(date: (dayMemory?.date)!, image: UIImage(named: "dummyPhoto")!)
-            //            entries.append(dayEntry)
-            //
-            //
-            //            let nightMemory = nightMemories.randomElement()
-            //            let nightEntry = PlaydateTimelineEntry(date: (nightMemory?.date)!, image: UIImage(named: "dummyPhoto2")!)
-            //            entries.append(nightEntry)
-            
+            print("dayMemories \(dayMemories)")
+            print("nightMemories \(nightMemories)")
         }catch {
             print(error)
         }
         
+        var randMemory: Memory? = nil
+        
+        if dayMemories.count == 0 && nightMemories.count == 0 {
+            //nothing happen
+            
+        } else if dayMemories.count == 0{
+            randMemory = nightMemories.randomElement()!
+        } else if nightMemories.count == 0{
+            randMemory = dayMemories.randomElement()!
+        } else {
+            let currentHour = Calendar.current.component(.hour, from: Date())
+            switch(currentHour){
+            case 0..<6:
+                randMemory = nightMemories.randomElement()!
+                break
+            case 6..<18:
+                randMemory = dayMemories.randomElement()!
+                break
+            case 18..<24:
+                randMemory = nightMemories.randomElement()!
+                print("randoming: \(randMemory)")
+                break
+            default:
+                randMemory = nightMemories.randomElement()!
+                break
+            }
+        }
+        
+        let currentHour = Calendar.current.component(.hour, from: Date())
         
         
+        switch(currentHour){
+        case 0..<6:
+            policy = .after(Calendar.current.date(bySettingHour: 5, minute: 59, second: 59, of: Date())!)
+            break
+        case 6..<18:
+            policy = .after(Calendar.current.date(bySettingHour: 17, minute: 59, second: 59, of: Date())!)
+            break
+        case 18..<24:
+//            policy = .after(Calendar.current.date(bySettingHour: 22, minute: 58, second: 59, of: Date())!)
+            policy = .after(Calendar.current.date(bySettingHour: 5, minute: 59, second: 59, of: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)!)
+            break
+        default:
+            policy = .after(Calendar.current.date(bySettingHour: 5, minute: 59, second: 59, of: Date())!)
+            break
+        }
         
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let entry = PlaydateTimelineEntry(date: Date(), image: UIImage(named: "dummyPhoto")!)
-        entries.append(entry)
-
+        print("policy \(policy)")
+        
+//        var entry = PlaydateTimelineEntry(date: Date(), image: UIImage(named: "dummyPhoto")!)
+        //        entries.append(entry)
+        
+        if randMemory != nil {
+            let entry = PlaydateTimelineEntry(date: (randMemory?.date!)!, image: (randMemory?.photo!)!)
+            entries.append(entry)
+            print("entries \(entries)")
+        }
+        
+        //TODO: Policy nya udah bener tapi data yang diambil setiap reload sama
         let timeline = Timeline(entries: entries, policy: policy )
         completion(timeline)
     }
@@ -85,15 +126,6 @@ struct PlaydateTimelineProvider: TimelineProvider {
     private func getMemoriesData() throws -> [Memory]{
         print("in \(memoryViewModel.memories)")
         return memoryViewModel.memories
-        
-        
-//        let context = memoryViewModel.manager.context
-//
-//        let req = Memory.fetchRequest()
-//        let result = try context.fetch(req)
-//
-//        print("result \(result)")
-//        return result
     }
 }
 
@@ -105,20 +137,26 @@ struct PlaydateTimelineEntry: TimelineEntry {
 struct PlaydateWidgetEntryView : View {
     var entry: PlaydateTimelineProvider.Entry
     @StateObject var memoryViewModel = MemoryViewModel()
+    let dateFormater = DateFormatter()
+//    dateFormater.dateFormat = "d MMMM yyyy"
 
     var body: some View {
         ZStack(alignment: .bottomLeading){
             //TODO: TAMPILAN DATE MASIH BEDA DARI FIGMA
             let test = true
             if test {
-                Image(uiImage: entry.image)
-                    .resizable()
-                    .scaledToFill()
+//                Image(uiImage: entry.image)
                 Rectangle()
                     .frame(width: .infinity, height: .infinity)
                     .foregroundColor(.primaryDarkBlue)
                     .opacity(0.25)
-                Text("13 APRIL 2023")
+                    .background(
+                        Image("dummyPhoto")
+                            .resizable()
+                            .scaledToFill()
+                    )
+                Text(entry.date.formatted())
+//               TODO: sementara pakai yang atas untuk testing Text(entry.date.formatted(.dateTime.day().month(.wide).year()))
                     .font(.system(size: 16))
                     .foregroundColor(.white)
                     .fontWidth(.condensed)
