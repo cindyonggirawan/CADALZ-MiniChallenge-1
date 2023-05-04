@@ -47,8 +47,8 @@ struct ChallengeViewPage1: View {
                     }
                     .frame(width: 342, height: 368)
                     .background(
-//                        Image(vm.getDoodle(category: challenge.category!))
-                        Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bgt
+                        Image(challengeViewModel.getDoodle(category: currentMemories.challenge!.category!))
+//                        Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bgt
                             .resizable()
                             .scaledToFill()
             //                .frame(width: 500, height: 500)
@@ -125,7 +125,7 @@ struct ChallengeViewPage1: View {
                     // Page 2
                     VStack{
                         ChallengeSumbitPage2(isLikeChallenge: $isLikeChallenge)
-                        
+
                     }
                 }
             }
@@ -134,6 +134,7 @@ struct ChallengeViewPage1: View {
                     if ( navChallengeModal == 1 ){
                         Button("Prev") {
 //                              // Navigate to Ongoing challenge
+//                            OngoingChallengeView()
                             
                         }
                     } else {
