@@ -39,14 +39,15 @@ struct ChallengeSumbitPage2: View {
                                 matching: .images
                             ) {
                                 VStack {
-                                    Image("profile-icon")
+                                    Image("icon-camera-white")
                                         .resizable()
                                         .frame(width: 32, height: 32)
+                                        .foregroundColor(Color.white)
                                     Text("Add Photo")
                                         .font(.custom("Poppins", size: 14))
                                         .foregroundColor(Color.white)
                                 }
-                                .background(Color.green)
+//                                .background(Color.green)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(style: StrokeStyle(lineWidth: 2, dash: [9]))
@@ -82,7 +83,7 @@ struct ChallengeSumbitPage2: View {
                     .padding(.top,60)
                 }
                 .transition(.opacity)
-                .animation(.easeInOut(duration: 0.5))
+                .animation(.easeInOut(duration: 0.4))
             }
 
             
