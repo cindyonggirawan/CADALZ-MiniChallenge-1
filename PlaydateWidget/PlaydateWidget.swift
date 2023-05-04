@@ -106,7 +106,7 @@ struct PlaydateWidgetEntryView : View {
     var body: some View {
         ZStack(alignment: .bottomLeading){
             //TODO: TAMPILAN DATE MASIH BEDA DARI FIGMA
-            let test = false
+            let test = true
             if test {
                 Image(uiImage: entry.image)
                     .resizable()
@@ -118,6 +118,7 @@ struct PlaydateWidgetEntryView : View {
                 Text("13 APRIL 2023")
                     .font(.system(size: 16))
                     .foregroundColor(.white)
+                    .fontWidth(.condensed)
                     .fontWeight(.semibold)
                     .padding()
             }else {
