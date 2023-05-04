@@ -22,7 +22,7 @@ struct OngoingChallengeView: View {
     
     var body: some View {
         
-        let currentMemories = memoryViewModel.memories[memoryViewModel.memories.count-1]
+        let currentMemory = memoryViewModel.memories[memoryViewModel.memories.count-1]
         
         VStack{
             VStack {
@@ -46,10 +46,17 @@ struct OngoingChallengeView: View {
                 //Challenge text
                 HStack {
                     // Ini penyebab error karena masih nil
-                    Text(currentMemories.challenge!.name!)
-                        .font(.custom("Poppins-SemiBold", size: 28))
-                        .lineSpacing(4)
-                        .foregroundColor(.primaryWhite)
+                    if let challenge = currentMemory.challenge {
+                        Text(challenge.name!)
+                            .font(.custom("Poppins-SemiBold", size: 28))
+                            .lineSpacing(4)
+                            .foregroundColor(.primaryWhite)
+                    } else {
+                        Text("NO ONGOING CHALLENGE") // -daniel
+                            .font(.custom("Poppins-SemiBold", size: 28))
+                            .lineSpacing(4)
+                            .foregroundColor(.primaryWhite)
+                    }
                     Spacer()
                 }
                 .padding(.bottom, 30)
@@ -59,11 +66,13 @@ struct OngoingChallengeView: View {
                 
                 //Countdown
                 VStack(spacing: 8) {
-                    if currentMemories.date! >= Date() {
-                        TimerView(setDate: currentMemories.date!)
-                            .font(.system(size: 24))
-                            .fontWeight(.semibold)
-                            .foregroundColor(.primaryWhite)
+                    if let date = currentMemory.date {
+                        if date >= Date() {
+                            TimerView(setDate: currentMemory.date!)
+                                .font(.system(size: 24))
+                                .fontWeight(.semibold)
+                                .foregroundColor(.primaryWhite)
+                        }
                     } else {
                         Text("00:00:00")
                             .font(.system(size: 24))
@@ -84,14 +93,13 @@ struct OngoingChallengeView: View {
             .padding(.vertical, 25)
             .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.6)
             .background(
-                Image(challengeViewModel.getDoodle(category: (currentMemories.challenge?.category)!))
+                Image(challengeViewModel.getDoodle(category: (currentMemory.challenge?.category!)!))
                     .resizable()
                     .scaledToFill()
                     .opacity(0.12)
-                    .background(memoryViewModel.checkChallengeCategoryColor(challengeCategory: (currentMemories.challenge?.category)!))
+                    .background(memoryViewModel.checkChallengeCategoryColor(challengeCategory: (currentMemory.challenge?.category!)!))
                     .frame(width: 600, height: UIScreen.main.bounds.height * 0.6)
                     .edgesIgnoringSafeArea(.top)
-
             )
 //            .background(.blue)
             

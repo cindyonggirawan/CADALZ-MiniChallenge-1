@@ -11,6 +11,7 @@ import Firebase
 @main
 struct PlaydateApp: App {
     @StateObject var dataManager =  DataManager()
+    @StateObject var memoryViewModel = MemoryViewModel()
     
     // Firebase configure API
     init(){
@@ -21,6 +22,7 @@ struct PlaydateApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(dataManager)
+                .environmentObject(memoryViewModel)
 //            ChallengeViewPage1()
 //            GenerateChallengeView()
 //            challengeFirebaseExperiment()
