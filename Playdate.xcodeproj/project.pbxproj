@@ -10,6 +10,7 @@
 		371D4B442A02C75900E85E1B /* FixedSizeNoFillRoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D4B432A02C75900E85E1B /* FixedSizeNoFillRoundedButtonStyle.swift */; };
 		371D4B4C2A03944E00E85E1B /* PhotoDetailModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D4B4B2A03944E00E85E1B /* PhotoDetailModal.swift */; };
 		371D4B4E2A03A32A00E85E1B /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 371D4B4D2A03A32A00E85E1B /* Poppins-Italic.ttf */; };
+		371D4B522A03ACA000E85E1B /* NewProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D4B512A03ACA000E85E1B /* NewProfileView.swift */; };
 		375656B129FA5C79003D9458 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375656B029FA5C79003D9458 /* TimerView.swift */; };
 		3763418829F2172C00F37080 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3763418729F2172C00F37080 /* SplashView.swift */; };
 		3763418A29F21A8800F37080 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3763418929F21A8800F37080 /* OnboardingView.swift */; };
@@ -112,6 +113,7 @@
 		371D4B432A02C75900E85E1B /* FixedSizeNoFillRoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedSizeNoFillRoundedButtonStyle.swift; sourceTree = "<group>"; };
 		371D4B4B2A03944E00E85E1B /* PhotoDetailModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailModal.swift; sourceTree = "<group>"; };
 		371D4B4D2A03A32A00E85E1B /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
+		371D4B512A03ACA000E85E1B /* NewProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileView.swift; sourceTree = "<group>"; };
 		375656B029FA5C79003D9458 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		3763418729F2172C00F37080 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3763418929F21A8800F37080 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				37E2997529F5602400D7A150 /* ProfileView.swift */,
+				371D4B512A03ACA000E85E1B /* NewProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				A503D9F82A0265DE00C0CCCF /* ChallengeSumbitPage2.swift in Sources */,
 				A58E5DA229F40070005B2FF8 /* reviewPageExperimental.swift in Sources */,
 				A925E2E729F446EC000F66C9 /* MemoryViewModel.swift in Sources */,
+				371D4B522A03ACA000E85E1B /* NewProfileView.swift in Sources */,
 				A5325A1929F55CFB0073219B /* FirebaseFunctional.swift in Sources */,
 				3763418E29F2221000F37080 /* FixedSizeRoundedButtonStyle.swift in Sources */,
 				A9090C0A29F2C5A500BD171B /* OngoingChallengeView.swift in Sources */,
