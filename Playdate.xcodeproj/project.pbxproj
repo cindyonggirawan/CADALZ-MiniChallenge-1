@@ -162,6 +162,8 @@
 		A978DFDC2A015B6D003054C1 /* PlaydateWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PlaydateWidget.intentdefinition; sourceTree = "<group>"; };
 		A978DFDD2A015B6F003054C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A978DFDF2A015B6F003054C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A978E0492A039925003054C1 /* Playdate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Playdate.entitlements; sourceTree = "<group>"; };
+		A978E04A2A039936003054C1 /* PlaydateWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlaydateWidgetExtension.entitlements; sourceTree = "<group>"; };
 		A97CEA8D29F255330058F9FA /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateChallengeView.swift; sourceTree = "<group>"; };
 		A97CEA9129F267670058F9FA /* ChallengeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardView.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardView.swift; sourceTree = SOURCE_ROOT; };
@@ -251,6 +253,7 @@
 		379862F829EFDD70002EC23B = {
 			isa = PBXGroup;
 			children = (
+				A978E04A2A039936003054C1 /* PlaydateWidgetExtension.entitlements */,
 				3798630329EFDD70002EC23B /* Playdate */,
 				A978DFD52A015B6D003054C1 /* PlaydateWidget */,
 				A978DFD02A015B6D003054C1 /* Frameworks */,
@@ -270,6 +273,7 @@
 		3798630329EFDD70002EC23B /* Playdate */ = {
 			isa = PBXGroup;
 			children = (
+				A978E0492A039925003054C1 /* Playdate.entitlements */,
 				A5B8CE482A0252680009AA52 /* Experimental */,
 				A907AC1829F2D9C3008FC81B /* Info.plist */,
 				A5AE7D7E29F186E400BD5CAE /* GoogleService-Info.plist */,
@@ -923,6 +927,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Playdate/Playdate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -960,6 +965,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Playdate/Playdate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -996,6 +1002,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PlaydateWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1025,6 +1032,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PlaydateWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
