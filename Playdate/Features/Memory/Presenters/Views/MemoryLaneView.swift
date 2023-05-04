@@ -56,14 +56,16 @@ struct MemoryLaneView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 5) {
                     ForEach(self.memVm.memories, id: \.self) { memory in
-                        ZStack {
-                            Image(uiImage: memory.photo!)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .clipped()
+                        if memory.photo != nil {
+                            ZStack {
+                                Image(uiImage: memory.photo!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipped()
+                            }
+                            .frame(width: 116, height: 118)
+                            .drawingGroup()
                         }
-                        .frame(width: 116, height: 118)
-                        .drawingGroup()
                     }
                 }
             }

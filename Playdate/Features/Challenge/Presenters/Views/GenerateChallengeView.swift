@@ -101,7 +101,8 @@ struct GenerateChallengeView: View {
                     .tag(0)
                
                
-                Text("Memories Tab")
+//                Text("Memories Tab")
+                MemoryLaneView()
                     .tabItem {
                         Image(memoriesImageName)
                         Text("Memories")
