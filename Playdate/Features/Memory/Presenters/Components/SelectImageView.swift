@@ -7,6 +7,39 @@
 
 import SwiftUI
 
+struct SelectImageView: View {
+    @EnvironmentObject var memoryViewModel: MemoryViewModel
+    var memory: Memory
+    
+    @Binding var isSelected: Bool
+    @State var circleIsClicked: Bool = false
+    
+    var body: some View {
+        ZStack {
+            Image(uiImage: memory.photo!)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipped()
+            
+            if !self.isSelected {
+                SelectCircle(circleIsClicked: $circleIsClicked) // buletannya muncul
+            }
+        }
+        .frame(width: 116, height: 118)
+        .onTapGesture {
+            if !self.isSelected {
+                self.circleIsClicked.toggle()
+                
+                if let id = memory.id {
+                    memoryViewModel.appendMemoryUUID(id)
+                }
+            }
+        }
+        .drawingGroup() // karena UIImage nya UIKit, aspectRatio SwiftUI gak bisa -daniel
+    }
+    
+}
+
 struct SelectCircle: View {
     @Binding var circleIsClicked: Bool
     @State var isClicked: Bool = false
@@ -22,7 +55,7 @@ struct SelectCircle: View {
                         .stroke(.white, lineWidth: 2)
                 )
                 .overlay(
-                    self.getPurpleCircle(isClicked)
+                    self.getPurpleCircle(circleIsClicked)
                 )
                 .padding(.leading, 80)
                 .padding(.bottom, 80)
