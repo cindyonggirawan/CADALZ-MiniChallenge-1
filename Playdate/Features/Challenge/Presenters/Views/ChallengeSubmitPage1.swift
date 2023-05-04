@@ -125,6 +125,7 @@ struct ChallengeViewPage1: View {
                     // Page 2
                     VStack{
                         ChallengeSumbitPage2(isLikeChallenge: $isLikeChallenge)
+                        
                     }
                 }
             }
@@ -138,6 +139,7 @@ struct ChallengeViewPage1: View {
                     } else {
                         Button("Prev") {
                             navChallengeModal = 1
+                            self.flipCard()
                         }
                     }
                 }

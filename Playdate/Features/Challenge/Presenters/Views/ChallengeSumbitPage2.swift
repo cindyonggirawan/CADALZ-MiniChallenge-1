@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import Firebase
 
 struct ChallengeSumbitPage2: View {
     @StateObject var challengeViewModel = ChallengeViewModel()
@@ -21,58 +22,69 @@ struct ChallengeSumbitPage2: View {
     @State private var showImage: Bool = false
     
     @State var selectedUIImage: UIImage = UIImage()
+    @State var showVstack = false
     
     var body: some View {
         
-        VStack{
-            ZStack{
-                // Photo Picker
-                VStack(alignment: .leading) {
-                    PhotosPicker (
-                        selection: $selectedItems,
-                        matching: .images
-                    ) {
-                        VStack {
-                            Image("profile-icon")
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                            Text("Add Photo")
-                                .font(.custom("Poppins", size: 14))
-                                .foregroundColor(Color.white)
+        let currentMemories = memoryViewModel.memories[memoryViewModel.memories.count-1]
+        
+        ZStack{
+            if showVstack {
+                VStack{
+                    ZStack{
+                        // Photo Picker
+                        VStack(alignment: .leading) {
+                            PhotosPicker (
+                                selection: $selectedItems,
+                                matching: .images
+                            ) {
+                                VStack {
+                                    Image("profile-icon")
+                                        .resizable()
+                                        .frame(width: 32, height: 32)
+                                    Text("Add Photo")
+                                        .font(.custom("Poppins", size: 14))
+                                        .foregroundColor(Color.white)
+                                }
+                                .background(Color.green)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [9]))
+                                        .foregroundColor(Color.white)
+                                        .frame(width: 310, height: 310)
+                                )
+                            }
                         }
-                        .background(Color.green)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [9]))
-                                .foregroundColor(Color.white)
+                        .onChange(of: selectedItems) { _ in
+                            Task {
+                                if let data = try? await selectedItems?.loadTransferable(type: Data.self) {
+                                    if let uiImage = UIImage(data: data) {
+                                        showImage = true
+                                        selectedUIImage = uiImage
+                                        selectedImage = Image(uiImage: uiImage)
+                                            .resizable()
+                                        return
+                                    }
+                                    print("failed")
+                                }
+                            }
+                        }
+                        
+                        //Show Image if any
+                        if (showImage){
+                            // Perlu di clipped ke swiftUI
+                            selectedImage
                                 .frame(width: 310, height: 310)
-                        )
-                    }
-                }
-                .onChange(of: selectedItems) { _ in
-                    Task {
-                        if let data = try? await selectedItems?.loadTransferable(type: Data.self) {
-                            if let uiImage = UIImage(data: data) {
-                                showImage = true
-                                selectedUIImage = uiImage
-                                selectedImage = Image(uiImage: uiImage)
-                                    .resizable()
-                                return
-                        }
-                        print("failed")
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
                         }
                     }
+                    .padding(.bottom, 390)
+                    .padding(.top,60)
                 }
-                .padding(.bottom, 30)
-                
-                //Show Image if any
-                if (showImage){
-                    // Perlu di clipped ke swiftUI
-//                    selectedImage
-                }
+                .transition(.opacity)
+                .animation(.easeInOut(duration: 0.5))
             }
-            .padding(.bottom, 30)
-            .padding(.top,170)
+
             
             // Description
             VStack(alignment: .leading){
@@ -90,7 +102,7 @@ struct ChallengeSumbitPage2: View {
                 
                 Button(action: {
                     //TODO: send isLike data to firebase
-                    
+                    updateChallengeLike(challengeId: currentMemories.challenge!.id! , isLike: isLikeChallenge)
                     memoryViewModel.submitMemory(photo: selectedUIImage, description: momentDescription)
                 }, label: {
                     Text("Submit")
@@ -99,8 +111,47 @@ struct ChallengeSumbitPage2: View {
                 .buttonStyle(FixedSizeRoundedButtonStyle())
                 .padding(.top, 100)
             }
-            .padding(.top, 70)
+            .padding(.top, 400)
             .padding(24)
+            .onAppear{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.showVstack = true
+                }
+            }
+        }
+    }
+    
+    
+    
+    // FIREBASE
+    func updateChallengeLike(challengeId: String, isLike: Bool){
+        
+        let db = Firestore.firestore()
+        let x = db.collection("Challenges").whereField("Id", isEqualTo: challengeId)
+        x.getDocuments {
+            (result, error) in
+            if error == nil {
+                for document in result!.documents {
+//                    Check Data
+                    let data = document.data()
+                    
+                    var like = data["Like"] as? Int ?? -1
+                    var numberOfUser = data["NumberOfUser"] as? Int ?? -1
+                    
+                    print("fetched like: \(like) | numberOfUser: \(numberOfUser)")
+                    if isLike {
+                        like+=1
+                    }
+                    numberOfUser+=1
+                    
+                    print("Updated Like: \(like) NumberOfUser: \(numberOfUser) challenge id: \(challengeId)")
+                    
+//                    Update Data
+                    document.reference.updateData([
+                        "Like":like,
+                        "NumberOfUser":numberOfUser])
+                }
+            }
         }
     }
 }
