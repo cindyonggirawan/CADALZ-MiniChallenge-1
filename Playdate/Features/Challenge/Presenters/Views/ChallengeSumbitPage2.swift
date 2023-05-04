@@ -9,135 +9,98 @@ import SwiftUI
 import PhotosUI
 
 struct ChallengeSumbitPage2: View {
+    @StateObject var challengeViewModel = ChallengeViewModel()
+    @StateObject var memoryViewModel = MemoryViewModel()
     @Binding var isLikeChallenge: Bool
     @State var momentDescription = ""
     @State var navChallengeModal = 1
 //    @State var selectedItems: [PhotosPickerItem] = []
     @State private var selectedItems: PhotosPickerItem?
     @State var data: Data?
-    @State private var selectedImage: Image?
+    @State var selectedImage: Image?
     @State private var showImage: Bool = false
     
     @State var selectedUIImage: UIImage = UIImage()
-    @StateObject var memoryViewModel = MemoryViewModel()
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading) {
-//                ChallengeCardSmall()
-//                    .padding(.bottom, 20)
-                
+        
+        VStack{
+            ZStack{
+                // Photo Picker
                 VStack(alignment: .leading) {
-                    Text("Add photos")
-                        .font(.custom("Poppins", size: 18))
-                        .bold()
-                        .foregroundColor(Color.black)
-                    
                     PhotosPicker (
                         selection: $selectedItems,
                         matching: .images
                     ) {
-                        ZStack {
-                            VStack {
-                                Image("profile-icon")
+                        VStack {
+                            Image("profile-icon")
+                                .resizable()
+                                .frame(width: 32, height: 32)
+                            Text("Add Photo")
+                                .font(.custom("Poppins", size: 14))
+                                .foregroundColor(Color.white)
+                        }
+                        .background(Color.green)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [9]))
+                                .foregroundColor(Color.white)
+                                .frame(width: 310, height: 310)
+                        )
+                    }
+                }
+                .onChange(of: selectedItems) { _ in
+                    Task {
+                        if let data = try? await selectedItems?.loadTransferable(type: Data.self) {
+                            if let uiImage = UIImage(data: data) {
+                                showImage = true
+                                selectedUIImage = uiImage
+                                selectedImage = Image(uiImage: uiImage)
                                     .resizable()
-                                    .frame(width: 32, height: 32)
-                                
-                                Text("Upload")
-                                    .font(.custom("Poppins", size: 16))
-                                    .foregroundColor(Color.primaryDarkGray)
-                            }
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 10)
-                            .background(Color.primaryLightGray)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(style: StrokeStyle(lineWidth: 1, dash: [4]))
-                                    .foregroundColor(Color.primaryDarkGray)
-                            )
-//                            if let data = data, let uiimage = UIImage(data: data) {
-//                                Image(uiImage: uiimage)
-//                                    .resizable()
-//                            }
+                                return
                         }
-                    }
-//                    .onChange(of: selectedItems) { newValue in
-//                        guard let item = selectedItems.first else {
-//                            return
-//                        }
-//                        item.loadTransferable(type: Data.self) { result in
-//                            switch result {
-//                            case .success(let data):
-//                                if let data = data {
-//                                    self.data = data
-//                                } else {
-//                                    print("Data is nil")
-//                                }
-//                            case .failure(let failure):
-//                                fatalError("\(failure)")
-//                            }
-//                        }
-//                    }
-                    // TRIAL
-                    .onChange(of: selectedItems) { _ in
-                        Task {
-                            if let data = try? await selectedItems?.loadTransferable(type: Data.self) {
-                                if let uiImage = UIImage(data: data) {
-                                    showImage = true
-                                    selectedUIImage = uiImage
-                                    selectedImage = Image(uiImage: uiImage)
-                                        .resizable()
-                                    return
-                                }
-                            }
-                            print("failed")
+                        print("failed")
                         }
                     }
                 }
-                .padding(.bottom, 20)
+                .padding(.bottom, 30)
                 
+                //Show Image if any
                 if (showImage){
-                    selectedImage
+                    // Perlu di clipped ke swiftUI
+//                    selectedImage
                 }
-                
-                VStack(alignment: .leading) {
-                    Text("Write about this moment")
-                        .font(.custom("Poppins", size: 18))
-                        .bold()
-                        .foregroundColor(Color.black)
-                    
-                    TextField("How do you feel doing this challenge?", text: $momentDescription, axis: .vertical)
-                        .textFieldStyle(UnborderedTextFieldStyle())
-                        .font(.custom("Poppins", size: 16))
-                        .foregroundColor(Color.primaryDarkGray)
-                }
-                
-                Spacer()
+            }
+            .padding(.bottom, 30)
+            .padding(.top,170)
+            
+            // Description
+            VStack(alignment: .leading){
+                Text("Write about this moment")
+                    .font(.custom("Poppins", size: 18))
+                    .bold()
+                    .foregroundColor(Color.black)
+                    .padding(.top, 48)
+
+                TextField("How do you feel doing this challenge?", text: $momentDescription, axis: .vertical)
+//                    .textFieldStyle(UnborderedTextFieldStyle())
+                    .lineLimit(3, reservesSpace: true)
+                    .font(.custom("Poppins", size: 16))
+                    .foregroundColor(Color.primaryDarkGray)
                 
                 Button(action: {
                     //TODO: send isLike data to firebase
-//                    FBaddLikeToChallenge()
-//                    pake function ini buat simpen ke memory ->
-                    memoryViewModel.submitMemory(photo: selectedUIImage, description: momentDescription)
                     
+                    memoryViewModel.submitMemory(photo: selectedUIImage, description: momentDescription)
                 }, label: {
                     Text("Submit")
                         .font(.custom("Poppins-Bold", size: 14))
                 })
                 .buttonStyle(FixedSizeRoundedButtonStyle())
+                .padding(.top, 100)
             }
-            .padding(20)
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    if ( navChallengeModal == 1 ){
-//                        Button("Cancel") {}
-//                    } else {
-//                        Button("Prev") {
-//                            navChallengeModal = 1
-//                        }
-//                    }
-//                }
-//            }
+            .padding(.top, 70)
+            .padding(24)
         }
     }
 }

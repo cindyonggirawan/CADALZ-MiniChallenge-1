@@ -28,118 +28,120 @@ struct ChallengeViewPage1: View {
         let currentMemories = memoryViewModel.memories[memoryViewModel.memories.count-1]
         
         NavigationView {
-            VStack {
-                if (navChallengeModal == 1) {
-                    // Diganti jadi Statis (OKE)
-                    // dear Louis, mohon maaf ini code masih tidak DRY, nanti tinggal gw refactor2 lagi. skrg for the sake of flipping card 👍
-                    ZStack {
-                        VStack(alignment: .leading) {
-                            Spacer()
-                            
-                            HStack{
-                                Spacer()
-                                Text("PLAYDATE")
-                                    .font(.system(size: 14))
-                                    .fontWeight(.medium)
-                                    .foregroundColor(.primaryWhite)
-                                    .opacity(0.5)
-                                    .padding(.vertical, 10)
-                                Spacer()
-                            }
-                        }
-                        .frame(width: 342, height: 368)
-                        .background(
-                //            Image(vm.getDoodle(category: challenge.category!))
-                            Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bgt
-                                .resizable()
-                                .scaledToFill()
-                //                .frame(width: 500, height: 500)
-                                .opacity(0.12)
-                                .background(checkChallengeCategoryColor(challengeCategory: currentMemories.challenge!.category!))
-                                .frame(width: 600, height: 600)
-                        )
-                        .clipped()
-                        .contentShape(Rectangle())
-                        .cornerRadius(16)
-                        .rotation3DEffect(Angle(degrees: uploadPhotoDegree), axis: (x: 0, y: 1, z: 0), perspective: 0.55)
+            ZStack{
+                // challenge card
+                ZStack {
+                    VStack(alignment: .leading) {
+                        Spacer()
                         
-                        ChallengeCardView(challenge: currentMemories.challenge!, vm: challengeViewModel, shiftIndex: 4)
-                            .rotation3DEffect(Angle(degrees: challengeCardDegree), axis: (x: 0, y: 1, z: 0), perspective: 0.55)
-                    }
-                    .padding(.top, 180)
-                    .onTapGesture {
-                        self.flipCard()
-                    }
-                    
-                    Text("Do you like the challenge?")
-                        .font(.custom("Poppins-semibold", size: 20))
-                        .foregroundColor(.black)
-
-                        .padding(.top, 50)
-
-                    
-                    HStack {
-                        ZStack {
-                            Button(action: {
-                                navChallengeModal = 2
-                                isLikeChallenge = false
-                                print("Button pressed \(isLikeChallenge)")
-                            }) {
-                                // Add LIKE Illustration here
-                                Text("No")
-                                    .font(.custom("Poppins-SemiBold", size: 14))
-                            }
-                            .frame(width: 167, height: 53)
-                            .foregroundColor(Color.primaryDarkBlue)
-                            .background(Color.primaryWhite)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.primaryDarkBlue, lineWidth: 1)
-                            )
+                        HStack{
+                            Spacer()
+                            Text("PLAYDATE")
+                                .font(.system(size: 14))
+                                .fontWeight(.medium)
+                                .foregroundColor(.primaryWhite)
+                                .opacity(0.5)
+                                .padding(.vertical, 10)
+                            Spacer()
                         }
-                        ZStack {
-                            Button(action: {
-                                navChallengeModal = 2
-                                isLikeChallenge = true
-                                print("Button pressed \(isLikeChallenge)")
-                            }) {
-                                // Add LIKE Illustration here
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .frame(width: 167, height: 53)
-                                        .foregroundColor(Color.primaryDarkBlue)
-                                    Text("Yes")
+                    }
+                    .frame(width: 342, height: 368)
+                    .background(
+//                        Image(vm.getDoodle(category: challenge.category!))
+                        Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bgt
+                            .resizable()
+                            .scaledToFill()
+            //                .frame(width: 500, height: 500)
+                            .opacity(0.12)
+                            .background(checkChallengeCategoryColor(challengeCategory: currentMemories.challenge!.category!))
+                            .frame(width: 600, height: 600)
+                    )
+                    .clipped()
+                    .contentShape(Rectangle())
+                    .cornerRadius(16)
+                    .rotation3DEffect(Angle(degrees: uploadPhotoDegree), axis: (x: 0, y: 1, z: 0), perspective: 0.55)
+                    
+                    ChallengeCardView(challenge: currentMemories.challenge!, vm: challengeViewModel, shiftIndex: 4)
+                        .rotation3DEffect(Angle(degrees: challengeCardDegree), axis: (x: 0, y: 1, z: 0), perspective: 0.55)
+                }
+                .padding(.top, 100)
+                .padding(.bottom, 400)
+                
+                // for page navigation
+                if (navChallengeModal == 1){
+                    VStack {
+                        // Page 1
+                        Text("Do you like the challenge?")
+                            .font(.custom("Poppins-semibold", size: 20))
+                            .foregroundColor(.black)
+
+                            .padding(.top, 230)
+                        
+                        // button
+                        HStack {
+                            ZStack {
+                                Button(action: {
+                                    self.flipCard()
+                                    navChallengeModal = 2
+                                    isLikeChallenge = false
+                                    print("Button pressed \(isLikeChallenge)")
+                                }) {
+                                    // Add LIKE Illustration here
+                                    Text("No")
                                         .font(.custom("Poppins-SemiBold", size: 14))
-                                        .foregroundColor(Color.white)
                                 }
+                                .frame(width: 167, height: 53)
+                                .foregroundColor(Color.primaryDarkBlue)
+                                .background(Color.primaryWhite)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(Color.primaryDarkBlue, lineWidth: 1)
+                                )
                             }
-                            .frame(width: 167, height: 53)
-//                            Text("Yes")
-//                                .font(.custom("Poppins-SemiBold", size: 14))
-//                                .foregroundColor(Color.white)
+                            ZStack {
+                                Button(action: {
+                                    self.flipCard()
+                                    navChallengeModal = 2
+                                    isLikeChallenge = true
+                                    print("Button pressed \(isLikeChallenge)")
+                                }) {
+                                    // Add LIKE Illustration here
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .frame(width: 167, height: 53)
+                                            .foregroundColor(Color.primaryDarkBlue)
+                                        Text("Yes")
+                                            .font(.custom("Poppins-SemiBold", size: 14))
+                                            .foregroundColor(Color.white)
+                                    }
+                                }
+                                .frame(width: 167, height: 53)
+                            }
                         }
+                        .padding(.top, 24)
                     }
-                    .padding(.bottom, 279)
+                    .padding(.top,100)
                 } else {
-                    // to page 2
-//                    ChallengeSubmitModal(isLikeChallenge: $isLikeChallenge)
-                    ChallengeSumbitPage2(isLikeChallenge: $isLikeChallenge)
+                    // Page 2
+                    VStack{
+                        ChallengeSumbitPage2(isLikeChallenge: $isLikeChallenge)
+                    }
                 }
             }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        if ( navChallengeModal == 1 ){
-                            Button("Cancel") {
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if ( navChallengeModal == 1 ){
+                        Button("Prev") {
 //                              // Navigate to Ongoing challenge
-                                
-                            }
-                        } else {
-                            Button("Prev") {
-                                navChallengeModal = 1
-                            }
+                            
+                        }
+                    } else {
+                        Button("Prev") {
+                            navChallengeModal = 1
                         }
                     }
                 }
+            }
         }
     }
     
