@@ -106,18 +106,48 @@ struct PlaydateWidgetEntryView : View {
     var body: some View {
         ZStack(alignment: .bottomLeading){
             //TODO: TAMPILAN DATE MASIH BEDA DARI FIGMA
-            Image(uiImage: entry.image)
-                .resizable()
-                .scaledToFill()
-            Rectangle()
-                .frame(width: .infinity, height: .infinity)
-                .foregroundColor(.primaryDarkBlue)
-                .opacity(0.25)
-            Text("13 APRIL 2023")
-                .font(.system(size: 16))
-                .foregroundColor(.white)
-                .fontWeight(.semibold)
-                .padding()
+            let test = false
+            if test {
+                Image(uiImage: entry.image)
+                    .resizable()
+                    .scaledToFill()
+                Rectangle()
+                    .frame(width: .infinity, height: .infinity)
+                    .foregroundColor(.primaryDarkBlue)
+                    .opacity(0.25)
+                Text("13 APRIL 2023")
+                    .font(.system(size: 16))
+                    .foregroundColor(.white)
+                    .fontWeight(.semibold)
+                    .padding()
+            }else {
+                VStack(spacing: 2){
+                    Image(systemName: "photo.on.rectangle.angled")
+                        .font(.system(size: 40))
+                        .foregroundColor(.primaryPurple)
+                        .padding(.bottom, 8)
+                    
+                    Text("Oops, no memories!")
+//                        .font(.custom("Poppins-SemiBold", size: 11))
+                        .font(.system(size: 11))
+                        .fontWeight(.semibold)
+                    Text("Let's do a challenge")
+                        .font(.custom("Poppins-Regular", size: 10))
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(
+                    Image("doodle-food")
+                        .resizable()
+                        .scaledToFill()
+                        .opacity(0.12)
+                        .background(.white)
+                        .frame(width: 250, height: 250)
+                    )
+                    .clipped()
+                    .contentShape(Rectangle())
+                
+            }
+            
         }
 //        if let challenge = memoryViewModel.memories[memoryViewModel.memories.count-1].challenge {
 //            Text(challenge.name ?? "no")

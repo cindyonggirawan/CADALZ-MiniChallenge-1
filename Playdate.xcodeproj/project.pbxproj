@@ -69,6 +69,12 @@
 		A978DFFA2A0166DC003054C1 /* MemoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A925E2E629F446EC000F66C9 /* MemoryViewModel.swift */; };
 		A978DFFB2A0166F4003054C1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632229EFE11F002EC23B /* CoreDataManager.swift */; };
 		A978DFFC2A01671C003054C1 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798632B29EFE1D8002EC23B /* AppColor.swift */; };
+		A978E03C2A0369BC003054C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3798630829EFDD71002EC23B /* Assets.xcassets */; };
+		A978E03D2A036B5A003054C1 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A907AC1029F2D9B3008FC81B /* Poppins-SemiBold.ttf */; };
+		A978E03E2A036B5E003054C1 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A907AC0E29F2D9B3008FC81B /* Poppins-Regular.ttf */; };
+		A978E03F2A036B61003054C1 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A907AC0F29F2D9B3008FC81B /* Poppins-Medium.ttf */; };
+		A978E0402A036B64003054C1 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A907AC1129F2D9B3008FC81B /* Poppins-Light.ttf */; };
+		A978E0412A036B67003054C1 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A907AC1229F2D9B3008FC81B /* Poppins-Bold.ttf */; };
 		A97CEA8E29F255330058F9FA /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8C29F255330058F9FA /* CoreDataModel.xcdatamodeld */; };
 		A97CEA9029F261E20058F9FA /* GenerateChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA8F29F261E20058F9FA /* GenerateChallengeView.swift */; };
 		A97CEA9229F267670058F9FA /* ChallengeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97CEA9129F267670058F9FA /* ChallengeCardView.swift */; };
@@ -706,7 +712,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A978E03D2A036B5A003054C1 /* Poppins-SemiBold.ttf in Resources */,
+				A978E0402A036B64003054C1 /* Poppins-Light.ttf in Resources */,
+				A978E0412A036B67003054C1 /* Poppins-Bold.ttf in Resources */,
+				A978E03C2A0369BC003054C1 /* Assets.xcassets in Resources */,
 				A978DFDE2A015B6F003054C1 /* Assets.xcassets in Resources */,
+				A978E03E2A036B5E003054C1 /* Poppins-Regular.ttf in Resources */,
+				A978E03F2A036B61003054C1 /* Poppins-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +934,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -958,6 +971,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
