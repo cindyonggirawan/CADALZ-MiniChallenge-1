@@ -129,10 +129,12 @@ struct PlaydateWidgetEntryView : View {
                     
                     Text("Oops, no memories!")
 //                        .font(.custom("Poppins-SemiBold", size: 11))
-                        .font(.system(size: 11))
+                        .font(.system(size: 12))
                         .fontWeight(.semibold)
+                        .foregroundColor(.primaryDarkBlue)
                     Text("Let's do a challenge")
-                        .font(.custom("Poppins-Regular", size: 10))
+                        .font(.custom("Poppins-Regular", size: 11))
+                        .foregroundColor(.primaryDarkBlue)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(

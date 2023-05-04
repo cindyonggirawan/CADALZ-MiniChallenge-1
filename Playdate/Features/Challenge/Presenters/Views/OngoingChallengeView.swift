@@ -71,6 +71,7 @@ struct OngoingChallengeView: View {
                 .padding(.horizontal)
                 .background(Color.primaryWhite.opacity(0.2))
                 .cornerRadius(8)
+                .padding(.vertical, 10)
                 
             }
             .padding(.vertical, 25)
@@ -82,8 +83,10 @@ struct OngoingChallengeView: View {
                     .opacity(0.12)
                     .background(memoryViewModel.checkChallengeCategoryColor(challengeCategory: (currentMemories.challenge?.category)!))
                     .frame(width: 600, height: UIScreen.main.bounds.height * 0.6)
-                    .ignoresSafeArea(.all)
+                    .edgesIgnoringSafeArea(.top)
+
             )
+//            .background(.blue)
             
             VStack {
                 Button(action: {
@@ -93,7 +96,7 @@ struct OngoingChallengeView: View {
                         .font(.custom("Poppins-Bold", size: 14))
                 })
                 .buttonStyle(FixedSizeRoundedButtonStyle())
-                .padding(.top, 20)
+                .padding(.top, 10)
                 .padding(.horizontal, 24)
                 .sheet(isPresented: $showSheet) {
 //                    ChallangeReviewModal()              // JEJAK -daniel
@@ -109,7 +112,7 @@ struct OngoingChallengeView: View {
                         .foregroundColor(.primaryDarkBlue)
                 })
                 .buttonStyle(FixedSizeNoFillRoundedButtonStyle())
-                .padding(.top, 20)
+                .padding(.top, 5)
                 .padding(.horizontal, 24)
             }
             Spacer()
