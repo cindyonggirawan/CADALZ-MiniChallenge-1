@@ -59,10 +59,17 @@ struct OngoingChallengeView: View {
                 
                 //Countdown
                 VStack(spacing: 8) {
-                    TimerView(setDate: currentMemories.date!)
-                        .font(.system(size: 24))
-                        .fontWeight(.semibold)
-                        .foregroundColor(.primaryWhite)
+                    if currentMemories.date! >= Date() {
+                        TimerView(setDate: currentMemories.date!)
+                            .font(.system(size: 24))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.primaryWhite)
+                    } else {
+                        Text("00:00:00")
+                            .font(.system(size: 24))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.primaryWhite)
+                    }
                     Text("Time left to do the challenge")
                         .font(.custom("Poppins-Medium", size: 14))
                         .foregroundColor(.primaryWhite.opacity(0.5))
