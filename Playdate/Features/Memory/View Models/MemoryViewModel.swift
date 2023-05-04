@@ -90,8 +90,11 @@ class MemoryViewModel: ObservableObject {
     
     func submitMemory(photo: UIImage, description: String){
         if memories[memories.count-1].status == "ongoing"{
-            memories[memories.count-1].photo = photo
-            memories[memories.count-1].momentDescription = description
+            let memory = memories[memories.count-1]
+            memory.photo = photo
+            memory.momentDescription = description
+            memory.status = "completed"
+            memory.date = Date()
             save()
         }else{
             print("Error submiting memory")

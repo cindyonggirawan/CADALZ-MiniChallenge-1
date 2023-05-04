@@ -18,6 +18,9 @@ struct ChallengeSumbitPage2: View {
     @State private var selectedImage: Image?
     @State private var showImage: Bool = false
     
+    @State var selectedUIImage: UIImage = UIImage()
+    @StateObject var memoryViewModel = MemoryViewModel()
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -81,6 +84,7 @@ struct ChallengeSumbitPage2: View {
                             if let data = try? await selectedItems?.loadTransferable(type: Data.self) {
                                 if let uiImage = UIImage(data: data) {
                                     showImage = true
+                                    selectedUIImage = uiImage
                                     selectedImage = Image(uiImage: uiImage)
                                         .resizable()
                                     return
@@ -114,7 +118,7 @@ struct ChallengeSumbitPage2: View {
                     //TODO: send isLike data to firebase
 //                    FBaddLikeToChallenge()
 //                    pake function ini buat simpen ke memory ->
-//                    MemoryViewModel.submitMemory(photo: URL(resolvingBookmarkData: uiimage, bookmarkDataIsStale: &<#T##Bool#>), description: momentDescription)
+                    memoryViewModel.submitMemory(photo: selectedUIImage, description: momentDescription)
                     
                 }, label: {
                     Text("Submit")
