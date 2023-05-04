@@ -29,10 +29,11 @@ struct PlaydateTimelineProvider: TimelineProvider {
             
             let memories = try getMemoriesData()
             
+            print(memories)
+            
             var dayMemories: [Memory] = []
             var nightMemories: [Memory] = []
-            
-            print(memories)
+
             for memory in memories {
                 if memory.status != "ongoing"{
                     
@@ -54,8 +55,8 @@ struct PlaydateTimelineProvider: TimelineProvider {
                 }
             }
             
-            print(dayMemories)
-            print(nightMemories)
+//            print(dayMemories)
+//            print(nightMemories)
             
             //            let dayMemory = dayMemories.randomElement()
             //            let dayEntry = PlaydateTimelineEntry(date: (dayMemory?.date)!, image: UIImage(named: "dummyPhoto")!)
@@ -82,15 +83,17 @@ struct PlaydateTimelineProvider: TimelineProvider {
     }
     
     private func getMemoriesData() throws -> [Memory]{
-//        print("in \(memoryViewModel.memories)")
-//        return memoryViewModel.memories
-        let context = memoryViewModel.manager.context
+        print("in \(memoryViewModel.memories)")
+        return memoryViewModel.memories
         
-        let req = Memory.fetchRequest()
-        let result = try context.fetch(req)
         
-        print("result \(result)")
-        return result
+//        let context = memoryViewModel.manager.context
+//
+//        let req = Memory.fetchRequest()
+//        let result = try context.fetch(req)
+//
+//        print("result \(result)")
+//        return result
     }
 }
 

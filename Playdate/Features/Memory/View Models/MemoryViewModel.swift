@@ -20,13 +20,13 @@ class MemoryViewModel: ObservableObject {
     
     init() {
         getMemories()
-        if self.memories.count == 0 {
-            for chl in getChallenges() {
-                addMemory2(challenge: chl)
-            }
-        }
+//        if self.memories.count == 0 {
+//            for chl in getChallenges() {
+//                addMemory2(challenge: chl)
+//            }
+//        }
         
-        getMemories()
+//        getMemories()
         print("\nMemories count \(memories.count)")
         
         rows = Int(ceil(Double(self.memories.count) / 3.0))
