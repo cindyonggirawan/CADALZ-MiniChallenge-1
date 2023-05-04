@@ -15,9 +15,14 @@ class CoreDataManager {
     
     init() {
         container = NSPersistentContainer(name: "CoreDataModel")
+        let url = URL.storeURL(for: "group.playdate", databaseName: "CoreDataModel")
+        let storeDescription = NSPersistentStoreDescription(url: url)
+        
+        container.persistentStoreDescriptions = [storeDescription]
+        
         container.loadPersistentStores { desc, error in
-            if let error = error {
-                print("Error loading Core Data. \(error)")
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         }
         context = container.viewContext
@@ -29,5 +34,15 @@ class CoreDataManager {
         } catch let error {
             print("Error saving Core Data. \(error.localizedDescription)")
         }
+    }
+}
+
+public extension URL {
+    static func storeURL(for appGroup: String, databaseName: String) -> URL {
+        guard let fileContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
+            fatalError("Unable to create URL for \(appGroup)")
+        }
+        
+        return fileContainer.appendingPathComponent("\(databaseName).sqlite")
     }
 }
