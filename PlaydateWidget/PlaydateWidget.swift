@@ -10,6 +10,8 @@ import SwiftUI
 //import Intents
 
 struct PlaydateTimelineProvider: TimelineProvider {
+    @StateObject var memoryViewModel = MemoryViewModel()
+    
     func placeholder(in context: Context) -> PlaydateTimelineEntry {
         PlaydateTimelineEntry(date: Date(), image: UIImage(named: "dummyPhoto")!)
     }
@@ -23,12 +25,72 @@ struct PlaydateTimelineProvider: TimelineProvider {
         var entries: [PlaydateTimelineEntry] = []
         let policy: TimelineReloadPolicy = .atEnd
 
+        do {
+            
+            let memories = try getMemoriesData()
+            
+            var dayMemories: [Memory] = []
+            var nightMemories: [Memory] = []
+            
+            print(memories)
+            for memory in memories {
+                if memory.status != "ongoing"{
+                    
+                    let hour = Calendar.current.component(.hour, from: memory.date!)
+                    
+                    switch(hour){
+                    case 0..<6:
+                        nightMemories.append(memory)
+                        break
+                    case 6..<18:
+                        dayMemories.append(memory)
+                        break
+                    case 18..<24:
+                        nightMemories.append(memory)
+                        break
+                    default:
+                        break
+                    }
+                }
+            }
+            
+            print(dayMemories)
+            print(nightMemories)
+            
+            //            let dayMemory = dayMemories.randomElement()
+            //            let dayEntry = PlaydateTimelineEntry(date: (dayMemory?.date)!, image: UIImage(named: "dummyPhoto")!)
+            //            entries.append(dayEntry)
+            //
+            //
+            //            let nightMemory = nightMemories.randomElement()
+            //            let nightEntry = PlaydateTimelineEntry(date: (nightMemory?.date)!, image: UIImage(named: "dummyPhoto2")!)
+            //            entries.append(nightEntry)
+            
+        }catch {
+            print(error)
+        }
+        
+        
+        
+        
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let entry = PlaydateTimelineEntry(date: Date(), image: UIImage(named: "dummyPhoto")!)
         entries.append(entry)
 
         let timeline = Timeline(entries: entries, policy: policy )
         completion(timeline)
+    }
+    
+    private func getMemoriesData() throws -> [Memory]{
+//        print("in \(memoryViewModel.memories)")
+//        return memoryViewModel.memories
+        let context = memoryViewModel.manager.context
+        
+        let req = Memory.fetchRequest()
+        let result = try context.fetch(req)
+        
+        print("result \(result)")
+        return result
     }
 }
 
