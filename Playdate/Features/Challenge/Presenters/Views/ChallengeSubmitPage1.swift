@@ -11,6 +11,7 @@ struct ChallengeViewPage1: View {
     // Navigation
     @State var navChallengeModal = 1 // ohhh 1: like challenge?, 2: upload photo
     @State var isLikeChallenge = true
+    @State private var show = false
     
     // Challenge Card View
     @StateObject var challengeViewModel = ChallengeViewModel()
@@ -135,7 +136,7 @@ struct ChallengeViewPage1: View {
                         Button("Prev") {
 //                              // Navigate to Ongoing challenge
 //                            OngoingChallengeView()
-                            
+                            show = true
                         }
                     } else {
                         Button("Prev") {
@@ -144,6 +145,9 @@ struct ChallengeViewPage1: View {
                         }
                     }
                 }
+            }
+            .fullScreenCover(isPresented: $show) {
+                OngoingChallengeView()
             }
         }
     }

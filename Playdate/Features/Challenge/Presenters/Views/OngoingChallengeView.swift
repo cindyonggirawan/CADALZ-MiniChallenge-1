@@ -105,7 +105,7 @@ struct OngoingChallengeView: View {
                 .buttonStyle(FixedSizeRoundedButtonStyle())
                 .padding(.top, 10)
                 .padding(.horizontal, 24)
-                .sheet(isPresented: $showSheet) {
+                .fullScreenCover(isPresented: $showSheet) {
 //                    ChallangeReviewModal()              // JEJAK -daniel
                     ChallengeViewPage1()
                 }
