@@ -14,18 +14,22 @@ class MemoryViewModel: ObservableObject {
     let manager = CoreDataManager.instance
     
     @Published var memories: [Memory] = []
+    @Published var filteredMemories: [Memory] = []
     @Published var x: Int = 100
     
     @Published var memoriesId: [UUID] = []
-    
+    @Published var capsuleIsClickedOnce = false
+    @Published var clickedCapsules: [String] = []
+
     init() {
-//        getMemories()
-//        if self.memories.count == 0 {
-//            bijibijian()
-//        }
+        getMemories()
+        if self.memories.count == 0 {
+            bijibijian()
+        }
         
         getMemories()
         print("\nMemories count: \(memories.count)")
+        self.filteredMemories = self.memories
     }
     
     func getMemories(){
@@ -232,5 +236,14 @@ class MemoryViewModel: ObservableObject {
     
     func tambahSatu() -> Void {
         x += 1
+    }
+    
+    func filterMemories(category: String) -> Void {
+        self.memories = self.memories.filter({ memory in
+            if let chl = memory.challenge {
+                return chl.category! == category
+            }
+            return false // IF CHALLENGE IS NULL
+        })
     }
 }

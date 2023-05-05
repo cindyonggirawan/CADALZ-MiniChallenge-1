@@ -134,7 +134,7 @@ struct SelectImageView: View {
             }
             .frame(width: 116, height: 118)
             .onTapGesture {
-                if !self.isSelected {
+                if self.isSelected {
                     self.circleIsClicked.toggle()
                     
                     if circleIsClicked == true {
@@ -161,7 +161,7 @@ struct SelectImageView: View {
     }
 }
 
-struct SizePreferenceKey: PreferenceKey {
+struct SizePreferenceKey: PreferenceKey { // AJARIN GUE DONG CIN INI APA GUE PENASARAN AJA -daniel
     static var defaultValue: CGSize = .zero
     static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
         value = nextValue()
