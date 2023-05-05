@@ -194,8 +194,8 @@ struct PlaydateWidget: Widget {
         StaticConfiguration(kind: kind, provider: PlaydateTimelineProvider()) { entry in
             PlaydateWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Your Memory")
-        .description("Based on current time")
+        .configurationDisplayName("Memories")
+        .description("Recall the memories you made by completing challenges with your partner")
         .supportedFamilies([.systemSmall])
     }
 }

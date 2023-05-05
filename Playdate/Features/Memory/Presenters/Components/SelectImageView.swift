@@ -124,7 +124,9 @@ struct SelectImageView: View {
                 Image(uiImage: memory.photo!)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
+                    .frame(width: 116, height: 118)
                     .clipped()
+                    .contentShape(Rectangle())
                 
                 if !self.isSelected {
                     SelectCircle(circleIsClicked: $circleIsClicked) // buletannya muncul
