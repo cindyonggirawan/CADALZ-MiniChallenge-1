@@ -17,7 +17,7 @@ class CoreDataManager {
         NSImageTransformer.register()
         
         container = NSPersistentContainer(name: "CoreDataModel")
-        let url = URL.storeURL(for: "group.playdate", databaseName: "CoreDataModel")
+        let url = URL.storeURL(for: "group.playdate-group", databaseName: "CoreDataModel")
         let storeDescription = NSPersistentStoreDescription(url: url)
         
         container.persistentStoreDescriptions = [storeDescription]
