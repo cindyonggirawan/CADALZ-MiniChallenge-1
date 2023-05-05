@@ -21,7 +21,8 @@ struct ChallengeViewPage1: View {
     @State var uploadPhotoDegree = -90.0
     @State var isFlipped = false
     let durationAndDelay : CGFloat = 0.35
-
+    
+    //Tab bar
     @State var show = false
     @State private var selectedTab = 0
     @State private var challengeImageName = "challenge-icon-selected"

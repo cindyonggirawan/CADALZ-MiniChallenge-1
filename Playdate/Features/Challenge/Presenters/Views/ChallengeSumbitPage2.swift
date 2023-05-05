@@ -24,6 +24,7 @@ struct ChallengeSumbitPage2: View {
     @State var selectedUIImage: UIImage = UIImage()
     @State var showVstack = false
     
+    //Tab bar
     @State var show = false
     @State private var selectedTab = 0
     @State private var challengeImageName = "challenge-icon-selected"
