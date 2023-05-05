@@ -64,7 +64,7 @@ struct NewProfileView: View {
                     .offset(y: -20)
                 }
             }
-            .offset(y: -15)
+            .offset(y: -5)
             
             Button(action: {
                 showAlert = true
@@ -74,7 +74,8 @@ struct NewProfileView: View {
             })
             .buttonStyle(FixedSizeRoundedButtonStyle())
             .frame(width: 342)
-            .offset(y: -30)
+            .offset(y: -15)
+            .padding(.bottom, 10)
             .alert("Are you sure to delete your account?", isPresented: $showAlert) {
                 TextField("Name", text: $name)
                 Button("Delete", action: {
@@ -89,7 +90,7 @@ struct NewProfileView: View {
                 Text("Enter your name to delete your account and all your memories.")
             }
         }
-        .padding(.bottom, 20)
+//        .padding(.bottom, 20)
         .background(Color.primaryWhite)
         .fullScreenCover(isPresented: $showSplash) {
             SplashView()

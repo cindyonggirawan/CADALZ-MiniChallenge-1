@@ -81,6 +81,7 @@ struct ChallengeViewPage1: View {
                             .font(.custom("Poppins-semibold", size: 20))
                             .foregroundColor(.black)
                             .padding(.top, 230)
+                        
                         // button
                         HStack {
                             ZStack {
@@ -125,6 +126,7 @@ struct ChallengeViewPage1: View {
                         .padding(.top, 24)
                     }
                     .padding(.top, 100)
+                    .padding(.horizontal, 30)
                 } else {
                     // Page 2
                     VStack{
