@@ -60,8 +60,8 @@ struct ChallengeCardView: View {
         }
         .frame(width: 342, height: 368)
         .background(
-//            Image(vm.getDoodle(category: challenge.category!))
-            Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bgt
+            Image(vm.getDoodle(category: challenge.category!))
+//            Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bgt
                 .resizable()
                 .scaledToFill()
 //                .frame(width: 500, height: 500)

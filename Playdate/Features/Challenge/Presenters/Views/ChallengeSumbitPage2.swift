@@ -83,6 +83,7 @@ struct ChallengeSumbitPage2: View {
                         if (showImage){
                             // Perlu di clipped ke swiftUI
                             selectedImage
+                                .scaledToFill()
                                 .frame(width: 310, height: 310)
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
                         }
@@ -97,19 +98,28 @@ struct ChallengeSumbitPage2: View {
             
             // Description
             VStack(alignment: .leading){
-                Text("Write about this moment")
-                    .font(.custom("Poppins", size: 18))
-                    .bold()
-                    .foregroundColor(Color.black)
-                    .padding(.top, 48)
-
+                HStack{
+                    Text("Write about this moment")
+                        .font(.custom("Poppins-Medium", size: 16))
+                        .foregroundColor(Color.primaryDarkBlue)
+                        .padding(.top, 48)
+                    Spacer()
+                    Text("\(momentDescription.count)/50")
+                        .font(.system(size: 14))
+                        .foregroundColor(Color.primaryDarkBlue)
+                        .padding(.top, 48)
+                }
+                
                 TextField("How do you feel doing this challenge?", text: $momentDescription, axis: .vertical)
-                    .limitInputLength(value: $momentDescription, length: 100)
+                    .limitInputLength(value: $momentDescription, length: 50)
                     .autocorrectionDisabled()
                     .textFieldStyle(.plain)
                     .lineLimit(3, reservesSpace: true)
-                    .font(.custom("Poppins", size: 16))
-                    .foregroundColor(Color.primaryDarkGray)
+                    .font(.system(size: 14))
+                    .padding(16)
+                    .background(Color.primaryLightGray)
+                    .foregroundColor(Color.primaryDarkBlue)
+                    .cornerRadius(8)
                     .focused($amountIsFocused)
                 
                 if selectedImage != nil && !momentDescription.isEmpty {
