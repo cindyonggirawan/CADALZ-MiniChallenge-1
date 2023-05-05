@@ -19,6 +19,7 @@ struct MemoryLaneView: View {
     
     @State var isSelected: Bool = true
     @State var circleIsClicked: Bool = false
+    @State var totalSelectedPhoto = 0
     
     let columns = [
         GridItem(.flexible(minimum: 100, maximum: 108 + 5)),
@@ -47,15 +48,40 @@ struct MemoryLaneView: View {
 //                                VStack {
 //                                    Text("\(memory.id!)") // BUAT NGELIAT UUID NYA BENTAR
 //                                }
-                                SelectImageView(memory: memory, isSelected: $isSelected)
+                                SelectImageView(memory: memory, isSelected: $isSelected, totalSelectedPhoto: $totalSelectedPhoto)
                             }
                         }
                     }
                 }
+                
+                if !isSelected {
+                    //SHOW SELECTED PHOTO
+                    if totalSelectedPhoto == 0 {
+                        Text("Select Photo")
+                    }else if totalSelectedPhoto == 1{
+                        Text("1 Photo Selected")
+                    }else {
+                        Text("\(totalSelectedPhoto) Photos Selected")
+                    }
+                }
             }
             .background(Color.primaryWhite)
+            .navigationTitle("Memory Lane")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItemGroup(placement: .navigation) {
+//                ToolbarItemGroup(placement: .navigation) {
+                    
+                    ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
+                        Text(self.isSelected ? "Select" : "Cancel")
+                            .font(.system(size: 17))
+                            .foregroundColor(.gray)
+                            .padding(.leading, 60)
+                            .onTapGesture {
+                                self.isSelected.toggle()
+                            }
+                    }
+                
+                ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading){
                     Image("trash-icon")
                         .onTapGesture {
                             if memoryViewModel.memoriesId.count > 0 { // DELETE-CONFIRMATION PAS ADA YG MAU DIHAPUS AJA
@@ -69,21 +95,17 @@ struct MemoryLaneView: View {
                                 memoryViewModel.deleteMemoryPhotos()
                             }
                         }
+                }
+
 
                     
-                    Text("Memory Lane")
-                        .font(.custom("Poppins-SemiBold", size: 17))
-                        .foregroundColor(Color.black)
-                        .padding(.leading, 120)
+//                    Text("Memory Lane")
+//                        .font(.custom("Poppins-SemiBold", size: 17))
+//                        .foregroundColor(Color.black)
+//                        .padding(.leading, 120)
                     
-                    Text(self.isSelected ? "Select" : "Cancel")
-                        .font(.system(size: 17))
-                        .foregroundColor(.gray)
-                        .padding(.leading, 60)
-                        .onTapGesture {
-                            self.isSelected.toggle()
-                        }
-                }
+                    
+//                }
             }
         }
     }

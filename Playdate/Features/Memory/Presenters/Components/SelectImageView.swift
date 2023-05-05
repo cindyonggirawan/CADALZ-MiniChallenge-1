@@ -15,6 +15,7 @@ struct SelectImageView: View {
     var memory: Memory
     
     @Binding var isSelected: Bool
+    @Binding var totalSelectedPhoto: Int
     @State var circleIsClicked: Bool = false
     
     @State private var showSheet = false
@@ -136,6 +137,13 @@ struct SelectImageView: View {
                 if !self.isSelected {
                     self.circleIsClicked.toggle()
                     
+                    if circleIsClicked == true {
+                        totalSelectedPhoto += 1
+                    }else {
+                        totalSelectedPhoto -= 1
+                    }
+                    
+                    print(totalSelectedPhoto)
                     if let id = memory.id {
                         memoryViewModel.appendMemoryUUID(id)
                     }
