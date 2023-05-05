@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SelectImageView: View {
 //    @EnvironmentObject var memoryViewModel: MemoryViewModel
-    //Jangan pake environment object, pakenya state object supaya fungsi initnya bisa kepanggil
+    //Jangan pake environment object, pakenya state object supaya fungsi initnya bisa kepanggil || OKIE THANKS CINDY! -daniel
     @StateObject var memoryViewModel = MemoryViewModel()
     var memory: Memory
     
@@ -134,7 +134,7 @@ struct SelectImageView: View {
             }
             .frame(width: 116, height: 118)
             .onTapGesture {
-                if !self.isSelected {
+                if self.isSelected {
                     self.circleIsClicked.toggle()
                     
                     if let id = memory.id {
@@ -154,7 +154,7 @@ struct SelectImageView: View {
     }
 }
 
-struct SizePreferenceKey: PreferenceKey {
+struct SizePreferenceKey: PreferenceKey { // AJARIN GUE DONG CIN INI APA GUE PENASARAN AJA -daniel
     static var defaultValue: CGSize = .zero
     static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
         value = nextValue()

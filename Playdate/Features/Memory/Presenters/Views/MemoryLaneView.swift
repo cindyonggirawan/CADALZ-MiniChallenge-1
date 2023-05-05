@@ -33,16 +33,16 @@ struct MemoryLaneView: View {
             VStack {
                 HStack(spacing: 4) {
                     //TODO: Set Category Value
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Food", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $challengeViewModel.lastDisplayIndex)
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Entertainment", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $challengeViewModel.lastDisplayIndex)
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Travel", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $challengeViewModel.lastDisplayIndex)
-                    CategoryCapsuleView(challengeViewModel: challengeViewModel, category: "Well-being", displayedChallenges: $challengeViewModel.displayedChallenges, lastDisplayIndex: $challengeViewModel.lastDisplayIndex)
+                    CategoryCapsuleViewDua(memoryViewModel: memoryViewModel, category: "Food")
+                    CategoryCapsuleViewDua(memoryViewModel: memoryViewModel, category: "Entertainment")
+                    CategoryCapsuleViewDua(memoryViewModel: memoryViewModel, category: "Travel")
+                    CategoryCapsuleViewDua(memoryViewModel: memoryViewModel, category: "Well-being")
                 }
                 .frame(maxWidth: 347)
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 5) {
-                        ForEach(self.memoryViewModel.memories, id: \.self) { memory in
+                        ForEach(self.memoryViewModel.filteredMemories, id: \.self) { memory in
                             if memory.photo != nil {
 //                                VStack {
 //                                    Text("\(memory.id!)") // BUAT NGELIAT UUID NYA BENTAR
@@ -57,6 +57,7 @@ struct MemoryLaneView: View {
                 ToolbarItemGroup(placement: .navigation) {
                     Image("trash-icon")
                         .onTapGesture {
+                            print(memoryViewModel.memoriesId.count)
                             if memoryViewModel.memoriesId.count > 0 { // DELETE-CONFIRMATION PAS ADA YG MAU DIHAPUS AJA
                                 self.isShowingAlert = true
                             }
