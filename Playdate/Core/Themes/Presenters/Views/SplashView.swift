@@ -35,6 +35,12 @@ struct SplashView: View {
             } else {
                 Color.primaryPurple
                 
+                Image("doodle-food")
+                    .resizable()
+                    .scaledToFit()
+                    .scaleEffect(2.5)
+                    .opacity(0.12)
+                
                 Image("logo")
                     .resizable()
                     .scaledToFit()
@@ -62,7 +68,7 @@ struct SplashView: View {
         }
         .background(Color.primaryPurple)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                 self.isActive = true
             }
         }
