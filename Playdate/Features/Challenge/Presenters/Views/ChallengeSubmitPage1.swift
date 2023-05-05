@@ -34,7 +34,7 @@ struct ChallengeViewPage1: View {
         let currentMemories = memoryViewModel.memories[memoryViewModel.memories.count-1]
         
         NavigationView {
-            ZStack{
+            ZStack {
                 // challenge card
                 ZStack {
                     VStack(alignment: .leading) {
@@ -54,10 +54,10 @@ struct ChallengeViewPage1: View {
                     .frame(width: 342, height: 368)
                     .background(
                         Image(challengeViewModel.getDoodle(category: currentMemories.challenge!.category!))
-//                        Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bgt
+                        //                        Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bgt
                             .resizable()
                             .scaledToFill()
-            //                .frame(width: 500, height: 500)
+                        //                .frame(width: 500, height: 500)
                             .opacity(0.12)
                             .background(checkChallengeCategoryColor(challengeCategory: currentMemories.challenge!.category!))
                             .frame(width: 600, height: 600)
@@ -80,9 +80,7 @@ struct ChallengeViewPage1: View {
                         Text("Do you like the challenge?")
                             .font(.custom("Poppins-semibold", size: 20))
                             .foregroundColor(.black)
-
                             .padding(.top, 230)
-                        
                         // button
                         HStack {
                             ZStack {
@@ -126,27 +124,41 @@ struct ChallengeViewPage1: View {
                         }
                         .padding(.top, 24)
                     }
-                    .padding(.top,100)
+                    .padding(.top, 100)
                 } else {
                     // Page 2
                     VStack{
                         ChallengeSumbitPage2(isLikeChallenge: $isLikeChallenge)
-
                     }
                 }
             }
+            .background(Color.primaryWhite)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     if ( navChallengeModal == 1 ){
-                        Button("Prev") {
-//                              // Navigate to Ongoing challenge
-//                            OngoingChallengeView()
+                        Button {
                             show = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(Color.primaryDarkGray)
+                                Text("Back")
+                                    .foregroundColor(Color.primaryDarkGray)
+                                    .offset(x: -4)
+                            }
                         }
                     } else {
-                        Button("Prev") {
+                        Button {
                             navChallengeModal = 1
                             self.flipCard()
+                        } label: {
+                            HStack {
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(Color.primaryDarkGray)
+                                Text("Back")
+                                    .foregroundColor(Color.primaryDarkGray)
+                                    .offset(x: -4)
+                            }
                         }
                     }
                 }
@@ -159,9 +171,9 @@ struct ChallengeViewPage1: View {
                             Text("Challenge")
                         }
                         .tag(0)
-                   
-                   
-    //                Text("Memories Tab")
+                    
+                    
+                    //                Text("Memories Tab")
                     MemoryLaneView()
                         .tabItem {
                             Image(memoriesImageName)

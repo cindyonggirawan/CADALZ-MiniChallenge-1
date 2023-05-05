@@ -53,6 +53,7 @@ struct MemoryLaneView: View {
                     }
                 }
             }
+            .background(Color.primaryWhite)
             .toolbar {
                 ToolbarItemGroup(placement: .navigation) {
                     Image("trash-icon")

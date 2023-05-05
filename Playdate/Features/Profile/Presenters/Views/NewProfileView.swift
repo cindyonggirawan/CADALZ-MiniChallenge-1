@@ -89,6 +89,8 @@ struct NewProfileView: View {
                 Text("Enter your name to delete your account and all your memories.")
             }
         }
+        .padding(.bottom, 20)
+        .background(Color.primaryWhite)
         .fullScreenCover(isPresented: $showSplash) {
             SplashView()
         }

@@ -24,18 +24,19 @@ struct ChallengeSumbitPage2: View {
     @State var selectedUIImage: UIImage = UIImage()
     @State var showVstack = false
     
-    //Tab bar
     @State var show = false
     @State private var selectedTab = 0
     @State private var challengeImageName = "challenge-icon-selected"
     @State private var memoriesImageName = "memories-icon"
     @State private var profileImageName = "profile-icon"
     
+    @FocusState private var amountIsFocused: Bool
+    
     var body: some View {
         
         let currentMemories = memoryViewModel.memories[memoryViewModel.memories.count-1]
         
-        ZStack{
+        ZStack {
             if showVstack {
                 VStack{
                     ZStack{
@@ -109,6 +110,7 @@ struct ChallengeSumbitPage2: View {
                     .lineLimit(3, reservesSpace: true)
                     .font(.custom("Poppins", size: 16))
                     .foregroundColor(Color.primaryDarkGray)
+                    .focused($amountIsFocused)
                 
                 if selectedImage != nil && !momentDescription.isEmpty {
                     Button(action: {
@@ -141,6 +143,15 @@ struct ChallengeSumbitPage2: View {
             .onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.showVstack = true
+                }
+            }
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+
+                Button("Done") {
+                    amountIsFocused = false
                 }
             }
         }

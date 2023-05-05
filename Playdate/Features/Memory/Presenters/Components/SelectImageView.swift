@@ -10,6 +10,7 @@ import SwiftUI
 struct SelectImageView: View {
 //    @EnvironmentObject var memoryViewModel: MemoryViewModel
     //Jangan pake environment object, pakenya state object supaya fungsi initnya bisa kepanggil
+    @StateObject var challengeViewModel = ChallengeViewModel()
     @StateObject var memoryViewModel = MemoryViewModel()
     var memory: Memory
     
@@ -40,8 +41,6 @@ struct SelectImageView: View {
                             Group {
                                 Image(systemName: "chevron.left")
                                     .foregroundColor(Color.primaryDarkGray)
-
-                                
                                 Text("Close")
                                     .foregroundColor(Color.primaryDarkGray)
                                     .offset(x: -4)
@@ -103,10 +102,10 @@ struct SelectImageView: View {
                 .background(
                     GeometryReader { geometry in
                         ZStack {
-                            Color.clear
+                            Color.primaryWhite
                                 .preference(key: SizePreferenceKey.self, value: geometry.size)
                             
-                            Image("doodle-food")
+                            Image(challengeViewModel.getDoodle(category: memory.challenge!.category!))
                                 .resizable()
                                 .scaledToFill()
                                 .opacity(0.12)
