@@ -8,6 +8,7 @@
 import CoreData
 import SwiftUI
 import UIKit
+import WidgetKit
 
 class MemoryViewModel: ObservableObject {
     let manager = CoreDataManager.instance
@@ -19,9 +20,9 @@ class MemoryViewModel: ObservableObject {
     
     init() {
         getMemories()
-        if self.memories.count == 0 {
-            bijibijian()
-        }
+//        if self.memories.count == 0 {
+//            bijibijian()
+//        }
         
         getMemories()
         print("\nMemories count: \(memories.count)")
@@ -92,6 +93,10 @@ class MemoryViewModel: ObservableObject {
             memory.status = "completed"
             memory.date = Date()
             save()
+            
+            if memories.count == 1 {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         }else{
             print("Error submiting memory")
         }
