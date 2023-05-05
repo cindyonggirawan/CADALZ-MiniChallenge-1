@@ -24,6 +24,12 @@ struct ChallengeSumbitPage2: View {
     @State var selectedUIImage: UIImage = UIImage()
     @State var showVstack = false
     
+    @State var showMemoryLanePage = false
+    @State private var selectedTab = 0
+    @State private var challengeImageName = "challenge-icon-selected"
+    @State private var memoriesImageName = "memories-icon"
+    @State private var profileImageName = "profile-icon"
+    
     var body: some View {
         
         let currentMemories = memoryViewModel.memories[memoryViewModel.memories.count-1]
@@ -106,6 +112,7 @@ struct ChallengeSumbitPage2: View {
                     updateChallengeLike(challengeId: currentMemories.challenge!.id! , isLike: isLikeChallenge)
                     memoryViewModel.submitMemory(photo: selectedUIImage, description: momentDescription)
                     print(memoryViewModel.memories)
+                    showMemoryLanePage = true
                 }, label: {
                     Text("Submit")
                         .font(.custom("Poppins-Bold", size: 14))
@@ -121,9 +128,59 @@ struct ChallengeSumbitPage2: View {
                 }
             }
         }
+        .fullScreenCover(isPresented: $showMemoryLanePage, content: {
+            TabView(selection: $selectedTab) {
+                GenerateChallengeView()
+                    .tabItem {
+                        Image(challengeImageName)
+                        Text("Challenge")
+                    }
+                    .tag(0)
+               
+               
+//                Text("Memories Tab")
+                MemoryLaneView()
+                    .tabItem {
+                        Image(memoriesImageName)
+                        Text("Memories")
+                    }
+                    .tag(1)
+                
+                NewProfileView()
+                    .tabItem {
+                        Image(profileImageName)
+                        Text("Profile")
+                    }
+                    .tag(2)
+            }
+            .accentColor(Color.primaryDarkBlue)
+            .onAppear() {
+                UITabBar.appearance().backgroundColor = .white
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .edgesIgnoringSafeArea(.all)
+            .tabViewStyle(DefaultTabViewStyle())
+            .transition(.slide)
+            .onChange(of: selectedTab) { value in
+                switch value {
+                case 0:
+                    challengeImageName = "challenge-icon-selected"
+                    memoriesImageName = "memories-icon"
+                    profileImageName = "profile-icon"
+                case 1:
+                    memoriesImageName = "memories-icon-selected"
+                    challengeImageName = "challenge-icon"
+                    profileImageName = "profile-icon"
+                case 2:
+                    profileImageName = "profile-icon-selected"
+                    challengeImageName = "challenge-icon"
+                    memoriesImageName = "memories-icon"
+                default:
+                    break
+                }
+            }
+        })
     }
-    
-    
     
     // FIREBASE
     func updateChallengeLike(challengeId: String, isLike: Bool){

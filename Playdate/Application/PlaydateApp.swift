@@ -22,7 +22,7 @@ struct PlaydateApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(dataManager)
-                .environmentObject(memoryViewModel)
+//                .environmentObject(memoryViewModel)
 //            ChallengeViewPage1()
 //            GenerateChallengeView()
 //            challengeFirebaseExperiment()

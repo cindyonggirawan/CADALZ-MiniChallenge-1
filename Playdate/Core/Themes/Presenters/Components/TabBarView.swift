@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TabBarView: View {
-    @EnvironmentObject var memoryViewModel: MemoryViewModel
+//    @EnvironmentObject var memoryViewModel: MemoryViewModel
+    @StateObject var memoryViewModel = MemoryViewModel()
     
     @State private var selectedTab = 0
     @State private var challengeImageName = "challenge-icon-selected"

@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SelectImageView: View {
-    @EnvironmentObject var memoryViewModel: MemoryViewModel
+//    @EnvironmentObject var memoryViewModel: MemoryViewModel
+    //Jangan pake environment object, pakenya state object supaya fungsi initnya bisa kepanggil
+    @StateObject var memoryViewModel = MemoryViewModel()
     var memory: Memory
     
     @Binding var isSelected: Bool
@@ -77,7 +79,7 @@ struct SelectImageView: View {
                     
                     VStack(spacing: 16) {
                         //Cara mengakses challenge dari memory bagaimana?
-                        Text("Walk around the block and pick a flower for your partner!")
+                        Text("\(memory.challenge?.name ?? "")")
                             .font(.custom("Poppins-semibold", size: 16))
                             .foregroundColor(Color.primaryDarkBlue)
                             .multilineTextAlignment(.center)
@@ -87,7 +89,7 @@ struct SelectImageView: View {
                             .fill(Color.primaryLightGray)
                             .frame(width: .infinity, height: 2, alignment: .center)
                         
-                        Text("\"\(String(describing: memory.momentDescription))\"")
+                        Text("\"\(memory.momentDescription ?? "")\"")
                             .font(.custom("Poppins", size: 15))
                             .foregroundColor(Color.primaryDarkGray)
                             .italic()

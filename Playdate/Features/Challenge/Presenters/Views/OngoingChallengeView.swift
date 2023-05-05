@@ -92,12 +92,11 @@ struct OngoingChallengeView: View {
             }
             .padding(.vertical, 25)
             .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.6)
-            .background(
-                Image(challengeViewModel.getDoodle(category: (currentMemory.challenge?.category!)!))
+            .background(Image(challengeViewModel.getDoodle(category: (currentMemory.challenge?.category!) ?? "food"))
                     .resizable()
                     .scaledToFill()
                     .opacity(0.12)
-                    .background(memoryViewModel.checkChallengeCategoryColor(challengeCategory: (currentMemory.challenge?.category!)!))
+                    .background(memoryViewModel.checkChallengeCategoryColor(challengeCategory: (currentMemory.challenge?.category!) ?? "food"))
                     .frame(width: 600, height: UIScreen.main.bounds.height * 0.6)
                     .edgesIgnoringSafeArea(.top)
             )

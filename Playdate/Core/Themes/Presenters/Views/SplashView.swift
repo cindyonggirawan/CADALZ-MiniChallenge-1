@@ -11,7 +11,8 @@ struct SplashView: View {
     @State private var scale: CGFloat = 1.0
     @State private var isActive = false
     
-    @EnvironmentObject var memoryViewModel: MemoryViewModel
+//    @EnvironmentObject var memoryViewModel: MemoryViewModel
+    @StateObject var memoryViewModel = MemoryViewModel()
     @StateObject var userViewModel = UserViewModel()
     
     var body: some View {

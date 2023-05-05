@@ -12,7 +12,8 @@ import UIKit
 
 struct MemoryLaneView: View {
 //    @StateObject var memoryViewModel = MemoryViewModel()
-    @EnvironmentObject var memoryViewModel: MemoryViewModel
+//    @EnvironmentObject var memoryViewModel: MemoryViewModel
+    @StateObject var memoryViewModel = MemoryViewModel()
     
     @StateObject var challengeViewModel = ChallengeViewModel()
     
