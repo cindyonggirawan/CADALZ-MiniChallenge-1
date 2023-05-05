@@ -50,7 +50,7 @@ class MemoryViewModel: ObservableObject {
         return results
     }
     
-    func addMemory(challenge: Challenge){
+    func addMemory(challenge: Challenge, user: User){
         var dateComponent = DateComponents()
         dateComponent.day = 1
 
@@ -60,6 +60,7 @@ class MemoryViewModel: ObservableObject {
         newMemory.status = "ongoing"
 
         challenge.addToMemory(newMemory)
+        user.addToMemory(newMemory)
         
         save()
     }

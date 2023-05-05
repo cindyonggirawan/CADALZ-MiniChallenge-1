@@ -50,7 +50,7 @@ struct NewProfileView: View {
                             .shadow(radius: 10, y: 20)
                         
                         VStack {
-                            Text("40")
+                            Text("\(getMemoriesCount())")
                                 .font(.custom("Poppins-semibold", size: 80))
                                 .foregroundColor(Color.primaryWhite)
                             
@@ -99,6 +99,18 @@ struct NewProfileView: View {
             return true
         } else {
             return false
+        }
+    }
+    
+    func getMemoriesCount() -> Int {
+        if memoryViewModel.memories.count != 0 {
+            if memoryViewModel.memories[memoryViewModel.memories.count-1].status == "ongoing"{
+                return memoryViewModel.memories.count - 1
+            }else {
+                return memoryViewModel.memories.count
+            }
+        }else {
+            return 0
         }
     }
 }

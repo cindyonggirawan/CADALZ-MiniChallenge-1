@@ -70,7 +70,7 @@ struct GenerateChallengeView: View {
                 //Accept Button
                 Button(action: {
                     //TODO: Accept Action
-                    memoryViewModel.addMemory(challenge: currentChallenges)
+                    memoryViewModel.addMemory(challenge: currentChallenges, user: userViewModel.user[userViewModel.user.count-1])
                     showOngoingPage = true
                 }, label: {
                     Text("Accept Challenge!")
