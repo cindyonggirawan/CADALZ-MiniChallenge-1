@@ -35,34 +35,47 @@ struct SplashView: View {
             } else {
                 Color.primaryPurple
                 
-                Image("logo")
+                Image("doodle-food")
                     .resizable()
                     .scaledToFit()
-                    .scaleEffect(scale)
-                    .animation(.easeInOut(duration: 1.0))
-                    .onAppear {
-                        scale = 1.2
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                            withAnimation {
-                                scale = 0.8
-                            }
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            withAnimation {
-                                scale = 1.5
-                            }
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                            withAnimation {
-                                scale = 1.0
-                            }
+                    .scaleEffect(2.5)
+                    .opacity(0.12)
+                
+                VStack {
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                    
+                    Text("PlayDate")
+                        .font(.custom("Poppins-SemiBold", size: 48))
+                        .foregroundColor(Color.primaryWhite)
+                        .offset(y: -72)
+                }
+                .scaleEffect(scale)
+                .animation(.easeInOut(duration: 1.0))
+                .onAppear {
+                    scale = 1.2
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        withAnimation {
+                            scale = 0.8
                         }
                     }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        withAnimation {
+                            scale = 1.5
+                        }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                        withAnimation {
+                            scale = 1.0
+                        }
+                    }
+                }
             }
         }
         .background(Color.primaryPurple)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                 self.isActive = true
             }
         }

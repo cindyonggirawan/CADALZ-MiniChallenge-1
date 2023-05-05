@@ -11,7 +11,6 @@ struct ChallengeViewPage1: View {
     // Navigation
     @State var navChallengeModal = 1 // ohhh 1: like challenge?, 2: upload photo
     @State var isLikeChallenge = true
-    @State private var show = false
     
     // Challenge Card View
     @StateObject var challengeViewModel = ChallengeViewModel()
@@ -22,14 +21,20 @@ struct ChallengeViewPage1: View {
     @State var uploadPhotoDegree = -90.0
     @State var isFlipped = false
     let durationAndDelay : CGFloat = 0.35
-
-
+    
+    //Tab bar
+    @State var show = false
+    @State private var selectedTab = 0
+    @State private var challengeImageName = "challenge-icon-selected"
+    @State private var memoriesImageName = "memories-icon"
+    @State private var profileImageName = "profile-icon"
+    
     var body: some View {
         
         let currentMemories = memoryViewModel.memories[memoryViewModel.memories.count-1]
         
         NavigationView {
-            ZStack{
+            ZStack {
                 // challenge card
                 ZStack {
                     VStack(alignment: .leading) {
@@ -49,10 +54,10 @@ struct ChallengeViewPage1: View {
                     .frame(width: 342, height: 368)
                     .background(
                         Image(challengeViewModel.getDoodle(category: currentMemories.challenge!.category!))
-//                        Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bgt
+                        //                        Image("doodle-food") // biar ga ada warning image not found. terminal nya rame bgt
                             .resizable()
                             .scaledToFill()
-            //                .frame(width: 500, height: 500)
+                        //                .frame(width: 500, height: 500)
                             .opacity(0.12)
                             .background(checkChallengeCategoryColor(challengeCategory: currentMemories.challenge!.category!))
                             .frame(width: 600, height: 600)
@@ -75,7 +80,6 @@ struct ChallengeViewPage1: View {
                         Text("Do you like the challenge?")
                             .font(.custom("Poppins-semibold", size: 20))
                             .foregroundColor(.black)
-
                             .padding(.top, 230)
                         
                         // button
@@ -121,33 +125,97 @@ struct ChallengeViewPage1: View {
                         }
                         .padding(.top, 24)
                     }
-                    .padding(.top,100)
+                    .padding(.top, 100)
+                    .padding(.horizontal, 30)
                 } else {
                     // Page 2
                     VStack{
                         ChallengeSumbitPage2(isLikeChallenge: $isLikeChallenge)
-
                     }
                 }
             }
+            .background(Color.primaryWhite)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     if ( navChallengeModal == 1 ){
-                        Button("Prev") {
-//                              // Navigate to Ongoing challenge
-//                            OngoingChallengeView()
+                        Button {
                             show = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(Color.primaryDarkGray)
+                                Text("Back")
+                                    .foregroundColor(Color.primaryDarkGray)
+                                    .offset(x: -4)
+                            }
                         }
                     } else {
-                        Button("Prev") {
+                        Button {
                             navChallengeModal = 1
                             self.flipCard()
+                        } label: {
+                            HStack {
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(Color.primaryDarkGray)
+                                Text("Back")
+                                    .foregroundColor(Color.primaryDarkGray)
+                                    .offset(x: -4)
+                            }
                         }
                     }
                 }
             }
             .fullScreenCover(isPresented: $show) {
-                OngoingChallengeView()
+                TabView(selection: $selectedTab) {
+                    OngoingChallengeView()
+                        .tabItem {
+                            Image(challengeImageName)
+                            Text("Challenge")
+                        }
+                        .tag(0)
+                    
+                    
+                    //                Text("Memories Tab")
+                    MemoryLaneView()
+                        .tabItem {
+                            Image(memoriesImageName)
+                            Text("Memories")
+                        }
+                        .tag(1)
+                    
+                    NewProfileView()
+                        .tabItem {
+                            Image(profileImageName)
+                            Text("Profile")
+                        }
+                        .tag(2)
+                }
+                .accentColor(Color.primaryDarkBlue)
+                .onAppear() {
+                    UITabBar.appearance().backgroundColor = .white
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .edgesIgnoringSafeArea(.all)
+                .tabViewStyle(DefaultTabViewStyle())
+                .transition(.slide)
+                .onChange(of: selectedTab) { value in
+                    switch value {
+                    case 0:
+                        challengeImageName = "challenge-icon-selected"
+                        memoriesImageName = "memories-icon"
+                        profileImageName = "profile-icon"
+                    case 1:
+                        memoriesImageName = "memories-icon-selected"
+                        challengeImageName = "challenge-icon"
+                        profileImageName = "profile-icon"
+                    case 2:
+                        profileImageName = "profile-icon-selected"
+                        challengeImageName = "challenge-icon"
+                        memoriesImageName = "memories-icon"
+                    default:
+                        break
+                    }
+                }
             }
         }
     }

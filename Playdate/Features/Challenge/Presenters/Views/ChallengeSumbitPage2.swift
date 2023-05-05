@@ -24,17 +24,19 @@ struct ChallengeSumbitPage2: View {
     @State var selectedUIImage: UIImage = UIImage()
     @State var showVstack = false
     
-    @State var showMemoryLanePage = false
+    @State var show = false
     @State private var selectedTab = 0
     @State private var challengeImageName = "challenge-icon-selected"
     @State private var memoriesImageName = "memories-icon"
     @State private var profileImageName = "profile-icon"
     
+    @FocusState private var amountIsFocused: Bool
+    
     var body: some View {
         
         let currentMemories = memoryViewModel.memories[memoryViewModel.memories.count-1]
         
-        ZStack{
+        ZStack {
             if showVstack {
                 VStack{
                     ZStack{
@@ -102,23 +104,39 @@ struct ChallengeSumbitPage2: View {
                     .padding(.top, 48)
 
                 TextField("How do you feel doing this challenge?", text: $momentDescription, axis: .vertical)
-//                    .textFieldStyle(UnborderedTextFieldStyle())
+                    .limitInputLength(value: $momentDescription, length: 100)
+                    .autocorrectionDisabled()
+                    .textFieldStyle(.plain)
                     .lineLimit(3, reservesSpace: true)
                     .font(.custom("Poppins", size: 16))
                     .foregroundColor(Color.primaryDarkGray)
+                    .focused($amountIsFocused)
                 
-                Button(action: {
-                    //TODO: send isLike data to firebase
-                    updateChallengeLike(challengeId: currentMemories.challenge!.id! , isLike: isLikeChallenge)
-                    memoryViewModel.submitMemory(photo: selectedUIImage, description: momentDescription)
-                    print(memoryViewModel.memories)
-                    showMemoryLanePage = true
-                }, label: {
-                    Text("Submit")
-                        .font(.custom("Poppins-Bold", size: 14))
-                })
-                .buttonStyle(FixedSizeRoundedButtonStyle())
-                .padding(.top, 100)
+                if selectedImage != nil && !momentDescription.isEmpty {
+                    Button(action: {
+                        //TODO: send isLike data to firebase
+                        updateChallengeLike(challengeId: currentMemories.challenge!.id! , isLike: isLikeChallenge)
+                        memoryViewModel.submitMemory(photo: selectedUIImage, description: momentDescription)
+                        print(memoryViewModel.memories)
+                        show = true
+                    }, label: {
+                        Text("Submit")
+                            .font(.custom("Poppins-Bold", size: 14))
+                    })
+                    .buttonStyle(FixedSizeRoundedButtonStyle())
+                    .padding(.top, 100)
+                } else {
+                    Button(action: {
+                        //TODO: send isLike data to firebase
+                        show = false
+                    }, label: {
+                        Text("Submit")
+                            .font(.custom("Poppins-Bold", size: 14))
+                    })
+                    .buttonStyle(FixedSizeRoundedButtonDisabledStyle())
+                    .padding(.top, 100)
+                    .disabled(true)
+                }
             }
             .padding(.top, 400)
             .padding(24)
@@ -128,7 +146,16 @@ struct ChallengeSumbitPage2: View {
                 }
             }
         }
-        .fullScreenCover(isPresented: $showMemoryLanePage, content: {
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+
+                Button("Done") {
+                    amountIsFocused = false
+                }
+            }
+        }
+        .fullScreenCover(isPresented: $show, content: {
             TabView(selection: $selectedTab) {
                 GenerateChallengeView()
                     .tabItem {

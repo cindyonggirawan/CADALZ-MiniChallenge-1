@@ -9,11 +9,13 @@ import SwiftUI
 
 struct SelectImageView: View {
 //    @EnvironmentObject var memoryViewModel: MemoryViewModel
-    //Jangan pake environment object, pakenya state object supaya fungsi initnya bisa kepanggil || OKIE THANKS CINDY! -daniel
+    //Jangan pake environment object, pakenya state object supaya fungsi initnya bisa kepanggil
+    @StateObject var challengeViewModel = ChallengeViewModel()
     @StateObject var memoryViewModel = MemoryViewModel()
     var memory: Memory
     
     @Binding var isSelected: Bool
+    @Binding var totalSelectedPhoto: Int
     @State var circleIsClicked: Bool = false
     
     @State private var showSheet = false
@@ -40,8 +42,6 @@ struct SelectImageView: View {
                             Group {
                                 Image(systemName: "chevron.left")
                                     .foregroundColor(Color.primaryDarkGray)
-
-                                
                                 Text("Close")
                                     .foregroundColor(Color.primaryDarkGray)
                                     .offset(x: -4)
@@ -103,10 +103,10 @@ struct SelectImageView: View {
                 .background(
                     GeometryReader { geometry in
                         ZStack {
-                            Color.clear
+                            Color.primaryWhite
                                 .preference(key: SizePreferenceKey.self, value: geometry.size)
                             
-                            Image("doodle-food")
+                            Image(challengeViewModel.getDoodle(category: memory.challenge!.category!))
                                 .resizable()
                                 .scaledToFill()
                                 .opacity(0.12)
@@ -137,6 +137,13 @@ struct SelectImageView: View {
                 if self.isSelected {
                     self.circleIsClicked.toggle()
                     
+                    if circleIsClicked == true {
+                        totalSelectedPhoto += 1
+                    }else {
+                        totalSelectedPhoto -= 1
+                    }
+                    
+                    print(totalSelectedPhoto)
                     if let id = memory.id {
                         memoryViewModel.appendMemoryUUID(id)
                     }
