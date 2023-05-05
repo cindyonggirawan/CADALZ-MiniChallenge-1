@@ -19,7 +19,7 @@ class MemoryViewModel: ObservableObject {
     @Published var memoriesId: [UUID] = []
     
     init() {
-        getMemories()
+//        getMemories()
 //        if self.memories.count == 0 {
 //            bijibijian()
 //        }

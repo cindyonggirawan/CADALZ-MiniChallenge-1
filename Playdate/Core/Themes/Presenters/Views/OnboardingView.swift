@@ -17,7 +17,7 @@ struct OnboardingView: View {
     @State private var show = false
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             VStack {
                 TabView {
                     OnboardingPageView(imageName: "onboarding1", title: "1 Capture fun memories with your partner", subtitle: "1 Take a photo every challenge and save it in memory lane.")
@@ -45,7 +45,7 @@ struct OnboardingView: View {
             .fullScreenCover(isPresented: $show) {
                 RegistrationView()
             }
-        }
+//        }
     }
     
     func setupAppearance() {

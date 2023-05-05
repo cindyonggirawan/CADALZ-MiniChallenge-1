@@ -14,6 +14,7 @@ class UserViewModel: ObservableObject {
     
     init() {
         getUsers()
+        print("\nUsers count: \(user.count)")
     }
     
     func getUsers() {
