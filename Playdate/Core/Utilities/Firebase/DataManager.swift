@@ -20,6 +20,7 @@ class DataManager: ObservableObject {
     
     func syncWithFirebase() {
         if Reachability.isConnectedToNetwork() {
+            fetchChallenges()
             print(Challenges.count)
             if( Challenges.count != 0) {
                 // Sync with Firebase

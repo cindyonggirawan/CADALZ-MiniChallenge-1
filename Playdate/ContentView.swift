@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var dataManager: DataManager
+    
     var body: some View {
         SplashView()
+            .onAppear{
+                dataManager.syncWithFirebase()
+            }
     }
 }
 
