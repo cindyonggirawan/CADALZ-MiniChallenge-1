@@ -113,7 +113,6 @@ struct OngoingChallengeView: View {
                 .padding(.top, 10)
                 .padding(.horizontal, 24)
                 .fullScreenCover(isPresented: $showSheet) {
-//                    ChallangeReviewModal()              // JEJAK -daniel
                     ChallengeViewPage1()
                 }
                 

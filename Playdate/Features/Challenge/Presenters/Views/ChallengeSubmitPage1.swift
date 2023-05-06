@@ -67,7 +67,7 @@ struct ChallengeViewPage1: View {
                     .cornerRadius(16)
                     .rotation3DEffect(Angle(degrees: uploadPhotoDegree), axis: (x: 0, y: 1, z: 0), perspective: 0.55)
                     
-                    ChallengeCardView(challenge: currentMemories.challenge!, vm: challengeViewModel, shiftIndex: 4)
+                    ChallengeCardViewChillParah(challenge: currentMemories.challenge!, vm: challengeViewModel, shiftIndex: 4)
                         .rotation3DEffect(Angle(degrees: challengeCardDegree), axis: (x: 0, y: 1, z: 0), perspective: 0.55)
                 }
                 .padding(.top, 100)
