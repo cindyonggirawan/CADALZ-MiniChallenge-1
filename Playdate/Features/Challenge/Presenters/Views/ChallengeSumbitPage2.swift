@@ -152,7 +152,9 @@ struct ChallengeSumbitPage2: View {
             .padding(24)
             .onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.showVstack = true
+                    withAnimation(.easeOut(duration: 0.5)) {
+                        self.showVstack = true
+                    }
                 }
             }
         }
