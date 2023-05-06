@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SplashView: View {
+    @EnvironmentObject var dataManager: DataManager
     @State private var scale: CGFloat = 0.5
     @State private var isActive = false
     
@@ -15,6 +16,10 @@ struct SplashView: View {
     @StateObject var memoryViewModel = MemoryViewModel()
     @StateObject var userViewModel = UserViewModel()
     
+    init(){
+        dataManager.syncWithFirebase()
+    }
+
     var body: some View {
         ZStack {
             if self.isActive {
