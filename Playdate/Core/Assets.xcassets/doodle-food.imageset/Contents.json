@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "Card_Food 1.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Card_Food 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
