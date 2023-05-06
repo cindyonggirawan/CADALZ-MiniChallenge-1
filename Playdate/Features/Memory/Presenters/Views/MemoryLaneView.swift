@@ -82,13 +82,12 @@ struct MemoryLaneView: View {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading){
                     Image("trash-icon")
                         .onTapGesture {
-                            print(memoryViewModel.memoriesId.count)
                             if memoryViewModel.memoriesId.count > 0 { // DELETE-CONFIRMATION PAS ADA YG MAU DIHAPUS AJA
                                 self.isShowingAlert = true
                             }
                         }
                     // IPHONE ALERT POP UP
-                        .alert("Delete your \(memoryViewModel.memoriesId.count) memories?", isPresented: $isShowingAlert) {
+                        .alert("Delete your \(memoryViewModel.memoriesId.count) \(memoryViewModel.memoriesId.count > 1 ? "memories" : "memory")?", isPresented: $isShowingAlert) {
                             Button("Delete", role: .destructive) {
                                 // GO DELETE MEMORIES!
                                 memoryViewModel.deleteMemoryPhotos()

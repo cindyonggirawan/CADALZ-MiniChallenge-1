@@ -22,10 +22,10 @@ class MemoryViewModel: ObservableObject {
     @Published var clickedCapsules: [String] = []
 
     init() {
-        getMemories()
-        if self.memories.count == 0 {
-            bijibijian()
-        }
+//        getMemories()
+//        if self.memories.count == 0 {
+//            bijibijian()
+//        }
         
         getMemories()
         print("\nMemories count: \(memories.count)")
@@ -147,9 +147,6 @@ class MemoryViewModel: ObservableObject {
     }
     
     func deleteMemoryPhotos() -> Void {
-        print("\nAWAL")
-        printMemoriesNyaChallenge()
-        
         for memoryUuid in memoriesId {
             for memory in memories { // Memory (CoreData)
                 if let id = memory.id { // unwrapping
@@ -163,11 +160,15 @@ class MemoryViewModel: ObservableObject {
         }
         
         save()
-        
-        print("\nAKHIR")
-        printMemoriesNyaChallenge()
-        
-        print("\n")
+    }
+    
+    func filterMemories(category: String) -> Void {
+        self.memories = self.memories.filter({ memory in
+            if let chl = memory.challenge {
+                return chl.category! == category
+            }
+            return false // IF CHALLENGE IS NULL
+        })
     }
     
     // ========================= FUNCS FOR DEBUGGING!!!!!!!!
@@ -238,12 +239,4 @@ class MemoryViewModel: ObservableObject {
         x += 1
     }
     
-    func filterMemories(category: String) -> Void {
-        self.memories = self.memories.filter({ memory in
-            if let chl = memory.challenge {
-                return chl.category! == category
-            }
-            return false // IF CHALLENGE IS NULL
-        })
-    }
 }
