@@ -20,9 +20,9 @@ struct OnboardingView: View {
 //        NavigationView {
             VStack {
                 TabView {
-                    OnboardingPageView(imageName: "onboarding1", title: "1 Capture fun memories with your partner", subtitle: "1 Take a photo every challenge and save it in memory lane.")
-                    OnboardingPageView(imageName: "onboarding2", title: "2 Capture fun memories with your partner", subtitle: "2 Take a photo every challenge and save it in memory lane.")
-                    OnboardingPageView(imageName: "onboarding3", title: "3 Capture fun memories with your partner", subtitle: "3 Take a photo every challenge and save it in memory lane.")
+                    OnboardingPageView(imageName: "onboarding1", title: "Dating is now more exciting with Playdate", subtitle: "Say goodbye to boring dates and hello to new adventures with us.")
+                    OnboardingPageView(imageName: "onboarding2", title: "Pick a challenge card and do it with your partner", subtitle: "Strengthen your relationship and have fun with our exciting challenges.")
+                    OnboardingPageView(imageName: "onboarding3", title: "Capture and treasure your loving memories!", subtitle: "Take a photo on every challenge completed and save it in memory lane.")
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .onAppear {
@@ -35,7 +35,7 @@ struct OnboardingView: View {
 //                    challengeViewModel.clearChallenges()
                     dataManager.syncWithFirebase()
                 }, label: {
-                    Text("Next")
+                    Text("Skip")
                         .font(.custom("Poppins-Bold", size: 14))
                 })
                 .buttonStyle(FixedSizeRoundedButtonStyle())
@@ -65,7 +65,6 @@ struct OnboardingPageView: View {
                 .resizable()
                 .frame(maxWidth: .infinity)
                 .scaledToFit()
-                .background(Color.primaryLightGray)
                 .padding(.bottom, 32)
             
             Text(title)

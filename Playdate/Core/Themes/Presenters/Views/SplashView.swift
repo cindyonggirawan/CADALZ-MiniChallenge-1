@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SplashView: View {
-    @State private var scale: CGFloat = 1.0
+    @State private var scale: CGFloat = 0.5
     @State private var isActive = false
     
 //    @EnvironmentObject var memoryViewModel: MemoryViewModel
@@ -35,42 +35,36 @@ struct SplashView: View {
             } else {
                 Color.primaryPurple
                 
-                Image("doodle-food")
+                Image("doodle-splashscreen")
                     .resizable()
                     .scaledToFit()
-                    .scaleEffect(2.5)
+                    .scaleEffect(1.3)
                     .opacity(0.12)
                 
-                VStack {
-                    Image("logo")
-                        .resizable()
-                        .scaledToFit()
-                    
-                    Text("PlayDate")
-                        .font(.custom("Poppins-SemiBold", size: 48))
-                        .foregroundColor(Color.primaryWhite)
-                        .offset(y: -72)
-                }
-                .scaleEffect(scale)
-                .animation(.easeInOut(duration: 1.0))
-                .onAppear {
-                    scale = 1.2
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        withAnimation {
-                            scale = 0.8
+                Image("logo")
+                    .resizable()
+                    .offset(x: -15)
+                    .scaledToFit()
+                    .scaleEffect(scale)
+                    .animation(.easeInOut(duration: 1.0))
+                    .onAppear {
+                        scale = 0.7
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            withAnimation {
+                                scale = 0.3
+                            }
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            withAnimation {
+                                scale = 1.0
+                            }
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                            withAnimation {
+                                scale = 0.5
+                            }
                         }
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        withAnimation {
-                            scale = 1.5
-                        }
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                        withAnimation {
-                            scale = 1.0
-                        }
-                    }
-                }
             }
         }
         .background(Color.primaryPurple)

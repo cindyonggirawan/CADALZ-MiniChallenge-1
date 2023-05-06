@@ -63,7 +63,7 @@ struct SelectImageView: View {
                         
                         ZStack {
                             RoundedRectangle(cornerRadius: 16)
-                                .foregroundColor(Color.primaryPurple)
+                                .foregroundColor(checkChallengeCategoryColor(challengeCategory: memory.challenge?.category ?? ""))
                                 .frame(width: 342, height: 368)
                             
                             Image(uiImage: photo)
@@ -154,6 +154,20 @@ struct SelectImageView: View {
         dateFormatter.dateFormat = "MMMM dd, yyyy"
         let dateString = dateFormatter.string(from: memory.date ?? Date())
         return "\(dateString)"
+    }
+    
+    func checkChallengeCategoryColor(challengeCategory: String) -> Color {
+        if challengeCategory.lowercased() == "travel" {
+            return Color.primaryOrange
+        } else if challengeCategory.lowercased() == "entertainment" {
+            return Color.primaryPurple
+        } else if challengeCategory.lowercased() == "food" {
+            return Color.primaryRed
+        } else if (challengeCategory.lowercased() == "well-being") {
+            return Color.primaryGreen
+        } else {
+            return Color.gray
+        }
     }
 }
 
