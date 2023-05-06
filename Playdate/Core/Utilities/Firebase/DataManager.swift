@@ -65,7 +65,7 @@ class DataManager: ObservableObject {
     func fetchChallenges(){
         Challenges.removeAll()
         let db = Firestore.firestore()
-        let ref = db.collection("Challenges")
+        let ref = db.collection("ChallengesBatch1")
         ref.getDocuments { snapshot, error in
             guard error == nil else {
                 print(error!.localizedDescription)
