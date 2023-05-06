@@ -16,9 +16,9 @@ struct SplashView: View {
     @StateObject var memoryViewModel = MemoryViewModel()
     @StateObject var userViewModel = UserViewModel()
     
-    init(){
-        dataManager.syncWithFirebase()
-    }
+//    init(){
+//
+//    }
 
     var body: some View {
         ZStack {
@@ -76,6 +76,9 @@ struct SplashView: View {
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                 self.isActive = true
+            }
+            Task {
+                dataManager.syncWithFirebase()
             }
         }
     }
