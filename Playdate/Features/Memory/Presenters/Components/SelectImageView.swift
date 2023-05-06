@@ -11,12 +11,14 @@ struct SelectImageView: View {
 //    @EnvironmentObject var memoryViewModel: MemoryViewModel
     //Jangan pake environment object, pakenya state object supaya fungsi initnya bisa kepanggil
     @StateObject var challengeViewModel = ChallengeViewModel()
-    @StateObject var memoryViewModel = MemoryViewModel()
+//    @StateObject var memoryViewModel = MemoryViewModel()
+    @ObservedObject var memoryViewModel: MemoryViewModel // ganti ObservedObject supaya dia nge-refer ke single @StateObject aja di MemoryLaneView, karena trigger manipulasi database nya di situ -DANIEL
     var memory: Memory
     
-    @Binding var isSelected: Bool
+    @State var isSelected: Bool = false // TRUE ketika image nya diklik, untuk ceklis ungu
+    @Binding var isSelect: Bool // Tombol kanan atasnya adalah -> TRUE: "Select"; FALSE: "Cancel"
     @Binding var totalSelectedPhoto: Int
-    @State var circleIsClicked: Bool = false
+//    @State var circleIsClicked: Bool = false
     
     @State private var showSheet = false
     @State private var size: CGSize = .zero
@@ -24,132 +26,126 @@ struct SelectImageView: View {
     @State private var dateOfMemory: String = ""
     
     var body: some View {
-        if self.isSelected {
-            Button {
-                showSheet = true
-                dateOfMemory = changeDateFormat(memory: memory)
-            } label: {
-                Image(uiImage: memory.photo!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 116, height: 118)
-                    .clipped()
-            }
-            .sheet(isPresented: $showSheet) {
-                VStack {
-                    ZStack {
-                        HStack {
-                            Group {
-                                Image(systemName: "chevron.left")
-                                    .foregroundColor(Color.primaryDarkGray)
-                                Text("Close")
-                                    .foregroundColor(Color.primaryDarkGray)
-                                    .offset(x: -4)
-                            }
-                            .onTapGesture {
-                                showSheet = false
-                            }
-                                
-                            Spacer()
-                        }
-                        
-                        Text("\(dateOfMemory)")
-                            .font(.custom("Poppins-medium", size: 17))
-                            .foregroundColor(Color.primaryDarkBlue)
-                    }
-                    
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 16)
-                            .foregroundColor(Color.primaryPurple)
-                            .frame(width: 342, height: 368)
-                        
-                        Image(uiImage: memory.photo!)
-                            .resizable()
-                            .frame(width: 310, height: 310)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                            .offset(y: -16)
-                        
-                        Text("PLAYDATE")
-                            .font(.system(size: 14))
-                            .fontWeight(.medium)
-                            .foregroundColor(.primaryWhite)
-                            .opacity(0.5)
-                            .offset(y: 160)
-                    }
-                    
-                    VStack(spacing: 16) {
-                        //Cara mengakses challenge dari memory bagaimana?
-                        Text("\(memory.challenge?.name ?? "")")
-                            .font(.custom("Poppins-semibold", size: 16))
-                            .foregroundColor(Color.primaryDarkBlue)
-                            .multilineTextAlignment(.center)
-                            .fixedSize(horizontal: false, vertical: true)
-                        
-                        Rectangle()
-                            .fill(Color.primaryLightGray)
-                            .frame(width: .infinity, height: 2, alignment: .center)
-                        
-                        Text("\"\(memory.momentDescription ?? "")\"")
-                            .font(.custom("Poppins", size: 15))
-                            .foregroundColor(Color.primaryDarkGray)
-                            .italic()
-                            .multilineTextAlignment(.center)
-                            .fixedSize(horizontal: false, vertical: true)
-                            
-                    }
-                    .padding(.top, 32)
+        if let photo = memory.photo {
+            if self.isSelect {
+                Button {
+                    showSheet = true
+                    dateOfMemory = changeDateFormat(memory: memory)
+                } label: {
+                    Image(uiImage: photo)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 116, height: 118)
+                        .clipped()
                 }
-                .padding([.top, .leading, .trailing], 24)
-                .background(
-                    GeometryReader { geometry in
+                .sheet(isPresented: $showSheet) {
+                    VStack {
                         ZStack {
-                            Color.primaryWhite
-                                .preference(key: SizePreferenceKey.self, value: geometry.size)
+                            HStack {
+                                Group {
+                                    Image(systemName: "chevron.left")
+                                        .foregroundColor(Color.primaryDarkGray)
+                                    Text("Close")
+                                        .foregroundColor(Color.primaryDarkGray)
+                                        .offset(x: -4)
+                                }
+                                .onTapGesture {
+                                    showSheet = false
+                                }
+                                
+                                Spacer()
+                            }
                             
-                            Image(challengeViewModel.getDoodle(category: memory.challenge!.category!))
-                                .resizable()
-                                .scaledToFill()
-                                .opacity(0.12)
-                                .frame(width: 800, height: 800)
+                            Text("\(dateOfMemory)")
+                                .font(.custom("Poppins-medium", size: 17))
+                                .foregroundColor(Color.primaryDarkBlue)
                         }
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 16)
+                                .foregroundColor(Color.primaryPurple)
+                                .frame(width: 342, height: 368)
+                            
+                            Image(uiImage: photo)
+                                .resizable()
+                                .frame(width: 310, height: 310)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .offset(y: -16)
+                            
+                            Text("PLAYDATE")
+                                .font(.system(size: 14))
+                                .fontWeight(.medium)
+                                .foregroundColor(.primaryWhite)
+                                .opacity(0.5)
+                                .offset(y: 160)
+                        }
+                        
+                        VStack(spacing: 16) {
+                            //Cara mengakses challenge dari memory bagaimana?
+                            Text("\(memory.challenge?.name ?? "")")
+                                .font(.custom("Poppins-semibold", size: 16))
+                                .foregroundColor(Color.primaryDarkBlue)
+                                .multilineTextAlignment(.center)
+                                .fixedSize(horizontal: false, vertical: true)
+                            
+                            Rectangle()
+                                .fill(Color.primaryLightGray)
+                                .frame(width: .infinity, height: 2, alignment: .center)
+                            
+                            Text("\"\(memory.momentDescription ?? "")\"")
+                                .font(.custom("Poppins", size: 15))
+                                .foregroundColor(Color.primaryDarkGray)
+                                .italic()
+                                .multilineTextAlignment(.center)
+                                .fixedSize(horizontal: false, vertical: true)
+                            
+                        }
+                        .padding(.top, 32)
                     }
-                )
-                .onPreferenceChange(SizePreferenceKey.self) { newSize in
-                    size.height = newSize.height
-                }
-                .presentationDetents([.height(size.height)])
-            }
-        } else {
-            ZStack {
-                Image(uiImage: memory.photo!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 116, height: 118)
-                    .clipped()
-                    .contentShape(Rectangle())
-                
-                if !self.isSelected {
-                    SelectCircle(circleIsClicked: $circleIsClicked) // buletannya muncul
-                }
-            }
-            .frame(width: 116, height: 118)
-            .onTapGesture {
-                if self.isSelected {
-                    self.circleIsClicked.toggle()
-                    
-                    if circleIsClicked == true {
-                        totalSelectedPhoto += 1
-                    }else {
-                        totalSelectedPhoto -= 1
+                    .padding([.top, .leading, .trailing], 24)
+                    .background(
+                        GeometryReader { geometry in
+                            ZStack {
+                                Color.primaryWhite
+                                    .preference(key: SizePreferenceKey.self, value: geometry.size)
+                                
+                                Image(challengeViewModel.getDoodle(category: memory.challenge!.category!))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .opacity(0.12)
+                                    .frame(width: 800, height: 800)
+                            }
+                        }
+                    )
+                    .onPreferenceChange(SizePreferenceKey.self) { newSize in
+                        size.height = newSize.height
                     }
+                    .presentationDetents([.height(size.height)])
+                }
+            } else {
+                ZStack {
+                    Image(uiImage: photo)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 116, height: 118)
+                        .clipped()
+                        .contentShape(Rectangle())
+
+                    SelectCircle(circleIsClicked: $isSelected) // buletannya muncul
+                }
+                .frame(width: 116, height: 118)
+                .onTapGesture {
+                    self.isSelected.toggle()
                     
-                    print(totalSelectedPhoto)
                     if let id = memory.id {
                         memoryViewModel.appendMemoryUUID(id)
                     }
+                    
+                    //                if self.isSelected {
+                    //                }
                 }
+                .drawingGroup() // karena UIImage nya UIKit, aspectRatio SwiftUI gak bisa -daniel
             }
-            .drawingGroup() // karena UIImage nya UIKit, aspectRatio SwiftUI gak bisa -daniel
         }
     }
     
@@ -161,7 +157,7 @@ struct SelectImageView: View {
     }
 }
 
-struct SizePreferenceKey: PreferenceKey { // AJARIN GUE DONG CIN INI APA GUE PENASARAN AJA -daniel
+struct SizePreferenceKey: PreferenceKey {
     static var defaultValue: CGSize = .zero
     static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
         value = nextValue()
@@ -170,7 +166,7 @@ struct SizePreferenceKey: PreferenceKey { // AJARIN GUE DONG CIN INI APA GUE PEN
 
 struct SelectCircle: View {
     @Binding var circleIsClicked: Bool
-    @State var isClicked: Bool = false
+//    @State var isClicked: Bool = false
     
     var body: some View {
         Group {

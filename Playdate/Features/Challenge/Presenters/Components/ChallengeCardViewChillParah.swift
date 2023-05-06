@@ -95,7 +95,7 @@ struct ChallengeCardViewChillParah: View {
         if (user < userMinimum){
             statusStr = "Be the first to play this challenge"
         } else {
-            var percentage = Float(like)/Float(user)*100
+            let percentage = Float(like)/Float(user)*100
             statusStr = "\(String(format: "%.0f", percentage))% Couple liked this challenge"
         }
         

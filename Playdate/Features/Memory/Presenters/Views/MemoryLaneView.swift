@@ -17,7 +17,8 @@ struct MemoryLaneView: View {
     
     @StateObject var challengeViewModel = ChallengeViewModel()
     
-    @State var isSelected: Bool = true
+    @State var isSelected: Bool = false
+    @State var isSelect: Bool = true  // Tombol kanan atasnya adalah -> TRUE: "Select"; FALSE: "Cancel"
     @State var circleIsClicked: Bool = false
     @State var totalSelectedPhoto = 0
     
@@ -40,15 +41,14 @@ struct MemoryLaneView: View {
                     CategoryCapsuleViewDua(memoryViewModel: memoryViewModel, category: "Well-being")
                 }
                 .frame(maxWidth: 347)
+                .padding(.vertical, 25)
+
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 5) {
                         ForEach(self.memoryViewModel.filteredMemories, id: \.self) { memory in
                             if memory.photo != nil {
-//                                VStack {
-//                                    Text("\(memory.id!)") // BUAT NGELIAT UUID NYA BENTAR
-//                                }
-                                SelectImageView(memory: memory, isSelected: $isSelected, totalSelectedPhoto: $totalSelectedPhoto)
+                                SelectImageView(memoryViewModel: memoryViewModel, memory: memory, isSelect: $isSelect, totalSelectedPhoto: $totalSelectedPhoto)
                             }
                         }
                     }
@@ -69,17 +69,15 @@ struct MemoryLaneView: View {
             .navigationTitle("Memory Lane")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-//                ToolbarItemGroup(placement: .navigation) {
-                    
-                    ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-                        Text(self.isSelected ? "Select" : "Cancel")
-                            .font(.system(size: 17))
-                            .foregroundColor(.gray)
-                            .padding(.leading, 60)
-                            .onTapGesture {
-                                self.isSelected.toggle()
-                            }
-                    }
+                ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
+                    Text(self.isSelect ? "Select" : "Cancel")
+                        .font(.system(size: 17))
+                        .foregroundColor(.gray)
+                        .padding(.leading, 55)
+                        .onTapGesture {
+                            self.isSelect.toggle()
+                        }
+                }
                 
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading){
                     Image("trash-icon")
@@ -94,27 +92,12 @@ struct MemoryLaneView: View {
                             Button("Delete", role: .destructive) {
                                 // GO DELETE MEMORIES!
                                 memoryViewModel.deleteMemoryPhotos()
+                                memoryViewModel.memoriesId = []
+                                self.isSelect = true
                             }
                         }
                 }
-
-
-                    
-//                    Text("Memory Lane")
-//                        .font(.custom("Poppins-SemiBold", size: 17))
-//                        .foregroundColor(Color.black)
-//                        .padding(.leading, 120)
-                    
-                    
-//                }
             }
         }
     }
 }
- 
-
-//struct MemoryLaneView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MemoryLaneView()
-//    }
-//}
