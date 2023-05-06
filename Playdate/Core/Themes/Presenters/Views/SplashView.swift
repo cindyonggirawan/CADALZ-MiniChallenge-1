@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SplashView: View {
-    @EnvironmentObject var dataManager: DataManager
     @State private var scale: CGFloat = 0.5
     @State private var isActive = false
     
@@ -16,10 +15,6 @@ struct SplashView: View {
     @StateObject var memoryViewModel = MemoryViewModel()
     @StateObject var userViewModel = UserViewModel()
     
-//    init(){
-//
-//    }
-
     var body: some View {
         ZStack {
             if self.isActive {
@@ -76,9 +71,6 @@ struct SplashView: View {
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                 self.isActive = true
-            }
-            Task {
-                dataManager.syncWithFirebase()
             }
         }
     }
