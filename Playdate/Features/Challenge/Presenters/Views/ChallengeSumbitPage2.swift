@@ -55,12 +55,12 @@ struct ChallengeSumbitPage2: View {
                                         .font(.custom("Poppins", size: 14))
                                         .foregroundColor(Color.white)
                                 }
-//                                .background(Color.green)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
-                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [9]))
+                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [15]))
                                         .foregroundColor(Color.white)
                                         .frame(width: 310, height: 310)
+                                        .background(Color(red: 31/255.0, green:  23/255.0, blue: 41/255.0, opacity: 0.3))
                                 )
                             }
                         }
@@ -152,7 +152,9 @@ struct ChallengeSumbitPage2: View {
             .padding(24)
             .onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.showVstack = true
+                    withAnimation(.easeOut(duration: 0.5)) {
+                        self.showVstack = true
+                    }
                 }
             }
         }

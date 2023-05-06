@@ -42,7 +42,7 @@ struct GenerateChallengeView: View {
                         .font(.custom("Poppins-Medium", size: 22))
                         .foregroundColor(.black)
                 }
-                .padding(.vertical, 25)
+                .padding(.vertical, 24)
                 .frame(maxWidth: 342)
                 
                 //Category Capsule

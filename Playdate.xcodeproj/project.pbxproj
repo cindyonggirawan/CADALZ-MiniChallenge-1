@@ -34,6 +34,7 @@
 		37E299A029F62EE900D7A150 /* temporaryCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2999F29F62EE900D7A150 /* temporaryCountdownView.swift */; };
 		657F02D52A0317D0005D70DC /* MemoryLaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657F02D42A0317D0005D70DC /* MemoryLaneView.swift */; };
 		65BA58732A043A4B001C827B /* SelectImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BA58722A043A4B001C827B /* SelectImageView.swift */; };
+		65E2166F2A05D84E00897D6E /* ChallengeCardViewChillParah.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2166E2A05D84E00897D6E /* ChallengeCardViewChillParah.swift */; };
 		65F1F76B2A04FBEE001B2E6D /* CategoryCapsuleViewDua.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F1F76A2A04FBEE001B2E6D /* CategoryCapsuleViewDua.swift */; };
 		A503D9F82A0265DE00C0CCCF /* ChallengeSumbitPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503D9F72A0265DE00C0CCCF /* ChallengeSumbitPage2.swift */; };
 		A5325A1529F40E8C0073219B /* ChallengeCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */; };
@@ -142,6 +143,7 @@
 		37E2999F29F62EE900D7A150 /* temporaryCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temporaryCountdownView.swift; sourceTree = "<group>"; };
 		657F02D42A0317D0005D70DC /* MemoryLaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLaneView.swift; sourceTree = "<group>"; };
 		65BA58722A043A4B001C827B /* SelectImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectImageView.swift; sourceTree = "<group>"; };
+		65E2166E2A05D84E00897D6E /* ChallengeCardViewChillParah.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCardViewChillParah.swift; sourceTree = "<group>"; };
 		65F1F76A2A04FBEE001B2E6D /* CategoryCapsuleViewDua.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCapsuleViewDua.swift; sourceTree = "<group>"; };
 		A503D9F72A0265DE00C0CCCF /* ChallengeSumbitPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeSumbitPage2.swift; sourceTree = "<group>"; };
 		A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeCardSmall.swift; path = Playdate/Features/Challenge/Presenters/Views/ChallengeCardSmall.swift; sourceTree = SOURCE_ROOT; };
@@ -517,6 +519,7 @@
 				A97CEA9329F26E6F0058F9FA /* CategoryCapsuleView.swift */,
 				A5325A1429F40E8C0073219B /* ChallengeCardSmall.swift */,
 				37E2999D29F6293800D7A150 /* UnborderedTextFieldStyle.swift */,
+				65E2166E2A05D84E00897D6E /* ChallengeCardViewChillParah.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				A925E2E529F437DB000F66C9 /* ChallengeViewModel.swift in Sources */,
 				A5AE7D8329F1895A00BD5CAE /* DataManager.swift in Sources */,
 				37E2996929F556CF00D7A150 /* RegistrationView.swift in Sources */,
+				65E2166F2A05D84E00897D6E /* ChallengeCardViewChillParah.swift in Sources */,
 				A97CEA9429F26E6F0058F9FA /* CategoryCapsuleView.swift in Sources */,
 				A978DFA92A001950003054C1 /* Memory+CoreDataClass.swift in Sources */,
 				3763419729F227C800F37080 /* TabBarView.swift in Sources */,
