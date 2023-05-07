@@ -45,11 +45,27 @@ struct MemoryLaneView: View {
 
                 
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 5) {
-                        ForEach(self.memoryViewModel.filteredMemories, id: \.self) { memory in
-                            if memory.photo != nil {
-                                SelectImageView(memoryViewModel: memoryViewModel, memory: memory, isSelect: $isSelect, totalSelectedPhoto: $totalSelectedPhoto)
+                    if memoryViewModel.filteredMemories.count != 0 {
+                        LazyVGrid(columns: columns, spacing: 5) {
+                            ForEach(self.memoryViewModel.filteredMemories, id: \.self) { memory in
+                                if memory.photo != nil {
+                                    SelectImageView(memoryViewModel: memoryViewModel, memory: memory, isSelect: $isSelect, totalSelectedPhoto: $totalSelectedPhoto)
+                                }
                             }
+                        }
+                    } else {
+                        VStack {
+                            Image("empty-gallery-state")
+                                .resizable()
+                                .scaledToFit()
+                            
+                            Text("No Memories, yet.")
+                                .font(.custom("Poppins-semibold", size: 16))
+                                .foregroundColor(Color.primaryDarkBlue)
+                            
+                            Text("Start completing challenge with your partner!")
+                                .font(.custom("Poppins", size: 16))
+                                .foregroundColor(Color.primaryDarkGray)
                         }
                     }
                 }
