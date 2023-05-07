@@ -69,6 +69,7 @@ struct SelectImageView: View {
                             Image(uiImage: photo)
                                 .resizable()
                                 .frame(width: 310, height: 310)
+                                .scaledToFill()
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
                                 .offset(y: -16)
                             
