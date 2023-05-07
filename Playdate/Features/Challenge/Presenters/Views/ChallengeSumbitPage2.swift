@@ -99,16 +99,25 @@ struct ChallengeSumbitPage2: View {
             
             // Description
             VStack(alignment: .leading){
-                HStack{
+                HStack {
                     Text("Write about this moment")
                         .font(.custom("Poppins-Medium", size: 16))
                         .foregroundColor(Color.primaryDarkBlue)
                         .padding(.top, 48)
+                    
                     Spacer()
-                    Text("\(momentDescription.count)/50")
-                        .font(.system(size: 14))
-                        .foregroundColor(Color.primaryDarkBlue)
-                        .padding(.top, 48)
+                    
+                    if momentDescription.count == 0 {
+                        Text("\(momentDescription.count)/50")
+                            .font(.system(size: 14))
+                            .foregroundColor(Color.primaryDarkGray)
+                            .padding(.top, 48)
+                    } else {
+                        Text("\(momentDescription.count)/50")
+                            .font(.system(size: 14))
+                            .foregroundColor(Color.primaryDarkBlue)
+                            .padding(.top, 48)
+                    }
                 }
                 
                 TextField("How do you feel doing this challenge?", text: $momentDescription, axis: .vertical)

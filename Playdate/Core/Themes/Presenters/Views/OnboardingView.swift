@@ -15,28 +15,56 @@ struct OnboardingView: View {
     @StateObject var userViewModel = UserViewModel()
 
     @State private var show = false
+    @State private var currentPageIndex = 0
     
     var body: some View {
 //        NavigationView {
             VStack {
-                TabView {
-                    OnboardingPageView(imageName: "onboarding1", title: "Dating is now more exciting with Playdate", subtitle: "Say goodbye to boring dates and hello to new adventures with us.")
-                    OnboardingPageView(imageName: "onboarding2", title: "Pick a challenge card and do it with your partner", subtitle: "Strengthen your relationship and have fun with our exciting challenges.")
-                    OnboardingPageView(imageName: "onboarding3", title: "Capture and treasure your loving memories!", subtitle: "Take a photo on every challenge completed and save it in memory lane.")
-                }
-                .tabViewStyle(PageTabViewStyle())
-                .onAppear {
-                    setupAppearance()
+                ZStack(alignment: .topTrailing) {
+                    TabView(selection: $currentPageIndex) {
+                        OnboardingPageView(imageName: "onboarding1", title: "Dating is now more exciting with Playdate", subtitle: "Say goodbye to boring dates and hello to new adventures with us.")
+                            .tag(0)
+                        OnboardingPageView(imageName: "onboarding2", title: "Pick a challenge card and do it with your partner", subtitle: "Strengthen your relationship and have fun with our exciting challenges.")
+                            .tag(1)
+                        OnboardingPageView(imageName: "onboarding3", title: "Capture and treasure your loving memories!", subtitle: "Take a photo on every challenge completed and save it in memory lane.")
+                            .tag(2)
+                    }
+                    .tabViewStyle(PageTabViewStyle())
+                    .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
+                    .onAppear {
+                        setupAppearance()
+                    }
+                    .onChange(of: currentPageIndex) { newIndex in
+                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    }
+                    
+                    Button(action: {
+                        show = true
+                        dataManager.syncWithFirebase()
+                    }, label: {
+                        Text("Skip")
+                            .font(.custom("Poppins", size: 16))
+                            .foregroundColor(Color.primaryDarkBlue)
+                    })
                 }
                 
                 Button(action: {
-                    show = true
+                    if currentPageIndex < 2 {
+                        currentPageIndex += 1
+                    } else {
+                        show = true
+                        dataManager.syncWithFirebase()
+                    }
                     // Connect to backend
 //                    challengeViewModel.clearChallenges()
-                    dataManager.syncWithFirebase()
                 }, label: {
-                    Text("Skip")
-                        .font(.custom("Poppins-Bold", size: 14))
+                    if currentPageIndex < 2 {
+                        Text("Next")
+                            .font(.custom("Poppins-Bold", size: 14))
+                    } else {
+                        Text("Let's Go!")
+                            .font(.custom("Poppins-Bold", size: 14))
+                    }
                 })
                 .buttonStyle(FixedSizeRoundedButtonStyle())
             }
