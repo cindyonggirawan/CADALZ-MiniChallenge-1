@@ -119,7 +119,7 @@ struct ChallengeSumbitPage2: View {
                             .padding(.top, 48)
                     }
                 }
-                .offset(y: -80)
+//                .offset(y: -80)
                 
                 TextField("How do you feel doing this challenge?", text: $momentDescription, axis: .vertical)
                     .limitInputLength(value: $momentDescription, length: 50)
@@ -159,7 +159,7 @@ struct ChallengeSumbitPage2: View {
                     .disabled(true)
                 }
             }
-            .padding(.top, 400)
+            .padding(.top, 250)
             .padding(24)
             .onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
