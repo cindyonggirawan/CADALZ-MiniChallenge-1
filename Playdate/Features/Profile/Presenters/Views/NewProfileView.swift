@@ -24,10 +24,10 @@ struct NewProfileView: View {
     //                .foregroundColor(Color.primaryDarkBlue)
     //                .background(Color.primaryWhite)
                 
-                ZStack {
-                    Image("profile-frame")
-                        .resizable()
-                        .scaledToFit()
+//                ZStack {
+//                    Image("doodle-splashscreen")
+//                        .resizable()
+//                        .scaledToFit()
                     
                     VStack {
                         Image("trophy")
@@ -46,11 +46,11 @@ struct NewProfileView: View {
                         }
                         .padding(.bottom, 40)
                         
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(Color.primaryWhite.opacity(0.2))
-                                .shadow(radius: 10, y: 20)
-                            
+//                        ZStack {
+//                            RoundedRectangle(cornerRadius: 20)
+//                                .foregroundColor(Color.primaryWhite.opacity(0.2))
+//                                .shadow(radius: 10, y: 20)
+//
                             VStack {
                                 Text("\(getMemoriesCount())")
                                     .font(.custom("Poppins-semibold", size: 80))
@@ -61,12 +61,26 @@ struct NewProfileView: View {
                                     .foregroundColor(Color.primaryWhite)
                                     .padding(.bottom, 20)
                             }
-                        }
-                        .frame(width: 278, height: 172)
-                        .offset(y: -20)
+                            .frame(width: 278, height: 172)
+                            .background(Color.primaryWhite.opacity(0.2))
+                            .cornerRadius(20)
+                            .shadow(radius: 10, y: 20)
+//                        }
+//                        .frame(width: 278, height: 172)
+//                        .offset(y: -20)
                     }
-                }
-                .offset(y: -5)
+                    .frame(width: 342, height: 610)
+                    .background(
+                        Image("doodle-splashscreen")
+                            .resizable()
+                            .scaledToFill()
+                            .opacity(0.12)
+                            .background(Color.primaryPurple)
+//                            .offset(y: -20)
+                    )
+                    .cornerRadius(20)
+//                }
+//                .offset(y: -5)
                 
     //            Button(action: {
     //                showAlert = true
@@ -92,9 +106,10 @@ struct NewProfileView: View {
     //                Text("Enter your name to delete your account and all your memories.")
     //            }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
-    //        .padding(.bottom, 20)
+            .toolbarBackground(Color.white, for: .navigationBar)
             .background(Color(red: 248/255, green: 248/255, blue: 248/255))
             .fullScreenCover(isPresented: $showSplash) {
                 SplashView()

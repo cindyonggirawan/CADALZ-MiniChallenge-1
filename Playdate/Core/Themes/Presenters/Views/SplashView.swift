@@ -73,6 +73,7 @@ struct SplashView: View {
                 self.isActive = true
             }
         }
+//        .statusBarHidden()
     }
 }
 
