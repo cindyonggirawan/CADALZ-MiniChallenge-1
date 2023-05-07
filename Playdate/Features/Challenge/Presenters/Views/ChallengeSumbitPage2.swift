@@ -119,6 +119,7 @@ struct ChallengeSumbitPage2: View {
                             .padding(.top, 48)
                     }
                 }
+                .offset(y: -80)
                 
                 TextField("How do you feel doing this challenge?", text: $momentDescription, axis: .vertical)
                     .limitInputLength(value: $momentDescription, length: 50)
@@ -131,6 +132,7 @@ struct ChallengeSumbitPage2: View {
                     .foregroundColor(Color.primaryDarkBlue)
                     .cornerRadius(8)
                     .focused($amountIsFocused)
+                    .offset(y: -80)
                 
                 if selectedImage != nil && !momentDescription.isEmpty {
                     Button(action: {
@@ -144,7 +146,7 @@ struct ChallengeSumbitPage2: View {
                             .font(.custom("Poppins-Bold", size: 14))
                     })
                     .buttonStyle(FixedSizeRoundedButtonStyle())
-                    .padding(.top, 100)
+                    .offset(y: 20)
                 } else {
                     Button(action: {
                         //TODO: send isLike data to firebase
@@ -154,7 +156,7 @@ struct ChallengeSumbitPage2: View {
                             .font(.custom("Poppins-Bold", size: 14))
                     })
                     .buttonStyle(FixedSizeRoundedButtonDisabledStyle())
-                    .padding(.top, 100)
+                    .offset(y: 20)
                     .disabled(true)
                 }
             }
