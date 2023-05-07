@@ -54,19 +54,26 @@ struct MemoryLaneView: View {
                             }
                         }
                     } else {
-                        VStack {
+                        VStack() {
+                            Spacer()
                             Image("empty-gallery-state")
                                 .resizable()
                                 .scaledToFit()
+                                .frame(width: 180, height: 180)
                             
                             Text("No Memories, yet.")
                                 .font(.custom("Poppins-semibold", size: 16))
                                 .foregroundColor(Color.primaryDarkBlue)
                             
                             Text("Start completing challenge with your partner!")
-                                .font(.custom("Poppins", size: 16))
+                                .font(.custom("Poppins", size: 15))
                                 .foregroundColor(Color.primaryDarkGray)
+                            
+                            
+                            Spacer()
                         }
+                        .frame(height: 500)
+                        .padding(.horizontal)
                     }
                 }
                 
