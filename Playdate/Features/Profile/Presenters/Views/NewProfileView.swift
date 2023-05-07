@@ -74,6 +74,7 @@ struct NewProfileView: View {
                         Image("doodle-splashscreen")
                             .resizable()
                             .scaledToFill()
+                            .aspectRatio(1, contentMode: .fill)
                             .opacity(0.12)
                             .background(Color.primaryPurple)
 //                            .offset(y: -20)
@@ -166,9 +167,3 @@ struct NewProfileView: View {
         }
     }
 }
-
-//struct NewProfileView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewProfileView()
-//    }
-//}
