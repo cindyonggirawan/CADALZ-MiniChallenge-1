@@ -54,20 +54,48 @@ struct MemoryLaneView: View {
                     }
                 }
                 
-                if !isSelected {
+                if !isSelect {
                     //SHOW SELECTED PHOTO
-                    if totalSelectedPhoto == 0 {
-                        Text("Select Photo")
-                    }else if totalSelectedPhoto == 1{
-                        Text("1 Photo Selected")
-                    }else {
-                        Text("\(totalSelectedPhoto) Photos Selected")
+                    ZStack{
+                        if totalSelectedPhoto == 0 {
+                            Text("Select Photo")
+                        }else if totalSelectedPhoto == 1{
+                            Text("1 Photo Selected")
+                        }else {
+                            Text("\(totalSelectedPhoto) Photos Selected")
+                        }
+                        HStack{
+                            Spacer()
+                            Image("trash-icon")
+                                .onTapGesture {
+                                    if memoryViewModel.memoriesId.count > 0 { // DELETE-CONFIRMATION PAS ADA YG MAU DIHAPUS AJA
+                                        self.isShowingAlert = true
+                                    }
+                                }
+                            // IPHONE ALERT POP UP
+                                .alert("Delete your \(memoryViewModel.memoriesId.count) \(memoryViewModel.memoriesId.count > 1 ? "memories" : "memory")?", isPresented: $isShowingAlert) {
+                                    Button("Delete", role: .destructive) {
+                                        // GO DELETE MEMORIES!
+                                        memoryViewModel.deleteMemoryPhotos()
+                                        memoryViewModel.memoriesId = []
+                                        self.isSelect = true
+                                    }
+                                }
+                        }
                     }
+                    .padding(16)
+                    .background(.white)
+//                    .shadow(color: Color.black.opacity(0.1),radius: 4)
                 }
+                    
             }
+            .onChange(of: totalSelectedPhoto, perform: { newValue in
+                print(newValue)
+            })
             .background(Color.primaryWhite)
             .navigationTitle("Memory Lane")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar(isSelect ? .visible : .hidden, for: .tabBar)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
                     Text(self.isSelect ? "Select" : "Cancel")
@@ -76,24 +104,6 @@ struct MemoryLaneView: View {
                         .padding(.leading, 55)
                         .onTapGesture {
                             self.isSelect.toggle()
-                        }
-                }
-                
-                ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading){
-                    Image("trash-icon")
-                        .onTapGesture {
-                            if memoryViewModel.memoriesId.count > 0 { // DELETE-CONFIRMATION PAS ADA YG MAU DIHAPUS AJA
-                                self.isShowingAlert = true
-                            }
-                        }
-                    // IPHONE ALERT POP UP
-                        .alert("Delete your \(memoryViewModel.memoriesId.count) \(memoryViewModel.memoriesId.count > 1 ? "memories" : "memory")?", isPresented: $isShowingAlert) {
-                            Button("Delete", role: .destructive) {
-                                // GO DELETE MEMORIES!
-                                memoryViewModel.deleteMemoryPhotos()
-                                memoryViewModel.memoriesId = []
-                                self.isSelect = true
-                            }
                         }
                 }
             }

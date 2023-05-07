@@ -73,6 +73,12 @@ struct TabBarView: View {
         .accentColor(Color.primaryDarkBlue)
         .onAppear() {
             UITabBar.appearance().backgroundColor = .white
+//            UITabBar.appearance().layer.shadowColor = Color.black.cgColor
+//            UITabBar.appearance().layer.shadowRadius = 2
+//            UITabBar.appearance().layer.shadowOpacity = 0.1
+//            
+//            
+//            .shadow(color: Color.black.opacity(0.1),radius: 4)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .edgesIgnoringSafeArea(.all)

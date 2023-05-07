@@ -136,7 +136,11 @@ struct SelectImageView: View {
                 .frame(width: 116, height: 118)
                 .onTapGesture {
                     self.isSelected.toggle()
-                    
+                    if isSelected {
+                        totalSelectedPhoto += 1
+                    }else {
+                        totalSelectedPhoto -= 1
+                    }
                     if let id = memory.id {
                         memoryViewModel.appendMemoryUUID(id)
                     }
