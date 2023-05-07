@@ -169,7 +169,7 @@ struct ChallengeSumbitPage2: View {
                 }
             }
         }
-        
+        .background(.white.opacity(0.001))
         .onTapGesture {
             endEditing()
         }
