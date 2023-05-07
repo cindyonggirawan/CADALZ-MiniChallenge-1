@@ -115,6 +115,9 @@ struct NewProfileView: View {
             .fullScreenCover(isPresented: $showSplash) {
                 SplashView()
             }
+            .toolbarBackground(Color.white, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+
             .toolbar {
                 ToolbarItem (placement: ToolbarItemPlacement.navigationBarTrailing){
                     Button {

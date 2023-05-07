@@ -174,6 +174,8 @@ struct ChallengeViewPage1: View {
                     }
                 }
             }
+            .toolbarBackground(Color.white, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
             .fullScreenCover(isPresented: $show) {
                 TabView(selection: $selectedTab) {
                     OngoingChallengeView()

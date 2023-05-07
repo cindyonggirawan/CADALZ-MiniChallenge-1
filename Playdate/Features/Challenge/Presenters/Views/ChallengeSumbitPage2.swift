@@ -195,6 +195,8 @@ struct ChallengeSumbitPage2: View {
 //                }
 //            }
 //        }
+        .toolbarBackground(Color.white, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .fullScreenCover(isPresented: $show, content: {
             TabView(selection: $selectedTab) {
                 GenerateChallengeView()
