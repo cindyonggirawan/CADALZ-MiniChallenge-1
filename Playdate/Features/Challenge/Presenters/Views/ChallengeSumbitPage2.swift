@@ -31,6 +31,7 @@ struct ChallengeSumbitPage2: View {
     @State private var profileImageName = "profile-icon"
     
 //    @FocusState private var amountIsFocused: Bool
+    @State private var contentOffset: CGFloat = 0
     
     var body: some View {
         
@@ -170,6 +171,18 @@ struct ChallengeSumbitPage2: View {
             }
         }
         .background(.white.opacity(0.001))
+        .offset(y: contentOffset)
+        .animation(.easeInOut(duration: 0.3))
+        //kalau mau auto scroll
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { notification in
+            guard let userInfo = notification.userInfo else { return }
+            guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+            let keyboardHeight = keyboardFrame.height
+            self.contentOffset = -keyboardHeight + 240
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+            self.contentOffset = 0
+        }
         .onTapGesture {
             endEditing()
         }

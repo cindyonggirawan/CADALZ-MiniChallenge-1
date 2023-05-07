@@ -29,6 +29,15 @@ struct ChallengeViewPage1: View {
     @State private var memoriesImageName = "memories-icon"
     @State private var profileImageName = "profile-icon"
     
+    //Warna background toolbar tetap tidak berubah
+//    init() {
+//        let coloredAppearance = UIToolbarAppearance()
+//        coloredAppearance.configureWithDefaultBackground()
+//        coloredAppearance.backgroundColor = .white
+//        UIToolbar.appearance().standardAppearance = coloredAppearance
+//        UIToolbar.appearance().scrollEdgeAppearance = coloredAppearance
+//    }
+    
     var body: some View {
         
         let currentMemories = memoryViewModel.memories[memoryViewModel.memories.count-1]
