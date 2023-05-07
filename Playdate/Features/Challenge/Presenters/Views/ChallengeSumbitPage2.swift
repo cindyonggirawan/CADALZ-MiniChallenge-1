@@ -30,7 +30,7 @@ struct ChallengeSumbitPage2: View {
     @State private var memoriesImageName = "memories-icon"
     @State private var profileImageName = "profile-icon"
     
-    @FocusState private var amountIsFocused: Bool
+//    @FocusState private var amountIsFocused: Bool
     
     var body: some View {
         
@@ -131,8 +131,7 @@ struct ChallengeSumbitPage2: View {
                     .background(Color.primaryLightGray)
                     .foregroundColor(Color.primaryDarkBlue)
                     .cornerRadius(8)
-                    .focused($amountIsFocused)
-                    .offset(y: -80)
+//                    .focused($amountIsFocused)
                 
                 if selectedImage != nil && !momentDescription.isEmpty {
                     Button(action: {
@@ -170,15 +169,19 @@ struct ChallengeSumbitPage2: View {
                 }
             }
         }
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-
-                Button("Done") {
-                    amountIsFocused = false
-                }
-            }
+        
+        .onTapGesture {
+            endEditing()
         }
+//        .toolbar {
+//            ToolbarItemGroup(placement: .keyboard) {
+//                Spacer()
+//
+//                Button("Done") {
+//                    amountIsFocused = false
+//                }
+//            }
+//        }
         .fullScreenCover(isPresented: $show, content: {
             TabView(selection: $selectedTab) {
                 GenerateChallengeView()
@@ -233,6 +236,10 @@ struct ChallengeSumbitPage2: View {
         })
     }
     
+    private func endEditing() {
+        UIApplication.shared.endEditing()
+    }
+    
     // FIREBASE
     func updateChallengeLike(challengeId: String, isLike: Bool){
         
@@ -271,3 +278,9 @@ struct ChallengeSumbitPage2: View {
 //        ChallengeSumbitPage2()
 //    }
 //}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
