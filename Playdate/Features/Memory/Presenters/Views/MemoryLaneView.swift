@@ -59,14 +59,22 @@ struct MemoryLaneView: View {
                     ZStack{
                         if totalSelectedPhoto == 0 {
                             Text("Select Photo")
+                                .font(.custom("Poppins-Medium", size: 16))
+                                .foregroundColor(.primaryDarkBlue)
                         }else if totalSelectedPhoto == 1{
                             Text("1 Photo Selected")
+                                .font(.custom("Poppins-Medium", size: 16))
+                                .foregroundColor(.primaryDarkBlue)
                         }else {
                             Text("\(totalSelectedPhoto) Photos Selected")
+                                .font(.custom("Poppins-Medium", size: 16))
+                                .foregroundColor(.primaryDarkBlue)
                         }
                         HStack{
                             Spacer()
-                            Image("trash-icon")
+                            Image(systemName: "trash")
+                                .font(.system(size: 16))
+                                .foregroundColor(.primaryDarkGray)
                                 .onTapGesture {
                                     if memoryViewModel.memoriesId.count > 0 { // DELETE-CONFIRMATION PAS ADA YG MAU DIHAPUS AJA
                                         self.isShowingAlert = true
