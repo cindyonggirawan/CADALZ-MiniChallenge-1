@@ -55,6 +55,7 @@ struct ChallengeSumbitPage2: View {
                                         .font(.custom("Poppins", size: 14))
                                         .foregroundColor(Color.white)
                                 }
+                                .frame(width: 310, height: 310)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(style: StrokeStyle(lineWidth: 2, dash: [15]))
