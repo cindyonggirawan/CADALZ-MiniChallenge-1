@@ -132,6 +132,8 @@ struct MemoryLaneView: View {
             .navigationTitle("Memory Lane")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(isSelect ? .visible : .hidden, for: .tabBar)
+            .toolbarBackground(Color.white, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
                     Text(self.isSelect ? "Select" : "Cancel")
