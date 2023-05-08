@@ -507,9 +507,9 @@
 				A9090C0929F2C5A500BD171B /* OngoingChallengeView.swift */,
 				A58E5DA329F40AEF005B2FF8 /* ChallangeReviewModal.swift */,
 				A5325A1629F5102E0073219B /* ChallengeSubmitModal.swift */,
+				A5B8CE492A0253690009AA52 /* ChallengeSubmitPage1.swift */,
 				375656B029FA5C79003D9458 /* TimerView.swift */,
 				37E2999F29F62EE900D7A150 /* temporaryCountdownView.swift */,
-				A5B8CE492A0253690009AA52 /* ChallengeSubmitPage1.swift */,
 				A503D9F72A0265DE00C0CCCF /* ChallengeSumbitPage2.swift */,
 			);
 			path = Views;

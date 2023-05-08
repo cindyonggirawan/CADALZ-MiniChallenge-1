@@ -67,10 +67,13 @@ struct SelectImageView: View {
                                 .frame(width: 342, height: 368)
                             
                             Image(uiImage: photo)
-                                .resizable()
-                                .frame(width: 310, height: 310)
                                 .scaledToFill()
+                                .frame(width: 310, height: 310)
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
+//                                .resizable()
+//                                .frame(width: 310, height: 310)
+//                                .scaledToFill()
+//                                .clipShape(RoundedRectangle(cornerRadius: 8))
                                 .offset(y: -16)
                             
                             Text("PLAYDATE")
