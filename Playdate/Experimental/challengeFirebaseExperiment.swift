@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct challengeFirebaseExperiment: View {
     
@@ -14,7 +13,7 @@ struct challengeFirebaseExperiment: View {
     
     var body: some View {
         NavigationView {
-            List(dataManager.Challenges, id: \.id) { challenge in
+            List(dataManager.challenges, id: \.id) { challenge in
                 
                 Text("id: \(challenge.id) Name:\(challenge.name) like:  \(challenge.like)")
 //                Text("Hello")
@@ -35,33 +34,6 @@ struct challengeFirebaseExperiment: View {
     
     func updateChallengeLike(challengeId: String, isLike: Bool){
         
-        let db = Firestore.firestore()
-        let x = db.collection("Challenges").whereField("Id", isEqualTo: challengeId)
-        x.getDocuments {
-            (result, error) in
-            if error == nil {
-                for document in result!.documents {
-//                    Check Data
-                    let data = document.data()
-                    
-                    var like = data["Like"] as? Int ?? -1
-                    var numberOfUser = data["NumberOfUser"] as? Int ?? -1
-                    
-                    print("fetched like: \(like) | numberOfUser: \(numberOfUser)")
-                    if isLike {
-                        like+=1
-                    }
-                    numberOfUser+=1
-                    
-                    print("Updated Like: \(like) NumberOfUser: \(numberOfUser) challenge id: \(challengeId)")
-                    
-//                    Update Data
-                    document.reference.updateData([
-                        "Like":like,
-                        "NumberOfUser":numberOfUser])
-                }
-            }
-        }
     }
 }
 

@@ -97,7 +97,7 @@ struct ChallengeSubmitModal: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("Write about this moment")
+                    Text("Write about this moment a")
                         .font(.custom("Poppins", size: 18))
                         .bold()
                         .foregroundColor(Color.black)

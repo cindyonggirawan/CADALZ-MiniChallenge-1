@@ -20,6 +20,7 @@ class ChallengeViewModel: ObservableObject {
     
     init() {
         getChallenges()
+        print(">> \(self.challenges.count)")
         self.filteredChallenges = self.challenges.shuffled()
 //        print("Filtered Challenges (count):", filteredChallenges.count)
     }

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Firebase
 
 @main
 struct PlaydateApp: App {
@@ -15,13 +14,17 @@ struct PlaydateApp: App {
     
     // Firebase configure API
     init(){
-        FirebaseApp.configure()
+//        FirebaseApp.configure()
+        print("INIT PlaydateApp")
     }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(dataManager)
+            
+//            MantapView()
+            
 //                .environmentObject(memoryViewModel)
 //            ChallengeViewPage1()
 //            GenerateChallengeView()

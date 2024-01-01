@@ -6,10 +6,23 @@
 //
 
 import SwiftUI
-import Firebase
+
+struct ChallengesJson: Codable {
+    let challenges: [ChallengeJson]
+}
+
+struct ChallengeJson: Codable {
+    let Id: String
+    let Category: String
+    let Name: String
+    let Description: String?
+    let Like: String
+    let NumberOfUser: String
+    
+}
 
 class DataManager: ObservableObject {
-    @Published var Challenges: [ChallengeFB] = []
+    @Published var challenges: [ChallengeFB] = []
     @ObservedObject var challengeViewModel: ChallengeViewModel
     
     init(){
@@ -19,10 +32,10 @@ class DataManager: ObservableObject {
     }
     
     func syncWithFirebase(){
-        print(Challenges.count)
-        if( Challenges.count != 0) {
+        print(challenges.count)
+        if( challenges.count != 0) {
             // Sync with Firebase
-            for challenge in Challenges {
+            for challenge in challenges {
                 print("id: \(challenge.id) | name: \(challenge.name)")
                 challengeViewModel.updateChallenge(
                     id: challenge.id,
@@ -38,58 +51,36 @@ class DataManager: ObservableObject {
         }
     }
     
-    func fetchChallenges(){
-        Challenges.removeAll()
-        let db = Firestore.firestore()
-        let ref = db.collection("ChallengesBatch2")
-        ref.getDocuments { snapshot, error in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-            
-            if let snapshot = snapshot {
-                for document in snapshot.documents {
-                    let data = document.data()
-                    
-                    let id = data["Id"] as? String ?? ""
-                    let like = data["Like"] as? Int ?? -1
-                    let numberOfUser = data["NumberOfUser"] as? Int ?? -1
-                    let name = data["Name"] as? String ?? ""
-                    let description = data["Description"] as? String ?? ""
-                    let category = data["Category"] as? String ?? ""
-                    
-                    let challenge = ChallengeFB(
-                        name: name,
-                        description: description,
-                        category: category,
-                        id: id,
-                        like: like,
-                        numberOfUser: numberOfUser)
-                    
-                    self.Challenges.append(challenge)
-                }
-            }
-        }
-    }
     
-    func addUser(id: String, name: String) {
-        let db = Firestore.firestore()
-        let ref = db.collection("Users").document(id)
-        ref.setData(["id": id, "name": name]) { error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-        }
-    }
     
-    func deleteUser(id: String, name: String) {
-        let db = Firestore.firestore()
-        let ref = db.collection("Users").document(id)
-        ref.delete() { error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
+    func fetchChallenges() {
+        challenges.removeAll()
+        
+        do {
+           if let bundlePath = Bundle.main.path(forResource: "playdate-challenges", ofType: "json"),
+           let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+               if let json = try? JSONDecoder().decode(ChallengesJson.self, from: jsonData) as? ChallengesJson {
+                   let challengesJson: [ChallengeJson] = json.challenges
+                   
+                   for challenge in challengesJson {
+                       self.challenges.append(
+                        ChallengeFB(
+                            name: challenge.Name,
+                            description: challenge.Description ?? "",
+                            category: challenge.Category,
+                            id: challenge.Id,
+                            like: Int(challenge.Like) ?? 0,
+                            numberOfUser: Int(challenge.NumberOfUser) ?? 0
+                        )
+                       )
+                   }
+              } else {
+                 print("Given JSON is not a valid dictionary object.")
+              }
+           }
+        } catch {
+           print(error)
         }
+        
     }
 }

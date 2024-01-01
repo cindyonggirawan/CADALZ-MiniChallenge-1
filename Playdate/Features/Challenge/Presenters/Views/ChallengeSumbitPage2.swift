@@ -7,7 +7,6 @@
 
 import SwiftUI
 import PhotosUI
-import Firebase
 
 struct ChallengeSumbitPage2: View {
     @StateObject var challengeViewModel = ChallengeViewModel()
@@ -137,7 +136,6 @@ struct ChallengeSumbitPage2: View {
                 if selectedImage != nil && !momentDescription.isEmpty {
                     Button(action: {
                         //TODO: send isLike data to firebase
-                        updateChallengeLike(challengeId: currentMemories.challenge!.id! , isLike: isLikeChallenge)
                         memoryViewModel.submitMemory(photo: selectedUIImage, description: momentDescription)
                         print(memoryViewModel.memories)
                         show = true
@@ -255,44 +253,7 @@ struct ChallengeSumbitPage2: View {
         UIApplication.shared.endEditing()
     }
     
-    // FIREBASE
-    func updateChallengeLike(challengeId: String, isLike: Bool){
-        
-        let db = Firestore.firestore()
-        let x = db.collection("Challenges").whereField("Id", isEqualTo: challengeId)
-        x.getDocuments {
-            (result, error) in
-            if error == nil {
-                for document in result!.documents {
-//                    Check Data
-                    let data = document.data()
-                    
-                    var like = data["Like"] as? Int ?? -1
-                    var numberOfUser = data["NumberOfUser"] as? Int ?? -1
-                    
-                    print("fetched like: \(like) | numberOfUser: \(numberOfUser)")
-                    if isLike {
-                        like+=1
-                    }
-                    numberOfUser+=1
-                    
-                    print("Updated Like: \(like) NumberOfUser: \(numberOfUser) challenge id: \(challengeId)")
-                    
-//                    Update Data
-                    document.reference.updateData([
-                        "Like":like,
-                        "NumberOfUser":numberOfUser])
-                }
-            }
-        }
-    }
 }
-//
-//struct ChallengeSumbitPage2_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChallengeSumbitPage2()
-//    }
-//}
 
 extension UIApplication {
     func endEditing() {
