@@ -18,31 +18,6 @@ class DataManager: ObservableObject {
 //        syncWithFirebase()
     }
     
-//    func syncWithFirebase() {
-//        if Reachability.isConnectedToNetwork() {
-//            fetchChallenges()
-//            print(Challenges.count)
-//            if( Challenges.count != 0) {
-//                // Sync with Firebase
-//                for challenge in Challenges {
-//                    print("id: \(challenge.id) | name: \(challenge.name)")
-//                    challengeViewModel.updateChallenge(
-//                        id: challenge.id,
-//                        name: challenge.name,
-//                        desc: challenge.description,
-//                        like: Int(challenge.like),
-//                        numberOfUser: Int(challenge.numberOfUser),
-//                        category: challenge.category)
-//                }
-//            } else {
-//                // Failed to sync
-//                print("Sync Failed")
-//            }
-//        } else {
-//            print("No Internet Connection")
-//        }
-//    }
-    
     func syncWithFirebase(){
         print(Challenges.count)
         if( Challenges.count != 0) {

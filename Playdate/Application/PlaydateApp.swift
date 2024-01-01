@@ -11,7 +11,7 @@ import Firebase
 @main
 struct PlaydateApp: App {
     @StateObject var dataManager =  DataManager()
-    @StateObject var memoryViewModel = MemoryViewModel()
+//    @StateObject var memoryViewModel = MemoryViewModel()
     
     // Firebase configure API
     init(){

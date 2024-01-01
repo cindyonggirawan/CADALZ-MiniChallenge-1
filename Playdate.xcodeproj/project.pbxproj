@@ -32,6 +32,7 @@
 		37E2999C29F61B1C00D7A150 /* submitPageExperimental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2999B29F61B1C00D7A150 /* submitPageExperimental.swift */; };
 		37E2999E29F6293800D7A150 /* UnborderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2999D29F6293800D7A150 /* UnborderedTextFieldStyle.swift */; };
 		37E299A029F62EE900D7A150 /* temporaryCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2999F29F62EE900D7A150 /* temporaryCountdownView.swift */; };
+		651DA2A62B435144001FF145 /* playdate-challenges.json in Resources */ = {isa = PBXBuildFile; fileRef = 651DA2A52B435144001FF145 /* playdate-challenges.json */; };
 		657F02D52A0317D0005D70DC /* MemoryLaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657F02D42A0317D0005D70DC /* MemoryLaneView.swift */; };
 		65BA58732A043A4B001C827B /* SelectImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BA58722A043A4B001C827B /* SelectImageView.swift */; };
 		65E2166F2A05D84E00897D6E /* ChallengeCardViewChillParah.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2166E2A05D84E00897D6E /* ChallengeCardViewChillParah.swift */; };
@@ -142,6 +143,7 @@
 		37E2999B29F61B1C00D7A150 /* submitPageExperimental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = submitPageExperimental.swift; sourceTree = "<group>"; };
 		37E2999D29F6293800D7A150 /* UnborderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnborderedTextFieldStyle.swift; sourceTree = "<group>"; };
 		37E2999F29F62EE900D7A150 /* temporaryCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temporaryCountdownView.swift; sourceTree = "<group>"; };
+		651DA2A52B435144001FF145 /* playdate-challenges.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "playdate-challenges.json"; sourceTree = "<group>"; };
 		657F02D42A0317D0005D70DC /* MemoryLaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLaneView.swift; sourceTree = "<group>"; };
 		65BA58722A043A4B001C827B /* SelectImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectImageView.swift; sourceTree = "<group>"; };
 		65E2166E2A05D84E00897D6E /* ChallengeCardViewChillParah.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCardViewChillParah.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 		3798631929EFE047002EC23B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				651DA2A52B435144001FF145 /* playdate-challenges.json */,
 				A907AC0D29F2D99D008FC81B /* Fonts */,
 				3798630829EFDD71002EC23B /* Assets.xcassets */,
 			);
@@ -735,6 +738,7 @@
 				A907AC1529F2D9B3008FC81B /* Poppins-SemiBold.ttf in Resources */,
 				A907AC1329F2D9B3008FC81B /* Poppins-Regular.ttf in Resources */,
 				A907AC1429F2D9B3008FC81B /* Poppins-Medium.ttf in Resources */,
+				651DA2A62B435144001FF145 /* playdate-challenges.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
